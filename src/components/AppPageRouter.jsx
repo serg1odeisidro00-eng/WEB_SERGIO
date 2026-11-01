@@ -1,0 +1,81 @@
+import AcademyPage from './AcademyPage'
+import AlbumMusicalProjectPage from './AlbumMusicalProjectPage'
+import BoatProjectPage from './BoatProjectPage'
+import CapillaProjectPage from './CapillaProjectPage'
+import CartelTeatroProjectPage from './CartelTeatroProjectPage'
+import ContactPage from './ContactPage'
+import CrossProjectPage from './CrossProjectPage'
+import EfimeroProjectPage from './EfimeroProjectPage'
+import ElBosqueProjectPage from './ElBosqueProjectPage'
+import ElCirculoProjectPage from './ElCirculoProjectPage'
+import ElRastroProjectPage from './ElRastroProjectPage'
+import EneoProjectPage from './EneoProjectPage'
+import EspacioExpositivoProjectPage from './EspacioExpositivoProjectPage'
+import FiestasLocalesProjectPage from './FiestasLocalesProjectPage'
+import HargokProjectPage from './HargokProjectPage'
+import HazProjectPage from './HazProjectPage'
+import IlustracionesProjectPage from './IlustracionesProjectPage'
+import MitecoProjectPage from './MitecoProjectPage'
+import Nave16ProjectPage from './Nave16ProjectPage'
+import NewsPage from './NewsPage'
+import PackagingProjectPage from './PackagingProjectPage'
+import PgProjectPage from './PgProjectPage'
+import PlaygroundProjectPage from './PlaygroundProjectPage'
+import PodcastProjectPage from './PodcastProjectPage'
+import ProjectsPage from './ProjectsPage'
+import ShopPage from './ShopPage'
+import SoldrinkProjectPage from './SoldrinkProjectPage'
+import StudioPage from './StudioPage'
+import TelefonicaProjectPage from './TelefonicaProjectPage'
+import UfvProjectPage from './UfvProjectPage'
+import VKartingProjectPage from './VKartingProjectPage'
+
+const projectPages = {
+  'project-album-musical': AlbumMusicalProjectPage,
+  'project-boat': BoatProjectPage,
+  'project-capilla': CapillaProjectPage,
+  'project-cartel-teatro': CartelTeatroProjectPage,
+  'project-cross': CrossProjectPage,
+  'project-efimero': EfimeroProjectPage,
+  'project-el-bosque': ElBosqueProjectPage,
+  'project-el-circulo': ElCirculoProjectPage,
+  'project-el-rastro': ElRastroProjectPage,
+  'project-eneo': EneoProjectPage,
+  'project-espacio-expositivo': EspacioExpositivoProjectPage,
+  'project-fiestas-locales': FiestasLocalesProjectPage,
+  'project-hargok': HargokProjectPage,
+  'project-haz': HazProjectPage,
+  'project-ilustraciones': IlustracionesProjectPage,
+  'project-miteco': MitecoProjectPage,
+  'project-nave-16': Nave16ProjectPage,
+  'project-packaging': PackagingProjectPage,
+  'project-pg': PgProjectPage,
+  'project-playground': PlaygroundProjectPage,
+  'project-podcast': PodcastProjectPage,
+  'project-soldrink': SoldrinkProjectPage,
+  'project-telefonica': TelefonicaProjectPage,
+  'project-ufv': UfvProjectPage,
+  'project-v-karting': VKartingProjectPage,
+}
+
+const standardPages = {
+  academy: AcademyPage,
+  contact: ContactPage,
+  news: NewsPage,
+  shop: ShopPage,
+  studio: StudioPage,
+}
+
+export default function AppPageRouter({ activePage, projectsFilter, projectsSearch, onBack, onNavigate }) {
+  if (activePage === 'projects') {
+    return <ProjectsPage activePage={activePage} initialFilter={projectsFilter} initialSearch={projectsSearch} onBack={onBack} onNavigate={onNavigate} />
+  }
+
+  const ProjectPage = projectPages[activePage]
+  if (ProjectPage) return <ProjectPage onBack={onBack} onNavigate={onNavigate} />
+
+  const StandardPage = standardPages[activePage]
+  if (StandardPage) return <StandardPage activePage={activePage} onBack={onBack} onNavigate={onNavigate} />
+
+  return null
+}

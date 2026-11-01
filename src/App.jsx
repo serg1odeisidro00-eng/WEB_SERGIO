@@ -1,5 +1,6 @@
 ﻿import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
+import AppPageRouter from './components/AppPageRouter'
 import AcademyPage from './components/AcademyPage'
 import AlbumMusicalProjectPage from './components/AlbumMusicalProjectPage'
 import BoatProjectPage from './components/BoatProjectPage'
@@ -176,13 +177,13 @@ export default function App() {
   const { registerNavigate } = useProjectNavigation()
   const sceneCopy = language === 'en'
     ? {
-        landscape: 'LANDSCAPING',
+        landscape: 'LANDSCAPE DESIGN',
         academy: 'ACADEMY',
         interiors: 'INTERIOR DESIGN',
         scenography: 'SCENOGRAPHY',
         graphic: 'GRAPHIC DESIGN',
         artDirection: 'ART DIRECTION',
-        landscapeDetail: 'Landscape design and gardening',
+        landscapeDetail: 'Landscape design',
         contact: 'Contact',
         phoneRinging: 'PHONE RINGING',
       }
@@ -194,18 +195,18 @@ export default function App() {
           scenography: 'SCENOGRAFIA',
           graphic: 'DESIGN GRAFICO',
           artDirection: 'DIREZIONE ARTISTICA',
-          landscapeDetail: 'Paesaggismo e giardinaggio',
+          landscapeDetail: 'Paesaggismo',
           contact: 'Contatti',
           phoneRinging: 'TELEFONO IN SQUILLO',
         }
     : {
-        landscape: 'AJARDINAMIENTO',
+        landscape: 'PAISAJISMO',
         academy: 'ACADEMIA',
         interiors: 'DISEÑO DE INTERIORES',
         scenography: 'ESCENOGRAFÍA',
         graphic: 'DISEÑO GRÁFICO',
         artDirection: 'DIRECCIÓN DE ARTE',
-        landscapeDetail: 'Paisajismo y ajardinamiento',
+        landscapeDetail: 'Paisajismo',
         contact: 'Contactar',
         phoneRinging: 'TELÉFONO SONANDO',
       }
@@ -840,7 +841,7 @@ export default function App() {
       if (grafitiRef.current && grafitiImageRef.current) {
         const grafitiState = { frame: 0 }
         const totalFrames = grafitiFrames.length
-        const frameDuration = totalFrames / 4
+        const frameDuration = totalFrames / 4.4
 
         gsap.set(grafitiRef.current, {
           xPercent: -50,
@@ -1814,7 +1815,7 @@ export default function App() {
     {
       id: 'paisajismo',
       label: sceneCopy.landscape,
-      dialogueStyle: { left: '52.2%', top: '29.4%' },
+      dialogueStyle: { left: '53.2%', top: '29.4%' },
       onClick: () => handleNavigate({ pageId: 'projects', filterId: 'landscape' }),
       onPointerEnter: handleLandscapeZoneEnter,
       onPointerLeave: handleLandscapeZoneLeave,
@@ -1964,7 +1965,15 @@ export default function App() {
     >
       <audio ref={ambientAudioRef} src="/sounds/sonido_ambiente.mp3" loop preload="auto" />
       <audio ref={phoneAudioRef} src="/sounds/phone.mp3" preload="auto" />
-      {isAssetsReady && activePage === 'projects' ? (
+      {isAssetsReady && activePage !== 'home' ? (
+        <AppPageRouter
+          activePage={activePage}
+          projectsFilter={projectsFilter}
+          projectsSearch={projectsSearch}
+          onBack={() => setActivePage('home')}
+          onNavigate={handleNavigate}
+        />
+      ) : isAssetsReady && activePage === 'projects' ? (
         <ProjectsPage
           activePage={activePage}
           initialFilter={projectsFilter}

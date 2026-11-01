@@ -41,6 +41,10 @@ const italianProjectTitles = {
   'el-circulo': 'Gioco di costruzioni The Circle', 'cartel-teatro': 'Manifesto teatrale', 'el-rastro': 'Identita visiva El Rastro', hargok: 'Carattere Harvok', haz: 'Lampada HAZ', podcast: 'Identita visiva Podcast', eneo: 'Identita visiva Eneo', 'fiestas-locales': 'Manifesto delle feste locali', packaging: 'Design editoriale e packaging', ilustraciones: 'Collezione di illustrazioni', cross: 'Sedia CROSS', ufv: 'Scenografia UFV', playground: 'Abitazione sperimentale e Playground', capilla: 'Progetto illuminotecnico per cappella', pg: 'Identita visiva PG', boat: 'Scultura Boat', telefonica: "Progetto di uffici nell'edificio Telefonica", miteco: 'Progetto paesaggistico MITECO', 'miteco-2': 'Progetto paesaggistico MITECO 2', 'el-bosque': 'Centro culturale El Bosque', 'album-musical': 'Direzione artistica per album musicale', 'espacio-expositivo': 'Spazio espositivo temporaneo 2021', 'v-karting': 'Design del logo e livrea V.Karting', soldrink: 'Branding ed etichette per cantina', efimero: 'Stand di vendita temporaneo', 'nave-16': 'Residenza artistica presso Nave 16',
 }
 
+projectItems[0].title = 'The Circle'
+englishProjectTitles['el-circulo'] = 'The Circle'
+italianProjectTitles['el-circulo'] = 'The Circle'
+
 function englishLocation(location) {
   return location.replace(/Espa\u00f1a|EspaÃ±a/g, 'Spain')
 }
