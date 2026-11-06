@@ -4,6 +4,7 @@ import SceneMenu from './SceneMenu'
 
 export default function SceneArtboard({
   backgroundSrc,
+  building,
   businessCardOpen = false,
   bird,
   cartela,
@@ -87,6 +88,17 @@ export default function SceneArtboard({
               <SceneCharacter key={character.id} {...character} />
             ))}
           </div>
+
+          {building ? (
+            <div className="pointer-events-none absolute inset-0 z-[5]">
+              <img
+                src={building.src}
+                alt={building.alt}
+                className={building.className}
+                style={building.style}
+              />
+            </div>
+          ) : null}
 
           <div className="pointer-events-none absolute inset-0 z-10">
             <img

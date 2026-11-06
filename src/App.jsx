@@ -136,6 +136,7 @@ function createRandomPausedFrameTween({
 const staticSceneAssets = [
   '/fondo.jpg',
   '/Casa.png',
+  '/edificio_izquierda.svg',
   '/cartela.svg',
   '/Frames/imoviles/personaje_escaleras/persona_1.png',
   '/Frames/imoviles/personajes_fiesta/Fiesta.png',
@@ -1785,7 +1786,6 @@ export default function App() {
 
   const birdCharacter = {
     ref: birdRef,
-    className: 'scene-character-hidden',
     anchorClassName: 'bird-anchor',
     imageClassName: 'bird-frame',
     imageRef: birdImageRef,
@@ -1940,6 +1940,18 @@ export default function App() {
       top: '60.8%',
       width: '97%',
       transform: 'translate(-50%, -50%) scale(1.2)',
+    },
+  }
+
+  const leftBuildingLayer = {
+    src: '/edificio_izquierda.svg',
+    alt: 'Edificio izquierdo',
+    className: 'absolute left-1/2 top-1/2 h-full w-full object-contain',
+    style: {
+      left: '21.8%',
+      top: '57.4%',
+      width: '61%',
+      transform: 'translate(-50%, -50%)',
     },
   }
 
@@ -2241,6 +2253,7 @@ export default function App() {
             <SceneArtboard
               backgroundSrc="/fondo.jpg"
               bird={birdCharacter}
+              building={leftBuildingLayer}
               cartela={cartelaLayer}
               businessCardOpen={isBusinessCardOpen}
               house={houseLayer}
