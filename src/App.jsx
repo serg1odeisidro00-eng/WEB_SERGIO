@@ -138,6 +138,7 @@ const staticSceneAssets = [
   '/Casa.png',
   '/edificio_izquierda.svg',
   '/cartela.svg',
+  '/farola.png',
   '/Frames/imoviles/personaje_escaleras/persona_1.png',
   '/Frames/imoviles/personajes_fiesta/Fiesta.png',
   '/Frames/imoviles/personaje_microfono/personaje.png',
@@ -1955,6 +1956,19 @@ export default function App() {
     },
   }
 
+  // Farola de la calle: recortada de fondo.jpg para que quede por encima del
+  // edificio izquierdo (que la tapaba) y por detras de la furgo.
+  const streetLampLayer = {
+    src: '/farola.png',
+    alt: 'Farola',
+    className: 'absolute block',
+    style: {
+      left: '15.4969%',
+      top: '52%',
+      width: '16.0807%',
+    },
+  }
+
   const cartelaLayer = {
     src: '/cartela.svg',
     alt: 'Cartela',
@@ -2255,6 +2269,7 @@ export default function App() {
               bird={birdCharacter}
               building={leftBuildingLayer}
               cartela={cartelaLayer}
+              streetLamp={streetLampLayer}
               businessCardOpen={isBusinessCardOpen}
               house={houseLayer}
               hotspots={sceneHotspots}

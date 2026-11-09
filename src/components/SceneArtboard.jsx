@@ -19,6 +19,7 @@ export default function SceneArtboard({
   topCharacters = [],
   sceneStyle,
   soundEnabled,
+  streetLamp,
   van,
 }) {
   return (
@@ -33,6 +34,18 @@ export default function SceneArtboard({
         onLoad={onBackgroundLoad}
         className="scene-background absolute inset-0 h-full w-full object-fill"
       />
+
+      {streetLamp ? (
+        // Same coordinate space as the background so it lines up with fondo.jpg.
+        <div className="pointer-events-none absolute inset-0 z-[6]">
+          <img
+            src={streetLamp.src}
+            alt={streetLamp.alt}
+            className={streetLamp.className}
+            style={streetLamp.style}
+          />
+        </div>
+      ) : null}
 
       <div className="pointer-events-none absolute inset-0 z-[110]">
         <SceneMenu
