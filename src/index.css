@@ -1965,31 +1965,29 @@ a {
   }
 }
 
-/* ---------- Cabecera de las paginas interiores, ajustada al diseño ----------
-   (Sección_228_MenuNoticias: logo 4.16vw, menu 0.99vw, menu pegado al logo) */
+/* ---------- Cabecera de las paginas interiores ----------
+   Tamaño intermedio entre el original y el del diseño (Sergio, 10-nov-2026):
+   que se navegue bien sin comerse el diseño. */
 .projects-page-header {
-  gap: clamp(0.15rem, 0.35vw, 0.45rem);
+  gap: clamp(0.3rem, 0.45vw, 0.6rem);
 }
 
 .projects-page-brand {
-  font-size: clamp(2.6rem, 4.163vw, 5.2rem);
-  letter-spacing: -0.02em;
+  font-size: clamp(3.2rem, 5.4vw, 5.6rem);
+  letter-spacing: -0.05em;
 }
 
 .projects-page-nav {
-  gap: 0.4rem clamp(0.6rem, 0.95vw, 1.2rem);
+  gap: 0.5rem clamp(0.75rem, 1.05vw, 1.25rem);
 }
 
 .projects-page-nav-link,
-.projects-page-lang {
-  font-size: clamp(0.8rem, 0.992vw, 1.2rem);
-}
-
+.projects-page-lang,
 .projects-page-lang-separator {
-  font-size: clamp(0.8rem, 0.992vw, 1.2rem);
+  font-size: clamp(0.9rem, 1.15vw, 1.35rem);
 }
 
 .projects-page-search-button {
-  width: clamp(0.75rem, 0.8vw, 1rem);
-  height: clamp(0.75rem, 0.8vw, 1rem);
+  width: clamp(0.85rem, 0.95vw, 1.1rem);
+  height: clamp(0.85rem, 0.95vw, 1.1rem);
 }

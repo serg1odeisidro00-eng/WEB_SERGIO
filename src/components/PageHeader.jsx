@@ -6,25 +6,25 @@ const navItems = {
     { id: 'projects', label: 'PROYECTOS' },
     { id: 'studio', label: 'ESTUDIO' },
     { id: 'contact', label: 'CONTACTO' },
-    { id: 'shop', label: 'TIENDA ONLINE' },
     { id: 'news', label: 'NOTICIAS' },
     { id: 'academy', label: 'ACADEMIA' },
+    { id: 'shop', label: 'TIENDA ONLINE' },
   ],
   en: [
     { id: 'projects', label: 'PROJECTS' },
     { id: 'studio', label: 'STUDIO' },
     { id: 'contact', label: 'CONTACT' },
-    { id: 'shop', label: 'ONLINE SHOP' },
     { id: 'news', label: 'NEWS' },
     { id: 'academy', label: 'ACADEMY' },
+    { id: 'shop', label: 'ONLINE SHOP' },
   ],
   it: [
     { id: 'projects', label: 'PROGETTI' },
     { id: 'studio', label: 'STUDIO' },
     { id: 'contact', label: 'CONTATTI' },
-    { id: 'shop', label: 'NEGOZIO ONLINE' },
     { id: 'news', label: 'NOTIZIE' },
     { id: 'academy', label: 'ACCADEMIA' },
+    { id: 'shop', label: 'NEGOZIO ONLINE' },
   ],
 }
 
