@@ -41,6 +41,23 @@ cambie algo importante.
 Un cambio (o un grupo pequeño de cambios relacionados) por commit, con mensaje
 claro en español.
 
+## Cómo recibir los diseños
+
+- Sergio exporta desde Affinity en **SVG** (o PDF) y lo sube a la carpeta de
+  Google Drive compartida (`1fD1o40RKB5Req2_x6XQTMwPwH-xdvywO`; subcarpeta
+  "Sección Noticias" para noticias). Los `.af` no se pueden abrir fuera de Affinity.
+- Los SVG pesan decenas de MB (llevan las fotos dentro): no usar el conector de
+  Drive para descargarlos, sino curl:
+  `https://drive.usercontent.google.com/download?id=<ID>&export=download&confirm=t`
+  (el entorno `WEB_SERGIO` permite drive.google.com y drive.usercontent.google.com).
+- Para verlos: renderizar con Playwright (ver la fuente instalándola antes en
+  `~/.fonts` desde `public/fonts/condensed`). Para extraer texto y posiciones:
+  cargar el SVG en Chromium y leer `getBoundingClientRect` de `<text>` y de los
+  grupos `g[serif:id]`. Para las imágenes: renderizar el SVG sin `<text>` a 3000 px
+  de ancho y recortar.
+- Medidas del diseño: la mesa de trabajo = ancho de la ventana, así que las
+  proporciones se pasan a CSS en `vw` (con `clamp` para móvil).
+
 ## Tecnología
 
 - React 19 + Vite + Tailwind 4 + GSAP para las animaciones.
@@ -58,6 +75,10 @@ claro en español.
 - `src/components/AppPageRouter.jsx`: navegación a las demás páginas
   (proyectos, estudio, academia, contacto, tienda, noticias…).
 - `src/components/*ProjectPage.jsx`: una página por proyecto.
+- Noticias: contenido (es/en/it) en `src/content/news.js`, páginas
+  `NewsPage.jsx` (cuadrícula de 3 columnas, estilo cpinos.com/noticias) y
+  `NewsArticlePage.jsx` (columna central del 52 %). Imágenes en
+  `public/noticias/`. Cada noticia es una página `news-N` en el router.
 - `public/`: imágenes. `fondo.jpg` es el fondo de la escena (7537×4500).
 
 ### Capas de la portada (de atrás a delante, por z-index)
@@ -75,6 +96,11 @@ claro en español.
 - 2026-11-09: la farola de detrás de la furgo estaba dibujada en `fondo.jpg`
   pero la tapaba `edificio_izquierda.svg`. Se recortó como `public/farola.png`
   y se puso como capa propia encima del edificio.
-- En la web el estudio se llama "M047"; en el archivo Affinity
-  (`Sección_228_JUNTO.af`) aparece "228". Confirmar con Sergio cuál es el bueno
-  antes de tocarlo.
+- El estudio se llama "M047" (así sale también en los diseños de noticias);
+  "228" es el número del bloque de Aluche que inspira la portada.
+- 2026-11-10: sección Noticias con 3 noticias (diseños Sección_228-Noticia1-3 y
+  Sección_228_MenuNoticias). Traducciones EN/IT hechas por Claude, pendientes
+  de revisión de Sergio. En la noticia 2 del diseño había un bloque copiado de
+  la noticia 1 ("Animación frame a frame…") que se ha omitido.
+- `m047.es` (Hostinger) apunta todavía al Vercel del amigo; pendiente de
+  pasarlo al proyecto `web-sergio` de Sergio cuando la web esté lista.

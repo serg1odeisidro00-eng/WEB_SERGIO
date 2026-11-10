@@ -1,31 +1,42 @@
-import { useState } from 'react'
+import { useEffect } from 'react'
+import { useLanguage } from '../context/LanguageContext'
+import { newsArticles, newsListCopy } from '../content/news'
 import PageFooter from './PageFooter'
 import PageHeader from './PageHeader'
 
 export default function NewsPage({ activePage, onBack, onNavigate }) {
-  const [isSpanish, setIsSpanish] = useState(false)
+  const { language } = useLanguage()
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   return (
-    <section className="projects-page shop-page">
-      <div className="shop-page-backdrop" aria-hidden="true">
-        <img
-          className="shop-page-background"
-          src="/pages/fondo_tienda.png"
-          alt=""
-          aria-hidden="true"
-        />
-      </div>
+    <section className="projects-page news-page">
+      <PageHeader activePage={activePage} onBack={onBack} onNavigate={onNavigate} />
 
-      <PageHeader
-        activePage={activePage}
-        isSpanish={isSpanish}
-        onBack={onBack}
-        onNavigate={onNavigate}
-        onSetSpanish={setIsSpanish}
-      />
+      <h1 className="news-visually-hidden">{newsListCopy[language].title}</h1>
 
-      <div className="shop-page-stage">
-        <div className="shop-page-message">Coming soon...</div>
+      <div className="news-grid">
+        {newsArticles.map((article) => (
+          <button
+            key={article.id}
+            type="button"
+            className="news-card"
+            onClick={() => onNavigate?.(article.id)}
+          >
+            <span className="news-card-media">
+              <img
+                src={article.cover.src}
+                width={article.cover.w}
+                height={article.cover.h}
+                alt=""
+                loading="lazy"
+              />
+            </span>
+            <span className="news-card-title">{article.cardTitle[language]}</span>
+          </button>
+        ))}
       </div>
 
       <PageFooter />

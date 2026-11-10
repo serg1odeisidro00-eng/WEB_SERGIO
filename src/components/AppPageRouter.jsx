@@ -1,3 +1,4 @@
+import { newsById } from '../content/news'
 import AcademyPage from './AcademyPage'
 import AlbumMusicalProjectPage from './AlbumMusicalProjectPage'
 import BoatProjectPage from './BoatProjectPage'
@@ -17,6 +18,7 @@ import HazProjectPage from './HazProjectPage'
 import IlustracionesProjectPage from './IlustracionesProjectPage'
 import MitecoProjectPage from './MitecoProjectPage'
 import Nave16ProjectPage from './Nave16ProjectPage'
+import NewsArticlePage from './NewsArticlePage'
 import NewsPage from './NewsPage'
 import PackagingProjectPage from './PackagingProjectPage'
 import PgProjectPage from './PgProjectPage'
@@ -69,6 +71,10 @@ const standardPages = {
 export default function AppPageRouter({ activePage, projectsFilter, projectsSearch, onBack, onNavigate }) {
   if (activePage === 'projects') {
     return <ProjectsPage activePage={activePage} initialFilter={projectsFilter} initialSearch={projectsSearch} onBack={onBack} onNavigate={onNavigate} />
+  }
+
+  if (newsById[activePage]) {
+    return <NewsArticlePage articleId={activePage} onBack={onBack} onNavigate={onNavigate} />
   }
 
   const ProjectPage = projectPages[activePage]
