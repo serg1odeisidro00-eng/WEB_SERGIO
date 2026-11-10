@@ -10,13 +10,15 @@ export function useSceneSize(sceneShellRef, sceneRatio, isSceneMounted) {
       const shell = sceneShellRef.current
       if (!shell) return
 
-      const shellHeight = shell.clientHeight
-      const safetyInset = 24
-      const targetHeight = Math.max((shellHeight - safetyInset) * 1.02, 0)
-      const roundedHeight = Math.round(targetHeight)
-      const roundedWidth = Math.round(
-        Math.max(800, roundedHeight * sceneRatio, 0),
-      )
+      // Encaja el dibujo lo mas grande posible en la ventana, limitado por el
+      // ancho o por el alto (lo que llegue antes), sin recortarlo.
+      const availableWidth = shell.clientWidth - 4
+      const availableHeight = shell.clientHeight - 4
+      let targetHeight = Math.min(availableHeight, availableWidth / sceneRatio)
+      // En pantallas muy pequenas mantiene un minimo y se puede desplazar.
+      if (targetHeight * sceneRatio < 800) targetHeight = 800 / sceneRatio
+      const roundedHeight = Math.max(Math.floor(targetHeight), 0)
+      const roundedWidth = Math.floor(roundedHeight * sceneRatio)
 
       setSceneStyle({
         width: `${roundedWidth}px`,

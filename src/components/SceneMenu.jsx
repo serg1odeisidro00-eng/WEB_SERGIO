@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 
 const primaryItems = [
@@ -13,18 +13,34 @@ const primaryItems = [
 const secondaryItems = [
   { label: 'CONTACTO', pageId: 'contact' },
   { label: 'ESTUDIO', pageId: 'studio' },
-  { label: 'TIENDA ONLINE', pageId: 'shop' },
   { label: 'NOTICIAS', pageId: 'news' },
+  { label: 'TIENDA ONLINE', pageId: 'shop' },
 ]
 
 const menuTranslations = {
-  es: ['1. DISE\u00d1O DE INTERIORES', '2. PAISAJISMO', '3. ESCENOGRAF\u00cdA', '4. DISE\u00d1O GR\u00c1FICO', '5. DIRECCI\u00d3N DE ARTE', '6. ACADEMIA', 'CONTACTO', 'ESTUDIO', 'TIENDA ONLINE', 'NOTICIAS'],
-  en: ['1. INTERIOR DESIGN', '2. LANDSCAPE DESIGN', '3. SCENOGRAPHY', '4. GRAPHIC DESIGN', '5. ART DIRECTION', '6. ACADEMY', 'CONTACT', 'STUDIO', 'ONLINE SHOP', 'NEWS'],
-  it: ['1. DESIGN DEGLI INTERNI', '2. PAESAGGISMO', '3. SCENOGRAFIA', '4. DESIGN GRAFICO', '5. DIREZIONE ARTISTICA', '6. ACCADEMIA', 'CONTATTI', 'STUDIO', 'NEGOZIO ONLINE', 'NOTIZIE'],
+  es: ['1. DISE\u00d1O DE INTERIORES', '2. PAISAJISMO', '3. ESCENOGRAF\u00cdA', '4. DISE\u00d1O GR\u00c1FICO', '5. DIRECCI\u00d3N DE ARTE', '6. ACADEMIA', 'CONTACTO', 'ESTUDIO', 'NOTICIAS', 'TIENDA ONLINE'],
+  en: ['1. INTERIOR DESIGN', '2. LANDSCAPE DESIGN', '3. SCENOGRAPHY', '4. GRAPHIC DESIGN', '5. ART DIRECTION', '6. ACADEMY', 'CONTACT', 'STUDIO', 'NEWS', 'ONLINE SHOP'],
+  it: ['1. DESIGN DEGLI INTERNI', '2. PAESAGGISMO', '3. SCENOGRAFIA', '4. DESIGN GRAFICO', '5. DIREZIONE ARTISTICA', '6. ACCADEMIA', 'CONTATTI', 'STUDIO', 'NOTIZIE', 'NEGOZIO ONLINE'],
 }
+
+const MENU_REFERENCE_WIDTH = 1387
 
 export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled = false }) {
   const [isOpen, setIsOpen] = useState(false)
+  const [menuScale, setMenuScale] = useState(1)
+  const rootRef = useRef(null)
+
+  // El panel se dibuja a un tamano de referencia (dibujo de 1387 px de ancho)
+  // y se escala igual que el dibujo, para que siempre case con la cartela.
+  useLayoutEffect(() => {
+    const root = rootRef.current
+    if (!root) return undefined
+    const update = () => setMenuScale(root.clientWidth / MENU_REFERENCE_WIDTH)
+    update()
+    const observer = new ResizeObserver(update)
+    observer.observe(root)
+    return () => observer.disconnect()
+  }, [])
   const { language, setLanguage } = useLanguage()
   const labels = menuTranslations[language]
 
@@ -40,7 +56,7 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
   }
 
   return (
-    <div className="scene-menu">
+    <div ref={rootRef} className="scene-menu">
       <button
         type="button"
         className={`scene-menu-button${isOpen ? ' is-open' : ''}`}
@@ -54,7 +70,7 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
       </button>
 
       {isOpen ? (
-        <div className="scene-menu-panel">
+        <div className="scene-menu-panel" style={{ '--menu-scale': menuScale }}>
           <button
             type="button"
             className="scene-menu-close"

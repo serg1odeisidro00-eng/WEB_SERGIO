@@ -2012,7 +2012,7 @@ export default function App() {
       ref={rootRef}
       className={
         activePage === 'home'
-          ? 'flex h-screen items-center justify-center overflow-hidden bg-white p-8'
+          ? 'flex h-screen items-center justify-center overflow-hidden bg-white p-2'
           : 'min-h-screen bg-white px-8 py-6 text-stone-950'
       }
     >

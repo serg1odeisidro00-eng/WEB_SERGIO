@@ -57,7 +57,7 @@ a {
 }
 
 .scene-shell {
-  height: calc(100vh - 4rem);
+  height: calc(100vh - 1rem);
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
@@ -2509,4 +2509,25 @@ a {
   .telefono-anchor.is-ringing .telefono-vibration-side {
     animation: none;
   }
+}
+
+/* ---------- Menu de la portada pegado a la cartela ----------
+   Medidas de referencia con el dibujo a 1387 px de ancho: el panel ocupa el
+   ancho visible de la cartela (17,23 %) y llega justo hasta su borde superior
+   (92,15 % del alto). Se escala con el dibujo (--menu-scale, desde SceneMenu). */
+.scene-menu-panel {
+  top: 0;
+  right: 0.24%;
+  width: 239px;
+  height: 764px;
+  min-width: 0;
+  transform: scale(var(--menu-scale, 1));
+  transform-origin: top right;
+}
+
+.scene-menu-panel .scene-menu-item,
+.scene-menu-panel .scene-menu-code,
+.scene-menu-panel .scene-menu-switch-row,
+.scene-menu-panel .scene-menu-switch-separator {
+  font-size: 0.95rem;
 }
