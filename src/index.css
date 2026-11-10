@@ -1964,3 +1964,32 @@ a {
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+/* ---------- Cabecera de las paginas interiores, ajustada al diseño ----------
+   (Sección_228_MenuNoticias: logo 4.16vw, menu 0.99vw, menu pegado al logo) */
+.projects-page-header {
+  gap: clamp(0.15rem, 0.35vw, 0.45rem);
+}
+
+.projects-page-brand {
+  font-size: clamp(2.6rem, 4.163vw, 5.2rem);
+  letter-spacing: -0.02em;
+}
+
+.projects-page-nav {
+  gap: 0.4rem clamp(0.6rem, 0.95vw, 1.2rem);
+}
+
+.projects-page-nav-link,
+.projects-page-lang {
+  font-size: clamp(0.8rem, 0.992vw, 1.2rem);
+}
+
+.projects-page-lang-separator {
+  font-size: clamp(0.8rem, 0.992vw, 1.2rem);
+}
+
+.projects-page-search-button {
+  width: clamp(0.75rem, 0.8vw, 1rem);
+  height: clamp(0.75rem, 0.8vw, 1rem);
+}

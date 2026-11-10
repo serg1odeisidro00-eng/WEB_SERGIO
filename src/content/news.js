@@ -172,7 +172,7 @@ export const newsArticles = [
       },
       {
         p: {
-          es: 'Todo nuestro agradecimiento a las personas que ha hecho alcanzable este proyecto: Blanca Aramburu, Álvaro De Isidro, Vinicius Taliari, José De Isidro, Antonia Sánchez, José Luis De Isidro, José de Isidro Lozano, Miguel Sánchez Belijar y María del Carmen Martí, a todos gracias por el apoyo incondicional.',
+          es: 'Todo nuestro agradecimiento a las personas que han hecho alcanzable este proyecto: Blanca Aramburu, Álvaro De Isidro, Vinicius Taliari, José De Isidro, Antonia Sánchez, José Luis De Isidro, José de Isidro Lozano, Miguel Sánchez Belijar y María del Carmen Martí, a todos gracias por el apoyo incondicional.',
           en: 'Our heartfelt thanks to the people who made this project possible: Blanca Aramburu, Álvaro De Isidro, Vinicius Taliari, José De Isidro, Antonia Sánchez, José Luis De Isidro, José de Isidro Lozano, Miguel Sánchez Belijar and María del Carmen Martí. Thank you all for your unconditional support.',
           it: 'Tutta la nostra gratitudine alle persone che hanno reso possibile questo progetto: Blanca Aramburu, Álvaro De Isidro, Vinicius Taliari, José De Isidro, Antonia Sánchez, José Luis De Isidro, José de Isidro Lozano, Miguel Sánchez Belijar e María del Carmen Martí. Grazie a tutti per il sostegno incondizionato.',
         },
@@ -477,7 +477,7 @@ export const newsArticles = [
       },
       {
         p: {
-          es: 'Más allá de protegerme del verano implacable de la meseta, esa lona funcionó casi como una añoranza poética: un parche verde para recuperar el campo perdido entre tanto ladrillo. Junto al rojo arcilloso, formó el pantone inconfundible de la periferia.',
+          es: 'Más allá de protegernos del verano implacable de la meseta, esa lona funcionó casi como una añoranza poética: un parche verde para recuperar el campo perdido entre tanto ladrillo. Junto al rojo arcilloso, formó el pantone inconfundible de la periferia.',
           en: 'Beyond protecting us from the relentless summer of the Castilian plateau, that canvas worked almost as a poetic longing: a green patch to win back the countryside lost among so much brick. Together with the clay red, it formed the unmistakable Pantone of the outskirts.',
           it: 'Oltre a proteggerci dall’estate implacabile dell’altopiano, quella tela ha funzionato quasi come una nostalgia poetica: una toppa verde per recuperare la campagna perduta tra tanti mattoni. Insieme al rosso argilla, ha formato il Pantone inconfondibile della periferia.',
         },
