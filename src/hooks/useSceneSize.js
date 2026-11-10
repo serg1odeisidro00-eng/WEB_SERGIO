@@ -22,8 +22,7 @@ export function useSceneSize(sceneShellRef, sceneRatio, isSceneMounted) {
       // ventana, limitada por el ancho o por el alto (lo que llegue antes).
       const visibleRatio = sceneRatio / VISIBLE_FRACTION
       const availableWidth = shell.clientWidth - 4 - FRAME_BORDER * 2
-      // Deja un 3 % de aire arriba y abajo para que el dibujo respire.
-      const availableHeight = shell.clientHeight * 0.94 - FRAME_BORDER * 2
+      const availableHeight = shell.clientHeight - 4 - FRAME_BORDER * 2
       let visibleHeight = Math.min(availableHeight, availableWidth / visibleRatio)
       // En pantallas muy pequenas mantiene un minimo y se puede desplazar.
       if (visibleHeight * visibleRatio < 800) visibleHeight = 800 / visibleRatio

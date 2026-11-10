@@ -28,7 +28,7 @@ export default function SceneArtboard({
   return (
     <div
       data-animate="frame"
-      className="scene-frame relative overflow-hidden border-2 border-stone-500"
+      className="scene-frame relative overflow-hidden border-2 border-black"
       style={frameStyle}
     >
     <div className="scene-artboard overflow-hidden" style={sceneStyle}>
@@ -37,7 +37,7 @@ export default function SceneArtboard({
         alt="Fondo base de la composicion"
         onLoad={onBackgroundLoad}
         className="scene-background absolute inset-0 h-full w-full object-fill"
-        style={{ width: `${backgroundStretch * 100}%` }}
+        style={{ width: `${backgroundStretch * 100}%`, maxWidth: "none", right: "auto" }}
       />
 
       {streetLamp ? (

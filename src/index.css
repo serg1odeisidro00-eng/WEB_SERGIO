@@ -2517,8 +2517,8 @@ a {
    (92,15 % del alto). Se escala con el dibujo (--menu-scale, desde SceneMenu). */
 .scene-menu-panel {
   top: 0;
-  right: 0.24%;
-  width: 239px;
+  right: 0;
+  width: 242px;
   height: 698px;
   min-width: 0;
   transform: scale(var(--menu-scale, 1));
@@ -2575,4 +2575,31 @@ a {
 
 .scene-menu-button.is-open span:nth-child(3) {
   transform: translateY(calc(-0.42cqw - max(2px, 0.15cqw))) rotate(-45deg);
+}
+
+.scene-menu-panel {
+  box-shadow: none;
+  border-color: #000000;
+}
+
+.scene-menu-panel::before {
+  border-color: #000000;
+}
+
+/* Texto del menu como en la referencia Seccion_228_M3 (algo mas grande). */
+.scene-menu-panel .scene-menu-item,
+.scene-menu-panel .scene-menu-code,
+.scene-menu-panel .scene-menu-switch-row,
+.scene-menu-panel .scene-menu-switch-separator {
+  font-size: 1.12rem;
+}
+
+.scene-menu-panel .scene-menu-group-primary {
+  gap: 0.3rem;
+  margin-top: 2.6rem;
+}
+
+.scene-menu-panel .scene-menu-group-secondary {
+  gap: 0.26rem;
+  margin-top: 2.3rem;
 }
