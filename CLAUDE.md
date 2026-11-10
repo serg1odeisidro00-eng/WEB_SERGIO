@@ -95,6 +95,13 @@ claro en español.
   dentro de `.scene-overlay`) → farola `farola.png` (z-6, mismo sistema de
   coordenadas que el fondo) → casa `Casa.png` (z-10) → personajes (z-20/30/40/50) →
   cartela del plano (z-55) → menú (z-110).
+- Recorte (versión E, 10-nov-2026): la escena completa (`.scene-artboard`) se ve
+  a través de `.scene-frame`, que oculta el 5 % de arriba y el 3,12 % de abajo
+  (`SCENE_CROP_TOP/BOTTOM` en `src/hooks/useSceneSize.js`). La cartela sube con
+  el recorte y el menú (`.scene-menu`) ocupa solo la parte visible; su panel se
+  dibuja a tamaño de referencia (dibujo de 1387 px) y se escala con el dibujo
+  para casar siempre con la cartela. El "piquito" bajo la escalera del sótano
+  se borró de `public/Casa.png`.
 - Ojo: `.scene-overlay` tiene márgenes (`inset: 0.35rem 7% 14% 7%`), así que
   las capas dentro de él usan porcentajes distintos a los del fondo. Para
   alinear algo con `fondo.jpg`, ponerlo directamente en el artboard.

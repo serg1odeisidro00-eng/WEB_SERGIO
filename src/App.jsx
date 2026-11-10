@@ -55,7 +55,7 @@ import {
   telefonoFrames,
   vanFrames,
 } from './data/sceneFrames'
-import { useSceneSize } from './hooks/useSceneSize'
+import { SCENE_CROP_BOTTOM, useSceneSize } from './hooks/useSceneSize'
 import { useLanguage } from './context/LanguageContext'
 import { useProjectNavigation } from './context/ProjectNavigationContext'
 
@@ -335,7 +335,7 @@ export default function App() {
   const columpioTweenRef = useRef(null)
   const columpioBubbleRef = useRef(null)
 
-  const sceneStyle = useSceneSize(sceneShellRef, sceneRatio, isAssetsReady && activePage === 'home')
+  const { frameStyle: sceneFrameStyle, sceneStyle } = useSceneSize(sceneShellRef, sceneRatio, isAssetsReady && activePage === 'home')
 
   const applyNavigationState = ({ filterId = 'all', pageId = 'home', searchQuery = '' }) => {
     setActivePage(pageId)
@@ -1870,19 +1870,13 @@ export default function App() {
       onClick: handleOpenBusinessCard,
       onPointerEnter: handlePhoneZoneEnter,
       onPointerLeave: handlePhoneZoneLeave,
-      // Toda la habitacion del sotano (maniquies + escalera).
+      // Toda la habitacion del sotano (maniquies + escalera; sin el piquito).
       regions: [
         {
           left: '48.6%',
           top: '75.4%',
           width: '20.3%',
           height: '18.4%',
-        },
-        {
-          left: '63.8%',
-          top: '93.8%',
-          width: '5.1%',
-          height: '1.8%',
         },
       ],
     },
@@ -2002,7 +1996,8 @@ export default function App() {
     className: 'cartela-layer absolute bottom-0 right-0 object-contain',
     style: {
       right: '-0.2%',
-      bottom: '-1%',
+      // Sube con el recorte inferior del dibujo para seguir en la esquina.
+      bottom: `${(SCENE_CROP_BOTTOM * 100 - 1).toFixed(2)}%`,
       width: '18.3%',
     },
   }
@@ -2307,6 +2302,7 @@ export default function App() {
               }}
               overlayCharacters={overlayCharacters}
               sceneStyle={sceneStyle}
+              frameStyle={sceneFrameStyle}
               soundEnabled={soundEnabled}
               superTopCharacters={superTopCharacters}
               topCharacters={topCharacters}

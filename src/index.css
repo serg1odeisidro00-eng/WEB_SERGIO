@@ -2519,7 +2519,7 @@ a {
   top: 0;
   right: 0.24%;
   width: 239px;
-  height: 764px;
+  height: 698px;
   min-width: 0;
   transform: scale(var(--menu-scale, 1));
   transform-origin: top right;
@@ -2530,4 +2530,22 @@ a {
 .scene-menu-panel .scene-menu-switch-row,
 .scene-menu-panel .scene-menu-switch-separator {
   font-size: 0.95rem;
+}
+
+/* ---------- Recorte del dibujo (version E) ----------
+   La escena completa se ve a traves de .scene-frame, que oculta el 5 % de
+   arriba y el 3,12 % de abajo. Menu y tarjeta se ajustan a la parte visible. */
+.scene-frame {
+  flex: none;
+  box-sizing: border-box;
+}
+
+.scene-menu {
+  top: 5%;
+  bottom: 3.12%;
+}
+
+.scene-business-card-modal {
+  top: 5%;
+  bottom: 3.12%;
 }

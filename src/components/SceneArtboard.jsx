@@ -6,6 +6,7 @@ export default function SceneArtboard({
   backgroundSrc,
   building,
   businessCardOpen = false,
+  frameStyle,
   bird,
   cartela,
   house,
@@ -26,9 +27,10 @@ export default function SceneArtboard({
   return (
     <div
       data-animate="frame"
-      className="scene-artboard relative overflow-hidden border-2 border-stone-500"
-      style={sceneStyle}
+      className="scene-frame relative overflow-hidden border-2 border-stone-500"
+      style={frameStyle}
     >
+    <div className="scene-artboard overflow-hidden" style={sceneStyle}>
       <img
         src={backgroundSrc}
         alt="Fondo base de la composicion"
@@ -148,6 +150,7 @@ export default function SceneArtboard({
           </button>
         </div>
       ) : null}
+    </div>
     </div>
   )
 }
