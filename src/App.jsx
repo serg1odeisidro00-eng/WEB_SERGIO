@@ -27,6 +27,7 @@ import PackagingProjectPage from './components/PackagingProjectPage'
 import PgProjectPage from './components/PgProjectPage'
 import ProjectsPage from './components/ProjectsPage'
 import SceneArtboard from './components/SceneArtboard'
+import { installAudioUnlock, loadSceneAudio, playRing, setAmbientPlaying, stopRing } from './lib/sceneAudio'
 import ShopPage from './components/ShopPage'
 import SoldrinkProjectPage from './components/SoldrinkProjectPage'
 import TelefonicaProjectPage from './components/TelefonicaProjectPage'
@@ -246,8 +247,7 @@ export default function App() {
   const [isPhoneAlertActive, setIsPhoneAlertActive] = useState(false)
   const rootRef = useRef(null)
   const sceneShellRef = useRef(null)
-  const ambientAudioRef = useRef(null)
-  const phoneAudioRef = useRef(null)
+  const soundEnabledRef = useRef(true)
 
   const birdRef = useRef(null)
   const birdImageRef = useRef(null)
@@ -392,11 +392,7 @@ export default function App() {
     hideBubble(telefonoBubbleRef)
     telefonoAlertTweenRef.current?.kill()
     telefonoAlertTweenRef.current = null
-    const phoneAudio = phoneAudioRef.current
-    if (phoneAudio) {
-      phoneAudio.pause()
-      phoneAudio.currentTime = 0
-    }
+    stopRing()
 
     telefonoTweenRef.current?.pause(0)
     telefonoMoveTweenRef.current?.pause(0)
@@ -404,7 +400,6 @@ export default function App() {
   }
 
   const playPhoneAlert = () => {
-    const phoneAudio = phoneAudioRef.current
     if (hasOpenedBusinessCard) return
 
     setIsPhoneAlertActive(true)
@@ -425,12 +420,9 @@ export default function App() {
     window.clearTimeout(telefonoAlertTimeoutRef.current)
     telefonoAlertTimeoutRef.current = window.setTimeout(stopPhoneAlert, 8_500)
 
-    if (soundEnabled && phoneAudio) {
-      phoneAudio.currentTime = 0
-      phoneAudio.volume = 0.225
-      phoneAudio.onended = stopPhoneAlert
-      phoneAudio.play().catch(() => {})
-    }
+    // El timbre usa el mismo reloj de audio que la musica: arranca a la vez
+    // que la animacion. soundEnabledRef evita usar un valor antiguo.
+    if (soundEnabledRef.current) playRing()
   }
 
   const handleOpenBusinessCard = () => {
@@ -440,17 +432,17 @@ export default function App() {
   }
 
   useEffect(() => {
-    const ambientAudio = ambientAudioRef.current
-    if (!ambientAudio) return
+    installAudioUnlock()
+    loadSceneAudio()
+  }, [])
 
-    if (isAssetsReady && activePage === 'home' && soundEnabled) {
-      ambientAudio.volume = 0.18
-      ambientAudio.play().catch(() => {})
-      return
-    }
+  useEffect(() => {
+    soundEnabledRef.current = soundEnabled
+    if (!soundEnabled) stopRing()
+  }, [soundEnabled])
 
-    ambientAudio.pause()
-    ambientAudio.currentTime = 0
+  useEffect(() => {
+    setAmbientPlaying(isAssetsReady && activePage === 'home' && soundEnabled)
   }, [activePage, isAssetsReady, soundEnabled])
 
   useEffect(() => {
@@ -2024,8 +2016,6 @@ export default function App() {
           : 'min-h-screen bg-white px-8 py-6 text-stone-950'
       }
     >
-      <audio ref={ambientAudioRef} src="/sounds/sonido_ambiente.mp3" loop preload="auto" />
-      <audio ref={phoneAudioRef} src="/sounds/phone.mp3" preload="auto" />
       {isAssetsReady && activePage !== 'home' ? (
         <AppPageRouter
           activePage={activePage}

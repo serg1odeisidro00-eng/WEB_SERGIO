@@ -82,6 +82,11 @@ claro en español.
 - Academia: contenido (es/en/it) y email de destino en `src/content/academy.js`,
   página `AcademyPage.jsx`. El formulario no usa servicios externos: valida y
   abre el correo del alumno (`mailto:`) con la solicitud escrita.
+- Sonido de la portada: `src/lib/sceneAudio.js` (Web Audio). Se desbloquea en
+  la primera interacción del visitante (los navegadores bloquean el audio hasta
+  entonces), bucle continuo de `public/sounds/ambiente_m047.mp3` (pista de
+  Sergio con fundido cruzado final→inicio, 128 kbps) y timbre
+  `public/sounds/telefono_timbre.mp3` (2 timbres, ~8,6 s).
 - `public/`: imágenes. `fondo.jpg` es el fondo de la escena (7537×4500).
 
 ### Capas de la portada (de atrás a delante, por z-index)
