@@ -3,7 +3,7 @@
 
 // Email que recibe las solicitudes del formulario (se abre el correo del alumno
 // con la solicitud ya escrita, sin servicios externos).
-export const ACADEMY_EMAIL = 'PENDIENTE@m047.es'
+export const ACADEMY_EMAIL = 'info@m047.es'
 
 export const academyFormats = [
   {
