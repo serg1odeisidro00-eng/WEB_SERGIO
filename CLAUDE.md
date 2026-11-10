@@ -79,6 +79,9 @@ claro en español.
   `NewsPage.jsx` (cuadrícula de 3 columnas, estilo cpinos.com/noticias) y
   `NewsArticlePage.jsx` (columna central del 52 %). Imágenes en
   `public/noticias/`. Cada noticia es una página `news-N` en el router.
+- Academia: contenido (es/en/it) y email de destino en `src/content/academy.js`,
+  página `AcademyPage.jsx`. El formulario no usa servicios externos: valida y
+  abre el correo del alumno (`mailto:`) con la solicitud escrita.
 - `public/`: imágenes. `fondo.jpg` es el fondo de la escena (7537×4500).
 
 ### Capas de la portada (de atrás a delante, por z-index)
@@ -104,3 +107,9 @@ claro en español.
   la noticia 1 ("Animación frame a frame…") que se ha omitido.
 - `m047.es` (Hostinger) apunta todavía al Vercel del amigo; pendiente de
   pasarlo al proyecto `web-sergio` de Sergio cuando la web esté lista.
+- 2026-11-10: menú interior a tamaño intermedio y nuevo orden: Proyectos,
+  Estudio, Contacto, Noticias, Academia, Tienda online (Academia es la 05).
+- 2026-11-10: Academia. Sergio no está dado de alta como autónomo todavía:
+  formulario por `mailto:` (sin terceros ni datos guardados en la web) con una
+  nota de uso de datos; las páginas legales (aviso legal, privacidad, cookies)
+  quedan pendientes para cuando tenga los datos fiscales. Precios: "a consultar".
