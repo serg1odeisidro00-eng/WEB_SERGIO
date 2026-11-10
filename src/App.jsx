@@ -400,6 +400,7 @@ export default function App() {
 
     telefonoTweenRef.current?.pause(0)
     telefonoMoveTweenRef.current?.pause(0)
+    setAnimatedFrame(telefonoImageRef, telefonoFrames, 0)
   }
 
   const playPhoneAlert = () => {
@@ -419,15 +420,16 @@ export default function App() {
       ease: 'power1.inOut',
     })
 
+    // Cada aviso son dos timbres (~8,5 s; se corta en el silencio entre el
+    // segundo y el tercer timbre del audio), con o sin sonido.
+    window.clearTimeout(telefonoAlertTimeoutRef.current)
+    telefonoAlertTimeoutRef.current = window.setTimeout(stopPhoneAlert, 8_500)
+
     if (soundEnabled && phoneAudio) {
       phoneAudio.currentTime = 0
       phoneAudio.volume = 0.225
       phoneAudio.onended = stopPhoneAlert
-      phoneAudio.play().catch(() => {
-        telefonoAlertTimeoutRef.current = window.setTimeout(stopPhoneAlert, 3_000)
-      })
-    } else {
-      telefonoAlertTimeoutRef.current = window.setTimeout(stopPhoneAlert, 3_000)
+      phoneAudio.play().catch(() => {})
     }
   }
 
@@ -1161,7 +1163,6 @@ export default function App() {
       if (telefonoRef.current && telefonoImageRef.current) {
         const telefonoState = { frame: 0 }
         const totalFrames = telefonoFrames.length
-        const frameDuration = totalFrames / 4
 
         gsap.set(telefonoRef.current, {
           xPercent: -50,
@@ -1178,15 +1179,17 @@ export default function App() {
 
         setBubbleInitialState(telefonoBubbleRef)
 
-        telefonoTweenRef.current = createRandomPausedFrameTween({
-          frameDuration,
+        // Mientras suena, los fotogramas pasan de corrido a 12 fps en bucle.
+        telefonoTweenRef.current = gsap.to(telefonoState, {
+          frame: totalFrames - 1,
+          duration: (totalFrames - 1) / 12,
+          ease: `steps(${totalFrames - 1})`,
+          repeat: -1,
+          paused: true,
           onUpdate: () => {
             setAnimatedFrame(telefonoImageRef, telefonoFrames, telefonoState.frame)
           },
-          state: telefonoState,
-          totalFrames,
         })
-        telefonoTweenRef.current.pause()
 
         telefonoMoveTweenRef.current = gsap.to(telefonoRef.current, {
           yPercent: -54,
@@ -1871,7 +1874,7 @@ export default function App() {
       id: 'telefono',
       label: sceneCopy.contactSign,
       forceDialogue: isPhoneAlertActive,
-      dialogueStyle: { left: '59.4%', top: '79.2%' },
+      dialogueStyle: { left: '55.9%', top: '92.55%' },
       onClick: handleOpenBusinessCard,
       onPointerEnter: handlePhoneZoneEnter,
       onPointerLeave: handlePhoneZoneLeave,
@@ -2308,6 +2311,10 @@ export default function App() {
               onNavigate={handleNavigate}
               onBackgroundLoad={handleBackgroundLoad}
               onCloseBusinessCard={() => setIsBusinessCardOpen(false)}
+              onOpenContact={() => {
+                setIsBusinessCardOpen(false)
+                handleNavigate('contact')
+              }}
               overlayCharacters={overlayCharacters}
               sceneStyle={sceneStyle}
               soundEnabled={soundEnabled}

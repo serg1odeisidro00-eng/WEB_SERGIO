@@ -158,6 +158,16 @@ a {
   position: relative;
   z-index: 1;
   width: min(54%, 46rem);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.scene-business-card-content:hover,
+.scene-business-card-content:focus-visible {
+  transform: scale(1.02) rotate(-0.6deg);
 }
 
 .scene-business-card-content img {

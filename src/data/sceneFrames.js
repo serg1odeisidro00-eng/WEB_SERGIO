@@ -54,7 +54,7 @@ export const cuadroFrames = Array.from(
 )
 
 export const telefonoFrames = Array.from(
-  { length: 8 },
+  { length: 15 },
   (_, index) => `/Frames/telefono/${index}.png`,
 )
 

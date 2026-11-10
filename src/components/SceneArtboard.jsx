@@ -12,6 +12,7 @@ export default function SceneArtboard({
   onNavigate,
   onBackgroundLoad,
   onCloseBusinessCard,
+  onOpenContact,
   overlayCharacters,
   onSetSoundEnabled,
   hotspots = [],
@@ -137,9 +138,14 @@ export default function SceneArtboard({
             aria-label="Cerrar tarjeta de visita"
             onClick={onCloseBusinessCard}
           />
-          <div className="scene-business-card-content">
+          <button
+            type="button"
+            className="scene-business-card-content"
+            aria-label="Ir a la página de contacto"
+            onClick={onOpenContact}
+          >
             <img src="/tarjeta_contacto.webp" width="2671" height="1027" alt="Tarjeta de contacto de M047: call me +34 633 878 755" />
-          </div>
+          </button>
         </div>
       ) : null}
     </div>
