@@ -2549,3 +2549,30 @@ a {
   top: 5%;
   bottom: 3.12%;
 }
+
+/* ---------- Boton del menu de la portada: mas grande, negro y sobre blanco ---------- */
+.scene-menu-button {
+  top: 0.7cqw;
+  right: 0.7cqw;
+  width: 3.1cqw;
+  height: 3.1cqw;
+  min-width: 2.4rem;
+  min-height: 2.4rem;
+  gap: 0.42cqw;
+  background: #ffffff;
+}
+
+.scene-menu-button span {
+  width: 1.9cqw;
+  min-width: 1.4rem;
+  height: max(2px, 0.15cqw);
+  background: #000000;
+}
+
+.scene-menu-button.is-open span:nth-child(1) {
+  transform: translateY(calc(0.42cqw + max(2px, 0.15cqw))) rotate(45deg);
+}
+
+.scene-menu-button.is-open span:nth-child(3) {
+  transform: translateY(calc(-0.42cqw - max(2px, 0.15cqw))) rotate(-45deg);
+}

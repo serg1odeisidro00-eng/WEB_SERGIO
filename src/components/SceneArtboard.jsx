@@ -4,6 +4,7 @@ import SceneMenu from './SceneMenu'
 
 export default function SceneArtboard({
   backgroundSrc,
+  backgroundStretch = 1,
   building,
   businessCardOpen = false,
   frameStyle,
@@ -36,6 +37,7 @@ export default function SceneArtboard({
         alt="Fondo base de la composicion"
         onLoad={onBackgroundLoad}
         className="scene-background absolute inset-0 h-full w-full object-fill"
+        style={{ width: `${backgroundStretch * 100}%` }}
       />
 
       {streetLamp ? (

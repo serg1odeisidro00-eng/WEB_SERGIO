@@ -55,6 +55,7 @@ import {
   telefonoFrames,
   vanFrames,
 } from './data/sceneFrames'
+import { CASA_SRC, FONDO_SRC, FONDO_STRETCH, SCENE_IMAGE_RATIO } from './data/sceneImages'
 import { SCENE_CROP_BOTTOM, useSceneSize } from './hooks/useSceneSize'
 import { useLanguage } from './context/LanguageContext'
 import { useProjectNavigation } from './context/ProjectNavigationContext'
@@ -135,8 +136,8 @@ function createRandomPausedFrameTween({
 }
 
 const staticSceneAssets = [
-  '/fondo.jpg',
-  '/Casa.png',
+  FONDO_SRC,
+  CASA_SRC,
   '/edificio_izquierda.svg',
   '/cartela.svg',
   '/farola.png',
@@ -235,7 +236,7 @@ export default function App() {
         contactSign: 'CONTACTO',
         phoneRinging: 'TELÉFONO SONANDO',
       }
-  const [sceneRatio, setSceneRatio] = useState(2048 / 1152)
+  const [sceneRatio, setSceneRatio] = useState(SCENE_IMAGE_RATIO)
   const [isAssetsReady, setIsAssetsReady] = useState(false)
   const [loadingProgress, setLoadingProgress] = useState(0)
   const [activePage, setActivePage] = useState('home')
@@ -454,11 +455,16 @@ export default function App() {
       return undefined
     }
 
+    // Primer aviso a los 10 s de entrar; despues, uno cada 40 s.
+    const firstRing = window.setTimeout(() => playPhoneAlert(), 10_000)
     const phoneInterval = window.setInterval(() => {
       playPhoneAlert()
-    }, 15_000)
+    }, 40_000)
 
-    return () => window.clearInterval(phoneInterval)
+    return () => {
+      window.clearTimeout(firstRing)
+      window.clearInterval(phoneInterval)
+    }
   }, [activePage, hasOpenedBusinessCard, isAssetsReady])
 
   useEffect(() => {
@@ -654,7 +660,7 @@ export default function App() {
     const { naturalWidth, naturalHeight } = event.currentTarget
 
     if (naturalWidth && naturalHeight) {
-      setSceneRatio(naturalWidth / naturalHeight)
+      setSceneRatio(SCENE_IMAGE_RATIO)
     }
   }
 
@@ -693,8 +699,8 @@ export default function App() {
               }
               const timeoutId = window.setTimeout(settle, 12_000)
               image.onload = () => {
-                if (src === '/fondo.jpg' && image.naturalWidth && image.naturalHeight) {
-                  setSceneRatio(image.naturalWidth / image.naturalHeight)
+                if (src === FONDO_SRC && image.naturalWidth && image.naturalHeight) {
+                  setSceneRatio(SCENE_IMAGE_RATIO)
                 }
                 settle()
               }
@@ -1931,7 +1937,8 @@ export default function App() {
         {
           left: '63.6%',
           top: '27%',
-          width: '13%',
+          // Hasta la mitad de la persona que tira de la cuerda.
+          width: '9.5%',
           height: '48%',
         },
       ],
@@ -1954,7 +1961,7 @@ export default function App() {
   ]
 
   const houseLayer = {
-    src: '/Casa.png',
+    src: CASA_SRC,
     alt: 'Capa central de la casa',
     className: 'absolute left-1/2 top-1/2 w-full object-contain',
     style: {
@@ -1984,9 +1991,9 @@ export default function App() {
     alt: 'Farola',
     className: 'absolute block',
     style: {
-      left: '15.4969%',
+      left: `${15.4969 * FONDO_STRETCH}%`,
       top: '52%',
-      width: '16.0807%',
+      width: `${16.0807 * FONDO_STRETCH}%`,
     },
   }
 
@@ -2285,7 +2292,8 @@ export default function App() {
         <section ref={sceneShellRef} className="scene-shell">
           <div className="scene-shell-content">
             <SceneArtboard
-              backgroundSrc="/fondo.jpg"
+              backgroundSrc={FONDO_SRC}
+              backgroundStretch={FONDO_STRETCH}
               bird={birdCharacter}
               building={leftBuildingLayer}
               cartela={cartelaLayer}

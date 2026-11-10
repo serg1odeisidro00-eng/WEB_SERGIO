@@ -87,7 +87,13 @@ claro en español.
   entonces), bucle continuo de `public/sounds/ambiente_m047.mp3` (pista de
   Sergio con fundido cruzado final→inicio, 128 kbps) y timbre
   `public/sounds/telefono_timbre.mp3` (2 timbres, ~8,6 s).
-- `public/`: imágenes. `fondo.jpg` es el fondo de la escena (7537×4500).
+- `public/`: imágenes. `fondo.jpg` (7537×4500) y `Casa.png` son los originales;
+  la web usa versiones reducidas con buena calidad en `public/scene/`
+  (`fondo-<ancho>.webp`, `casa-<ancho>.webp`), elegidas según la pantalla en
+  `src/data/sceneImages.js`. **Si se cambia fondo.jpg o Casa.png hay que
+  regenerarlas** (Lanczos + UnsharpMask 0.8/50 % y, en el fondo, líneas un 25 %
+  más oscuras). El fondo se estira un 0,28 % (`FONDO_STRETCH`) porque su dibujo
+  termina 21 px antes del borde derecho.
 
 ### Capas de la portada (de atrás a delante, por z-index)
 
@@ -125,3 +131,7 @@ claro en español.
   formulario por `mailto:` (sin terceros ni datos guardados en la web) con una
   nota de uso de datos; las páginas legales (aviso legal, privacidad, cookies)
   quedan pendientes para cuando tenga los datos fiscales. Precios: "a consultar".
+- 2026-11-10: nube de arriba a la derecha bajada en `fondo.jpg` para dejar
+  hueco al botón del menú (más grande, negro, sobre blanco). Farola rehecha
+  (poste relleno de blanco, cables opacos). Teléfono: primer aviso a los 10 s
+  y luego cada 40 s. Teléfono clicable (`tel:`) en Contacto y en el pie.

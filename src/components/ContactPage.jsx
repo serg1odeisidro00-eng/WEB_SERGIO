@@ -48,6 +48,10 @@ export default function ContactPage({ activePage, onBack, onNavigate }) {
                     <a key={line} className="contact-page-email" href={`mailto:${line}`}>
                       {line}
                     </a>
+                  ) : /633 878 755/.test(line) ? (
+                    <a key={line} className="contact-page-email" href="tel:+34633878755">
+                      {line}
+                    </a>
                   ) : (
                     <p key={line}>{line}</p>
                   )
