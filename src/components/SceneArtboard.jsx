@@ -138,7 +138,7 @@ export default function SceneArtboard({
             onClick={onCloseBusinessCard}
           />
           <div className="scene-business-card-content">
-            <img src="/tarjeta_visita.svg" alt="Tarjeta de visita de M047" />
+            <img src="/tarjeta_contacto.webp" width="2671" height="1027" alt="Tarjeta de contacto de M047: call me +34 633 878 755" />
           </div>
         </div>
       ) : null}

@@ -1,5 +1,6 @@
 export default function SceneHotspot({
   dialogueStyle,
+  forceDialogue = false,
   isVisible = false,
   label,
   onClick,
@@ -8,7 +9,7 @@ export default function SceneHotspot({
   regions,
 }) {
   return (
-    <div className="scene-hotspot absolute inset-0">
+    <div className={`scene-hotspot absolute inset-0${forceDialogue ? ' scene-hotspot--forced' : ''}`}>
       {regions.map((region, index) => (
         <div
           key={`${label ?? 'hotspot'}-${index}`}

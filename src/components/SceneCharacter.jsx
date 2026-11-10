@@ -8,6 +8,7 @@ function SceneCharacter(
     bubbleRef = null,
     bubbleText = '',
     className = '',
+    extra = null,
     imageClassName,
     imageRef,
     src,
@@ -27,6 +28,7 @@ function SceneCharacter(
         </div>
       ) : null}
       <img ref={imageRef} src={src} alt={alt} className={imageClassName} />
+      {extra}
     </div>
   )
 }

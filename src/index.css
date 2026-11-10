@@ -2437,3 +2437,66 @@ a {
     display: none;
   }
 }
+
+/* ---------- Telefono: cartel CONTACTO y vibracion mientras suena ---------- */
+.scene-hotspot--forced .scene-hotspot-dialogue {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.telefono-vibration {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.telefono-vibration-side {
+  position: absolute;
+  top: 18%;
+  width: 58%;
+  height: auto;
+  overflow: visible;
+  fill: none;
+  stroke: #111111;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.telefono-vibration-side--left {
+  right: 76%;
+}
+
+.telefono-vibration-side--right {
+  left: 76%;
+}
+
+.telefono-anchor.is-ringing .telefono-vibration-side {
+  opacity: 1;
+}
+
+.telefono-anchor.is-ringing .telefono-vibration-side--left {
+  animation: telefono-buzz-left 0.16s steps(2, jump-none) infinite;
+}
+
+.telefono-anchor.is-ringing .telefono-vibration-side--right {
+  animation: telefono-buzz-right 0.16s steps(2, jump-none) infinite;
+}
+
+@keyframes telefono-buzz-left {
+  from { transform: translate(0, 0) rotate(-4deg); }
+  to { transform: translate(-14%, 3%) rotate(3deg); }
+}
+
+@keyframes telefono-buzz-right {
+  from { transform: translate(0, 0) rotate(4deg); }
+  to { transform: translate(14%, -3%) rotate(-3deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .telefono-anchor.is-ringing .telefono-vibration-side {
+    animation: none;
+  }
+}

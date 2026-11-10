@@ -174,6 +174,25 @@ const criticalSceneAssets = [
   columpioFrames[0],
 ]
 
+// Lineas de vibracion del telefono (se ven mientras suena, incluso sin sonido).
+function PhoneVibration() {
+  const zigzag = 'M2 6 L8 2.5 L13 7 L19 2 L25 6.5 L31 3.5'
+  return (
+    <span className="telefono-vibration" aria-hidden="true">
+      <svg className="telefono-vibration-side telefono-vibration-side--left" viewBox="0 0 34 30">
+        <path d={zigzag} transform="translate(0 0)" />
+        <path d={zigzag} transform="translate(-1 10.5)" />
+        <path d={zigzag} transform="translate(1 21)" />
+      </svg>
+      <svg className="telefono-vibration-side telefono-vibration-side--right" viewBox="0 0 34 30">
+        <path d={zigzag} transform="translate(0 0)" />
+        <path d={zigzag} transform="translate(1 10.5)" />
+        <path d={zigzag} transform="translate(-1 21)" />
+      </svg>
+    </span>
+  )
+}
+
 export default function App() {
   const { language } = useLanguage()
   const { registerNavigate } = useProjectNavigation()
@@ -187,6 +206,7 @@ export default function App() {
         artDirection: 'ART DIRECTION',
         landscapeDetail: 'Landscape design',
         contact: 'Contact',
+        contactSign: 'CONTACT',
         phoneRinging: 'PHONE RINGING',
       }
     : language === 'it'
@@ -199,6 +219,7 @@ export default function App() {
           artDirection: 'DIREZIONE ARTISTICA',
           landscapeDetail: 'Paesaggismo',
           contact: 'Contatti',
+          contactSign: 'CONTATTI',
           phoneRinging: 'TELEFONO IN SQUILLO',
         }
     : {
@@ -210,6 +231,7 @@ export default function App() {
         artDirection: 'DIRECCIÓN DE ARTE',
         landscapeDetail: 'Paisajismo',
         contact: 'Contactar',
+        contactSign: 'CONTACTO',
         phoneRinging: 'TELÉFONO SONANDO',
       }
   const [sceneRatio, setSceneRatio] = useState(2048 / 1152)
@@ -440,7 +462,7 @@ export default function App() {
 
     const phoneInterval = window.setInterval(() => {
       playPhoneAlert()
-    }, 20_000)
+    }, 15_000)
 
     return () => window.clearInterval(phoneInterval)
   }, [activePage, hasOpenedBusinessCard, isAssetsReady])
@@ -1637,8 +1659,8 @@ export default function App() {
       id: 'telefono',
       ref: telefonoRef,
       anchorClassName: 'telefono-anchor',
-      bubbleRef: telefonoBubbleRef,
-      bubbleText: isPhoneAlertActive ? sceneCopy.phoneRinging : sceneCopy.contact,
+      className: isPhoneAlertActive ? 'is-ringing' : '',
+      extra: <PhoneVibration />,
       imageClassName: 'telefono-frame',
       imageRef: telefonoImageRef,
       interactive: true,
@@ -1847,15 +1869,25 @@ export default function App() {
     },
     {
       id: 'telefono',
+      label: sceneCopy.contactSign,
+      forceDialogue: isPhoneAlertActive,
+      dialogueStyle: { left: '59.4%', top: '79.2%' },
       onClick: handleOpenBusinessCard,
       onPointerEnter: handlePhoneZoneEnter,
       onPointerLeave: handlePhoneZoneLeave,
+      // Toda la habitacion del sotano (maniquies + escalera).
       regions: [
         {
-          left: '61%',
-          top: '81%',
-          width: '5%',
-          height: '8%',
+          left: '48.6%',
+          top: '75.4%',
+          width: '20.3%',
+          height: '18.4%',
+        },
+        {
+          left: '63.8%',
+          top: '93.8%',
+          width: '5.1%',
+          height: '1.8%',
         },
       ],
     },
