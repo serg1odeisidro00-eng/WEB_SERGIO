@@ -154,3 +154,10 @@ claro en español.
   32, a confirmar por Sergio; sin sonido, a los 1,5 s y cada 45 s). Árbol a
   8 fps y humo a 12 fps, ambos con 2 s de pausa entre vueltas. Árbol subido
   para que su línea de tierra quede sobre el suelo.
+- 2026-11-11 (3): pájaros a 7 fps, estirados en horizontal (fotogramas
+  dibujados en A4) y colocados para que el hueco de la hoja (40-66 % del ancho)
+  caiga detrás del edificio principal; al final se desplazan un 8 % para salir
+  por el borde derecho. Árbol en capa propia por detrás de `Casa.png` (poste,
+  cartel y línea de tierra delante) con franja de tierra rellena de blanco.
+  Árbol 0,5 s de pausa; humo continuo. Script de relleno del teléfono:
+  scratchpad `tools/phone_fill.py` (zona del auricular = 30 % superior).

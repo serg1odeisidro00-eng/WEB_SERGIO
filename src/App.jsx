@@ -136,7 +136,7 @@ function createRandomPausedFrameTween({
 }
 
 // Pajaros: velocidad y segundos de la pista ambiente en los que se oyen.
-const BIRD_FPS = 4
+const BIRD_FPS = 7
 const BIRD_AUDIO_CUES = [1, 32]
 const BIRD_FALLBACK_FIRST = 1.5
 const BIRD_FALLBACK_EVERY = 45
@@ -815,6 +815,7 @@ export default function App() {
         birdFlightRef.current = gsap
           .timeline({ paused: true })
           .set(birdState, { frame: 0 })
+          .set(birdRef.current, { xPercent: 0 })
           .call(() => setAnimatedFrame(birdImageRef, birdFrames, 0))
           .to(birdRef.current, { autoAlpha: 1, duration: 0.4 })
           .to(birdState, {
@@ -823,7 +824,9 @@ export default function App() {
             ease: `steps(${totalFrames - 1})`,
             onUpdate: () => setAnimatedFrame(birdImageRef, birdFrames, birdState.frame),
           }, 0)
-          .to(birdRef.current, { autoAlpha: 0, duration: 0.5 }, `>-0.5`)
+          // Al final se desplazan un poco mas para salir por el borde derecho.
+          .to(birdRef.current, { xPercent: 8, duration: 5 / BIRD_FPS, ease: 'none' }, 28 / BIRD_FPS)
+          .to(birdRef.current, { autoAlpha: 0, duration: 0.15 })
       }
 
       if (vanRef.current && vanImageRef.current) {
@@ -1000,13 +1003,13 @@ export default function App() {
           delay: 0.22,
         })
 
-        // Animacion continua: 8 fps en bucle con 2 s de pausa entre vueltas.
+        // Animacion continua: 8 fps en bucle con una pausa corta (0,5 s) entre vueltas.
         arbolTweenRef.current = gsap.to(arbolState, {
           frame: totalFrames - 1,
           duration: (totalFrames - 1) / 8,
           ease: `steps(${totalFrames - 1})`,
           repeat: -1,
-          repeatDelay: 2,
+          repeatDelay: 0.5,
           onUpdate: () => {
             setAnimatedFrame(arbolImageRef, arbolFrames, arbolState.frame)
           },
@@ -1355,7 +1358,7 @@ export default function App() {
           duration: frameDuration,
           ease: `steps(${totalFrames - 1})`,
           repeat: -1,
-          repeatDelay: 2,
+          repeatDelay: 0,
           onUpdate: () => {
             setAnimatedFrame(humoImageRef, humoFrames, humoState.frame)
           },
@@ -1525,6 +1528,26 @@ export default function App() {
 
   const bubbleInteriorText = 'Dise\u00f1o de interiores'
 
+  // El arbol va por detras de la capa de la casa (poste, cartel de escenografia
+  // y linea de tierra quedan delante) y por delante del fondo.
+  const treeCharacter = {
+      id: 'arbol',
+      ref: arbolRef,
+      anchorClassName: 'arbol-anchor',
+      imageClassName: 'arbol-frame',
+      imageRef: arbolImageRef,
+      src: arbolFrames[0],
+      alt: 'Arbol animado',
+      // Arbol 07 (con raices): tronco en el mismo sitio y apoyado en la misma
+      // linea de suelo que el arbol anterior. Medidas en la capa del edificio.
+      style: {
+        left: '77.65%',
+        top: '47.1%',
+        width: '22.56%',
+        aspectRatio: '515 / 685',
+      },
+    }
+
   const overlayCharacters = [
     {
       id: 'banquito',
@@ -1555,23 +1578,6 @@ export default function App() {
       src: ordenadorFrames[0],
       alt: 'Ordenador animado',
       style: { left: '57%', top: '53%', width: '6.5%' },
-    },
-    {
-      id: 'arbol',
-      ref: arbolRef,
-      anchorClassName: 'arbol-anchor',
-      imageClassName: 'arbol-frame',
-      imageRef: arbolImageRef,
-      src: arbolFrames[0],
-      alt: 'Arbol animado',
-      // Arbol 07 (con raices): tronco en el mismo sitio y apoyado en la misma
-      // linea de suelo que el arbol anterior. Medidas en la capa del edificio.
-      style: {
-        left: '77.65%',
-        top: '47.1%',
-        width: '22.56%',
-        aspectRatio: '515 / 685',
-      },
     },
     {
       id: 'grafiti',
@@ -1855,8 +1861,10 @@ export default function App() {
     imageRef: birdImageRef,
     src: birdFrames[0],
     alt: 'Pajaro animado',
-    // Encaje sacado del video de referencia de Sergio.
-    style: { left: '12%', top: '-15%', width: '84%' },
+    // Los fotogramas se dibujaron sobre un A4: se estiran en horizontal para
+    // el 16:9 y se colocan para que el hueco donde los pajaros "desaparecen"
+    // (40-66 % de la hoja) caiga justo detras del edificio principal.
+    style: { left: '0.6%', top: '-7%', width: '96%', aspectRatio: '3178 / 1000' },
   }
 
   // Add one or more rectangular regions per department to compose irregular rooms.
@@ -2351,6 +2359,7 @@ export default function App() {
               }}
               overlayCharacters={overlayCharacters}
               sceneStyle={sceneStyle}
+              tree={treeCharacter}
               frameStyle={sceneFrameStyle}
               soundEnabled={soundEnabled}
               superTopCharacters={superTopCharacters}

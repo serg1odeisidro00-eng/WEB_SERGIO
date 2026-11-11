@@ -20,6 +20,7 @@ export default function SceneArtboard({
   hotspots = [],
   superTopCharacters = [],
   topCharacters = [],
+  tree,
   sceneStyle,
   soundEnabled,
   streetLamp,
@@ -106,6 +107,12 @@ export default function SceneArtboard({
               <SceneCharacter key={character.id} {...character} />
             ))}
           </div>
+
+          {tree ? (
+            <div className="scene-character-layer pointer-events-none absolute inset-0 z-[8] overflow-hidden">
+              <SceneCharacter {...tree} />
+            </div>
+          ) : null}
 
           {building ? (
             <div className="pointer-events-none absolute inset-0 z-[5]">
