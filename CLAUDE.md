@@ -161,3 +161,7 @@ claro en español.
   cartel y línea de tierra delante) con franja de tierra rellena de blanco.
   Árbol 0,5 s de pausa; humo continuo. Script de relleno del teléfono:
   scratchpad `tools/phone_fill.py` (zona del auricular = 30 % superior).
+- 2026-11-11 (4): humo más oscuro (líneas ×0,55, alfa ×1,35). Árbol: vegetación
+  baja rellena de blanco y extremos de la línea de tierra bajados hasta el
+  suelo. Pájaros: solo al segundo 1 de la pista (confirmado por Sergio), 9 fps,
+  deriva suave final con `sine.in`. Si no convencen, volver al commit anterior.

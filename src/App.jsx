@@ -136,8 +136,8 @@ function createRandomPausedFrameTween({
 }
 
 // Pajaros: velocidad y segundos de la pista ambiente en los que se oyen.
-const BIRD_FPS = 7
-const BIRD_AUDIO_CUES = [1, 32]
+const BIRD_FPS = 9
+const BIRD_AUDIO_CUES = [1]
 const BIRD_FALLBACK_FIRST = 1.5
 const BIRD_FALLBACK_EVERY = 45
 
@@ -824,8 +824,9 @@ export default function App() {
             ease: `steps(${totalFrames - 1})`,
             onUpdate: () => setAnimatedFrame(birdImageRef, birdFrames, birdState.frame),
           }, 0)
-          // Al final se desplazan un poco mas para salir por el borde derecho.
-          .to(birdRef.current, { xPercent: 8, duration: 5 / BIRD_FPS, ease: 'none' }, 28 / BIRD_FPS)
+          // Deriva suave en la segunda mitad (cuando ya han pasado el edificio)
+          // para llevarlos hasta el borde derecho sin acelerones.
+          .to(birdRef.current, { xPercent: 8, duration: (totalFrames - 1 - 20) / BIRD_FPS, ease: 'sine.in' }, 20 / BIRD_FPS)
           .to(birdRef.current, { autoAlpha: 0, duration: 0.15 })
       }
 
