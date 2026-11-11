@@ -217,3 +217,10 @@ claro en español.
   Chica de la maceta: pausas cortas (0,6 s arriba, 0,8 s al final).
   "Ajardinamiento" → "Paisajismo" en textos (MITECO, Academia). Copias:
   scratchpad `Casa_before_regadera.png`, `fondo_before_regadera.jpg`.
+- 2026-11-12 (4): regadera: Casa.png original tenía a la chica dibujada dos
+  veces (negra y gris); el reposo pasa a ser su Frame 1 limpio. Líneas de los
+  fotogramas engrosadas (+1 px, casi negras), nada por debajo del borde del
+  forjado, 4 fps con 0,5 s de pausa. Quitadas dos líneas verticales sueltas
+  (una del fondo, x≈3866; otra un path de `edificio_izquierda.svg`).
+  Pendiente: plantas que quedan detrás de ella (hace falta la capa de plantas
+  sin la chica exportada desde Affinity).
