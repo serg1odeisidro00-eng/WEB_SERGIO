@@ -167,7 +167,7 @@ function createBirdFlight(container) {
       // de los edificios del fondo.
       // Los dos ultimos van mas bajos: pasan por la ventana del ordenador.
       const isLow = i >= count - 2
-      const startY = isLow ? gsap.utils.random(43, 47) : gsap.utils.random(20, 40)
+      const startY = isLow ? gsap.utils.random(36.5, 39) : gsap.utils.random(20, 40)
       birds.push({
         el,
         delay: i * 0.18 + gsap.utils.random(0, 0.35),
@@ -175,7 +175,7 @@ function createBirdFlight(container) {
         startX: -4 - gsap.utils.random(0, 6),
         endX: 104 + gsap.utils.random(0, 4),
         startY,
-        endY: startY - (isLow ? gsap.utils.random(1, 3) : gsap.utils.random(4, 10)),
+        endY: startY - (isLow ? gsap.utils.random(0.3, 1.2) : gsap.utils.random(4, 10)),
         bob: gsap.utils.random(0.4, 0.9),
         bobSpeed: gsap.utils.random(3.6, 4.8),
         bobPhase: gsap.utils.random(0, Math.PI * 2),

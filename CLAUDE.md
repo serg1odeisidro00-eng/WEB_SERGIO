@@ -87,12 +87,11 @@ claro en español.
   entonces), bucle continuo de `public/sounds/ambiente_m047.mp3` (pista de
   Sergio con fundido cruzado final→inicio, 128 kbps) y timbre
   `public/sounds/telefono_timbre.mp3` (2 timbres, ~8,6 s).
-- `public/`: imágenes. `fondo.jpg` (7537×4500) y `Casa.png` son los originales;
-  la web carga versiones reducidas (Lanczos, SIN enfocar ni oscurecer) de
-  `public/scene/`, la más pequeña ≥ pantalla×DPR (nunca ampliar; ver
-  `src/data/sceneImages.js`). Si cambian los originales, regenerarlas.
-  El borde derecho del fondo se corrigió estirando solo la franja x>7100 dentro
-  de `fondo.jpg` (estirar toda la imagen desalineaba el gris con Casa.png). Referencia gráfica del
+- `public/`: imágenes. `fondo.jpg` (7537×4500) y `Casa.png` se usan SIEMPRE a
+  resolución completa: Sergio ha rechazado dos veces las versiones reducidas
+  (se ven pixeladas). No volver a intentarlo. El borde derecho del fondo se
+  corrigió estirando solo la franja x>7100 dentro de `fondo.jpg` (estirar toda
+  la imagen desalineaba el gris con Casa.png). Referencia gráfica del
   menú: Drive `Sección_228_M3(SIN FRAMES-CON MENÚ).png`.
 
 ### Capas de la portada (de atrás a delante, por z-index)
@@ -188,3 +187,11 @@ claro en español.
   originales; solo se quitó el cartel "228" y se ve el M047 de Casa.png detrás
   (`scene-scaffold-behind`, recorte de la parte alta). Pájaros solo tras entrar,
   15 (2 bajos por la ventana del ordenador), algo más lentos.
+- 2026-11-11 (8): pantalla de carga ajustada a la imagen de referencia de
+  Sergio: cartel original del andamio con "M047" en vez de "228"; capa blanca
+  (`scene-loading-ground`, z 7) que tapa el contorno del edificio que trae
+  `fondo.jpg` y lo de debajo del suelo, y línea de tierra con escalón (z 51,
+  izquierda al 83,15 %, derecha al 74,75 %, escalón en x 69 %). Menú y marco
+  negro visibles en la carga. Ojo: clases Tailwind arbitrarias (`z-[n]`) pegadas
+  a `${...}` en plantillas no se generan; usar `style`. Pájaros bajos al
+  36,5-39 % (mitad alta de la ventana del ordenador).

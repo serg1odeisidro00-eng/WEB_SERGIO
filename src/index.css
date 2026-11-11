@@ -2667,15 +2667,13 @@ a {
    (.is-loading) y aparecen con un fundido al pulsar. */
 .scene-frame .scene-house-layer,
 .scene-frame .scene-character-layer:not(.scene-keep),
-.scene-frame .scene-hotspots-layer,
-.scene-frame .scene-menu-layer {
+.scene-frame .scene-hotspots-layer {
   transition: opacity 1.4s ease;
 }
 
 .scene-frame.is-loading .scene-house-layer,
 .scene-frame.is-loading .scene-character-layer:not(.scene-keep),
-.scene-frame.is-loading .scene-hotspots-layer,
-.scene-frame.is-loading .scene-menu-layer {
+.scene-frame.is-loading .scene-hotspots-layer {
   opacity: 0;
   pointer-events: none;
 }
@@ -2701,7 +2699,7 @@ a {
 }
 
 .scene-scaffold-behind {
-  clip-path: inset(0 30.6% 80.6% 29.2%);
+  clip-path: inset(0 30.6% 82% 52%);
 }
 
 .scene-scaffold.is-leaving {
@@ -2744,4 +2742,30 @@ a {
 
 .scene-scaffold-catcher.is-ready {
   cursor: pointer;
+}
+
+/* Marco exterior siempre negro (tambien en la pantalla de carga). */
+.scene-frame {
+  border-color: #000000 !important;
+}
+
+.scene-loading-ground {
+  transition: opacity 1.4s ease;
+}
+
+.scene-loading-ground.is-leaving {
+  opacity: 0;
+}
+
+.slg-white,
+.slg-line {
+  position: absolute;
+}
+
+.slg-white {
+  background: #ffffff;
+}
+
+.slg-line {
+  background: #111111;
 }
