@@ -89,18 +89,11 @@ export default function SceneArtboard({
 
       {scaffold ? (
         <>
-          {/* Pantalla de carga: tapa el contorno del edificio que lleva dibujado
-              el fondo (detras del andamio y bajo el suelo) y dibuja la linea de
-              tierra con su escalon, como en el diseno de la pantalla de carga. */}
-          <div className={`scene-loading-ground pointer-events-none absolute inset-0${scaffold.leaving ? ' is-leaving' : ''}`} style={{ zIndex: 7 }} aria-hidden="true">
-            <div className="slg-white" style={{ left: '30.3%', width: '38.8%', top: '13%', bottom: 0 }} />
-            <div className="slg-white" style={{ left: 0, width: '69.05%', top: '83.2%', bottom: 0 }} />
-            <div className="slg-white" style={{ left: '69.05%', right: 0, top: '74.8%', bottom: 0 }} />
-          </div>
+          {/* Pantalla de carga: linea de tierra (en la portada va dentro de
+              Casa.png, que esta oculta). Se mete por detras del andamio. */}
           <div className={`scene-loading-ground pointer-events-none absolute inset-0${scaffold.leaving ? ' is-leaving' : ''}`} style={{ zIndex: 51 }} aria-hidden="true">
-            <div className="slg-line" style={{ left: 0, width: '69.1%', top: '83.15%', height: '0.14%' }} />
-            <div className="slg-line" style={{ left: '68.97%', width: '0.08%', top: '74.8%', height: '8.5%' }} />
-            <div className="slg-line" style={{ left: '68.97%', right: 0, top: '74.75%', height: '0.2%' }} />
+            <div className="slg-line" style={{ left: 0, width: '45%', top: '83.15%', height: '0.14%' }} />
+            <div className="slg-line" style={{ left: '60%', right: 0, top: '74.75%', height: '0.2%' }} />
           </div>
           <div className="scene-overlay pointer-events-none absolute z-[52]">
             <div className={`scene-scaffold${scaffold.leaving ? ' is-leaving' : ''}`}>

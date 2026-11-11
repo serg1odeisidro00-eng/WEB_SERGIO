@@ -195,3 +195,11 @@ claro en español.
   negro visibles en la carga. Ojo: clases Tailwind arbitrarias (`z-[n]`) pegadas
   a `${...}` en plantillas no se generan; usar `style`. Pájaros bajos al
   36,5-39 % (mitad alta de la ventana del ordenador).
+- 2026-11-12: `fondo.jpg` traía el contorno del edificio principal sin relleno
+  (líneas que no coincidían con Casa.png y salían dobles). Se borraron del fondo
+  solo donde Casa.png es opaca (margen ~12 px, zona x 24-70 %, y >17 %); copia
+  previa en scratchpad `fondo_before_ghost.jpg`. Así la pantalla de carga ya no
+  necesita capa blanca. Andamio: barras por delante de las letras del cartel
+  M047. Línea de tierra de la carga: izquierda 0-45 % al 83,15 %, derecha desde
+  detrás del andamio (60 %) al 74,75 %, sin escalón. Árbol: línea de tierra
+  cortada a la derecha del poste de luz.
