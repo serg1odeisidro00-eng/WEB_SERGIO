@@ -1038,17 +1038,17 @@ export default function App() {
         jardineroTweenRef.current.pause()
       }
 
-      // Chica de la regadera: 1-6 y vuelta 6-1 (12 fotogramas) a 4 fps, con una
+      // Chica de la regadera: 1-6 y vuelta 6-1 (12 fotogramas) a 5 fps, con una
       // pausa muy corta entre vueltas. En reposo, fotograma 0.
       if (regaderaImageRef.current) {
         const sequence = [1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1]
         const regaderaState = { step: 0 }
         regaderaTweenRef.current = gsap.to(regaderaState, {
           step: sequence.length - 1,
-          duration: (sequence.length - 1) / 4,
+          duration: (sequence.length - 1) / 5,
           ease: `steps(${sequence.length - 1})`,
           repeat: -1,
-          repeatDelay: 0.5,
+          repeatDelay: 0.15,
           paused: true,
           onUpdate: () => {
             if (regaderaImageRef.current) {
