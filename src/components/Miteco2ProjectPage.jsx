@@ -38,5 +38,5 @@ export const miteco2Copy = {
 }
 
 export default function Miteco2ProjectPage(props) {
-  return <ProjectDetailPage {...props} activeFilter="landscape" image="/pages/proyectos/miteco_2.png" copy={miteco2Copy} />
+  return <ProjectDetailPage {...props} activeFilter="landscape" image="/pages/proyectos/miteco_2.jpg" copy={miteco2Copy} />
 }

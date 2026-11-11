@@ -221,3 +221,10 @@ claro en español.
   edificio izquierdo tal como estaban en (3) (sin engrosar líneas ni borrar
   líneas sueltas). Solo cambia la velocidad: 5 fps y 0,15 s de pausa.
   Reposo (0.png) = copia de 1.png: el dibujo original la tenía duplicada.
+- 2026-11-12 (5): láminas de proyectos optimizadas sin tocar el diseño
+  (`public/` ~247 → ~111 MB; cada deploy de Vercel llenaba el almacenamiento
+  gratuito). PNG → WebP q92 (máx. 2400 px de ancho); las muy altas (límite
+  WebP 16383 px) → JPEG q90 a 1800 px sobre blanco (miteco_2, capilla,
+  bodega, nave_16). SVG con fotos dentro: fotos reducidas a su tamaño visible
+  a 2400 px. Borrados 6 SVG que no se usaban. Originales en scratchpad
+  `opt/svg_backup` (y en git, commit anterior).
