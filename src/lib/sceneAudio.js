@@ -23,6 +23,8 @@ let ambientSource = null
 let ringSource = null
 let wantsAmbient = false
 let loadPromise = null
+let ambientStartedAt = 0
+let ambientLoopLength = 0
 
 function getContext() {
   if (context) return context
@@ -88,6 +90,8 @@ function startAmbientNow() {
   ambientSource.loopEnd = loopEnd
   ambientSource.connect(ambientGain)
   ambientSource.start(0, loopStart)
+  ambientStartedAt = context.currentTime
+  ambientLoopLength = loopEnd - loopStart
   const now = context.currentTime
   ambientGain.gain.cancelScheduledValues(now)
   ambientGain.gain.setValueAtTime(ambientGain.gain.value, now)
@@ -186,4 +190,10 @@ if (import.meta.env.DEV && typeof window !== 'undefined') {
     ambientPlaying: Boolean(ambientSource),
     ringPlaying: Boolean(ringSource),
   })
+}
+
+// Segundo de la pista ambiente que esta sonando ahora (null si no suena).
+export function getAmbientPosition() {
+  if (!isRunning() || !ambientSource || !ambientLoopLength) return null
+  return (context.currentTime - ambientStartedAt) % ambientLoopLength
 }

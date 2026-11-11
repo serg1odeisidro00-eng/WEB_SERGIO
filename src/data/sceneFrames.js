@@ -1,6 +1,7 @@
+// Bandada (Pajaros copia.ai): 34 fotogramas, el recorrido ya va dibujado.
 export const birdFrames = Array.from(
-  { length: 10 },
-  (_, index) => `/Frames/Parajaro/${index + 1}.png`,
+  { length: 34 },
+  (_, index) => `/Frames/pajaros/${index + 1}.png`,
 )
 
 export const vanFrames = Array.from(

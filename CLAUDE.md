@@ -148,3 +148,9 @@ claro en español.
   `Árbol 07.ai` (con raíces), 12 fps en bucle. Humo a 12 fps (antes 4 fps).
   Humo estático borrado de `fumador.png`. Teléfono: sin relleno blanco entre
   cable y cuerpo. Pájaros: pendiente del vídeo de referencia.
+- 2026-11-11 (2): pájaros = `Pájaros copia.ai` (34 fotogramas, el recorrido
+  va dibujado; `public/Frames/pajaros/`), a 4 fps, una pasada cada vez que en
+  la pista ambiente suenan pájaros (`BIRD_AUDIO_CUES` en App.jsx, segundos 1 y
+  32, a confirmar por Sergio; sin sonido, a los 1,5 s y cada 45 s). Árbol a
+  8 fps y humo a 12 fps, ambos con 2 s de pausa entre vueltas. Árbol subido
+  para que su línea de tierra quede sobre el suelo.

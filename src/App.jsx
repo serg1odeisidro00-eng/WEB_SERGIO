@@ -27,7 +27,7 @@ import PackagingProjectPage from './components/PackagingProjectPage'
 import PgProjectPage from './components/PgProjectPage'
 import ProjectsPage from './components/ProjectsPage'
 import SceneArtboard from './components/SceneArtboard'
-import { installAudioUnlock, loadSceneAudio, playRing, setAmbientPlaying, stopRing } from './lib/sceneAudio'
+import { getAmbientPosition, installAudioUnlock, loadSceneAudio, playRing, setAmbientPlaying, stopRing } from './lib/sceneAudio'
 import ShopPage from './components/ShopPage'
 import SoldrinkProjectPage from './components/SoldrinkProjectPage'
 import TelefonicaProjectPage from './components/TelefonicaProjectPage'
@@ -134,6 +134,12 @@ function createRandomPausedFrameTween({
       onUpdate,
     })
 }
+
+// Pajaros: velocidad y segundos de la pista ambiente en los que se oyen.
+const BIRD_FPS = 4
+const BIRD_AUDIO_CUES = [1, 32]
+const BIRD_FALLBACK_FIRST = 1.5
+const BIRD_FALLBACK_EVERY = 45
 
 const staticSceneAssets = [
   FONDO_SRC,
@@ -252,6 +258,7 @@ export default function App() {
 
   const birdRef = useRef(null)
   const birdImageRef = useRef(null)
+  const birdFlightRef = useRef(null)
 
   const vanRef = useRef(null)
   const vanImageRef = useRef(null)
@@ -451,6 +458,39 @@ export default function App() {
     setHasOpenedBusinessCard(true)
     setIsBusinessCardOpen(true)
   }
+
+  // Pajaros: vuelan cuando en la pista ambiente se oyen pajaros. Sin sonido,
+  // al poco de entrar y despues cada BIRD_FALLBACK_EVERY segundos.
+  useEffect(() => {
+    if (!isAssetsReady || activePage !== 'home') return undefined
+    let lastPosition = null
+    let lastFlight = -Infinity
+    const startedAt = performance.now()
+    const fly = () => {
+      const now = performance.now() / 1000
+      if (now - lastFlight < 12 || birdFlightRef.current?.isActive()) return
+      lastFlight = now
+      birdFlightRef.current?.restart()
+    }
+    const tick = () => {
+      const position = getAmbientPosition()
+      if (position !== null) {
+        if (lastPosition !== null) {
+          const crossed = BIRD_AUDIO_CUES.some((cue) =>
+            lastPosition <= position ? lastPosition < cue && cue <= position : cue <= position || cue > lastPosition,
+          )
+          if (crossed) fly()
+        }
+        lastPosition = position
+        return
+      }
+      lastPosition = null
+      const elapsed = (performance.now() - startedAt) / 1000
+      if (elapsed >= BIRD_FALLBACK_FIRST && performance.now() / 1000 - lastFlight >= BIRD_FALLBACK_EVERY) fly()
+    }
+    const id = window.setInterval(tick, 200)
+    return () => window.clearInterval(id)
+  }, [activePage, isAssetsReady])
 
   useEffect(() => {
     installAudioUnlock()
@@ -767,48 +807,23 @@ export default function App() {
       })
 
       if (birdRef.current && birdImageRef.current) {
+        // Bandada: el recorrido ya esta dibujado en los fotogramas. Vuela de vez
+        // en cuando (ver efecto de los pajaros), no en bucle.
         const birdState = { frame: 0 }
         const totalFrames = birdFrames.length
-        const frameDuration = totalFrames / 18
-
-        gsap.set(birdRef.current, {
-          xPercent: -100,
-          yPercent: -50,
-          willChange: 'transform',
-        })
-
-        gsap.from(birdRef.current, {
-          opacity: 0,
-          duration: 0.6,
-          ease: 'power2.out',
-          delay: 0.2,
-        })
-
-        gsap.to(birdState, {
-          frame: totalFrames - 1,
-          duration: frameDuration,
-          ease: `steps(${totalFrames - 1})`,
-          repeat: -1,
-          onUpdate: () => {
-            setAnimatedFrame(birdImageRef, birdFrames, birdState.frame)
-          },
-        })
-
-        gsap.to(birdRef.current, {
-          left: '124%',
-          duration: 11,
-          ease: 'none',
-          repeat: -1,
-          repeatDelay: 20,
-        })
-
-        gsap.to(birdRef.current, {
-          yPercent: -54,
-          duration: 1.8,
-          ease: 'sine.inOut',
-          repeat: -1,
-          yoyo: true,
-        })
+        gsap.set(birdRef.current, { autoAlpha: 0 })
+        birdFlightRef.current = gsap
+          .timeline({ paused: true })
+          .set(birdState, { frame: 0 })
+          .call(() => setAnimatedFrame(birdImageRef, birdFrames, 0))
+          .to(birdRef.current, { autoAlpha: 1, duration: 0.4 })
+          .to(birdState, {
+            frame: totalFrames - 1,
+            duration: (totalFrames - 1) / BIRD_FPS,
+            ease: `steps(${totalFrames - 1})`,
+            onUpdate: () => setAnimatedFrame(birdImageRef, birdFrames, birdState.frame),
+          }, 0)
+          .to(birdRef.current, { autoAlpha: 0, duration: 0.5 }, `>-0.5`)
       }
 
       if (vanRef.current && vanImageRef.current) {
@@ -985,12 +1000,13 @@ export default function App() {
           delay: 0.22,
         })
 
-        // Animacion continua: los fotogramas pasan de corrido a 12 fps en bucle.
+        // Animacion continua: 8 fps en bucle con 2 s de pausa entre vueltas.
         arbolTweenRef.current = gsap.to(arbolState, {
           frame: totalFrames - 1,
-          duration: (totalFrames - 1) / 12,
+          duration: (totalFrames - 1) / 8,
           ease: `steps(${totalFrames - 1})`,
           repeat: -1,
+          repeatDelay: 2,
           onUpdate: () => {
             setAnimatedFrame(arbolImageRef, arbolFrames, arbolState.frame)
           },
@@ -1339,7 +1355,7 @@ export default function App() {
           duration: frameDuration,
           ease: `steps(${totalFrames - 1})`,
           repeat: -1,
-          repeatDelay: 0,
+          repeatDelay: 2,
           onUpdate: () => {
             setAnimatedFrame(humoImageRef, humoFrames, humoState.frame)
           },
@@ -1552,7 +1568,7 @@ export default function App() {
       // linea de suelo que el arbol anterior. Medidas en la capa del edificio.
       style: {
         left: '77.65%',
-        top: '48.16%',
+        top: '47.1%',
         width: '22.56%',
         aspectRatio: '515 / 685',
       },
@@ -1839,7 +1855,8 @@ export default function App() {
     imageRef: birdImageRef,
     src: birdFrames[0],
     alt: 'Pajaro animado',
-    style: { left: '-16%', top: '28%', width: '20%' },
+    // Encaje sacado del video de referencia de Sergio.
+    style: { left: '12%', top: '-15%', width: '84%' },
   }
 
   // Add one or more rectangular regions per department to compose irregular rooms.
