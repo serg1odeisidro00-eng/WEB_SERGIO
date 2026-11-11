@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from 'react'
+﻿import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import AppPageRouter from './components/AppPageRouter'
 import AcademyPage from './components/AcademyPage'
@@ -337,6 +337,26 @@ export default function App() {
   const columpioBubbleRef = useRef(null)
 
   const { frameStyle: sceneFrameStyle, sceneStyle } = useSceneSize(sceneShellRef, sceneRatio, isAssetsReady && activePage === 'home')
+
+  // Safari calcula mal la altura de las cajas de los personajes (aspect-ratio
+  // en elementos posicionados) y los dibujos quedan "flotando". Se fija la
+  // altura en px a partir del ancho y la misma proporcion; en Chrome no cambia.
+  useLayoutEffect(() => {
+    if (!isAssetsReady || activePage !== 'home') return undefined
+    const fixAnchorHeights = () => {
+      document.querySelectorAll('.scene-artboard [class*="-anchor"]').forEach((anchor) => {
+        const ratioText = getComputedStyle(anchor).aspectRatio
+        if (!ratioText || ratioText === 'auto') return
+        const parts = ratioText.replace('auto', '').trim().split('/').map((part) => parseFloat(part))
+        const ratio = parts.length === 2 && parts[1] ? parts[0] / parts[1] : parts[0]
+        if (!ratio || !anchor.offsetWidth) return
+        anchor.style.height = `${anchor.offsetWidth / ratio}px`
+      })
+    }
+    fixAnchorHeights()
+    const frameId = window.requestAnimationFrame(fixAnchorHeights)
+    return () => window.cancelAnimationFrame(frameId)
+  }, [activePage, isAssetsReady, sceneStyle.width, sceneStyle.height])
 
   const applyNavigationState = ({ filterId = 'all', pageId = 'home', searchQuery = '' }) => {
     setActivePage(pageId)

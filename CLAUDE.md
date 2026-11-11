@@ -137,3 +137,7 @@ claro en español.
 - 2026-11-11: `fondo.jpg` venía en CMYK sin perfil y salía azulado; se pasó a
   gris neutro (escala de grises) y el sol a #CCCCCC (dato de Sergio). La farola
   se volvió a recortar de ese fondo neutro para que los cables casen en color.
+- 2026-11-11: en Safari los personajes "flotaban" sobre sus suelos (en Chrome
+  no). Las cajas `*-anchor` usan `aspect-ratio`; ahora App.jsx les fija la
+  altura en px (ancho / proporción) en un `useLayoutEffect`. Pendiente de que
+  Sergio confirme en Safari. Aquí no hay WebKit para probar (descarga bloqueada).
