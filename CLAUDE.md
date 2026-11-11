@@ -134,3 +134,6 @@ claro en español.
   hueco al botón del menú (más grande, negro, sobre blanco). Marco exterior negro. Farola rehecha
   (poste relleno de blanco, cables opacos). Teléfono: primer aviso a los 10 s
   y luego cada 40 s. Teléfono clicable (`tel:`) en Contacto y en el pie.
+- 2026-11-11: `fondo.jpg` venía en CMYK sin perfil y salía azulado; se pasó a
+  gris neutro (escala de grises) y el sol a #CCCCCC (dato de Sergio). La farola
+  se volvió a recortar de ese fondo neutro para que los cables casen en color.
