@@ -197,3 +197,8 @@ export function getAmbientPosition() {
   if (!isRunning() || !ambientSource || !ambientLoopLength) return null
   return (context.currentTime - ambientStartedAt) % ambientLoopLength
 }
+
+// true si el navegador ya deja sonar audio (no hace falta el boton Entrar).
+export function isAudioUnlocked() {
+  return Boolean(context && context.state === 'running')
+}

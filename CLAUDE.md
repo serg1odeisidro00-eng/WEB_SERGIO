@@ -165,3 +165,10 @@ claro en español.
   baja rellena de blanco y extremos de la línea de tierra bajados hasta el
   suelo. Pájaros: solo al segundo 1 de la pista (confirmado por Sergio), 9 fps,
   deriva suave final con `sine.in`. Si no convencen, volver al commit anterior.
+- 2026-11-11 (5): pájaros rehechos: 4 posturas de aleteo sacadas de
+  `Pájaros copia.ai` (alineadas por el pico, `public/Frames/pajaro/0-3.png`) y
+  vuelo continuo de 8 pájaros montado en código (`createBirdFlight` en App.jsx):
+  cruzan de borde a borde por detrás de los edificios, aleteo ~12 fps.
+  Sonido: pantalla ENTRAR al terminar de cargar (el clic desbloquea el audio en
+  Safari); si el navegador ya permite audio se entra directo. "Entrar sin
+  sonido" apaga el sonido.

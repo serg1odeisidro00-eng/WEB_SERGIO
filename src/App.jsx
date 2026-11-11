@@ -27,7 +27,7 @@ import PackagingProjectPage from './components/PackagingProjectPage'
 import PgProjectPage from './components/PgProjectPage'
 import ProjectsPage from './components/ProjectsPage'
 import SceneArtboard from './components/SceneArtboard'
-import { getAmbientPosition, installAudioUnlock, loadSceneAudio, playRing, setAmbientPlaying, stopRing } from './lib/sceneAudio'
+import { getAmbientPosition, installAudioUnlock, isAudioUnlocked, loadSceneAudio, playRing, setAmbientPlaying, stopRing } from './lib/sceneAudio'
 import ShopPage from './components/ShopPage'
 import SoldrinkProjectPage from './components/SoldrinkProjectPage'
 import TelefonicaProjectPage from './components/TelefonicaProjectPage'
@@ -136,7 +136,78 @@ function createRandomPausedFrameTween({
 }
 
 // Pajaros: velocidad y segundos de la pista ambiente en los que se oyen.
-const BIRD_FPS = 9
+const BIRD_FLAP_SEQUENCE = [0, 1, 2, 3, 1]
+
+// Bandada: cada pajaro cruza todo el dibujo de izquierda a derecha con un
+// recorrido continuo (sube un poco y ondula) aleteando a ~12 fps. Van en la
+// capa de detras de los edificios: cuando pasan por detras simplemente se tapan.
+function createBirdFlight(container) {
+  let frameId = null
+  let birds = []
+
+  const stop = () => {
+    if (frameId) window.cancelAnimationFrame(frameId)
+    frameId = null
+    birds.forEach((bird) => bird.el.remove())
+    birds = []
+  }
+
+  const restart = () => {
+    stop()
+    const count = 8
+    for (let i = 0; i < count; i += 1) {
+      const el = document.createElement('img')
+      el.className = 'bird-flock-bird'
+      el.alt = ''
+      el.src = birdFrames[0]
+      const size = 2.1 * gsap.utils.random(0.85, 1.12)
+      el.style.width = `${size}%`
+      container.appendChild(el)
+      const startY = gsap.utils.random(15, 29)
+      birds.push({
+        el,
+        delay: i * 0.22 + gsap.utils.random(0, 0.35),
+        duration: gsap.utils.random(6.4, 7.6),
+        startX: -4 - gsap.utils.random(0, 6),
+        endX: 104 + gsap.utils.random(0, 4),
+        startY,
+        endY: startY - gsap.utils.random(4, 10),
+        bob: gsap.utils.random(0.4, 0.9),
+        bobSpeed: gsap.utils.random(3.6, 4.8),
+        bobPhase: gsap.utils.random(0, Math.PI * 2),
+        fps: gsap.utils.random(11, 13),
+        flapPhase: Math.floor(gsap.utils.random(0, BIRD_FLAP_SEQUENCE.length)),
+        lastPose: -1,
+      })
+    }
+    const startedAt = performance.now()
+    const step = () => {
+      const t = (performance.now() - startedAt) / 1000
+      let alive = false
+      birds.forEach((bird) => {
+        const local = t - bird.delay
+        const progress = Math.min(Math.max(local / bird.duration, 0), 1)
+        if (progress < 1) alive = true
+        const x = bird.startX + (bird.endX - bird.startX) * progress
+        const y = bird.startY + (bird.endY - bird.startY) * progress
+          + Math.sin(local * bird.bobSpeed + bird.bobPhase) * bird.bob
+        bird.el.style.left = `${x}%`
+        bird.el.style.top = `${y}%`
+        bird.el.style.visibility = local < 0 || progress >= 1 ? 'hidden' : 'visible'
+        const pose = BIRD_FLAP_SEQUENCE[(Math.floor(Math.max(local, 0) * bird.fps) + bird.flapPhase) % BIRD_FLAP_SEQUENCE.length]
+        if (pose !== bird.lastPose) {
+          bird.el.src = birdFrames[pose]
+          bird.lastPose = pose
+        }
+      })
+      frameId = alive ? window.requestAnimationFrame(step) : null
+      if (!alive) stop()
+    }
+    frameId = window.requestAnimationFrame(step)
+  }
+
+  return { restart, isActive: () => Boolean(frameId), kill: stop }
+}
 const BIRD_AUDIO_CUES = [1]
 const BIRD_FALLBACK_FIRST = 1.5
 const BIRD_FALLBACK_EVERY = 45
@@ -245,6 +316,10 @@ export default function App() {
   const [sceneRatio, setSceneRatio] = useState(SCENE_IMAGE_RATIO)
   const [isAssetsReady, setIsAssetsReady] = useState(false)
   const [loadingProgress, setLoadingProgress] = useState(0)
+  // Los navegadores (sobre todo Safari) no dejan sonar nada hasta que el
+  // visitante pulsa. Cuando todo ha cargado se muestra ENTRAR: ese clic
+  // desbloquea el sonido. Si el navegador ya lo permite, se entra directo.
+  const [assetsLoaded, setAssetsLoaded] = useState(false)
   const [activePage, setActivePage] = useState('home')
   const [projectsFilter, setProjectsFilter] = useState('all')
   const [projectsSearch, setProjectsSearch] = useState('')
@@ -773,7 +848,8 @@ export default function App() {
       )
 
       if (!isCancelled) {
-        setIsAssetsReady(true)
+        setAssetsLoaded(true)
+        if (isAudioUnlocked()) setIsAssetsReady(true)
       }
 
       // Keep non-critical animation frames warm without delaying first paint.
@@ -806,28 +882,8 @@ export default function App() {
         duration: 0.9,
       })
 
-      if (birdRef.current && birdImageRef.current) {
-        // Bandada: el recorrido ya esta dibujado en los fotogramas. Vuela de vez
-        // en cuando (ver efecto de los pajaros), no en bucle.
-        const birdState = { frame: 0 }
-        const totalFrames = birdFrames.length
-        gsap.set(birdRef.current, { autoAlpha: 0 })
-        birdFlightRef.current = gsap
-          .timeline({ paused: true })
-          .set(birdState, { frame: 0 })
-          .set(birdRef.current, { xPercent: 0 })
-          .call(() => setAnimatedFrame(birdImageRef, birdFrames, 0))
-          .to(birdRef.current, { autoAlpha: 1, duration: 0.4 })
-          .to(birdState, {
-            frame: totalFrames - 1,
-            duration: (totalFrames - 1) / BIRD_FPS,
-            ease: `steps(${totalFrames - 1})`,
-            onUpdate: () => setAnimatedFrame(birdImageRef, birdFrames, birdState.frame),
-          }, 0)
-          // Deriva suave en la segunda mitad (cuando ya han pasado el edificio)
-          // para llevarlos hasta el borde derecho sin acelerones.
-          .to(birdRef.current, { xPercent: 8, duration: (totalFrames - 1 - 20) / BIRD_FPS, ease: 'sine.in' }, 20 / BIRD_FPS)
-          .to(birdRef.current, { autoAlpha: 0, duration: 0.15 })
+      if (birdRef.current) {
+        birdFlightRef.current = createBirdFlight(birdRef.current)
       }
 
       if (vanRef.current && vanImageRef.current) {
@@ -1519,6 +1575,8 @@ export default function App() {
       personasSillasTweenRef.current = null
       lectorTweenRef.current = null
       humoTweenRef.current = null
+      birdFlightRef.current?.kill()
+      birdFlightRef.current = null
       hombreSentadoTweenRef.current = null
       mujerSentadaTweenRef.current = null
       profeTweenRef.current = null
@@ -2373,16 +2431,40 @@ export default function App() {
       ) : (
         <div className="scene-loader" aria-live="polite">
           <div className="scene-loader-frame">
-            <p className="scene-loader-kicker">Loading scene</p>
-            <div className="scene-loader-number">
-              {String(loadingProgress).padStart(2, '0')}
-            </div>
-            <div className="scene-loader-track">
-              <div
-                className="scene-loader-bar"
-                style={{ width: `${loadingProgress}%` }}
-              ></div>
-            </div>
+            <p className="scene-loader-kicker">{assetsLoaded ? 'M047' : 'Loading scene'}</p>
+            {assetsLoaded ? (
+              <>
+                <button
+                  type="button"
+                  className="scene-loader-enter"
+                  onClick={() => setIsAssetsReady(true)}
+                >
+                  {language === 'en' ? 'ENTER' : language === 'it' ? 'ENTRA' : 'ENTRAR'}
+                </button>
+                <button
+                  type="button"
+                  className="scene-loader-mute"
+                  onClick={() => {
+                    setSoundEnabled(false)
+                    setIsAssetsReady(true)
+                  }}
+                >
+                  {language === 'en' ? 'Enter without sound' : language === 'it' ? 'Entra senza audio' : 'Entrar sin sonido'}
+                </button>
+              </>
+            ) : (
+              <>
+                <div className="scene-loader-number">
+                  {String(loadingProgress).padStart(2, '0')}
+                </div>
+                <div className="scene-loader-track">
+                  <div
+                    className="scene-loader-bar"
+                    style={{ width: `${loadingProgress}%` }}
+                  ></div>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

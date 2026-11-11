@@ -1,7 +1,8 @@
-// Bandada (Pajaros copia.ai): 34 fotogramas, el recorrido ya va dibujado.
+// Pajaro: 4 posturas de aleteo sacadas de Pajaros copia.ai (alas arriba,
+// medio, abajo, recogidas), alineadas por el pico. El vuelo se monta en App.jsx.
 export const birdFrames = Array.from(
-  { length: 34 },
-  (_, index) => `/Frames/pajaros/${index + 1}.png`,
+  { length: 4 },
+  (_, index) => `/Frames/pajaro/${index}.png`,
 )
 
 export const vanFrames = Array.from(

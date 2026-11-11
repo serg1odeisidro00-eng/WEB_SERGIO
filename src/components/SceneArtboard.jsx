@@ -66,7 +66,7 @@ export default function SceneArtboard({
       </div>
 
       <div className="scene-character-layer pointer-events-none absolute inset-0 z-0 overflow-hidden">
-        <SceneCharacter {...bird} />
+        <div ref={bird.ref} className="bird-flock" aria-hidden="true" />
       </div>
 
       <div className="scene-character-layer pointer-events-none absolute inset-0 z-50 overflow-visible">
