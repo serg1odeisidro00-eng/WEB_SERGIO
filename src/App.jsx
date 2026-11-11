@@ -1187,13 +1187,13 @@ export default function App() {
           const sofaRestFrame = 1 // Frame 2.png
           const sofaFirstWalk = 2 // Frame 3.png
           const sofaLastWalk = sofaFrames.length - 1 // Frame 14.png
-          const sofaFps = 6
+          const sofaFps = 4
           const sofaStartLeft = '41.8%'
           const sofaEndLeft = '50%'
           const sofaState = { frame: sofaRestFrame }
           const walkDuration = (sofaLastWalk - sofaFirstWalk + 1) / sofaFps
           const showSofaFrame = () => setAnimatedFrame(sofaImageRef, sofaFrames, sofaState.frame)
-          const sofaPauseDuration = () => getRandomReversePause()
+          const sofaPauseDuration = () => gsap.utils.random(1.2, 2.5, 0.1)
 
           gsap.set(sofaRef.current, {
             xPercent: -50,
