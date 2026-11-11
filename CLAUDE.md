@@ -251,3 +251,8 @@ claro en español.
   - Favicon de 10 KB (`favicon.ico` + `apple-touch-icon.png`), fuentes en woff2.
   - Estadística: `@vercel/analytics` (sin cookies); Sergio debe activarla en
     Vercel > proyecto > Analytics.
+- 2026-11-12 (8): lámina Capilla: erratas corregidas sobre la maqueta de
+  Sergio (texto rehecho con Liberation Sans = Arial, mismo tamaño y
+  justificado con guiones; fichas Artemide y LITESTAR copiadas del PDF
+  original `Capilla1.pdf` de Drive a la misma escala). Script y original en
+  scratchpad `capfix/`. Páginas legales sin datos personales (decisión de Sergio).
