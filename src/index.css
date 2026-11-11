@@ -1348,6 +1348,7 @@ a {
   display: grid;
   align-content: start;
   gap: 1.5rem;
+  min-width: 0;
 }
 
 .project-detail-sidebar h1,
@@ -1362,15 +1363,17 @@ a {
 }
 
 .project-detail-sidebar h1 {
-  font-size: clamp(2.9rem, 4.3vw, 4.3rem);
+  /* Diseno de Sergio: titulo 100 pt, localizacion 35 pt, texto 36 pt. */
+  font-size: clamp(2.2rem, 3.6vw, 4.6rem);
   font-weight: 700;
   line-height: 0.92;
   letter-spacing: -0.015em;
+  white-space: nowrap;
 }
 
 .project-detail-location {
-  margin-top: -1.8rem;
-  font-size: clamp(1.08rem, 1.12vw, 1.35rem);
+  margin-top: -1.5rem;
+  font-size: clamp(1.02rem, 1.26vw, 1.6rem);
   font-weight: 700;
 }
 
@@ -1380,7 +1383,7 @@ a {
 }
 
 .project-detail-copy p {
-  font-size: clamp(1.02rem, 1.08vw, 1.24rem);
+  font-size: clamp(1.05rem, 1.3vw, 1.65rem);
   line-height: 1.14;
 }
 

@@ -1,3 +1,5 @@
+import { useLayoutEffect } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 import { newsById } from '../content/news'
 import AcademyPage from './AcademyPage'
 import AlbumMusicalProjectPage from './AlbumMusicalProjectPage'
@@ -72,7 +74,36 @@ const standardPages = {
   studio: StudioPage,
 }
 
+// Los titulos de proyecto van siempre en una linea (diseno de Sergio): si un
+// titulo no cabe en la columna, se reduce su tamano hasta que quepa.
+function fitProjectTitles() {
+  document.querySelectorAll('.project-detail-sidebar h1').forEach((title) => {
+    title.style.fontSize = ''
+    const available = title.parentElement.clientWidth
+    let size = parseFloat(getComputedStyle(title).fontSize)
+    while (title.scrollWidth > available && size > 14) {
+      size -= 1
+      title.style.fontSize = `${size}px`
+    }
+  })
+}
+
+function useFitProjectTitles(activePage) {
+  const { language } = useLanguage()
+  useLayoutEffect(() => {
+    fitProjectTitles()
+    const frame = window.requestAnimationFrame(fitProjectTitles)
+    document.fonts?.ready.then(fitProjectTitles)
+    window.addEventListener('resize', fitProjectTitles)
+    return () => {
+      window.cancelAnimationFrame(frame)
+      window.removeEventListener('resize', fitProjectTitles)
+    }
+  }, [activePage, language])
+}
+
 export default function AppPageRouter({ activePage, projectsFilter, projectsSearch, onBack, onNavigate }) {
+  useFitProjectTitles(activePage)
   if (activePage === 'projects') {
     return <ProjectsPage activePage={activePage} initialFilter={projectsFilter} initialSearch={projectsSearch} onBack={onBack} onNavigate={onNavigate} />
   }

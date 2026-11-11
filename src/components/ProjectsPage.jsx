@@ -25,7 +25,7 @@ const projectItems = [
   { id: 'telefonica', title: 'Proyecto de Oficinas en Edificio Telef\u00f3nica', location: 'Madrid, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/iconos/edificio_telefonica.png', imageSrc: '/proyectos/imagenes/edificio_telefonica.png' },
   { id: 'miteco', title: 'Proyecto Paisajismo MITECO', location: 'Madrid, Espa\u00f1a', category: 'landscape', iconSrc: '/proyectos/iconos/MITECO.png', imageSrc: '/proyectos/imagenes/MITECO.png' },
   { id: 'el-bosque', title: 'Centro cultural El Bosque', location: 'Madrid, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/iconos/EL_BOSQUE.png', imageSrc: '/proyectos/imagenes/EL_BOSQUE.png' },
-  { id: 'album-musical', title: 'Direcci\u00f3n de arte \u00e1lbum musical', location: 'Madrid, Espa\u00f1a', category: 'graphic', iconSrc: '/proyectos/iconos/albun_musical.png', imageSrc: '/proyectos/imagenes/albun_musical.png' },
+  { id: 'album-musical', title: 'Direcci\u00f3n de arte \u00e1lbum musical', location: 'Madrid, Espa\u00f1a', category: ['art-direction', 'graphic'], iconSrc: '/proyectos/iconos/albun_musical.png', imageSrc: '/proyectos/imagenes/albun_musical.png' },
   { id: 'espacio-expositivo', title: 'Espacio expositivo temporal 2021', location: 'Madrid, España', category: 'scenography', iconSrc: '/proyectos/iconos/temporal_2021.png', imageSrc: '/proyectos/imagenes/temporal_2021.png' },
   { id: 'v-karting', title: 'Dise\u00f1o Logotipo y Livery V.Karting', location: 'Villaviciosa (Madrid), Espa\u00f1a', category: 'graphic', iconSrc: '/proyectos/iconos/v_karting.png', imageSrc: '/proyectos/imagenes/v_karting.png' },
   { id: 'soldrink', title: 'Branding y etiquetas bodega', location: 'Toledo, Espa\u00f1a', category: 'graphic', iconSrc: '/proyectos/iconos/soldrink.png', imageSrc: '/proyectos/imagenes/soldrink.png' },
@@ -65,7 +65,7 @@ function ProjectCard({
   return (
     <article
       className={`projects-card${projectId ? ` projects-card--${projectId}` : ''}`}
-      data-category={category}
+      data-category={[].concat(category).join(' ')}
       onClick={onOpen}
     >
       {projectId ? (
@@ -118,7 +118,7 @@ export default function ProjectsPage({
 
   const filteredProjects = useMemo(() => {
     const query = initialSearch.trim().toLocaleLowerCase()
-    return projectItems.filter((project) => (activeFilter === 'all' || project.category === activeFilter) && (!query || `${project.title} ${project.location} ${englishProjectTitles[project.id] ?? ''} ${italianProjectTitles[project.id] ?? ''}`.toLocaleLowerCase().includes(query)))
+    return projectItems.filter((project) => (activeFilter === 'all' || [].concat(project.category).includes(activeFilter)) && (!query || `${project.title} ${project.location} ${englishProjectTitles[project.id] ?? ''} ${italianProjectTitles[project.id] ?? ''}`.toLocaleLowerCase().includes(query)))
   }, [activeFilter, initialSearch])
 
   return (
