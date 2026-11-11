@@ -154,7 +154,7 @@ function createBirdFlight(container) {
 
   const restart = () => {
     stop()
-    const count = 13
+    const count = 15
     for (let i = 0; i < count; i += 1) {
       const el = document.createElement('img')
       el.className = 'bird-flock-bird'
@@ -165,15 +165,17 @@ function createBirdFlight(container) {
       container.appendChild(el)
       // Mas bajos que antes: tambien se ven pasar por delante de las ventanas
       // de los edificios del fondo.
-      const startY = gsap.utils.random(20, 40)
+      // Los dos ultimos van mas bajos: pasan por la ventana del ordenador.
+      const isLow = i >= count - 2
+      const startY = isLow ? gsap.utils.random(43, 47) : gsap.utils.random(20, 40)
       birds.push({
         el,
         delay: i * 0.18 + gsap.utils.random(0, 0.35),
-        duration: gsap.utils.random(6.4, 7.6),
+        duration: gsap.utils.random(7, 8.2),
         startX: -4 - gsap.utils.random(0, 6),
         endX: 104 + gsap.utils.random(0, 4),
         startY,
-        endY: startY - gsap.utils.random(4, 10),
+        endY: startY - (isLow ? gsap.utils.random(1, 3) : gsap.utils.random(4, 10)),
         bob: gsap.utils.random(0.4, 0.9),
         bobSpeed: gsap.utils.random(3.6, 4.8),
         bobPhase: gsap.utils.random(0, Math.PI * 2),
@@ -554,7 +556,7 @@ export default function App() {
   // Pajaros: vuelan cuando en la pista ambiente se oyen pajaros. Sin sonido,
   // al poco de entrar y despues cada BIRD_FALLBACK_EVERY segundos.
   useEffect(() => {
-    if (!isAssetsReady || activePage !== 'home') return undefined
+    if (!isAssetsReady || !hasEntered || activePage !== 'home') return undefined
     let lastPosition = null
     let lastFlight = -Infinity
     const startedAt = performance.now()
@@ -567,7 +569,11 @@ export default function App() {
     const tick = () => {
       const position = getAmbientPosition()
       if (position !== null) {
-        if (lastPosition !== null) {
+        if (lastPosition === null) {
+          // Al entrar la musica ya lleva un poco: si acabamos de pasar una
+          // senal (menos de 2,5 s), vuelan ya.
+          if (BIRD_AUDIO_CUES.some((cue) => position >= cue && position - cue < 2.5)) fly()
+        } else {
           const crossed = BIRD_AUDIO_CUES.some((cue) =>
             lastPosition <= position ? lastPosition < cue && cue <= position : cue <= position || cue > lastPosition,
           )
@@ -582,7 +588,7 @@ export default function App() {
     }
     const id = window.setInterval(tick, 200)
     return () => window.clearInterval(id)
-  }, [activePage, isAssetsReady])
+  }, [activePage, hasEntered, isAssetsReady])
 
   useEffect(() => {
     installAudioUnlock()
@@ -2434,7 +2440,7 @@ export default function App() {
                 onEnter: () => {
                   if (!assetsLoaded || isScaffoldLeaving) return
                   setIsScaffoldLeaving(true)
-                  window.setTimeout(() => setHasEntered(true), 1900)
+                  window.setTimeout(() => setHasEntered(true), 1500)
                 },
               }}
               frameStyle={sceneFrameStyle}

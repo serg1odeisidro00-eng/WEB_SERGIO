@@ -87,11 +87,12 @@ claro en español.
   entonces), bucle continuo de `public/sounds/ambiente_m047.mp3` (pista de
   Sergio con fundido cruzado final→inicio, 128 kbps) y timbre
   `public/sounds/telefono_timbre.mp3` (2 timbres, ~8,6 s).
-- `public/`: imágenes. `fondo.jpg` (7537×4500) y `Casa.png` se usan a resolución
-  completa (Sergio probó versiones reducidas/enfocadas y las rechazó: se veían
-  borrosas). El fondo se estira un 0,28 % (`FONDO_STRETCH` en
-  `src/data/sceneImages.js`, con `maxWidth: none` por la regla de Tailwind)
-  porque su dibujo termina 21 px antes del borde derecho. Referencia gráfica del
+- `public/`: imágenes. `fondo.jpg` (7537×4500) y `Casa.png` son los originales;
+  la web carga versiones reducidas (Lanczos, SIN enfocar ni oscurecer) de
+  `public/scene/`, la más pequeña ≥ pantalla×DPR (nunca ampliar; ver
+  `src/data/sceneImages.js`). Si cambian los originales, regenerarlas.
+  El borde derecho del fondo se corrigió estirando solo la franja x>7100 dentro
+  de `fondo.jpg` (estirar toda la imagen desalineaba el gris con Casa.png). Referencia gráfica del
   menú: Drive `Sección_228_M3(SIN FRAMES-CON MENÚ).png`.
 
 ### Capas de la portada (de atrás a delante, por z-index)
@@ -180,3 +181,10 @@ claro en español.
   (clic en cualquier sitio = desbloquea sonido) y el andamio baja 1,8 s.
   Pájaros: 13, más bajos (20-40 %), señales de audio en s 1 y 27, sin sonido
   cada 28 s. Árbol a 6 fps.
+- 2026-11-11 (7): pantalla de carga rehecha como pantalla aparte (como la
+  imagen de Sergio): fondo, edificios laterales, farola, árbol, cartela y
+  andamio; edificio, personajes, carteles y menú ocultos (`.scene-frame.is-loading`)
+  y aparecen con fundido de 1,4 s al pulsar. Andamio con antena y bloque
+  originales; solo se quitó el cartel "228" y se ve el M047 de Casa.png detrás
+  (`scene-scaffold-behind`, recorte de la parte alta). Pájaros solo tras entrar,
+  15 (2 bajos por la ventana del ordenador), algo más lentos.

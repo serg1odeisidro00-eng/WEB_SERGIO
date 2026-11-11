@@ -30,7 +30,7 @@ export default function SceneArtboard({
   return (
     <div
       data-animate="frame"
-      className="scene-frame relative overflow-hidden border-2 border-black"
+      className={`scene-frame relative overflow-hidden border-2 border-black${scaffold && !scaffold.leaving ? ' is-loading' : ''}`}
       style={frameStyle}
     >
     <div className="scene-artboard overflow-hidden" style={sceneStyle}>
@@ -54,7 +54,7 @@ export default function SceneArtboard({
         </div>
       ) : null}
 
-      <div className="pointer-events-none absolute inset-0 z-[110]">
+      <div className="scene-menu-layer pointer-events-none absolute inset-0 z-[110]">
         <SceneMenu
           onNavigate={onNavigate}
           soundEnabled={soundEnabled}
@@ -91,9 +91,10 @@ export default function SceneArtboard({
         <>
           <div className="scene-overlay pointer-events-none absolute z-[52]">
             <div className={`scene-scaffold${scaffold.leaving ? ' is-leaving' : ''}`}>
-              <div className="scene-scaffold-clip">
-                <img src="/andamio.webp" alt="Fachada en obras con andamio: esta empresa no funciona pero es muy creativa" />
-              </div>
+              {/* Lo que asoma por encima del andamio (cartel M047 y arbol de
+                  paisajismo): la parte de arriba del edificio, por detras. */}
+              <img className="scene-scaffold-behind" src={house.src} alt="" />
+              <img className="scene-scaffold-img" src="/andamio.webp" alt="Fachada en obras con andamio: esta empresa no funciona pero es muy creativa" />
               <div className={`scene-scaffold-label${scaffold.ready ? ' is-ready' : ''}`}>{scaffold.label}</div>
             </div>
           </div>
@@ -129,7 +130,7 @@ export default function SceneArtboard({
           </div>
 
           {tree ? (
-            <div className="scene-character-layer pointer-events-none absolute inset-0 z-[8] overflow-hidden">
+            <div className="scene-character-layer scene-keep pointer-events-none absolute inset-0 z-[8] overflow-hidden">
               <SceneCharacter {...tree} />
             </div>
           ) : null}
@@ -145,7 +146,7 @@ export default function SceneArtboard({
             </div>
           ) : null}
 
-          <div className="pointer-events-none absolute inset-0 z-10">
+          <div className="scene-house-layer pointer-events-none absolute inset-0 z-10">
             <img
               src={house.src}
               alt={house.alt}

@@ -2661,8 +2661,26 @@ a {
   color: #171717;
 }
 
-/* ---------- Pantalla de carga: andamio delante del edificio ----------
-   Mismo encaje que la capa de la casa (Casa.png y andamio.webp son 16:9). */
+/* ---------- Pantalla de carga (Seccion_228_carga) ----------
+   Es otra "pantalla": fondo, edificios de los lados, arbol, cartela y el
+   andamio. El edificio, los personajes, los carteles y el menu se ocultan
+   (.is-loading) y aparecen con un fundido al pulsar. */
+.scene-frame .scene-house-layer,
+.scene-frame .scene-character-layer:not(.scene-keep),
+.scene-frame .scene-hotspots-layer,
+.scene-frame .scene-menu-layer {
+  transition: opacity 1.4s ease;
+}
+
+.scene-frame.is-loading .scene-house-layer,
+.scene-frame.is-loading .scene-character-layer:not(.scene-keep),
+.scene-frame.is-loading .scene-hotspots-layer,
+.scene-frame.is-loading .scene-menu-layer {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Mismo encaje que la capa de la casa (Casa.png y andamio.webp son 16:9). */
 .scene-scaffold {
   position: absolute;
   left: 50%;
@@ -2670,26 +2688,24 @@ a {
   width: 97%;
   aspect-ratio: 16 / 9;
   transform: translate(-50%, -50%) scale(1.2);
+  transition: opacity 1.4s ease;
 }
 
-.scene-scaffold-clip {
+.scene-scaffold img {
   position: absolute;
   inset: 0;
-  overflow: hidden;
-  /* Lo que baja por debajo de la linea de tierra no se ve. */
-  clip-path: inset(0 0 15.3% 0);
-}
-
-.scene-scaffold-clip img {
   display: block;
   width: 100%;
-  height: auto;
+  height: 100%;
   max-width: none;
-  transition: transform 1.8s cubic-bezier(0.55, 0, 0.75, 0.35);
 }
 
-.scene-scaffold.is-leaving .scene-scaffold-clip img {
-  transform: translateY(75%);
+.scene-scaffold-behind {
+  clip-path: inset(0 30.6% 80.6% 29.2%);
+}
+
+.scene-scaffold.is-leaving {
+  opacity: 0;
 }
 
 .scene-scaffold-label {
@@ -2705,16 +2721,10 @@ a {
   font-family: var(--font-condensed);
   font-size: 0.9cqw;
   line-height: 1;
-  transition: opacity 0.3s ease;
 }
 
 .scene-scaffold-label.is-ready {
   animation: scaffold-label-pulse 1.6s ease-in-out infinite;
-}
-
-.scene-scaffold.is-leaving .scene-scaffold-label {
-  opacity: 0;
-  animation: none;
 }
 
 @keyframes scaffold-label-pulse {
