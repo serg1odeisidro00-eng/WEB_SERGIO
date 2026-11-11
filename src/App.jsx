@@ -45,6 +45,7 @@ import {
   humoFrames,
   jardineraFrames,
   jardineroFrames,
+  regaderaFrames,
   lectorFrames,
   mujerSentadaFrames,
   ordenadorFrames,
@@ -235,6 +236,7 @@ const sceneAssetUrls = [
   ...grafitiFrames,
   ...jardineroFrames,
   ...jardineraFrames,
+  ...regaderaFrames,
   ...arbolFrames,
   ...ordenadorFrames,
   ...banquitoFrames,
@@ -371,6 +373,8 @@ export default function App() {
   const jardineroBubbleRef = useRef(null)
   const jardineroTweenRef = useRef(null)
 
+  const regaderaImageRef = useRef(null)
+  const regaderaTweenRef = useRef(null)
   const jardineraRef = useRef(null)
   const jardineraImageRef = useRef(null)
   const jardineraBubbleRef = useRef(null)
@@ -671,11 +675,15 @@ export default function App() {
   const handleLandscapeZoneEnter = () => {
     jardineroTweenRef.current?.resume()
     jardineraTweenRef.current?.resume()
+    regaderaTweenRef.current?.play()
   }
 
   const handleLandscapeZoneLeave = () => {
     jardineroTweenRef.current?.pause()
     jardineraTweenRef.current?.pause()
+    // La chica de la regadera termina la vuelta y se queda en reposo (fotograma 0).
+    regaderaTweenRef.current?.pause()
+    if (regaderaImageRef.current) regaderaImageRef.current.src = regaderaFrames[0]
   }
 
   const handleAcademyZoneEnter = () => {
@@ -1030,6 +1038,26 @@ export default function App() {
         jardineroTweenRef.current.pause()
       }
 
+      // Chica de la regadera: 1-6 y vuelta 6-1 (12 fotogramas) a 8 fps, con una
+      // pausa muy corta entre vueltas. En reposo, fotograma 0.
+      if (regaderaImageRef.current) {
+        const sequence = [1, 2, 3, 4, 5, 6, 6, 5, 4, 3, 2, 1]
+        const regaderaState = { step: 0 }
+        regaderaTweenRef.current = gsap.to(regaderaState, {
+          step: sequence.length - 1,
+          duration: (sequence.length - 1) / 8,
+          ease: `steps(${sequence.length - 1})`,
+          repeat: -1,
+          repeatDelay: 0.35,
+          paused: true,
+          onUpdate: () => {
+            if (regaderaImageRef.current) {
+              regaderaImageRef.current.src = regaderaFrames[sequence[Math.round(regaderaState.step)]]
+            }
+          },
+        })
+      }
+
       if (jardineraRef.current && jardineraImageRef.current) {
         const jardineraState = { frame: 0 }
         const totalFrames = jardineraFrames.length
@@ -1050,14 +1078,17 @@ export default function App() {
 
         setBubbleInitialState(jardineraBubbleRef)
 
+        // Animacion corta: pausa pequena arriba y otra antes de repetir.
         jardineraTweenRef.current = createRandomPausedFrameTween({
           frameDuration,
           onUpdate: () => {
             setAnimatedFrame(jardineraImageRef, jardineraFrames, jardineraState.frame)
           },
+          pauseDuration: 0.6,
           state: jardineraState,
           totalFrames,
         })
+        jardineraTweenRef.current.to({}, { duration: 0.8 })
         jardineraTweenRef.current.pause()
       }
 
@@ -2420,6 +2451,14 @@ export default function App() {
               streetLamp={streetLampLayer}
               businessCardOpen={isBusinessCardOpen}
               house={houseLayer}
+              houseExtras={
+                <img
+                  ref={regaderaImageRef}
+                  src={regaderaFrames[0]}
+                  alt="Chica regando"
+                  style={{ position: 'absolute', left: '50.8875%', top: '14.5111%', width: '3.575%', height: 'auto', maxWidth: 'none' }}
+                />
+              }
               hotspots={sceneHotspots}
               onNavigate={handleNavigate}
               onBackgroundLoad={handleBackgroundLoad}

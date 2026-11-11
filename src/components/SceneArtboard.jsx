@@ -11,6 +11,7 @@ export default function SceneArtboard({
   bird,
   cartela,
   house,
+  houseExtras = null,
   onNavigate,
   onBackgroundLoad,
   onCloseBusinessCard,
@@ -156,6 +157,11 @@ export default function SceneArtboard({
               className={house.className}
               style={house.style}
             />
+            {houseExtras ? (
+              <div className={house.className} style={{ ...house.style, aspectRatio: '8000 / 4500' }}>
+                {houseExtras}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

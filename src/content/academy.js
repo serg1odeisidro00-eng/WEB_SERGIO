@@ -69,7 +69,7 @@ export const academyCopy = {
     prices: 'TARIFAS A CONSULTAR SEGÚN FORMATO Y FASE DEL PROYECTO.',
     methodTitle: 'EL MÉTODO EN LA MESA: DEL CONCEPTO AL CLIENTE',
     method: [
-      ['INVESTIGACIÓN Y PUNTO DE PARTIDA', 'Búsqueda de referentes sólidos, delimitación del problema y formulación de una hipótesis clara. Evitamos el vacío de empezar a proyectar sin una base firme que justifique cada decisión posterior, ya sea para un espacio efímero, un ajardinamiento o una identidad visual.'],
+      ['INVESTIGACIÓN Y PUNTO DE PARTIDA', 'Búsqueda de referentes sólidos, delimitación del problema y formulación de una hipótesis clara. Evitamos el vacío de empezar a proyectar sin una base firme que justifique cada decisión posterior, ya sea para un espacio efímero, un proyecto de paisajismo o una identidad visual.'],
       ['RESOLUCIÓN TÉCNICA Y DIRECCIÓN DE ARTE', 'Coherencia formal, escala, materiales, jerarquías visuales y uso de la retícula. Ajustamos la solución proyectual según las necesidades de tu disciplina para que la ejecución técnica respete la idea original.'],
       ['LA VENTA DE LA IDEA (DEL TRIBUNAL AL MERCADO)', 'Traducir la complejidad del diseño a un lenguaje comprensible, convincente y solvente. Enseñar a argumentar el valor del proyecto no solo para aprobar ante un profesor, sino para que sea viable y deseable ante un cliente real.'],
       ['DISCURSO Y NARRATIVA DE PRESENTACIÓN', 'Estructura de la defensa oral, ritmo expositivo, síntesis visual en láminas y preparación ante posibles objeciones o preguntas críticas.'],

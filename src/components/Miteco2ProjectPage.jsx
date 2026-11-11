@@ -2,9 +2,9 @@ import ProjectDetailPage from './ProjectDetailPage'
 
 export const miteco2Copy = {
   es: {
-    title: 'Proyecto Ajardinamiento MITECO 2',
+    title: 'Proyecto Paisajismo MITECO 2',
     location: 'Madrid, España',
-    alt: 'Panel del proyecto Ajardinamiento MITECO 2',
+    alt: 'Panel del proyecto Paisajismo MITECO 2',
     details: 'DATOS PROYECTO',
     paragraphs: [
       'Esta segunda propuesta para el mismo cliente y concurso explora una dirección diferente, centrada en la relación entre geometría, naturaleza y percepción del espacio. El proyecto utiliza una malla de setos recortados y superficies de tierra para construir un patrón que organiza el vacío y genera una experiencia más contemplativa y sensorial dentro de una arquitectura de carácter monumental.',

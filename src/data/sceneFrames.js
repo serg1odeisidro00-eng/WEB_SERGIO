@@ -99,3 +99,9 @@ export const mujerSentadaFrames = Array.from(
   { length: 12 },
   (_, index) => `/Frames/mujer_sentada/${index}.png`,
 )
+
+// Chica de la regadera (paisajismo): 0 = reposo (recortada de Casa.png), 1-6 animacion.
+export const regaderaFrames = Array.from(
+  { length: 7 },
+  (_, index) => `/Frames/regadera/${index}.png`,
+)

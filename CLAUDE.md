@@ -208,3 +208,12 @@ claro en español.
   Quitado `scene-scaffold-behind` (traía cabeza de la chica y relleno blanco);
   restaurada en `fondo.jpg` la franja superior (y < 21,5 %) desde
   `fondo_before_ghost.jpg` porque el borrado se comía parte del sol.
+- 2026-11-12 (3): Paisajismo. Chica de la regadera recortada de Casa.png a
+  `public/Frames/regadera/0.png` (reposo) + 1-6 (Drive "Paisajismo", líneas
+  oscurecidas, cartel de madera por delante), capa dentro de la casa
+  (`houseExtras`, x 50,89 % y 14,51 % ancho 3,575 % de Casa). Secuencia
+  1-6-1 (12) a 8 fps con 0,35 s de pausa; al salir vuelve a 0. Señor del
+  taburete: fotogramas 7 y 8 sustituidos por Frame 7/8 de JUNTO copia.
+  Chica de la maceta: pausas cortas (0,6 s arriba, 0,8 s al final).
+  "Ajardinamiento" → "Paisajismo" en textos (MITECO, Academia). Copias:
+  scratchpad `Casa_before_regadera.png`, `fondo_before_regadera.jpg`.
