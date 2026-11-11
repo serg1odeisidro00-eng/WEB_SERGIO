@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import ContactForm from './ContactForm'
 import PageFooter from './PageFooter'
 import PageHeader from './PageHeader'
 
@@ -61,6 +62,8 @@ export default function ContactPage({ activePage, onBack, onNavigate }) {
           </div>
         </div>
       </div>
+
+      <ContactForm language={language} />
 
       <PageFooter />
     </section>

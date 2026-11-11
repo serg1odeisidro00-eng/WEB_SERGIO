@@ -228,3 +228,26 @@ claro en español.
   bodega, nave_16). SVG con fotos dentro: fotos reducidas a su tamaño visible
   a 2400 px. Borrados 6 SVG que no se usaban. Originales en scratchpad
   `opt/svg_backup` (y en git, commit anterior).
+- 2026-11-12 (6): sofá de Diseño de interiores: avance lineal sincronizado con
+  los pasos (fotogramas 3-14), 4 fps, recorrido 41,8 → 50 %, pausa 1,2-2,5 s.
+  Cartel del cuadro: Sergio prefiere los fotogramas originales (sin cambios).
+- 2026-11-12 (7): mejoras técnicas tras una revisión externa (que miraba
+  m047.es, todavía con la web antigua del amigo):
+  - Direcciones propias por página (`src/lib/routes.js`): /proyectos,
+    /proyectos/<id>, /estudio, /contacto, /noticias/<n>, /academia, /tienda,
+    /aviso-legal, /privacidad, /cookies. Si se entra directo a una página, la
+    portada no se descarga hasta ir a ella.
+  - SEO y vista previa al compartir: `src/content/pageMeta.js` (título,
+    descripción e imagen de cada página; al añadir proyecto o noticia, añadir
+    su entrada) + `scripts/prerender.mjs` (tras `vite build` crea un
+    index.html por página, sitemap.xml y robots.txt; usa el dominio de
+    producción de Vercel). Imágenes de vista previa en `public/og/`.
+  - Idioma recordado (localStorage) y `lang` del HTML. Italiano con acentos.
+    Estudio en italiano. "Próximamente" de la tienda traducido.
+  - Contacto: formulario "Cuéntanos tu proyecto" (mailto, como Academia) y
+    botón de WhatsApp (`src/content/contact.js`).
+  - Páginas legales (`src/content/legal.js`, `LegalPage.jsx`); falta NIF.
+  - Accesibilidad: zonas de la portada y tarjetas de proyecto con teclado.
+  - Favicon de 10 KB (`favicon.ico` + `apple-touch-icon.png`), fuentes en woff2.
+  - Estadística: `@vercel/analytics` (sin cookies); Sergio debe activarla en
+    Vercel > proyecto > Analytics.

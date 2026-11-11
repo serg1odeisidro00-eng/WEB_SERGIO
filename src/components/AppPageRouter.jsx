@@ -11,6 +11,7 @@ import ElBosqueProjectPage from './ElBosqueProjectPage'
 import ElCirculoProjectPage from './ElCirculoProjectPage'
 import ElRastroProjectPage from './ElRastroProjectPage'
 import EneoProjectPage from './EneoProjectPage'
+import LegalPage from './LegalPage'
 import EspacioExpositivoProjectPage from './EspacioExpositivoProjectPage'
 import FiestasLocalesProjectPage from './FiestasLocalesProjectPage'
 import HargokProjectPage from './HargokProjectPage'
@@ -63,6 +64,9 @@ const projectPages = {
 const standardPages = {
   academy: AcademyPage,
   contact: ContactPage,
+  cookies: LegalPage,
+  legal: LegalPage,
+  privacy: LegalPage,
   news: NewsPage,
   shop: ShopPage,
   studio: StudioPage,

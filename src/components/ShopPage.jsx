@@ -1,9 +1,12 @@
 import { useState } from 'react'
+import { useLanguage } from '../context/LanguageContext'
 import PageFooter from './PageFooter'
 import PageHeader from './PageHeader'
 
 export default function ShopPage({ activePage, onBack, onNavigate }) {
   const [isSpanish, setIsSpanish] = useState(false)
+  const { language } = useLanguage()
+  const comingSoon = { es: 'Próximamente...', en: 'Coming soon...', it: 'Prossimamente...' }[language]
 
   return (
     <section className="projects-page shop-page">
@@ -25,7 +28,7 @@ export default function ShopPage({ activePage, onBack, onNavigate }) {
       />
 
       <div className="shop-page-stage">
-        <div className="shop-page-message">Coming soon...</div>
+        <div className="shop-page-message">{comingSoon}</div>
       </div>
 
       <PageFooter />

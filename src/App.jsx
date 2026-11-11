@@ -1,38 +1,11 @@
 ﻿import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import AppPageRouter from './components/AppPageRouter'
-import AcademyPage from './components/AcademyPage'
-import AlbumMusicalProjectPage from './components/AlbumMusicalProjectPage'
-import BoatProjectPage from './components/BoatProjectPage'
-import VKartingProjectPage from './components/VKartingProjectPage'
-import CapillaProjectPage from './components/CapillaProjectPage'
-import CartelTeatroProjectPage from './components/CartelTeatroProjectPage'
-import ContactPage from './components/ContactPage'
-import CrossProjectPage from './components/CrossProjectPage'
-import ElBosqueProjectPage from './components/ElBosqueProjectPage'
-import EfimeroProjectPage from './components/EfimeroProjectPage'
-import ElCirculoProjectPage from './components/ElCirculoProjectPage'
-import ElRastroProjectPage from './components/ElRastroProjectPage'
-import EneoProjectPage from './components/EneoProjectPage'
-import EspacioExpositivoProjectPage from './components/EspacioExpositivoProjectPage'
-import FiestasLocalesProjectPage from './components/FiestasLocalesProjectPage'
-import HargokProjectPage from './components/HargokProjectPage'
-import HazProjectPage from './components/HazProjectPage'
-import IlustracionesProjectPage from './components/IlustracionesProjectPage'
-import MitecoProjectPage from './components/MitecoProjectPage'
-import Nave16ProjectPage from './components/Nave16ProjectPage'
-import PlaygroundProjectPage from './components/PlaygroundProjectPage'
-import PodcastProjectPage from './components/PodcastProjectPage'
-import PackagingProjectPage from './components/PackagingProjectPage'
-import PgProjectPage from './components/PgProjectPage'
-import ProjectsPage from './components/ProjectsPage'
 import SceneArtboard from './components/SceneArtboard'
+import { pathForState, stateFromLocation } from './lib/routes'
+import { applyPageMeta } from './lib/pageMeta'
+import { pageMeta } from './content/pageMeta'
 import { getAmbientPosition, installAudioUnlock, isAudioUnlocked, loadSceneAudio, playRing, setAmbientPlaying, stopRing } from './lib/sceneAudio'
-import ShopPage from './components/ShopPage'
-import SoldrinkProjectPage from './components/SoldrinkProjectPage'
-import TelefonicaProjectPage from './components/TelefonicaProjectPage'
-import StudioPage from './components/StudioPage'
-import UfvProjectPage from './components/UfvProjectPage'
 import {
   arbolFrames,
   banquitoFrames,
@@ -341,8 +314,13 @@ export default function App() {
   // hasta que todo ha cargado y el visitante pulsa (ese clic activa el sonido).
   const [hasEntered, setHasEntered] = useState(false)
   const [isScaffoldLeaving, setIsScaffoldLeaving] = useState(false)
-  const [activePage, setActivePage] = useState('home')
-  const [projectsFilter, setProjectsFilter] = useState('all')
+  // La pagina inicial sale de la direccion (por ejemplo /proyectos/capilla).
+  const [initialRoute] = useState(() => {
+    const route = stateFromLocation()
+    return pageMeta[route.pageId] ? route : { pageId: 'home', filterId: 'all', searchQuery: '' }
+  })
+  const [activePage, setActivePage] = useState(initialRoute.pageId)
+  const [projectsFilter, setProjectsFilter] = useState(initialRoute.filterId)
   const [projectsSearch, setProjectsSearch] = useState('')
   const [isBusinessCardOpen, setIsBusinessCardOpen] = useState(false)
   const [hasOpenedBusinessCard, setHasOpenedBusinessCard] = useState(false)
@@ -485,17 +463,17 @@ export default function App() {
           searchQuery: '',
         }
 
-    window.history.pushState({ app: 'm047', ...nextState }, '', window.location.href)
+    window.history.pushState({ app: 'm047', ...nextState }, '', pathForState(nextState))
     applyNavigationState(nextState)
   }
 
   useEffect(() => {
     const savedState = window.history.state
 
-    if (savedState?.app === 'm047') {
+    if (savedState?.app === 'm047' && savedState.pageId === initialRoute.pageId) {
       applyNavigationState(savedState)
     } else {
-      window.history.replaceState({ app: 'm047', pageId: 'home', filterId: 'all', searchQuery: '' }, '', window.location.href)
+      window.history.replaceState({ app: 'm047', ...initialRoute }, '', window.location.href)
     }
 
     const handlePopState = (event) => {
@@ -507,6 +485,17 @@ export default function App() {
     window.addEventListener('popstate', handlePopState)
     return () => window.removeEventListener('popstate', handlePopState)
   }, [])
+
+  // Cada pagina tiene su direccion, su titulo y su descripcion (para Google
+  // y para la vista previa al compartir el enlace).
+  useEffect(() => {
+    const expectedPath = pathForState({ pageId: activePage, filterId: activePage === 'projects' ? projectsFilter : 'all' })
+    const currentPath = window.location.pathname + window.location.search
+    if (activePage !== stateFromLocation().pageId && currentPath !== expectedPath) {
+      window.history.pushState({ app: 'm047', pageId: activePage, filterId: 'all', searchQuery: '' }, '', expectedPath)
+    }
+    applyPageMeta(activePage)
+  }, [activePage, projectsFilter])
 
   useEffect(() => {
     registerNavigate(handleNavigate)
@@ -831,7 +820,15 @@ export default function App() {
     }
   }
 
+  // Si se entra directamente a otra pagina (por ejemplo un proyecto), las
+  // imagenes de la portada no se descargan hasta que se va a la portada.
+  const [isSceneWanted, setIsSceneWanted] = useState(initialRoute.pageId === 'home')
   useEffect(() => {
+    if (activePage === 'home') setIsSceneWanted(true)
+  }, [activePage])
+
+  useEffect(() => {
+    if (!isSceneWanted) return undefined
     let isCancelled = false
     const uniqueAssets = [...new Set(criticalSceneAssets)]
 
@@ -886,7 +883,7 @@ export default function App() {
     return () => {
       isCancelled = true
     }
-  }, [])
+  }, [isSceneWanted])
 
   useEffect(() => {
     if (!isAssetsReady || activePage !== 'home') return
@@ -2177,273 +2174,11 @@ export default function App() {
           : 'min-h-screen bg-white px-8 py-6 text-stone-950'
       }
     >
-      {isAssetsReady && activePage !== 'home' ? (
+      {activePage !== 'home' ? (
         <AppPageRouter
           activePage={activePage}
           projectsFilter={projectsFilter}
           projectsSearch={projectsSearch}
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'projects' ? (
-        <ProjectsPage
-          activePage={activePage}
-          initialFilter={projectsFilter}
-          initialSearch={projectsSearch}
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-          onOpenProject={(projectId) => {
-            if (projectId === 'telefonica') {
-              setActivePage('project-telefonica')
-            }
-
-            if (projectId === 'el-bosque') {
-              setActivePage('project-el-bosque')
-            }
-
-            if (projectId === 'capilla') {
-              setActivePage('project-capilla')
-            }
-
-            if (projectId === 'nave-16') {
-              setActivePage('project-nave-16')
-            }
-
-            if (projectId === 'ufv') {
-              setActivePage('project-ufv')
-            }
-
-            if (projectId === 'efimero') {
-              setActivePage('project-efimero')
-            }
-
-            if (projectId === 'espacio-expositivo') {
-              setActivePage('project-espacio-expositivo')
-            }
-
-            if (projectId === 'playground') {
-              setActivePage('project-playground')
-            }
-
-            if (projectId === 'el-circulo') {
-              setActivePage('project-el-circulo')
-            }
-
-            if (projectId === 'cartel-teatro') {
-              setActivePage('project-cartel-teatro')
-            }
-
-            if (projectId === 'el-rastro') {
-              setActivePage('project-el-rastro')
-            }
-
-            if (projectId === 'hargok') {
-              setActivePage('project-hargok')
-            }
-
-            if (projectId === 'haz') {
-              setActivePage('project-haz')
-            }
-
-            if (projectId === 'podcast') {
-              setActivePage('project-podcast')
-            }
-
-            if (projectId === 'eneo') {
-              setActivePage('project-eneo')
-            }
-
-            if (projectId === 'fiestas-locales') {
-              setActivePage('project-fiestas-locales')
-            }
-
-            if (projectId === 'packaging') {
-              setActivePage('project-packaging')
-            }
-
-            if (projectId === 'ilustraciones') {
-              setActivePage('project-ilustraciones')
-            }
-
-            if (projectId === 'cross') {
-              setActivePage('project-cross')
-            }
-
-            if (projectId === 'pg') {
-              setActivePage('project-pg')
-            }
-
-            if (projectId === 'boat') {
-              setActivePage('project-boat')
-            }
-
-            if (projectId === 'album-musical') {
-              setActivePage('project-album-musical')
-            }
-
-            if (projectId === 'v-karting') {
-              setActivePage('project-v-karting')
-            }
-
-            if (projectId === 'soldrink') {
-              setActivePage('project-soldrink')
-            }
-
-            if (projectId === 'miteco') {
-              setActivePage('project-miteco')
-            }
-
-            if (projectId === 'miteco-2') {
-              setActivePage('project-miteco')
-            }
-          }}
-        />
-      ) : isAssetsReady && activePage === 'project-telefonica' ? (
-        <TelefonicaProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-el-bosque' ? (
-        <ElBosqueProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-capilla' ? (
-        <CapillaProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-nave-16' ? (
-        <Nave16ProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-ufv' ? (
-        <UfvProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-efimero' ? (
-        <EfimeroProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-espacio-expositivo' ? (
-        <EspacioExpositivoProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-playground' ? (
-        <PlaygroundProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-el-circulo' ? (
-        <ElCirculoProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-cartel-teatro' ? (
-        <CartelTeatroProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-el-rastro' ? (
-        <ElRastroProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-hargok' ? (
-        <HargokProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-haz' ? (
-        <HazProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-podcast' ? (
-        <PodcastProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-eneo' ? (
-        <EneoProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-fiestas-locales' ? (
-        <FiestasLocalesProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-packaging' ? (
-        <PackagingProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-ilustraciones' ? (
-        <IlustracionesProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-cross' ? (
-        <CrossProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-pg' ? (
-        <PgProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-boat' ? (
-        <BoatProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-album-musical' ? (
-        <AlbumMusicalProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-v-karting' ? (
-        <VKartingProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-soldrink' ? (
-        <SoldrinkProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'project-miteco' ? (
-        <MitecoProjectPage
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'studio' ? (
-        <StudioPage
-          activePage={activePage}
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'contact' ? (
-        <ContactPage
-          activePage={activePage}
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'shop' ? (
-        <ShopPage
-          activePage={activePage}
-          onBack={() => setActivePage('home')}
-          onNavigate={handleNavigate}
-        />
-      ) : isAssetsReady && activePage === 'academy' ? (
-        <AcademyPage
-          activePage={activePage}
           onBack={() => setActivePage('home')}
           onNavigate={handleNavigate}
         />

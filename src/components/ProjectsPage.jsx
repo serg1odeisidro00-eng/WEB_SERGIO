@@ -22,7 +22,7 @@ const projectItems = [
   { id: 'capilla', title: 'Diseño e iluminación Capilla', location: 'Madrid, España', category: 'interiors', iconSrc: '/proyectos/iconos/ETSAM.png', imageSrc: '/proyectos/imagenes/ETSAM.png' },
   { id: 'pg', title: 'Identidad Corporativa PG', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/iconos/corporativa_pg.png', imageSrc: '/proyectos/imagenes/corporativa_pg.png' },
   { id: 'boat', title: 'Escultura Boat', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/iconos/el_barco.png', imageSrc: '/proyectos/imagenes/el_barco.png' },
-  { id: 'telefonica', title: 'Proyecto de Oficinas en Edificio Telef\u00f3nica', location: 'Segovia, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/iconos/edificio_telefonica.png', imageSrc: '/proyectos/imagenes/edificio_telefonica.png' },
+  { id: 'telefonica', title: 'Proyecto de Oficinas en Edificio Telef\u00f3nica', location: 'Madrid, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/iconos/edificio_telefonica.png', imageSrc: '/proyectos/imagenes/edificio_telefonica.png' },
   { id: 'miteco', title: 'Proyecto Paisajismo MITECO', location: 'Madrid, Espa\u00f1a', category: 'landscape', iconSrc: '/proyectos/iconos/MITECO.png', imageSrc: '/proyectos/imagenes/MITECO.png' },
   { id: 'el-bosque', title: 'Centro cultural El Bosque', location: 'Madrid, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/iconos/EL_BOSQUE.png', imageSrc: '/proyectos/imagenes/EL_BOSQUE.png' },
   { id: 'album-musical', title: 'Direcci\u00f3n de arte \u00e1lbum musical', location: 'Madrid, Espa\u00f1a', category: 'graphic', iconSrc: '/proyectos/iconos/albun_musical.png', imageSrc: '/proyectos/imagenes/albun_musical.png' },
@@ -68,6 +68,21 @@ function ProjectCard({
       data-category={category}
       onClick={onOpen}
     >
+      {projectId ? (
+        // Enlace real (se puede abrir en otra pestana, usar con teclado y Google lo sigue).
+        <a
+          className="projects-card-link"
+          href={`/proyectos/${projectId}`}
+          aria-label={`${title}. ${location}`}
+          onClick={(event) => {
+            if (event.metaKey || event.ctrlKey || event.shiftKey || event.button === 1) {
+              event.stopPropagation()
+              return
+            }
+            event.preventDefault()
+          }}
+        />
+      ) : null}
       <div className="projects-card-content">
         <div className="projects-card-media">
           <div className="projects-card-icon">

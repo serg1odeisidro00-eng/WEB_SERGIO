@@ -23,7 +23,13 @@ const studioGroups = [
 
 export default function StudioPage({ activePage, onBack, onNavigate }) {
   const { language } = useLanguage()
-  const studioCopy = language === 'es' ? studioGroups : [
+  const studioCopy = language === 'es' ? studioGroups : language === 'it' ? [
+    ['Tutto è cominciato qui, in un appartamento di via Camarena 228, dove un padre insegnò a suo figlio tutto ciò che sapeva. Fin da piccolo imparò che per ogni cosa c’era una soluzione e che, se non esisteva, era semplicemente perché nessuno era stato abbastanza coraggioso o creativo da inventarla.'],
+    ['Gli insegnarono a pensare in modo diverso, a cercare soluzioni radicali dove altri vedevano solo l’impossibile e a godersi il processo. Quel bambino passava ore ad aiutare il padre e il nonno a costruire qualsiasi cosa, imparando con le mani e sfruttando la sua statura per infilarsi dove loro non entravano. Fu così che decise che da grande sarebbe diventato “architettologo”, come diceva lui.'],
+    ['Con il tempo si innamorarono del design, e padre e figlio finirono per studiare Architettura degli Interni all’ETSAM. Fu senza dubbio una delle decisioni migliori della loro vita: davanti a loro si aprì un mondo completamente nuovo.'],
+    ['Forse non erano i migliori, ma si facevano notare. Dove altri vedevano problemi, loro vedevano possibilità. Ogni progetto era una sfida, quasi un gioco: una nuova occasione per risolvere qualcosa in modo ribelle, creativo e utile.'],
+    ['Con il tempo, tutto quel cammino condiviso li portò a fondare insieme uno studio. Due sguardi diversi che, invece di scontrarsi, si completano alla perfezione e trovano, in quell’unione, soluzioni uniche.'],
+  ] : [
     ['It all started here, in a flat on Camarena 228, where a father taught his son everything he knew. From a very early age, he learned that every problem had a solution, and that if one did not exist, it was simply because nobody had been brave or creative enough to invent it.'],
     ['They taught him to think differently, to look for radical solutions where others only saw the impossible, and to enjoy the process. As a child he spent hours helping his father and grandfather build anything at all, learning with his hands and using his small size to get where they could not. That is how he decided that he would grow up to be an "architectologist", as he called it.'],
     ['Over time, they fell in love with design, and father and son both went on to study Interior Architecture at ETSAM. Without doubt, it was one of the best decisions of their lives: a completely new world opened up before them.'],
