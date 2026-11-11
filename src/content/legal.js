@@ -1,12 +1,11 @@
 // Textos legales (aviso legal, privacidad y cookies). Solo en espanol.
-// Datos del titular: completar NIF y direccion cuando Sergio los tenga
-// (mientras sean null no se muestran).
+// Sergio no quiere publicar sus datos personales (la web es un portfolio con
+// contacto y no guarda datos): solo aparecen el estudio y su email.
+// Si algun dia vende por la web (tienda, academia de pago), anadir nombre y NIF.
 
 export const legalData = {
-  owner: 'Sergio de Isidro',
   brand: 'Estudio M047',
-  nif: null,
-  address: '28047 Madrid (España)',
+  address: 'Madrid (España)',
   email: 'info@m047.es',
   phone: '(+34) 633 878 755',
   updated: 'noviembre de 2026',
@@ -18,10 +17,9 @@ export const legalPages = {
   legal: {
     title: 'Aviso legal',
     sections: [
-      ['Titular del sitio web', [
-        `En cumplimiento de la Ley 34/2002, de Servicios de la Sociedad de la Información y de Comercio Electrónico (LSSI-CE), se informa de que este sitio web pertenece a ${d.owner} (${d.brand}).`,
-        `Domicilio: ${d.address}. Correo electrónico: ${d.email}. Teléfono: ${d.phone}.`,
-        ...(d.nif ? [`NIF: ${d.nif}.`] : []),
+      ['Sobre este sitio web', [
+        `Este sitio web es el portfolio de ${d.brand}, estudio de diseño con sede en ${d.address}.`,
+        `Contacto: ${d.email} · ${d.phone}.`,
       ]],
       ['Objeto', [
         'Este sitio web presenta la actividad del estudio, sus proyectos, noticias, la academia y la tienda online, y ofrece medios para ponerse en contacto con el estudio.',
@@ -41,7 +39,7 @@ export const legalPages = {
     title: 'Política de privacidad',
     sections: [
       ['Responsable', [
-        `${d.owner} (${d.brand}), ${d.address}. Contacto: ${d.email}.`,
+        `${d.brand}, ${d.address}. Contacto: ${d.email}.`,
       ]],
       ['Qué datos tratamos y para qué', [
         'Esta web no tiene registro de usuarios ni guarda los datos de los formularios. Los formularios de Contacto y Academia solo preparan un correo en tu propio programa de correo; si decides enviarlo, recibiremos tu nombre, email, teléfono (si lo indicas) y el mensaje.',
