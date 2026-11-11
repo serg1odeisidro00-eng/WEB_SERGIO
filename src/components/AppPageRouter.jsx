@@ -20,6 +20,7 @@ import HargokProjectPage from './HargokProjectPage'
 import HazProjectPage from './HazProjectPage'
 import IlustracionesProjectPage from './IlustracionesProjectPage'
 import MitecoProjectPage from './MitecoProjectPage'
+import Miteco2ProjectPage from './Miteco2ProjectPage'
 import Nave16ProjectPage from './Nave16ProjectPage'
 import NewsArticlePage from './NewsArticlePage'
 import NewsPage from './NewsPage'
@@ -52,6 +53,7 @@ const projectPages = {
   'project-haz': HazProjectPage,
   'project-ilustraciones': IlustracionesProjectPage,
   'project-miteco': MitecoProjectPage,
+  'project-miteco-2': Miteco2ProjectPage,
   'project-nave-16': Nave16ProjectPage,
   'project-packaging': PackagingProjectPage,
   'project-pg': PgProjectPage,

@@ -120,7 +120,7 @@ export const pageMeta = {
     "image": "/og/fiestas-locales.jpg"
   },
   "project-hargok": {
-    "title": "Tipografía Harvok · M047",
+    "title": "Tipografía Hargok · M047",
     "description": "Diseño de dos tipografías sans serif de creación propia, desarrolladas en colaboración con otro diseñador a partir de una idea común: reducir la letra a su mínima expresión sin perder su…",
     "image": "/og/hargok.jpg"
   },
@@ -133,6 +133,11 @@ export const pageMeta = {
     "title": "Colección de ilustraciones · M047",
     "description": "Proyecto de ilustración para el catálogo de Plantae, una empresa especializada en soluciones tecnológicas para la monitorización y gestión de cultivos. El trabajo traduce procesos complejos de…",
     "image": "/og/ilustraciones.jpg"
+  },
+  "project-miteco-2": {
+    "title": "Proyecto Paisajismo MITECO 2 · M047",
+    "description": "Segunda propuesta para el MITECO: una malla de setos recortados y superficies de tierra que organiza el vacío y crea una experiencia contemplativa y sensorial.",
+    "image": "/og/miteco-2.jpg"
   },
   "project-miteco": {
     "title": "Proyecto de paisajismo MITECO · M047",

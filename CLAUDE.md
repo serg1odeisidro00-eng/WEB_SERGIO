@@ -256,3 +256,13 @@ claro en español.
   justificado con guiones; fichas Artemide y LITESTAR copiadas del PDF
   original `Capilla1.pdf` de Drive a la misma escala). Script y original en
   scratchpad `capfix/`. Páginas legales sin datos personales (decisión de Sergio).
+- 2026-11-12 (9): páginas de proyecto: tipografía según Sergio (título 100 pt
+  ≈ 3,6vw negrita en una sola línea —`fitProjectTitles` en AppPageRouter lo
+  reduce si no cabe—, localización 35 pt ≈ 1,26vw negrita, texto 36 pt ≈
+  1,3vw normal). Cartel de teatro/UFV: texto SVG rehecho (centrado, Arial).
+  Enlaces de Eneo, Packaging, Ilustraciones, PG y Álbum corregidos. Proyectos
+  en 2 departamentos (`category` puede ser lista): Álbum (dirección de arte +
+  gráfico); Stand efímero, Espacio expositivo y Playground (escenografía +
+  interiorismo). MITECO 2 es un proyecto aparte (/proyectos/miteco-2), sin
+  botones de versión. "Hargok" (no Harvok). Marcos blancos recortados en
+  Boat, Ilustraciones, PG y El Bosque. Buscador: Sergio lo deja como está.
