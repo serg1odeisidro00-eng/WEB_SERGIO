@@ -977,7 +977,6 @@ export default function App() {
       if (arbolRef.current && arbolImageRef.current) {
         const arbolState = { frame: 0 }
         const totalFrames = arbolFrames.length
-        const frameDuration = totalFrames / 4
 
         gsap.from(arbolRef.current, {
           opacity: 0,
@@ -986,13 +985,15 @@ export default function App() {
           delay: 0.22,
         })
 
-        arbolTweenRef.current = createRandomPausedFrameTween({
-          frameDuration,
+        // Animacion continua: los fotogramas pasan de corrido a 12 fps en bucle.
+        arbolTweenRef.current = gsap.to(arbolState, {
+          frame: totalFrames - 1,
+          duration: (totalFrames - 1) / 12,
+          ease: `steps(${totalFrames - 1})`,
+          repeat: -1,
           onUpdate: () => {
             setAnimatedFrame(arbolImageRef, arbolFrames, arbolState.frame)
           },
-          state: arbolState,
-          totalFrames,
         })
       }
 
@@ -1317,7 +1318,8 @@ export default function App() {
       if (humoRef.current && humoImageRef.current) {
         const humoState = { frame: 0 }
         const totalFrames = humoFrames.length
-        const frameDuration = (totalFrames - 1) / 4
+        // Animacion continua: 12 fps en bucle (antes 4 fps, iba a saltos).
+        const frameDuration = (totalFrames - 1) / 12
 
         gsap.set(humoRef.current, {
           xPercent: -50,
@@ -1546,11 +1548,13 @@ export default function App() {
       imageRef: arbolImageRef,
       src: arbolFrames[0],
       alt: 'Arbol animado',
+      // Arbol 07 (con raices): tronco en el mismo sitio y apoyado en la misma
+      // linea de suelo que el arbol anterior. Medidas en la capa del edificio.
       style: {
-        left: '89%',
-        top: '60.9%',
-        width: '31%',
-        transform: 'translate(-50%, -50%)',
+        left: '77.65%',
+        top: '48.16%',
+        width: '22.56%',
+        aspectRatio: '515 / 685',
       },
     },
     {

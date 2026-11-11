@@ -141,3 +141,10 @@ claro en español.
   no). Las cajas `*-anchor` usan `aspect-ratio`; ahora App.jsx les fija la
   altura en px (ancho / proporción) en un `useLayoutEffect`. Pendiente de que
   Sergio confirme en Safari. Aquí no hay WebKit para probar (descarga bloqueada).
+- 2026-11-11: animaciones continuas (árbol, humo, pájaros: siempre en marcha,
+  "como vídeo"). Fuentes en Drive > "Animaciones continuas" (.ai = PDF con una
+  capa por fotograma; se separan con `pypdf` poniendo cada OCG en ON y el resto
+  en OFF y renderizando con `pdftocairo -transp`). Árbol sustituido por
+  `Árbol 07.ai` (con raíces), 12 fps en bucle. Humo a 12 fps (antes 4 fps).
+  Humo estático borrado de `fumador.png`. Teléfono: sin relleno blanco entre
+  cable y cuerpo. Pájaros: pendiente del vídeo de referencia.
