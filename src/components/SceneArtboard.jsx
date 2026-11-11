@@ -21,6 +21,7 @@ export default function SceneArtboard({
   superTopCharacters = [],
   topCharacters = [],
   tree,
+  scaffold,
   sceneStyle,
   soundEnabled,
   streetLamp,
@@ -84,6 +85,25 @@ export default function SceneArtboard({
             style={cartela.style}
           />
         </div>
+      ) : null}
+
+      {scaffold ? (
+        <>
+          <div className="scene-overlay pointer-events-none absolute z-[52]">
+            <div className={`scene-scaffold${scaffold.leaving ? ' is-leaving' : ''}`}>
+              <div className="scene-scaffold-clip">
+                <img src="/andamio.webp" alt="Fachada en obras con andamio: esta empresa no funciona pero es muy creativa" />
+              </div>
+              <div className={`scene-scaffold-label${scaffold.ready ? ' is-ready' : ''}`}>{scaffold.label}</div>
+            </div>
+          </div>
+          <button
+            type="button"
+            className={`scene-scaffold-catcher${scaffold.ready ? ' is-ready' : ''}`}
+            aria-label={scaffold.label}
+            onClick={scaffold.onEnter}
+          />
+        </>
       ) : null}
 
       <div className="scene-hotspots-layer absolute inset-0">

@@ -172,3 +172,11 @@ claro en español.
   Sonido: pantalla ENTRAR al terminar de cargar (el clic desbloquea el audio en
   Safari); si el navegador ya permite audio se entra directo. "Entrar sin
   sonido" apaga el sonido.
+- 2026-11-11 (6): pantalla de carga = la portada con el andamio
+  (`public/andamio.webp`, de Drive `Pantalla Carga/Sección_228_carga.svg`,
+  cartel antiguo "228" quitado y lona con "ESTUDIO M047") delante del edificio
+  (`scene-scaffold` en SceneArtboard). Carga en 2 fases: fondo+casa+andamio+
+  árbol+pájaros primero, resto con "CARGANDO n %"; luego "PULSA PARA ENTRAR"
+  (clic en cualquier sitio = desbloquea sonido) y el andamio baja 1,8 s.
+  Pájaros: 13, más bajos (20-40 %), señales de audio en s 1 y 27, sin sonido
+  cada 28 s. Árbol a 6 fps.

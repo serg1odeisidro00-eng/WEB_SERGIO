@@ -154,7 +154,7 @@ function createBirdFlight(container) {
 
   const restart = () => {
     stop()
-    const count = 8
+    const count = 13
     for (let i = 0; i < count; i += 1) {
       const el = document.createElement('img')
       el.className = 'bird-flock-bird'
@@ -163,10 +163,12 @@ function createBirdFlight(container) {
       const size = 2.1 * gsap.utils.random(0.85, 1.12)
       el.style.width = `${size}%`
       container.appendChild(el)
-      const startY = gsap.utils.random(15, 29)
+      // Mas bajos que antes: tambien se ven pasar por delante de las ventanas
+      // de los edificios del fondo.
+      const startY = gsap.utils.random(20, 40)
       birds.push({
         el,
-        delay: i * 0.22 + gsap.utils.random(0, 0.35),
+        delay: i * 0.18 + gsap.utils.random(0, 0.35),
         duration: gsap.utils.random(6.4, 7.6),
         startX: -4 - gsap.utils.random(0, 6),
         endX: 104 + gsap.utils.random(0, 4),
@@ -208,9 +210,9 @@ function createBirdFlight(container) {
 
   return { restart, isActive: () => Boolean(frameId), kill: stop }
 }
-const BIRD_AUDIO_CUES = [1]
+const BIRD_AUDIO_CUES = [1, 27]
 const BIRD_FALLBACK_FIRST = 1.5
-const BIRD_FALLBACK_EVERY = 45
+const BIRD_FALLBACK_EVERY = 28
 
 const staticSceneAssets = [
   FONDO_SRC,
@@ -243,6 +245,17 @@ const sceneAssetUrls = [
   ...lectorFrames,
   ...columpioFrames,
   ...staticSceneAssets,
+]
+
+const loadingScreenAssets = [
+  FONDO_SRC,
+  CASA_SRC,
+  '/andamio.webp',
+  '/edificio_izquierda.svg',
+  '/cartela.svg',
+  '/farola.png',
+  ...birdFrames,
+  ...arbolFrames,
 ]
 
 const criticalSceneAssets = [
@@ -320,6 +333,10 @@ export default function App() {
   // visitante pulsa. Cuando todo ha cargado se muestra ENTRAR: ese clic
   // desbloquea el sonido. Si el navegador ya lo permite, se entra directo.
   const [assetsLoaded, setAssetsLoaded] = useState(false)
+  // Pantalla de carga: la portada se ve con el andamio delante del edificio
+  // hasta que todo ha cargado y el visitante pulsa (ese clic activa el sonido).
+  const [hasEntered, setHasEntered] = useState(false)
+  const [isScaffoldLeaving, setIsScaffoldLeaving] = useState(false)
   const [activePage, setActivePage] = useState('home')
   const [projectsFilter, setProjectsFilter] = useState('all')
   const [projectsSearch, setProjectsSearch] = useState('')
@@ -584,6 +601,7 @@ export default function App() {
   useEffect(() => {
     if (
       !isAssetsReady ||
+      !hasEntered ||
       activePage !== 'home' ||
       hasOpenedBusinessCard
     ) {
@@ -600,7 +618,7 @@ export default function App() {
       window.clearTimeout(firstRing)
       window.clearInterval(phoneInterval)
     }
-  }, [activePage, hasOpenedBusinessCard, isAssetsReady])
+  }, [activePage, hasEntered, hasOpenedBusinessCard, isAssetsReady])
 
   useEffect(() => {
     if (!isAssetsReady || activePage !== 'home') return
@@ -803,54 +821,42 @@ export default function App() {
     let isCancelled = false
     const uniqueAssets = [...new Set(criticalSceneAssets)]
 
-    const preloadAssets = async () => {
-      let loadedAssets = 0
-
-      const markAssetLoaded = () => {
-        loadedAssets += 1
-
-        if (!isCancelled) {
-          setLoadingProgress(
-            Math.min(
-              100,
-              Math.round((loadedAssets / uniqueAssets.length) * 100),
-            ),
-          )
+    const loadImage = (src) =>
+      new Promise((resolve) => {
+        const image = new Image()
+        let hasSettled = false
+        const settle = () => {
+          if (hasSettled) return
+          hasSettled = true
+          window.clearTimeout(timeoutId)
+          resolve()
         }
-      }
+        const timeoutId = window.setTimeout(settle, 12_000)
+        image.onload = settle
+        image.onerror = settle
+        image.src = src
+      })
 
-      await Promise.all(
-        uniqueAssets.map(
-          (src) =>
-            new Promise((resolve) => {
-              const image = new Image()
-              let hasSettled = false
-              const settle = () => {
-                if (hasSettled) return
-                hasSettled = true
-                window.clearTimeout(timeoutId)
-                markAssetLoaded()
-                resolve()
-              }
-              const timeoutId = window.setTimeout(settle, 12_000)
-              image.onload = () => {
-                if (src === FONDO_SRC && image.naturalWidth && image.naturalHeight) {
-                  setSceneRatio(SCENE_IMAGE_RATIO)
-                }
-                settle()
-              }
-              image.onerror = () => {
-                settle()
-              }
-              image.src = src
-            }),
-        ),
-      )
+    const preloadAssets = async () => {
+      // 1) Lo minimo para pintar la pantalla de carga (fondo, casa, andamio y
+      //    las animaciones continuas). 2) El resto, con el porcentaje en el cartel.
+      const firstAssets = [...new Set(loadingScreenAssets)]
+      const restAssets = uniqueAssets.filter((src) => !firstAssets.includes(src))
+      const total = firstAssets.length + restAssets.length
+      let loadedAssets = 0
+      const track = (promise) => promise.then(() => {
+        loadedAssets += 1
+        if (!isCancelled) setLoadingProgress(Math.min(100, Math.round((loadedAssets / total) * 100)))
+      })
 
-      if (!isCancelled) {
-        setAssetsLoaded(true)
-        if (isAudioUnlocked()) setIsAssetsReady(true)
-      }
+      await Promise.all(firstAssets.map((src) => track(loadImage(src))))
+      if (isCancelled) return
+      setSceneRatio(SCENE_IMAGE_RATIO)
+      setIsAssetsReady(true)
+
+      await Promise.all(restAssets.map((src) => track(loadImage(src))))
+      if (isCancelled) return
+      setAssetsLoaded(true)
 
       // Keep non-critical animation frames warm without delaying first paint.
       sceneAssetUrls
@@ -1060,10 +1066,10 @@ export default function App() {
           delay: 0.22,
         })
 
-        // Animacion continua: 8 fps en bucle con una pausa corta (0,5 s) entre vueltas.
+        // Animacion continua: 6 fps en bucle con una pausa corta (0,5 s) entre vueltas.
         arbolTweenRef.current = gsap.to(arbolState, {
           frame: totalFrames - 1,
-          duration: (totalFrames - 1) / 8,
+          duration: (totalFrames - 1) / 6,
           ease: `steps(${totalFrames - 1})`,
           repeat: -1,
           repeatDelay: 0.5,
@@ -2419,6 +2425,18 @@ export default function App() {
               overlayCharacters={overlayCharacters}
               sceneStyle={sceneStyle}
               tree={treeCharacter}
+              scaffold={hasEntered ? null : {
+                ready: assetsLoaded,
+                leaving: isScaffoldLeaving,
+                label: assetsLoaded
+                  ? (language === 'en' ? 'CLICK TO ENTER' : language === 'it' ? 'CLICCA PER ENTRARE' : 'PULSA PARA ENTRAR')
+                  : `${language === 'en' ? 'LOADING' : language === 'it' ? 'CARICAMENTO' : 'CARGANDO'} ${loadingProgress} %`,
+                onEnter: () => {
+                  if (!assetsLoaded || isScaffoldLeaving) return
+                  setIsScaffoldLeaving(true)
+                  window.setTimeout(() => setHasEntered(true), 1900)
+                },
+              }}
               frameStyle={sceneFrameStyle}
               soundEnabled={soundEnabled}
               superTopCharacters={superTopCharacters}
@@ -2431,40 +2449,13 @@ export default function App() {
       ) : (
         <div className="scene-loader" aria-live="polite">
           <div className="scene-loader-frame">
-            <p className="scene-loader-kicker">{assetsLoaded ? 'M047' : 'Loading scene'}</p>
-            {assetsLoaded ? (
-              <>
-                <button
-                  type="button"
-                  className="scene-loader-enter"
-                  onClick={() => setIsAssetsReady(true)}
-                >
-                  {language === 'en' ? 'ENTER' : language === 'it' ? 'ENTRA' : 'ENTRAR'}
-                </button>
-                <button
-                  type="button"
-                  className="scene-loader-mute"
-                  onClick={() => {
-                    setSoundEnabled(false)
-                    setIsAssetsReady(true)
-                  }}
-                >
-                  {language === 'en' ? 'Enter without sound' : language === 'it' ? 'Entra senza audio' : 'Entrar sin sonido'}
-                </button>
-              </>
-            ) : (
-              <>
-                <div className="scene-loader-number">
-                  {String(loadingProgress).padStart(2, '0')}
-                </div>
-                <div className="scene-loader-track">
-                  <div
-                    className="scene-loader-bar"
-                    style={{ width: `${loadingProgress}%` }}
-                  ></div>
-                </div>
-              </>
-            )}
+            <p className="scene-loader-kicker">M047</p>
+            <div className="scene-loader-track">
+              <div
+                className="scene-loader-bar"
+                style={{ width: `${loadingProgress}%` }}
+              ></div>
+            </div>
           </div>
         </div>
       )}
