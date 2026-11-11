@@ -220,3 +220,4 @@ claro en español.
 - 2026-11-12 (4): regadera: Sergio prefiere los fotogramas, el fondo y el
   edificio izquierdo tal como estaban en (3) (sin engrosar líneas ni borrar
   líneas sueltas). Solo cambia la velocidad: 5 fps y 0,15 s de pausa.
+  Reposo (0.png) = copia de 1.png: el dibujo original la tenía duplicada.
