@@ -1181,18 +1181,26 @@ export default function App() {
       }
 
         if (sofaRef.current && sofaImageRef.current) {
+          // Fotograma 2.png = reposo; 3.png-14.png = un ciclo de pasos.
+          // El avance va a velocidad constante y al mismo ritmo que los pasos
+          // (unos 0,68 % por fotograma) para que los pies no resbalen.
           const sofaRestFrame = 1 // Frame 2.png
+          const sofaFirstWalk = 2 // Frame 3.png
+          const sofaLastWalk = sofaFrames.length - 1 // Frame 14.png
+          const sofaFps = 6
+          const sofaStartLeft = '41.8%'
+          const sofaEndLeft = '50%'
           const sofaState = { frame: sofaRestFrame }
-          const totalFrames = sofaFrames.length
-          const frameDuration = totalFrames / 3
-          const maxFrame = totalFrames - 1
+          const walkDuration = (sofaLastWalk - sofaFirstWalk + 1) / sofaFps
+          const showSofaFrame = () => setAnimatedFrame(sofaImageRef, sofaFrames, sofaState.frame)
           const sofaPauseDuration = () => getRandomReversePause()
 
           gsap.set(sofaRef.current, {
             xPercent: -50,
             yPercent: -50,
-          willChange: 'transform',
-        })
+            left: sofaStartLeft,
+            willChange: 'transform',
+          })
 
           gsap.from(sofaRef.current, {
             opacity: 0,
@@ -1203,33 +1211,33 @@ export default function App() {
 
           sofaTweenRef.current = gsap
             .timeline({ repeat: -1, repeatRefresh: true })
+            // Ida: un fotograma de arranque y el ciclo de pasos.
+            .set(sofaState, { frame: sofaFirstWalk - 0.49, onComplete: showSofaFrame })
             .to(sofaState, {
-              frame: maxFrame,
-              duration: frameDuration,
-              ease: `steps(${maxFrame})`,
-              onUpdate: () => {
-                setAnimatedFrame(sofaImageRef, sofaFrames, sofaState.frame)
-              },
-            }, 0)
+              frame: sofaLastWalk + 0.49,
+              duration: walkDuration,
+              ease: 'none',
+              onUpdate: showSofaFrame,
+            })
             .to(sofaRef.current, {
-              left: '49.2%',
-              duration: 3,
-              ease: 'power1.inOut',
-            }, 0)
-            .to(sofaState, {
-              frame: sofaRestFrame,
-              duration: frameDuration,
-              ease: `steps(${maxFrame})`,
-              onUpdate: () => {
-                setAnimatedFrame(sofaImageRef, sofaFrames, sofaState.frame)
-              },
-            }, '>')
-            .to(sofaRef.current, {
-              left: '43.44%',
-              duration: 3,
-              ease: 'power1.inOut',
+              left: sofaEndLeft,
+              duration: walkDuration,
+              ease: 'none',
             }, '<')
-            // The sofa rests only after returning to frame 2.png and its origin.
+            // Vuelta: los mismos pasos al reves (caminan hacia atras).
+            .to(sofaState, {
+              frame: sofaFirstWalk - 0.49,
+              duration: walkDuration,
+              ease: 'none',
+              onUpdate: showSofaFrame,
+            })
+            .to(sofaRef.current, {
+              left: sofaStartLeft,
+              duration: walkDuration,
+              ease: 'none',
+            }, '<')
+            .set(sofaState, { frame: sofaRestFrame, onComplete: showSofaFrame })
+            // Descansan en 2.png en el punto de partida.
             .to({}, { duration: sofaPauseDuration })
 
           sofaMoveTweenRef.current = sofaTweenRef.current
@@ -1719,7 +1727,7 @@ export default function App() {
       imageRef: sofaImageRef,
       src: sofaFrames[1],
       alt: 'Sofa animado',
-      style: { left: '43.44%', top: '56.4%', width: '10%' },
+      style: { left: '41.8%', top: '56.4%', width: '10%' },
     },
     {
       id: 'jardinero',
