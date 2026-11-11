@@ -111,6 +111,10 @@ claro en español.
   las capas dentro de él usan porcentajes distintos a los del fondo. Para
   alinear algo con `fondo.jpg`, ponerlo directamente en el artboard.
 
+## Siguientes pasos
+
+Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
+
 ## Historial de decisiones
 
 - 2026-11-09: la farola de detrás de la furgo estaba dibujada en `fondo.jpg`
