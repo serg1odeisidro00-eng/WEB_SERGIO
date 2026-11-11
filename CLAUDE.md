@@ -203,3 +203,8 @@ claro en español.
   M047. Línea de tierra de la carga: izquierda 0-45 % al 83,15 %, derecha desde
   detrás del andamio (60 %) al 74,75 %, sin escalón. Árbol: línea de tierra
   cortada a la derecha del poste de luz.
+- 2026-11-12 (2): transición del andamio: Sergio se queda con el fundido
+  actual (las maquetas de desmontaje/lona caída le parecieron demasiado).
+  Quitado `scene-scaffold-behind` (traía cabeza de la chica y relleno blanco);
+  restaurada en `fondo.jpg` la franja superior (y < 21,5 %) desde
+  `fondo_before_ghost.jpg` porque el borrado se comía parte del sol.

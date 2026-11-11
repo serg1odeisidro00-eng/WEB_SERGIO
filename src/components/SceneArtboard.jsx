@@ -97,9 +97,6 @@ export default function SceneArtboard({
           </div>
           <div className="scene-overlay pointer-events-none absolute z-[52]">
             <div className={`scene-scaffold${scaffold.leaving ? ' is-leaving' : ''}`}>
-              {/* Lo que asoma por encima del andamio (cartel M047 y arbol de
-                  paisajismo): la parte de arriba del edificio, por detras. */}
-              <img className="scene-scaffold-behind" src={house.src} alt="" />
               <img className="scene-scaffold-img" src="/andamio.webp" alt="Fachada en obras con andamio: esta empresa no funciona pero es muy creativa" />
               <div className={`scene-scaffold-label${scaffold.ready ? ' is-ready' : ''}`}>{scaffold.label}</div>
             </div>
