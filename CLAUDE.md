@@ -303,3 +303,6 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   'playback'` en `sceneAudio.js`). No se puede bajar hasta tocar para entrar y
   3,5 s de animación (`is-scroll-locked` en `<html>`; lo de debajo aparece
   con un fundido).
+- 2026-11-12 (15): páginas interiores en móvil: `PageHeader` usa la cabecera
+  de la portada (M047, buscador, menú a pantalla completa sin fila de sonido),
+  filtros de departamentos en una línea deslizable, pie de la Tienda sobre blanco.

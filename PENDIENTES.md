@@ -60,6 +60,8 @@ Decisión de Sergio (12-nov-2026):
 - Personajes en móvil: todos animados en bucle, sin tener que tocar.
 - Las zonas de cada departamento deben seguir siendo pulsables.
 
+Hecho 12-nov: portada móvil programada (versión de prueba) y páginas interiores
+revisadas en móvil (cabecera como la portada, filtros en una línea deslizable).
 Además, en todas: revisar páginas interiores en móvil (proyectos, noticias,
 academia, contacto, legales), tamaños de letra, cabecera y menú.
 

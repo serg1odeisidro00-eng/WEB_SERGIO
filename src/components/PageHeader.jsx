@@ -1,6 +1,8 @@
 import { useCallback, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import SceneMenu from './SceneMenu'
 import SearchOverlay from './SearchOverlay'
+import { useIsMobile } from '../hooks/useIsMobile'
 
 const navItems = {
   es: [
@@ -37,6 +39,23 @@ export default function PageHeader({
   const { language, setLanguage } = useLanguage()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
   const closeSearch = useCallback(() => setIsSearchOpen(false), [])
+
+  const isMobile = useIsMobile()
+  if (isMobile) {
+    // Movil: la misma cabecera que la portada (M047, buscador y menu a pantalla completa).
+    return (
+      <header className="projects-page-header is-mobile">
+        <button type="button" className="mobile-home-logo" onClick={onBack}>M047</button>
+        <div className="mobile-home-tools">
+          <button type="button" className="mobile-home-sound" aria-label={language === 'es' ? 'Buscar' : language === 'it' ? 'Cerca' : 'Search'} onClick={() => setIsSearchOpen(true)}>
+            <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m16 16 5 5" /></svg>
+          </button>
+          <SceneMenu mobile onNavigate={onNavigate} />
+          {isSearchOpen ? <SearchOverlay onClose={closeSearch} /> : null}
+        </div>
+      </header>
+    )
+  }
 
   return (
     <header className="projects-page-header">

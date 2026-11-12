@@ -106,7 +106,7 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
               </button>
             ))}
 
-            <div className="scene-menu-switch-row">
+            {onSetSoundEnabled ? <div className="scene-menu-switch-row">
               <span className="scene-menu-switch-label">SONIDO</span>
               <div className="scene-menu-switch" role="group" aria-label="Sonido">
                 <button
@@ -127,7 +127,7 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
                   NO
                 </button>
               </div>
-            </div>
+            </div> : null}
           </div>
 
           <div className="scene-menu-footer">
