@@ -735,6 +735,25 @@ export default function App() {
     columpioTweenRef.current?.pause()
   }
 
+  // Movil: no se puede bajar hasta haber tocado para entrar y haber visto un
+  // momento a los personajes moviendose (deseo de Sergio).
+  const [isMobileScrollReady, setIsMobileScrollReady] = useState(false)
+  useEffect(() => {
+    if (!isMobile || activePage !== 'home') return undefined
+    if (!hasEntered) {
+      setIsMobileScrollReady(false)
+      return undefined
+    }
+    const timer = window.setTimeout(() => setIsMobileScrollReady(true), 3500)
+    return () => window.clearTimeout(timer)
+  }, [isMobile, hasEntered, activePage])
+  useEffect(() => {
+    const locked = isMobile && activePage === 'home' && !isMobileScrollReady
+    document.documentElement.classList.toggle('is-scroll-locked', locked)
+    if (locked) window.scrollTo(0, 0)
+    return () => document.documentElement.classList.remove('is-scroll-locked')
+  }, [isMobile, activePage, isMobileScrollReady])
+
   useEffect(() => {
     if (!isMobile || !hasEntered || !isAssetsReady || activePage !== 'home') return undefined
     const timer = window.setTimeout(() => {
@@ -2270,7 +2289,7 @@ export default function App() {
             />
           </div>
         </section>
-        {isMobile ? <MobileHomeBelow onNavigate={handleNavigate} /> : null}
+        {isMobile && isMobileScrollReady ? <MobileHomeBelow onNavigate={handleNavigate} /> : null}
         </>
       ) : (
         <div className="scene-loader" aria-live="polite">

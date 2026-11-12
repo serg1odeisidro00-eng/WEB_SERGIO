@@ -3460,3 +3460,26 @@ a {
   gap: 16px;
   flex-wrap: wrap;
 }
+
+/* Movil: sin desplazamiento hasta entrar y ver un momento la animacion */
+html.is-scroll-locked,
+html.is-scroll-locked body {
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+}
+
+html.is-scroll-locked .scene-frame {
+  touch-action: manipulation;
+}
+
+.mobile-home-intro,
+.mobile-home-floors,
+.mobile-home-footer {
+  animation: mobile-home-in 0.9s ease both;
+}
+
+@keyframes mobile-home-in {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: none; }
+}

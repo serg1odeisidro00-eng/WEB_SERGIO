@@ -12,7 +12,31 @@ const AMBIENT_URL = '/sounds/ambiente_m047.mp3'
 const RING_URL = '/sounds/telefono_timbre.mp3'
 const AMBIENT_VOLUME = 0.18
 const RING_VOLUME = 0.225
-const UNLOCK_EVENTS = ['pointerdown', 'touchstart', 'keydown', 'click']
+const UNLOCK_EVENTS = ['pointerdown', 'touchstart', 'touchend', 'keydown', 'click']
+const SILENT_URL = '/sounds/silencio.mp3'
+let silentElement = null
+
+// iPhone: el sonido de la web (Web Audio) se calla con el interruptor de
+// silencio del lateral. Reproducir un audio mudo con <audio> y marcar la sesion
+// como "playback" hace que suene como un video, aunque el movil este en silencio.
+function keepIosAudioSession() {
+  try {
+    if (navigator.audioSession) navigator.audioSession.type = 'playback'
+  } catch {
+    // navegador sin audioSession
+  }
+  if (silentElement) {
+    if (silentElement.paused) silentElement.play().catch(() => {})
+    return
+  }
+  silentElement = document.createElement('audio')
+  silentElement.setAttribute('x-webkit-airplay', 'deny')
+  silentElement.setAttribute('playsinline', '')
+  silentElement.preload = 'auto'
+  silentElement.loop = true
+  silentElement.src = SILENT_URL
+  silentElement.play().catch(() => {})
+}
 
 let context = null
 let ambientGain = null
@@ -156,6 +180,7 @@ export function stopRing() {
 function unlock() {
   const ctx = getContext()
   if (!ctx) return
+  keepIosAudioSession()
   loadSceneAudio()
   const resumed = ctx.state === 'running' ? Promise.resolve() : ctx.resume()
   resumed
@@ -177,8 +202,13 @@ export function installAudioUnlock() {
   // Pausa el sonido si la pestana se oculta y lo retoma al volver.
   document.addEventListener('visibilitychange', () => {
     if (!context) return
-    if (document.hidden) context.suspend().catch(() => {})
-    else context.resume().then(() => { if (wantsAmbient) startAmbientNow() }).catch(() => {})
+    if (document.hidden) {
+      context.suspend().catch(() => {})
+      silentElement?.pause()
+    } else {
+      silentElement?.play().catch(() => {})
+      context.resume().then(() => { if (wantsAmbient) startAmbientNow() }).catch(() => {})
+    }
   })
 }
 

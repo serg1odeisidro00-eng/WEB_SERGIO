@@ -298,3 +298,8 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   Dirección de arte, Gráfico, Paisajismo, Escenografía, Academia, Contacto;
   imágenes en `public/movil/`) y pie con redes (`MobileHome.jsx`).
   Maquetas y lienzo de diseño: ver `PENDIENTES.md`.
+- 2026-11-12 (14): móvil: sonido en iPhone aunque esté en silencio (`<audio>`
+  mudo `public/sounds/silencio.mp3` + `navigator.audioSession.type =
+  'playback'` en `sceneAudio.js`). No se puede bajar hasta tocar para entrar y
+  3,5 s de animación (`is-scroll-locked` en `<html>`; lo de debajo aparece
+  con un fundido).
