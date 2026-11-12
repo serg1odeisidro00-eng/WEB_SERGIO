@@ -38,20 +38,18 @@ Problemas actuales (notas de Sergio):
 Idea de Sergio: en móvil, todos los personajes se mueven a la vez y en bucle
 (sin tener que pasar el dedo), y el menú sencillo es el protagonista.
 
-Opciones (ver detalle en la conversación; elegir una con maquetas antes de programar):
-- **A. Recorte**: la escena centrada en el edificio ocupando el ancho de la
-  pantalla, laterales recortados, botón de menú fijo y visible, animaciones en
-  bucle. Rápido; no necesita dibujos nuevos.
-- **B. Escena + menú tipo app** (recomendada para empezar): arriba la escena
-  recortada como "cabecera viva" con todo animado; debajo, la lista grande de
-  secciones (Proyectos, Estudio, Contacto, Noticias, Academia, Tienda) con el
-  estilo de la cartela. Navegación cómoda con el pulgar.
-- **C. Escena vertical rediseñada**: Sergio redibuja la sección del bloque en
-  formato vertical (9:16) reutilizando personajes. El mejor resultado, pero
-  necesita trabajo de dibujo. Se pueden hacer antes maquetas para decidir.
-- **D. Deslizar guiado**: escena completa con desplazamiento lateral, empieza
-  en el edificio, botón de menú fijo y una mano/flecha que indica "desliza".
-  La más barata, pero la menos cómoda.
+Maquetas guardadas en `docs/movil/` (`maquetas_A_B_C.jpg`, `maqueta_C_v1_v2.jpg`).
+
+Decisión de Sergio (12-nov-2026):
+- **Favorita: C (vertical)**. Barra fija arriba (M047, sonido, menú), sol y
+  edificio entero ocupando el ancho, debajo una franja de calle con el cartel
+  "Dirección de arte" y el árbol con raíces (sin furgoneta, no cabe), cartela
+  abajo a la derecha y "Toca un piso para entrar". Versión 2 de la maqueta =
+  punto de partida. Simplificar el edificio solo si hace falta (decidirlo con Sergio).
+- **También le gusta A** si los personajes se mueven (todos a la vez, en bucle).
+- B y D descartadas.
+- Personajes en móvil: todos animados en bucle, sin tener que tocar.
+- Las zonas de cada departamento deben seguir siendo pulsables.
 
 Además, en todas: revisar páginas interiores en móvil (proyectos, noticias,
 academia, contacto, legales), tamaños de letra, cabecera y menú.
