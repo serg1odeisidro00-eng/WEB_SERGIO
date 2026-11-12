@@ -3,6 +3,17 @@
 Lista de trabajo acordada con Sergio (12-nov-2026). Ir tachando (`[x]`) lo que
 se haga y anotar la decisión en el historial de `CLAUDE.md`.
 
+## Lista de Sergio (cosas que hace él)
+
+- [ ] Conectar m047.es a Vercel (Claude le guía paso a paso).
+- [ ] Mandarse un correo de prueba a contacto@m047.es e info@m047.es.
+- [ ] Revisar la web en su iPhone (Safari): personajes, sonido, botón atrás.
+- [ ] Tras conectar el dominio: Google Search Console y perfil de empresa en Google.
+- [ ] Revisar las traducciones EN/IT (o pasárselas a alguien nativo).
+- [ ] Pedir 1-2 frases de opinión a clientes reales.
+- [ ] Copia de seguridad de los .af fuera de Drive.
+- [ ] Activar los avisos por correo de Vercel si falla una publicación.
+
 ## 0. Imprescindible antes de difundir la web
 
 - [ ] **Conectar m047.es a Vercel** (proyecto `web-sergio`): Vercel → Settings →
@@ -48,7 +59,7 @@ academia, contacto, legales), tamaños de letra, cabecera y menú.
 
 - [x] Al final de cada proyecto: **proyecto anterior / siguiente** y un enlace
       **"Cuéntanos tu proyecto"** que lleve al formulario de Contacto.
-- [ ] **Proyectos destacados**: 3-4 elegidos por Sergio que salgan primero.
+- [x] **Proyectos destacados**: Nave 16, Playground, Capilla y Stand efímero salen primero.
 - [ ] MITECO 2: imagen de tarjeta e icono propios (ahora: recorte de los arcos
       rojos y el icono de MITECO).
 - [ ] Cartel de teatro / UFV: Sergio enviará el documento bueno de Affinity
@@ -56,14 +67,15 @@ academia, contacto, legales), tamaños de letra, cabecera y menú.
 - [ ] Del diseño `Sección_228_JUNTO copia.svg` (pendientes antiguos): letrero
       del cartel Diseño gráfico, nuevo logo, foto nueva del kart, cartel
       Escenografía. Confirmar con Sergio si siguen pendientes.
-- [ ] Opiniones de clientes (1-2 frases con nombre) en algunos proyectos.
+- [ ] Opiniones de clientes: solo reales (no inventar); pedirlas a Plantae, Soldrink, UFV…
 
 ## 3. Estudio y contenido
 
-- [ ] Foto o dibujo de Sergio y su padre en Estudio (o retrato a línea).
+- [x] Estudio: pie de foto (José Luis de Isidro con su hijo Sergio).
 - [ ] Revisión de traducciones EN/IT (noticias, academia, proyectos, legales).
 - [ ] Academia: precios orientativos ("desde…") si Sergio quiere.
-- [ ] Portfolio en PDF descargable.
+- [x] Portfolio en PDF descargable (`public/m047-portfolio.pdf`, se regenera con
+      `node scripts/build-portfolio.cjs [portada.jpg]` cuando cambien proyectos).
 - [ ] Tienda online: contenido o fecha (ahora "Próximamente").
 - [ ] Noticias nuevas de vez en cuando.
 - [ ] Newsletter sencilla (Brevo/Mailchimp), opcional.

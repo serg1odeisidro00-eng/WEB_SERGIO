@@ -283,3 +283,9 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   siguiente en el orden de `projects.js` + "¿Tienes un proyecto en mente?
   Cuéntanoslo" → Contacto). Página de error `NotFoundPage.jsx` (dirección
   desconocida = pageId `not-found`, noindex, lectora de la portada).
+- 2026-11-12 (12): botón "← Volver a proyectos" en cada proyecto
+  (`ProjectBackLink.jsx`: vuelve atrás si se llegó desde la web, si no va a
+  Proyectos con el filtro del proyecto). Destacados primero en `projects.js`
+  (Nave 16, Playground, Capilla, Stand efímero). Pie de foto en Estudio.
+  Portfolio PDF generado desde la web (`scripts/build-portfolio.cjs`,
+  enlace "Portfolio (PDF)" en el pie). Opiniones de clientes: no inventarlas.
