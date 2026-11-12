@@ -39,6 +39,9 @@ Idea de Sergio: en móvil, todos los personajes se mueven a la vez y en bucle
 (sin tener que pasar el dedo), y el menú sencillo es el protagonista.
 
 Maquetas guardadas en `docs/movil/` (`maquetas_A_B_C.jpg`, `maqueta_C_v1_v2.jpg`).
+Lienzo editable en Claude Design (privado de Sergio): https://claude.ai/artifact/82eCiRCW6zDGnjgwBW9rgY
+(artboards «Opción C», «Opción A» y «Piezas sueltas»). Sergio hará allí sus cambios;
+leerlo con Artifact `read` antes de programar la versión móvil.
 
 Decisión de Sergio (12-nov-2026):
 - **Favorita: C (vertical)**. Barra fija arriba (M047, sonido, menú), sol y
