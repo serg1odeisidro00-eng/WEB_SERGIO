@@ -13,6 +13,7 @@ se haga y anotar la decisión en el historial de `CLAUDE.md`.
 - [ ] Pedir 1-2 frases de opinión a clientes reales.
 - [ ] Copia de seguridad de los .af fuera de Drive.
 - [ ] Activar los avisos por correo de Vercel si falla una publicación.
+- [ ] Diseñar el portfolio en PDF a su gusto (Claude lo enlaza en la web después).
 
 ## 0. Imprescindible antes de difundir la web
 
@@ -74,8 +75,9 @@ academia, contacto, legales), tamaños de letra, cabecera y menú.
 - [x] Estudio: pie de foto (José Luis de Isidro con su hijo Sergio).
 - [ ] Revisión de traducciones EN/IT (noticias, academia, proyectos, legales).
 - [ ] Academia: precios orientativos ("desde…") si Sergio quiere.
-- [x] Portfolio en PDF descargable (`public/m047-portfolio.pdf`, se regenera con
-      `node scripts/build-portfolio.cjs [portada.jpg]` cuando cambien proyectos).
+- [ ] Portfolio en PDF: a Sergio no le gustó la primera versión; lo rehará él
+      (borrador generable con `node scripts/build-portfolio.cjs [portada.jpg]`,
+      no publicado ni enlazado).
 - [ ] Tienda online: contenido o fecha (ahora "Próximamente").
 - [ ] Noticias nuevas de vez en cuando.
 - [ ] Newsletter sencilla (Brevo/Mailchimp), opcional.

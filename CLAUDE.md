@@ -287,5 +287,5 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   (`ProjectBackLink.jsx`: vuelve atrás si se llegó desde la web, si no va a
   Proyectos con el filtro del proyecto). Destacados primero en `projects.js`
   (Nave 16, Playground, Capilla, Stand efímero). Pie de foto en Estudio.
-  Portfolio PDF generado desde la web (`scripts/build-portfolio.cjs`,
-  enlace "Portfolio (PDF)" en el pie). Opiniones de clientes: no inventarlas.
+  Portfolio PDF: borrador con `scripts/build-portfolio.cjs`, no publicado
+  (a Sergio no le gustó; lo diseñará él). Opiniones de clientes: no inventarlas.

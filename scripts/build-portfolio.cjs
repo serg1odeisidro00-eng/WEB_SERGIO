@@ -90,7 +90,7 @@ const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;')
       await img.decode().catch(() => {})
     }
   })
-  const out = path.join(root, 'public', 'm047-portfolio.pdf')
+  const out = path.join(require("os").tmpdir(), "m047-portfolio.pdf")
   await page.pdf({ path: out, width: '297mm', height: '210mm', printBackground: true })
   await browser.close()
   console.log('PDF:', out, Math.round(fs.statSync(out).size / 1024), 'KB')
