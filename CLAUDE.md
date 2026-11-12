@@ -311,3 +311,8 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   cierra y en móvil bloquea el fondo; ficha del estudio para Google (JSON-LD
   ProfessionalService en la portada, `prerender.mjs`); fuente Cormorant (no
   usada) quitada de la carga.
+- 2026-11-12 (17): revisión Lighthouse. Grises de texto un punto más oscuros
+  para que se lean bien (menús/filtros 0,6; pie 0,6; notas #6f6e6d; volver y
+  anterior/siguiente 0,62), enlaces del pie más altos en móvil, lámina con
+  prioridad de carga, precarga de fondo.jpg y Casa.png en la portada, fundido
+  suave (0,45 s) al entrar en cada página interior.

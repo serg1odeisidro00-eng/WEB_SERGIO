@@ -4,7 +4,7 @@ const MOBILE_VERSIONS = new Set(['HAZ.webp', 'MITECO.webp', 'albun_musical.webp'
 
 export default function ProjectImage({ src, alt, className = 'project-detail-image' }) {
   const name = src.split('/').pop()
-  const img = <img className={className} src={src} alt={alt} decoding="async" />
+  const img = <img className={className} src={src} alt={alt} decoding="async" fetchPriority="high" />
   if (!MOBILE_VERSIONS.has(name)) return img
   return (
     <picture>

@@ -1098,7 +1098,7 @@ a {
   padding: 0;
   border: 0;
   background: transparent;
-  color: rgba(17, 17, 17, 0.46);
+  color: rgba(17, 17, 17, 0.6);
   font-family: var(--font-condensed);
   line-height: 1;
   text-transform: uppercase;
@@ -1309,7 +1309,7 @@ a {
 }
 
 .projects-page-footer-link.is-muted {
-  color: rgba(17, 17, 17, 0.42);
+  color: rgba(17, 17, 17, 0.6);
 }
 
 .project-detail-layout {
@@ -2307,7 +2307,7 @@ a {
 .academy-note,
 .academy-muted {
   max-width: 34em;
-  color: #838281;
+  color: #6f6e6d;
   font-size: 0.7em;
 }
 
@@ -2997,7 +2997,7 @@ a {
 }
 
 .project-pager-label {
-  color: rgba(17, 17, 17, 0.45);
+  color: rgba(17, 17, 17, 0.62);
   font-size: clamp(0.9rem, 0.95vw, 1.15rem);
   text-transform: uppercase;
 }
@@ -3111,7 +3111,7 @@ a {
 .project-back-link {
   display: inline-block;
   margin-top: 1.4rem;
-  color: rgba(17, 17, 17, 0.55);
+  color: rgba(17, 17, 17, 0.62);
   font-family: var(--font-condensed);
   font-size: clamp(0.95rem, 1vw, 1.2rem);
   text-decoration: none;
@@ -3537,4 +3537,26 @@ html.is-scroll-locked .scene-frame {
 html.is-menu-open,
 html.is-menu-open body {
   overflow: hidden;
+}
+
+/* Movil: enlaces del pie con espacio suficiente para el dedo */
+@media (max-width: 700px) {
+  .projects-page-footer-link {
+    display: inline-block;
+    padding: 6px 0;
+  }
+}
+
+/* Fundido suave al entrar en cada pagina interior */
+main > .projects-page {
+  animation: page-fade-in 0.45s ease both;
+}
+
+@keyframes page-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  main > .projects-page { animation: none; }
 }
