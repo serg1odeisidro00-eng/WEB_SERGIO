@@ -46,7 +46,7 @@ academia, contacto, legales), tamaños de letra, cabecera y menú.
 
 ## 2. Proyectos
 
-- [ ] Al final de cada proyecto: **proyecto anterior / siguiente** y un enlace
+- [x] Al final de cada proyecto: **proyecto anterior / siguiente** y un enlace
       **"Cuéntanos tu proyecto"** que lleve al formulario de Contacto.
 - [ ] **Proyectos destacados**: 3-4 elegidos por Sergio que salgan primero.
 - [ ] MITECO 2: imagen de tarjeta e icono propios (ahora: recorte de los arcos
@@ -78,7 +78,7 @@ academia, contacto, legales), tamaños de letra, cabecera y menú.
 
 - [ ] Portada más ligera: fotogramas de animaciones a WebP sin pérdida
       (sin tocar `fondo.jpg` ni `Casa.png`, que van siempre a resolución completa).
-- [ ] Página de error propia ("Aquí no hay nada… vuelve al edificio").
+- [x] Página de error propia ("Aquí no hay nada… vuelve al edificio").
 - [ ] Avisos de Vercel por correo si falla una publicación.
 - [ ] Copia de seguridad de los `.af` fuera de Drive.
 

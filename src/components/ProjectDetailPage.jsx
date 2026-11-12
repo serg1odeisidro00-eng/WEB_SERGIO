@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import PageFooter from './PageFooter'
+import ProjectPager from './ProjectPager'
 import PageHeader from './PageHeader'
 import ProjectsFilterBar from './ProjectsFilterBar'
 import { getItalianProjectContent } from '../content/italianProjectContent'
@@ -41,7 +42,7 @@ export default function ProjectDetailPage({ onBack, onNavigate, activeFilter, im
           {variants?.length > 1 ? <nav className="project-detail-pagination" aria-label="Propuestas MITECO">{variants.map((variant, index) => <button key={variant.image} type="button" className={`project-detail-pagination-button${variantIndex === index ? ' is-active' : ''}`} aria-current={variantIndex === index ? 'page' : undefined} onClick={() => setVariantIndex(index)}>{index + 1}</button>)}</nav> : null}
         </aside>
       </div>
-      <PageFooter />
+      <ProjectPager /><PageFooter />
     </section>
   )
 }

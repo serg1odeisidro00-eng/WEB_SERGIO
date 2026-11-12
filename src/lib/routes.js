@@ -52,5 +52,6 @@ export function stateFromLocation(location = window.location) {
   if (project) return { pageId: `project-${project[1]}`, filterId: 'all', searchQuery: '' }
   const news = path.match(/^\/noticias\/([a-z0-9-]+)$/)
   if (news) return { pageId: `news-${news[1]}`, filterId: 'all', searchQuery: '' }
-  return { pageId: 'home', filterId: 'all', searchQuery: '' }
+  if (path === '/') return { pageId: 'home', filterId: 'all', searchQuery: '' }
+  return { pageId: 'not-found', filterId: 'all', searchQuery: '' }
 }

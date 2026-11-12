@@ -279,3 +279,7 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   (`SearchOverlay.jsx`) con "BUSCAR EN ESTA WEB", X y fotos filtradas.
   Playground también en Paisajismo. Cartel del cuadro (0.png) con la letra
   negra de los demás fotogramas (deseo de Sergio).
+- 2026-11-12 (11): `ProjectPager.jsx` al final de cada proyecto (anterior /
+  siguiente en el orden de `projects.js` + "¿Tienes un proyecto en mente?
+  Cuéntanoslo" → Contacto). Página de error `NotFoundPage.jsx` (dirección
+  desconocida = pageId `not-found`, noindex, lectora de la portada).

@@ -13,6 +13,10 @@ function setMeta(attribute, key, content) {
 
 // Actualiza titulo, descripcion y vista previa al cambiar de pagina.
 export function applyPageMeta(pageId) {
+  if (pageId === 'not-found') {
+    document.title = 'Aquí no hay nada… · M047'
+    return
+  }
   const meta = pageMeta[pageId] ?? pageMeta.home
   const url = window.location.origin + pathForState({ pageId: pageMeta[pageId] ? pageId : 'home' })
   document.title = meta.title

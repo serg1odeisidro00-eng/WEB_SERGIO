@@ -317,7 +317,7 @@ export default function App() {
   // La pagina inicial sale de la direccion (por ejemplo /proyectos/capilla).
   const [initialRoute] = useState(() => {
     const route = stateFromLocation()
-    return pageMeta[route.pageId] ? route : { pageId: 'home', filterId: 'all', searchQuery: '' }
+    return pageMeta[route.pageId] || route.pageId === 'home' ? route : { pageId: 'not-found', filterId: 'all', searchQuery: '' }
   })
   const [activePage, setActivePage] = useState(initialRoute.pageId)
   const [projectsFilter, setProjectsFilter] = useState(initialRoute.filterId)

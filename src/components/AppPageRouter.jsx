@@ -24,6 +24,7 @@ import Miteco2ProjectPage from './Miteco2ProjectPage'
 import Nave16ProjectPage from './Nave16ProjectPage'
 import NewsArticlePage from './NewsArticlePage'
 import NewsPage from './NewsPage'
+import NotFoundPage from './NotFoundPage'
 import PackagingProjectPage from './PackagingProjectPage'
 import PgProjectPage from './PgProjectPage'
 import PlaygroundProjectPage from './PlaygroundProjectPage'
@@ -120,5 +121,5 @@ export default function AppPageRouter({ activePage, projectsFilter, projectsSear
   const StandardPage = standardPages[activePage]
   if (StandardPage) return <StandardPage activePage={activePage} onBack={onBack} onNavigate={onNavigate} />
 
-  return null
+  return <NotFoundPage onBack={onBack} onNavigate={onNavigate} />
 }
