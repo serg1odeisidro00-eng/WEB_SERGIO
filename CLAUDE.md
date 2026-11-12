@@ -326,3 +326,8 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   `vercel.json`: si se cambia un archivo con el mismo nombre, algunos
   visitantes pueden ver el viejo hasta un día. Medido en móvil con 4G simulado:
   andamio visible 10,5 s → 4,7 s; listo para entrar 11,8 s → 8,5 s.
+- 2026-11-12 (19): láminas SVG: fotos internas pasadas a WebP calidad 90
+  (49,6 → 20,2 MB las 17; diferencia media < 1/255 comparando renders;
+  originales en scratchpad `svg2_backup/` y en git). Versión móvil de cada SVG
+  rasterizada a 1100 px (`public/pages/proyectos/movil/<nombre>.webp`, 74-650
+  KB); `ProjectImage` la usa en ≤700 px para todas las láminas.
