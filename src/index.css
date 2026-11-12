@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap');
 @import 'tailwindcss';
 
 @font-face {
@@ -3528,4 +3528,13 @@ html.is-scroll-locked .scene-frame {
     z-index: 2;
     background: #ffffff;
   }
+}
+
+.project-detail-visual picture {
+  display: block;
+}
+
+html.is-menu-open,
+html.is-menu-open body {
+  overflow: hidden;
 }

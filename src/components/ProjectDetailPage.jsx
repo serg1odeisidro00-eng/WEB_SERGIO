@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import PageFooter from './PageFooter'
+import ProjectImage from './ProjectImage'
 import ProjectPager from './ProjectPager'
 import PageHeader from './PageHeader'
 import ProjectsFilterBar from './ProjectsFilterBar'
@@ -21,7 +22,7 @@ export default function ProjectDetailPage({ onBack, onNavigate, activeFilter, im
       <ProjectsFilterBar activeFilter={activeFilter} /><ProjectBackLink filterId={activeFilter} />
       <div className="project-detail-layout">
         <div className="project-detail-visual">
-          <img className="project-detail-image" src={selectedImage} alt={content.alt} />
+          <ProjectImage src={selectedImage} alt={content.alt} />
         </div>
         <aside className="project-detail-sidebar">
           <h1>{content.title}</h1>

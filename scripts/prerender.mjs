@@ -18,6 +18,21 @@ const escape = (text) => String(text)
   .replaceAll('>', '&gt;')
   .replaceAll('"', '&quot;')
 
+// Ficha del estudio para Google (datos que ya se ven en la web).
+const studioSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'Estudio M047',
+  description: pageMeta.home.description,
+  url: siteUrl + '/',
+  image: siteUrl + pageMeta.home.image,
+  telephone: '+34 633 878 755',
+  email: 'contacto@m047.es',
+  address: { '@type': 'PostalAddress', postalCode: '28047', addressLocality: 'Madrid', addressCountry: 'ES' },
+  areaServed: 'Madrid',
+  sameAs: ['https://www.instagram.com/m047.studio/', 'https://www.linkedin.com/in/m047/', 'https://www.behance.net/M047'],
+}
+
 const pages = Object.entries(pageMeta).map(([pageId, meta]) => ({ pageId, meta, path: pathForState({ pageId }) }))
 const indexable = pages.filter((page) => !page.meta.noindex)
 const navLinks = indexable
@@ -45,6 +60,7 @@ for (const { pageId, meta, path } of pages) {
     `<meta name="twitter:title" content="${escape(meta.title)}" />`,
     `<meta name="twitter:description" content="${escape(meta.description)}" />`,
     `<meta name="twitter:image" content="${image}" />`,
+    pageId === 'home' ? `<script type="application/ld+json">${JSON.stringify(studioSchema)}</script>` : '',
   ].filter(Boolean).join('\n    ')
 
   // Texto para buscadores; React lo sustituye en cuanto arranca la web.

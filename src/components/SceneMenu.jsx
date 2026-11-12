@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 
 const primaryItems = [
@@ -42,6 +42,18 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
     return () => observer.disconnect()
   }, [mobile])
   const { language, setLanguage } = useLanguage()
+
+  // Esc cierra el menu; en movil (pantalla completa) la pagina de detras no se mueve.
+  useEffect(() => {
+    if (!isOpen) return undefined
+    const onKey = (event) => { if (event.key === 'Escape') setIsOpen(false) }
+    window.addEventListener('keydown', onKey)
+    if (mobile) document.documentElement.classList.add('is-menu-open')
+    return () => {
+      window.removeEventListener('keydown', onKey)
+      document.documentElement.classList.remove('is-menu-open')
+    }
+  }, [isOpen, mobile])
   const labels = menuTranslations[language]
 
   const handleNavigate = (item) => {

@@ -56,7 +56,7 @@ function ProjectCard({
         <p>{location}</p>
       </div>
       <div className="projects-card-image">
-        <img src={imageSrc} alt="" aria-hidden="true" />
+        <img src={imageSrc} alt="" aria-hidden="true" loading="lazy" decoding="async" />
       </div>
     </article>
   )

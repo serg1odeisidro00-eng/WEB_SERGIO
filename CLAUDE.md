@@ -306,3 +306,8 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
 - 2026-11-12 (15): páginas interiores en móvil: `PageHeader` usa la cabecera
   de la portada (M047, buscador, menú a pantalla completa sin fila de sonido),
   filtros de departamentos en una línea deslizable, pie de la Tienda sobre blanco.
+- 2026-11-12 (16): láminas de proyecto en móvil a 900 px (`ProjectImage.jsx`,
+  `public/pages/proyectos/movil/`, ~24 → 6 MB las 9 láminas raster); menú: Esc
+  cierra y en móvil bloquea el fondo; ficha del estudio para Google (JSON-LD
+  ProfessionalService en la portada, `prerender.mjs`); fuente Cormorant (no
+  usada) quitada de la carga.
