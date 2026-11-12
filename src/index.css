@@ -1318,7 +1318,7 @@ a {
   gap: clamp(2rem, 3vw, 3rem);
   align-items: start;
   flex: 1 0 auto;
-  padding-top: 2.2rem;
+  padding-top: 1.2rem;
 }
 
 .project-detail-visual {
@@ -3084,4 +3084,41 @@ a {
   .not-found-actions {
     justify-content: center;
   }
+}
+
+/* Estudio: pie de foto (estilo de Noticias) */
+.studio-page-figure {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  margin: 0;
+}
+
+.studio-page-figure .studio-page-image {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}
+
+.studio-page-figure figcaption {
+  margin-top: 0.35em;
+  color: #838281;
+  font-family: var(--font-condensed);
+  font-size: clamp(0.75rem, 0.882vw, 1.05rem);
+}
+
+/* Volver a proyectos (encima de cada proyecto) */
+.project-back-link {
+  display: inline-block;
+  margin-top: 1.4rem;
+  color: rgba(17, 17, 17, 0.55);
+  font-family: var(--font-condensed);
+  font-size: clamp(0.95rem, 1vw, 1.2rem);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.project-back-link:hover,
+.project-back-link:focus-visible {
+  color: #111111;
 }

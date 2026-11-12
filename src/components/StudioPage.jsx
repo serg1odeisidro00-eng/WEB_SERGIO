@@ -21,6 +21,12 @@ const studioGroups = [
   ],
 ]
 
+const photoCaption = {
+  es: 'José Luis de Isidro con su hijo Sergio de Isidro.',
+  en: 'José Luis de Isidro with his son Sergio de Isidro.',
+  it: 'José Luis de Isidro con suo figlio Sergio de Isidro.',
+}
+
 export default function StudioPage({ activePage, onBack, onNavigate }) {
   const { language } = useLanguage()
   const studioCopy = language === 'es' ? studioGroups : language === 'it' ? [
@@ -46,12 +52,14 @@ export default function StudioPage({ activePage, onBack, onNavigate }) {
       />
 
       <div className="contact-page-content studio-page-content">
-        <img
-          className="contact-page-image studio-page-image"
-          src="/pages/estudio.png"
-          alt=""
-          aria-hidden="true"
-        />
+        <figure className="studio-page-figure">
+          <img
+            className="contact-page-image studio-page-image"
+            src="/pages/estudio.png"
+            alt={photoCaption[language] ?? photoCaption.es}
+          />
+          <figcaption>{photoCaption[language] ?? photoCaption.es}</figcaption>
+        </figure>
 
         <div className="contact-page-copy studio-page-copy">
           <h1>M047</h1>

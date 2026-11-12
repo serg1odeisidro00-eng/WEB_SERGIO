@@ -464,6 +464,7 @@ export default function App() {
         }
 
     window.history.pushState({ app: 'm047', ...nextState }, '', pathForState(nextState))
+    window.__m047CameFromSite = true
     applyNavigationState(nextState)
   }
 

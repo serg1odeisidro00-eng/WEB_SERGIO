@@ -4,6 +4,7 @@ import PageFooter from './PageFooter'
 import ProjectPager from './ProjectPager'
 import PageHeader from './PageHeader'
 import ProjectsFilterBar from './ProjectsFilterBar'
+import ProjectBackLink from './ProjectBackLink'
 import { getItalianProjectContent } from '../content/italianProjectContent'
 
 export default function ProjectDetailPage({ onBack, onNavigate, activeFilter, image, copy, variants }) {
@@ -17,7 +18,7 @@ export default function ProjectDetailPage({ onBack, onNavigate, activeFilter, im
   return (
     <section className="projects-page project-detail-page">
       <PageHeader activePage="projects" onBack={onBack} onNavigate={onNavigate} />
-      <ProjectsFilterBar activeFilter={activeFilter} />
+      <ProjectsFilterBar activeFilter={activeFilter} /><ProjectBackLink filterId={activeFilter} />
       <div className="project-detail-layout">
         <div className="project-detail-visual">
           <img className="project-detail-image" src={selectedImage} alt={content.alt} />
