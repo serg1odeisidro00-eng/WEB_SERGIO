@@ -1,10 +1,12 @@
-﻿import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+﻿import { lazy, Suspense, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
-import AppPageRouter from './components/AppPageRouter'
 import SceneArtboard from './components/SceneArtboard'
 import { MobileHeader, MobileHomeBelow } from './components/MobileHome'
 import { useIsMobile } from './hooks/useIsMobile'
 import { pathForState, stateFromLocation } from './lib/routes'
+
+// Las paginas interiores se descargan aparte: la portada no carga su codigo.
+const AppPageRouter = lazy(() => import('./components/AppPageRouter'))
 import { applyPageMeta } from './lib/pageMeta'
 import { pageMeta } from './content/pageMeta'
 import { getAmbientPosition, installAudioUnlock, isAudioUnlocked, loadSceneAudio, playRing, setAmbientPlaying, stopRing } from './lib/sceneAudio'
@@ -226,19 +228,22 @@ const sceneAssetUrls = [
   ...staticSceneAssets,
 ]
 
+// Lo minimo para ensenar la pantalla de carga (el edificio y los personajes
+// estan ocultos detras del andamio): la casa y el resto de fotogramas del arbol
+// se descargan despues, mientras sale "CARGANDO n %".
 const loadingScreenAssets = [
   FONDO_SRC,
-  CASA_SRC,
   '/andamio.webp',
   '/edificio_izquierda.svg',
   '/cartela.svg',
   '/farola.png',
   ...birdFrames,
-  ...arbolFrames,
+  arbolFrames[0],
 ]
 
 const criticalSceneAssets = [
   ...staticSceneAssets,
+  ...arbolFrames,
   birdFrames[0], vanFrames[0], grafitiFrames[0], jardineroFrames[0], jardineraFrames[0],
   arbolFrames[0], ordenadorFrames[0], banquitoFrames[0], sofaFrames[0], bibliotecarioFrames[0],
   cuadroFrames[0], telefonoFrames[0], parejaFrames[0], personasSillasFrames[0], lectorFrames[0],
@@ -2221,6 +2226,7 @@ export default function App() {
       }
     >
       {activePage !== 'home' ? (
+<Suspense fallback={null}>
         <AppPageRouter
           activePage={activePage}
           projectsFilter={projectsFilter}
@@ -2228,6 +2234,7 @@ export default function App() {
           onBack={() => setActivePage('home')}
           onNavigate={handleNavigate}
         />
+        </Suspense>
       ) : isAssetsReady ? (
         <>
         {isMobile ? (

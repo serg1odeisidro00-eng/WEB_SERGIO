@@ -7,4 +7,5 @@ export const SCENE_IMAGE_RATIO = 7537 / 4500
 export const FONDO_STRETCH = 1
 
 export const FONDO_SRC = '/fondo.jpg'
-export const CASA_SRC = '/Casa.png'
+// Casa.webp = Casa.png en WebP sin perdida (mismos pixeles, misma resolucion, 1,1 MB en vez de 2,8 MB).
+export const CASA_SRC = '/Casa.webp'

@@ -316,3 +316,13 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   anterior/siguiente 0,62), enlaces del pie más altos en móvil, lámina con
   prioridad de carga, precarga de fondo.jpg y Casa.png en la portada, fundido
   suave (0,45 s) al entrar en cada página interior.
+- 2026-11-12 (18): velocidad. `Casa.webp` = Casa.png en WebP SIN pérdida
+  (píxeles idénticos comprobados, 2,8 → 1,1 MB; Casa.png se queda como
+  original). Pantalla de carga sin esperar a la casa ni a todos los fotogramas
+  del árbol (van en la 2ª fase). `cartela.svg`: imagen interna 3508 → 800 px
+  (430 → 83 KB, idéntica a la vista). Páginas interiores en un archivo de
+  código aparte (`lazy`). Manrope sin bloquear la carga (link en index.html) y
+  precarga de D-DIN. Caché de imágenes 1 día (+7 de revalidación) en
+  `vercel.json`: si se cambia un archivo con el mismo nombre, algunos
+  visitantes pueden ver el viejo hasta un día. Medido en móvil con 4G simulado:
+  andamio visible 10,5 s → 4,7 s; listo para entrar 11,8 s → 8,5 s.
