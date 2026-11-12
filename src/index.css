@@ -3122,3 +3122,341 @@ a {
 .project-back-link:focus-visible {
   color: #111111;
 }
+
+/* ======================= Portada en movil =======================
+   Maqueta "Mezcla A + D" de Sergio: cabecera fija, el edificio de borde a
+   borde con todo animado y debajo el recorrido planta por planta. */
+.mobile-home {
+  overflow-x: hidden;
+  font-family: var(--font-condensed);
+  color: #111111;
+}
+
+.mobile-home-header {
+  position: sticky;
+  top: 0;
+  z-index: 120;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 74px;
+  padding: 0 10px 0 16px;
+  border: 2px solid #111111;
+  background: #ffffff;
+}
+
+.mobile-home-logo {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111111;
+  font-family: var(--font-condensed);
+  font-size: 50px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.mobile-home-tools {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.mobile-home-sound {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111111;
+}
+
+.mobile-home-sound svg {
+  width: 28px;
+  height: 28px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
+.mobile-home-sound.is-off {
+  color: #8a8a8a;
+}
+
+.scene-menu.is-mobile {
+  position: relative;
+  inset: auto;
+  width: 52px;
+  height: 48px;
+  pointer-events: auto;
+}
+
+.scene-menu.is-mobile .scene-menu-button {
+  top: 0;
+  right: 0;
+  width: 52px;
+  height: 48px;
+  gap: 8px;
+}
+
+.scene-menu.is-mobile .scene-menu-button span {
+  width: 40px;
+  height: 3.4px;
+  background: #111111;
+}
+
+.scene-menu.is-mobile .scene-menu-button.is-open span:nth-child(1) {
+  transform: translateY(11.4px) rotate(45deg);
+}
+
+.scene-menu.is-mobile .scene-menu-button.is-open span:nth-child(3) {
+  transform: translateY(-11.4px) rotate(-45deg);
+}
+
+/* Menu a pantalla completa, con el mismo dibujo que el de ordenador */
+.scene-menu-panel.is-fullscreen {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  width: auto;
+  height: auto;
+  min-width: 0;
+  padding: 28px 28px 24px;
+  transform: none;
+  box-shadow: none;
+  border: 2px solid #111111;
+  overflow-y: auto;
+}
+
+.scene-menu-panel.is-fullscreen::before {
+  inset: 6px;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-close {
+  top: 18px;
+  right: 18px;
+  width: 48px;
+  height: 48px;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-close span {
+  width: 34px;
+  height: 2px;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-group-primary {
+  gap: 10px;
+  margin-top: 64px;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-group-secondary {
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-item,
+.scene-menu-panel.is-fullscreen .scene-menu-code,
+.scene-menu-panel.is-fullscreen .scene-menu-switch-row,
+.scene-menu-panel.is-fullscreen .scene-menu-switch-separator,
+.scene-menu-panel.is-fullscreen .scene-menu-footer-switch {
+  font-size: 1.6rem;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-footer {
+  right: 28px;
+  bottom: 24px;
+  left: 28px;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-socials {
+  gap: 14px;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-social-link,
+.scene-menu-panel.is-fullscreen .scene-menu-social-behance {
+  width: 34px;
+  height: 44px;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-socials img {
+  width: 24px;
+  height: 24px;
+}
+
+/* La escena: el edificio de borde a borde */
+.scene-shell.is-mobile {
+  height: auto;
+  overflow: visible;
+}
+
+.scene-shell.is-mobile .scene-shell-content {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.scene-shell.is-mobile .scene-frame {
+  border-top: 0;
+}
+
+.scene-shell.is-mobile .scene-menu-layer {
+  display: none;
+}
+
+/* En movil los carteles de cada planta se ven siempre y los personajes no se
+   paran al tocarlos (todo se mueve a la vez, como un video). */
+.scene-shell.is-mobile .scene-hotspot-dialogue {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scene-shell.is-mobile [class*='-anchor'] {
+  pointer-events: none !important;
+}
+
+.mobile-home-intro {
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+  padding: 22px 16px 28px;
+}
+
+.mobile-home-scroll {
+  padding: 8px 16px;
+  border: 1.5px solid #111111;
+  background: #ffffff;
+  color: #111111;
+  font-family: var(--font-condensed);
+  font-size: 17px;
+}
+
+.mobile-home-lang {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  color: #6b6b6b;
+}
+
+.mobile-home-lang button {
+  min-width: 32px;
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+}
+
+.mobile-home-lang button.is-active {
+  color: #111111;
+  font-weight: 700;
+}
+
+.mobile-home-lang-sep {
+  padding: 0 2px;
+}
+
+.mobile-home-floors {
+  border-top: 1px solid #c8c8c8;
+  scroll-margin-top: 74px;
+}
+
+.mobile-home-floor {
+  display: grid;
+  gap: 8px;
+  padding: 22px 16px 18px;
+  border-bottom: 1px solid #c8c8c8;
+}
+
+.mobile-home-floor h2 {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin: 0;
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1;
+}
+
+.mobile-home-floor-number {
+  font-size: 15px;
+  font-weight: 400;
+  color: #6b6b6b;
+}
+
+.mobile-home-floor-image {
+  display: block;
+  padding: 0;
+  border: 1px solid #111111;
+  background: #ffffff;
+}
+
+.mobile-home-floor-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.mobile-home-floor-link {
+  justify-self: end;
+  min-height: 40px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: #111111;
+  font-family: var(--font-condensed);
+  font-size: 17px;
+}
+
+.mobile-home-footer {
+  display: grid;
+  gap: 4px;
+  padding: 28px 16px 36px;
+  font-size: 16px;
+}
+
+.mobile-home-footer p {
+  margin: 0;
+  color: #6b6b6b;
+}
+
+.mobile-home-footer a {
+  color: #111111;
+  text-decoration: none;
+}
+
+.mobile-home-footer .mobile-home-footer-title {
+  color: #111111;
+  font-weight: 700;
+}
+
+.mobile-home-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 22px;
+  margin-top: 16px;
+}
+
+.mobile-home-socials a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  font-size: 18px;
+}
+
+.mobile-home-socials img {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.scene-menu-panel.is-fullscreen .scene-menu-footer {
+  position: static;
+  margin-top: 40px;
+  gap: 16px;
+  flex-wrap: wrap;
+}

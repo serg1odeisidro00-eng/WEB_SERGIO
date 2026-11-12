@@ -2,6 +2,8 @@
 import gsap from 'gsap'
 import AppPageRouter from './components/AppPageRouter'
 import SceneArtboard from './components/SceneArtboard'
+import { MobileHeader, MobileHomeBelow } from './components/MobileHome'
+import { useIsMobile } from './hooks/useIsMobile'
 import { pathForState, stateFromLocation } from './lib/routes'
 import { applyPageMeta } from './lib/pageMeta'
 import { pageMeta } from './content/pageMeta'
@@ -419,7 +421,11 @@ export default function App() {
   const columpioTweenRef = useRef(null)
   const columpioBubbleRef = useRef(null)
 
-  const { frameStyle: sceneFrameStyle, sceneStyle } = useSceneSize(sceneShellRef, sceneRatio, isAssetsReady && activePage === 'home')
+  // Movil: misma escena, recortada al edificio y con todo animado a la vez.
+  const isMobile = useIsMobile()
+  const isMobileRef = useRef(isMobile)
+  isMobileRef.current = isMobile
+  const { frameStyle: sceneFrameStyle, sceneStyle } = useSceneSize(sceneShellRef, sceneRatio, isAssetsReady && activePage === 'home', isMobile)
 
   // Safari calcula mal la altura de las cajas de los personajes (aspect-ratio
   // en elementos posicionados) y los dibujos quedan "flotando". Se fija la
@@ -659,6 +665,7 @@ export default function App() {
   }
 
   const handleStudioZoneLeave = () => {
+    if (isMobileRef.current) return
     grafitiTweenRef.current?.pause()
   }
 
@@ -669,6 +676,7 @@ export default function App() {
   }
 
   const handleLandscapeZoneLeave = () => {
+    if (isMobileRef.current) return
     jardineroTweenRef.current?.pause()
     jardineraTweenRef.current?.pause()
     // La chica de la regadera termina la vuelta y se queda en reposo (fotograma 0).
@@ -683,6 +691,7 @@ export default function App() {
   }
 
   const handleAcademyZoneLeave = () => {
+    if (isMobileRef.current) return
     hombreSentadoTweenRef.current?.pause()
     mujerSentadaTweenRef.current?.pause()
     profeTweenRef.current?.pause()
@@ -703,6 +712,7 @@ export default function App() {
   }
 
   const handleDesignZoneLeave = () => {
+    if (isMobileRef.current) return
     bibliotecarioTweenRef.current?.pause()
     cuadroTweenRef.current?.pause()
     sofaTweenRef.current?.pause()
@@ -718,11 +728,25 @@ export default function App() {
   }
 
   const handleScenographyZoneLeave = () => {
+    if (isMobileRef.current) return
     lectorTweenRef.current?.pause()
     personasSillasTweenRef.current?.pause()
     parejaTweenRef.current?.pause()
     columpioTweenRef.current?.pause()
   }
+
+  useEffect(() => {
+    if (!isMobile || !hasEntered || !isAssetsReady || activePage !== 'home') return undefined
+    const timer = window.setTimeout(() => {
+      handleStudioZoneEnter()
+      handleLandscapeZoneEnter()
+      handleAcademyZoneEnter()
+      handleDesignZoneEnter()
+      handleScenographyZoneEnter()
+    }, 400)
+    return () => window.clearTimeout(timer)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isMobile, hasEntered, isAssetsReady, activePage])
 
   const handleJardineroEnter = () => {
     jardineroTweenRef.current?.pause()
@@ -2170,7 +2194,9 @@ export default function App() {
     <main
       ref={rootRef}
       className={
-        activePage === 'home'
+        activePage === 'home' && isMobile
+          ? 'mobile-home min-h-screen bg-white'
+          : activePage === 'home'
           ? 'flex h-screen items-center justify-center overflow-hidden bg-white p-2'
           : 'min-h-screen bg-white px-8 py-6 text-stone-950'
       }
@@ -2184,7 +2210,16 @@ export default function App() {
           onNavigate={handleNavigate}
         />
       ) : isAssetsReady ? (
-        <section ref={sceneShellRef} className="scene-shell">
+        <>
+        {isMobile ? (
+          <MobileHeader
+            onHome={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onNavigate={handleNavigate}
+            soundEnabled={soundEnabled}
+            onSetSoundEnabled={setSoundEnabled}
+          />
+        ) : null}
+        <section ref={sceneShellRef} className={`scene-shell${isMobile ? ' is-mobile' : ''}`}>
           <div className="scene-shell-content">
             <SceneArtboard
               backgroundSrc={FONDO_SRC}
@@ -2235,6 +2270,8 @@ export default function App() {
             />
           </div>
         </section>
+        {isMobile ? <MobileHomeBelow onNavigate={handleNavigate} /> : null}
+        </>
       ) : (
         <div className="scene-loader" aria-live="polite">
           <div className="scene-loader-frame">

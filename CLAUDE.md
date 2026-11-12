@@ -289,3 +289,12 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   (Nave 16, Playground, Capilla, Stand efímero). Pie de foto en Estudio.
   Portfolio PDF: borrador con `scripts/build-portfolio.cjs`, no publicado
   (a Sergio no le gustó; lo diseñará él). Opiniones de clientes: no inventarlas.
+- 2026-11-12 (13): portada en móvil (≤700 px, `useIsMobile`): misma escena
+  recortada al edificio (`MOBILE_CROP` en `useSceneSize.js`), todos los
+  personajes animados a la vez (las zonas se activan al entrar y en móvil no se
+  paran), carteles de planta siempre visibles; cabecera fija con M047, sonido y
+  menú (`SceneMenu mobile` = menú del ordenador a pantalla completa); debajo
+  "Baja para recorrer el edificio", idioma, fichas por planta (Interiores,
+  Dirección de arte, Gráfico, Paisajismo, Escenografía, Academia, Contacto;
+  imágenes en `public/movil/`) y pie con redes (`MobileHome.jsx`).
+  Maquetas y lienzo de diseño: ver `PENDIENTES.md`.

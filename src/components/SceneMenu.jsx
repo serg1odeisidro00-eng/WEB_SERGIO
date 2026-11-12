@@ -25,7 +25,7 @@ const menuTranslations = {
 
 const MENU_REFERENCE_WIDTH = 1387
 
-export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled = false }) {
+export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled = false, mobile = false }) {
   const [isOpen, setIsOpen] = useState(false)
   const [menuScale, setMenuScale] = useState(1)
   const rootRef = useRef(null)
@@ -34,13 +34,13 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
   // y se escala igual que el dibujo, para que siempre case con la cartela.
   useLayoutEffect(() => {
     const root = rootRef.current
-    if (!root) return undefined
+    if (!root || mobile) return undefined
     const update = () => setMenuScale(root.clientWidth / MENU_REFERENCE_WIDTH)
     update()
     const observer = new ResizeObserver(update)
     observer.observe(root)
     return () => observer.disconnect()
-  }, [])
+  }, [mobile])
   const { language, setLanguage } = useLanguage()
   const labels = menuTranslations[language]
 
@@ -56,7 +56,7 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
   }
 
   return (
-    <div ref={rootRef} className="scene-menu">
+    <div ref={rootRef} className={`scene-menu${mobile ? ' is-mobile' : ''}`}>
       <button
         type="button"
         className={`scene-menu-button${isOpen ? ' is-open' : ''}`}
@@ -70,7 +70,7 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
       </button>
 
       {isOpen ? (
-        <div className="scene-menu-panel" style={{ '--menu-scale': menuScale }}>
+        <div className={`scene-menu-panel${mobile ? ' is-fullscreen' : ''}`} style={mobile ? undefined : { '--menu-scale': menuScale }} role={mobile ? 'dialog' : undefined} aria-modal={mobile ? 'true' : undefined}>
           <button
             type="button"
             className="scene-menu-close"
