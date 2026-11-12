@@ -50,7 +50,13 @@ Decisión de Sergio (12-nov-2026):
   abajo a la derecha y "Toca un piso para entrar". Versión 2 de la maqueta =
   punto de partida. Simplificar el edificio solo si hace falta (decidirlo con Sergio).
 - **También le gusta A** si los personajes se mueven (todos a la vez, en bucle).
-- B y D descartadas.
+- B descartada. 12-nov (tarde): elegida una **mezcla de A + D** (artboard «Mezcla A + D»):
+  primera pantalla solo el edificio (de 503 a 1107 en unidades de la escena, para
+  que salga el señor fumando; centrado), todos los personajes animados a la vez;
+  al bajar, una ficha por departamento en este orden: Interiores, Dirección de
+  arte, Diseño gráfico, Paisajismo, Escenografía, Academia, Contacto.
+  Vídeo de prueba: `docs/movil/mezcla_movimiento.mp4`. Sol y nubes completos
+  tomados de `public/fondo.jpg` (la web recorta el 5 % de arriba).
 - Personajes en móvil: todos animados en bucle, sin tener que tocar.
 - Las zonas de cada departamento deben seguir siendo pulsables.
 
