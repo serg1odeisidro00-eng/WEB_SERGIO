@@ -270,3 +270,12 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   interiorismo). MITECO 2 es un proyecto aparte (/proyectos/miteco-2), sin
   botones de versión. "Hargok" (no Harvok). Marcos blancos recortados en
   Boat, Ilustraciones, PG y El Bosque. Buscador: Sergio lo deja como está.
+- 2026-11-12 (10): cuadrícula de Proyectos y buscador según Drive
+  `Sección_228_Diagramas.svg` y `Sección_228_Fotos.svg`: diagramas y fotos
+  sacados de esos documentos a la posición exacta de cada casilla
+  (`public/proyectos/diagramas/<id>.webp`, `public/proyectos/fotos/<id>.webp`;
+  casilla 337×215 de 1800, diagrama en el 79 % superior). Lista de proyectos
+  movida a `src/content/projects.js`. Buscador = pantalla completa
+  (`SearchOverlay.jsx`) con "BUSCAR EN ESTA WEB", X y fotos filtradas.
+  Playground también en Paisajismo. Cartel del cuadro (0.png) con la letra
+  negra de los demás fotogramas (deseo de Sergio).

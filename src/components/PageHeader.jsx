@@ -1,5 +1,6 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
+import SearchOverlay from './SearchOverlay'
 
 const navItems = {
   es: [
@@ -35,22 +36,7 @@ export default function PageHeader({
 }) {
   const { language, setLanguage } = useLanguage()
   const [isSearchOpen, setIsSearchOpen] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
-
-  const submitSearch = (event) => {
-    event.preventDefault()
-    onNavigate?.({ pageId: 'projects', searchQuery })
-    setIsSearchOpen(false)
-  }
-
-  const handleSearchChange = (event) => {
-    const nextQuery = event.target.value
-    setSearchQuery(nextQuery)
-
-    if (activePage === 'projects') {
-      onNavigate?.({ pageId: 'projects', searchQuery: nextQuery })
-    }
-  }
+  const closeSearch = useCallback(() => setIsSearchOpen(false), [])
 
   return (
     <header className="projects-page-header">
@@ -73,8 +59,8 @@ export default function PageHeader({
         </nav>
 
         <div className="projects-page-header-tools">
-          {isSearchOpen ? <form className="projects-page-search" onSubmit={submitSearch}><input autoFocus value={searchQuery} onChange={handleSearchChange} placeholder={language === 'es' ? 'Buscar proyectos' : language === 'it' ? 'Cerca progetti' : 'Search projects'} /><button type="submit">OK</button></form> : null}
-          <button type="button" className="projects-page-search-button" aria-label={language === 'es' ? 'Buscar proyectos' : language === 'it' ? 'Cerca progetti' : 'Search projects'} onClick={() => setIsSearchOpen((open) => !open)}><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+          <button type="button" className="projects-page-search-button" aria-label={language === 'es' ? 'Buscar' : language === 'it' ? 'Cerca' : 'Search'} onClick={() => setIsSearchOpen(true)}><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5"/></svg></button>
+          {isSearchOpen ? <SearchOverlay onClose={closeSearch} /> : null}
           <div className="projects-page-lang-switch" role="group" aria-label="Idioma">
           <button
             type="button"
