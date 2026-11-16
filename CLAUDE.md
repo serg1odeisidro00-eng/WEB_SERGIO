@@ -363,3 +363,17 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   donde no cabe y va "2. PAESAGGISTICA". Interruptor de sonido del menú
   traducido (SOUND ON/OFF, AUDIO ATTIVO/DISATTIVO). Mensaje enviado al amigo
   para que quite m047.es de su Vercel ("linked to another Vercel account").
+- 2026-11-16 (7): cambio de página siempre desde arriba y "atrás" vuelve a la
+  misma altura (`pendingScrollRef` en App.jsx; antes un proyecto se abría a la
+  altura de la lista). Firma de correo: página privada `/firma.html` (noindex)
+  con imágenes en D-DIN (`public/firma/`, generadas con Playwright) y enlaces a
+  www.m047.es e Instagram; se copia y pega en el webmail de Hostinger.
+  Proyectos en una sola columna (≤1200 px): título y texto antes de la lámina
+  (`order: -1`). Versiones por idioma para Google: /en/... e /it/... (mismas
+  direcciones con prefijo; `routes.js`: `withLanguage`, `stripLanguage`,
+  `setRouteLanguage`). Manda el prefijo de la dirección; si no hay, el idioma
+  guardado; al cambiar de idioma se reescribe la dirección. Títulos y
+  descripciones EN/IT en `src/content/pageMetaI18n.js` (al añadir proyecto o
+  noticia, añadir su entrada). `prerender.mjs` crea 117 páginas (39 × 3) con
+  `hreflang` y `lang` propios y un sitemap con las 3 versiones. Ojo: no leer
+  el id de proyecto de `location.pathname` a mano; usar `stateFromLocation()`.

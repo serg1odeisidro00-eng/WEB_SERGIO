@@ -5,6 +5,7 @@ import PageFooter from './PageFooter'
 import PageHeader from './PageHeader'
 import ProjectsFilterBar from './ProjectsFilterBar'
 import { englishProjectTitles, italianProjectTitles, projectItems } from '../content/projects'
+import { pathForState } from '../lib/routes'
 
 
 
@@ -35,7 +36,7 @@ function ProjectCard({
         // Enlace real (se puede abrir en otra pestana, usar con teclado y Google lo sigue).
         <a
           className="projects-card-link"
-          href={`/proyectos/${projectId}`}
+          href={pathForState({ pageId: `project-${projectId}` })}
           aria-label={`${title}. ${location}`}
           onClick={(event) => {
             if (event.metaKey || event.ctrlKey || event.shiftKey || event.button === 1) {

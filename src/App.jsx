@@ -542,8 +542,8 @@ export default function App() {
     if (activePage !== stateFromLocation().pageId && currentPath !== expectedPath) {
       window.history.pushState({ app: 'm047', pageId: activePage, filterId: 'all', searchQuery: '' }, '', expectedPath)
     }
-    applyPageMeta(activePage)
-  }, [activePage, projectsFilter])
+    applyPageMeta(activePage, language)
+  }, [activePage, projectsFilter, language])
 
   useEffect(() => {
     registerNavigate(handleNavigate)

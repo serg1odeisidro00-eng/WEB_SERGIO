@@ -1,4 +1,5 @@
 import { pageMeta } from '../content/pageMeta'
+import { pageMetaI18n } from '../content/pageMetaI18n'
 import { pathForState } from './routes'
 
 function setMeta(attribute, key, content) {
@@ -12,12 +13,19 @@ function setMeta(attribute, key, content) {
 }
 
 // Actualiza titulo, descripcion y vista previa al cambiar de pagina.
-export function applyPageMeta(pageId) {
+// Titulo y descripcion de una pagina en un idioma (si falta, en espanol).
+export function metaFor(pageId, language = 'es') {
+  const base = pageMeta[pageId] ?? pageMeta.home
+  const translated = language !== 'es' ? pageMetaI18n[language]?.[pageMeta[pageId] ? pageId : 'home'] : null
+  return translated ? { ...base, ...translated } : base
+}
+
+export function applyPageMeta(pageId, language = 'es') {
   if (pageId === 'not-found') {
-    document.title = 'Aquí no hay nada… · M047'
+    document.title = { es: 'Aquí no hay nada… · M047', en: 'Nothing here… · M047', it: 'Qui non c’è niente… · M047' }[language] ?? 'Aquí no hay nada… · M047'
     return
   }
-  const meta = pageMeta[pageId] ?? pageMeta.home
+  const meta = metaFor(pageId, language)
   const url = window.location.origin + pathForState({ pageId: pageMeta[pageId] ? pageId : 'home' })
   document.title = meta.title
   setMeta('name', 'description', meta.description)

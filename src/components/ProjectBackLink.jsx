@@ -1,5 +1,6 @@
 import { useLanguage } from '../context/LanguageContext'
 import { useProjectNavigation } from '../context/ProjectNavigationContext'
+import { pathForState } from '../lib/routes'
 
 const label = { es: 'Volver a proyectos', en: 'Back to projects', it: 'Torna ai progetti' }
 
@@ -17,7 +18,7 @@ export default function ProjectBackLink({ filterId = 'all' }) {
   }
 
   return (
-    <a className="project-back-link" href="/proyectos" onClick={goBack}>
+    <a className="project-back-link" href={pathForState({ pageId: 'projects' })} onClick={goBack}>
       ← {label[language] ?? label.es}
     </a>
   )

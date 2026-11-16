@@ -3,6 +3,30 @@
 // Si se anade un proyecto nuevo (pageId 'project-xxx'), su direccion sera
 // /proyectos/xxx sin tocar nada aqui.
 
+// Idiomas: el espanol va sin prefijo (/proyectos) y el ingles y el italiano
+// con el suyo (/en/proyectos, /it/proyectos), para que Google vea las tres
+// versiones. El idioma actual lo fija LanguageContext con setRouteLanguage.
+export const LANGUAGES = ['es', 'en', 'it']
+let currentLanguage = 'es'
+
+export function setRouteLanguage(language) {
+  if (LANGUAGES.includes(language)) currentLanguage = language
+}
+
+export function languageFromPath(pathname = window.location.pathname) {
+  const match = pathname.match(/^\/(en|it)(?=\/|$)/)
+  return match ? match[1] : null
+}
+
+export function stripLanguage(pathname) {
+  return pathname.replace(/^\/(en|it)(?=\/|$)/, '') || '/'
+}
+
+export function withLanguage(path, language = currentLanguage) {
+  if (!language || language === 'es') return path
+  return path === '/' ? `/${language}` : `/${language}${path}`
+}
+
 const staticRoutes = {
   home: '/',
   projects: '/proyectos',
@@ -28,7 +52,11 @@ const filterSlugs = {
 }
 const slugToFilter = Object.fromEntries(Object.entries(filterSlugs).map(([id, slug]) => [slug, id]))
 
-export function pathForState({ pageId = 'home', filterId = 'all' } = {}) {
+export function pathForState(state = {}, language = currentLanguage) {
+  return withLanguage(basePathForState(state), language)
+}
+
+function basePathForState({ pageId = 'home', filterId = 'all' } = {}) {
   if (staticRoutes[pageId]) {
     if (pageId === 'projects' && filterId && filterId !== 'all' && filterSlugs[filterId]) {
       return `/proyectos?categoria=${filterSlugs[filterId]}`
@@ -41,7 +69,7 @@ export function pathForState({ pageId = 'home', filterId = 'all' } = {}) {
 }
 
 export function stateFromLocation(location = window.location) {
-  const path = location.pathname.replace(/\/+$/, '') || '/'
+  const path = stripLanguage(location.pathname.replace(/\/+$/, '') || '/')
   const params = new URLSearchParams(location.search)
   if (pathToPage[path]) {
     const pageId = pathToPage[path]

@@ -1,6 +1,7 @@
 import { useLanguage } from '../context/LanguageContext'
 import { useProjectNavigation } from '../context/ProjectNavigationContext'
 import { englishProjectTitles, italianProjectTitles, projectItems } from '../content/projects'
+import { pathForState, stateFromLocation } from '../lib/routes'
 
 const labels = {
   es: { prev: 'Proyecto anterior', next: 'Proyecto siguiente', cta: '¿Tienes un proyecto en mente?', ctaLink: 'Cuéntanoslo' },
@@ -13,7 +14,7 @@ const labels = {
 export default function ProjectPager() {
   const { language } = useLanguage()
   const { navigateToPage } = useProjectNavigation()
-  const currentId = window.location.pathname.replace(/^\/proyectos\//, '').replace(/\/$/, '')
+  const currentId = stateFromLocation().pageId.replace(/^project-/, '')
   const index = projectItems.findIndex((project) => project.id === currentId)
   if (index < 0) return null
   const t = labels[language] ?? labels.es
@@ -31,15 +32,15 @@ export default function ProjectPager() {
 
   return (
     <nav className="project-pager" aria-label={`${t.prev} / ${t.next}`}>
-      <a className="project-pager-link is-prev" href={`/proyectos/${prev.id}`} onClick={go(`project-${prev.id}`)}>
+      <a className="project-pager-link is-prev" href={pathForState({ pageId: `project-${prev.id}` })} onClick={go(`project-${prev.id}`)}>
         <span className="project-pager-label">← {t.prev}</span>
         <span className="project-pager-title">{titleOf(prev)}</span>
       </a>
       <p className="project-pager-cta">
         {t.cta}{' '}
-        <a href="/contacto" onClick={go('contact')}>{t.ctaLink}</a>
+        <a href={pathForState({ pageId: 'contact' })} onClick={go('contact')}>{t.ctaLink}</a>
       </p>
-      <a className="project-pager-link is-next" href={`/proyectos/${next.id}`} onClick={go(`project-${next.id}`)}>
+      <a className="project-pager-link is-next" href={pathForState({ pageId: `project-${next.id}` })} onClick={go(`project-${next.id}`)}>
         <span className="project-pager-label">{t.next} →</span>
         <span className="project-pager-title">{titleOf(next)}</span>
       </a>

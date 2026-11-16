@@ -49,7 +49,7 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 - [ ] C5. Revisar Vercel → Analytics al mes de difundir la web.
 - [ ] C6. Copia de seguridad de los `.af` fuera de Drive y avisos de Vercel por
       correo si falla una publicación.
-- [ ] C7. Opcional: versiones de la web en /en y /it para que Google también
+- [x] C7. Versiones de la web en /en y /it (16-nov, pendiente de publicar) para que Google también
       la enseñe en inglés e italiano (hoy Google solo ve el español).
 - [ ] C8. Opcional (diseño): sorpresas en la portada (personaje de temporada,
       ambiente de noche), newsletter, noticias nuevas cada cierto tiempo.

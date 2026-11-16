@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import { useProjectNavigation } from '../context/ProjectNavigationContext'
 import { englishProjectTitles, italianProjectTitles, projectItems } from '../content/projects'
+import { pathForState } from '../lib/routes'
 
 const placeholder = { es: 'BUSCAR EN ESTA WEB', en: 'SEARCH THIS WEBSITE', it: 'CERCA IN QUESTO SITO' }
 const closeLabel = { es: 'Cerrar buscador', en: 'Close search', it: 'Chiudi ricerca' }
@@ -56,7 +57,7 @@ export default function SearchOverlay({ onClose }) {
             <a
               key={project.id}
               className="search-overlay-item"
-              href={`/proyectos/${project.id}`}
+              href={pathForState({ pageId: `project-${project.id}` })}
               title={titleOf(project)}
               onClick={(event) => {
                 if (event.metaKey || event.ctrlKey || event.shiftKey) return
