@@ -595,10 +595,12 @@ export default function App() {
     return () => window.clearInterval(id)
   }, [activePage, hasEntered, isAssetsReady])
 
+  // El sonido (casi 1 MB) solo se descarga cuando se va a la portada.
   useEffect(() => {
+    if (activePage !== 'home') return
     installAudioUnlock()
     loadSceneAudio()
-  }, [])
+  }, [activePage])
 
   useEffect(() => {
     soundEnabledRef.current = soundEnabled

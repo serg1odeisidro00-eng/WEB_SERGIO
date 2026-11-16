@@ -341,3 +341,6 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   letras con fondo blanco y la fila "VEINTE" mezclada con letras de otras filas
   (`img_contacto.webp`; el .png original intacto). Academia: líneas
   separadoras continuas (#111), las discontinuas sin cambios.
+- 2026-11-16 (3): el sonido de la portada (~950 KB) ya no se descarga en las
+  páginas interiores (solo al ir a la portada). Grises pequeños #838281 →
+  #6f6e6d en toda la web (fechas y pies de noticias, notas, tarifas, legales).
