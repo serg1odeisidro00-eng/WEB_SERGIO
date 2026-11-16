@@ -33,7 +33,7 @@ export default function ContactPage({ activePage, onBack, onNavigate }) {
       <div className="contact-page-content">
         <img
           className="contact-page-image"
-          src="/pages/img_contacto.webp"
+          src="/pages/contacto_sopa.webp"
           alt=""
           aria-hidden="true"
         />

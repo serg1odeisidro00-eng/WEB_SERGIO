@@ -350,3 +350,7 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   el rótulo "Los intereses creados / Jacinto Benavente / fecha" es ahora el
   manuscrito original sacado de Drive `Sección_228_JUNTO copia.svg` (imagen
   encima, colocada por coincidencia de puntos con el dibujo), sin los textos Arial.
+- 2026-11-16 (5): caché de imágenes rebajada a 1 h (+1 día de revalidación).
+  OJO: al cambiar una imagen, CAMBIARLE EL NOMBRE (p. ej. `_v2`) para que nadie
+  vea la vieja guardada en su navegador (le pasó a Sergio con Contacto).
+  Renombrados: `contacto_sopa.webp`, `cartel_de_teatro_v2.svg`, `UFG_v2.svg`.
