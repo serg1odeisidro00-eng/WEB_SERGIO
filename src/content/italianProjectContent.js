@@ -41,15 +41,18 @@ function translateFacts(facts) {
   })
 }
 
+const italianLocation = (location = '') => location.replace(/Spain|España/g, 'Spagna')
+
 export function getItalianProjectContent(copy) {
   const source = copy.en ?? copy.es
   const translation = projectTranslations[source.title] ?? Object.entries(projectTranslations).find(([title]) => title.toLowerCase() === source.title.toLowerCase())?.[1]
 
-  if (!translation) return { ...source, details: 'DATI DEL PROGETTO', facts: translateFacts(source.facts) }
+  if (!translation) return { ...source, location: italianLocation(source.location), details: 'DATI DEL PROGETTO', facts: translateFacts(source.facts) }
 
   const [title, ...paragraphs] = translation
   return {
     ...source,
+    location: italianLocation(source.location),
     title,
     alt: `Tavola del progetto ${title}`,
     details: 'DATI DEL PROGETTO',

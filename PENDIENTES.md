@@ -26,7 +26,7 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 
 ## B. Contenido que solo puede dar Sergio
 
-- [ ] B1. Revisar traducciones EN/IT (o pasárselas a alguien nativo).
+- [ ] B1. Revisar traducciones EN/IT (o pasárselas a alguien nativo). Documento con todos los textos ES/EN/IT: https://claude.ai/artifact/WPJz3ZoFf8kQq1xEhqFQMw
 - [x] B2. MITECO 2: mismos icono y foto que MITECO; no sale en "Todos" (5×5 = 25), solo en Paisajismo.
 - [x] B3. Cartel de teatro / UFV: rótulo manuscrito original (de JUNTO copia) en las dos láminas.
 - [x] B4. De JUNTO copia solo quedaba el cartel (hecho en B3); el resto ya no.

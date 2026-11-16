@@ -281,6 +281,7 @@ export default function App() {
         graphic: 'GRAPHIC DESIGN',
         artDirection: 'ART DIRECTION',
         landscapeDetail: 'Landscape design',
+        interiorsDetail: 'Interior design',
         contact: 'Contact',
         contactSign: 'CONTACT',
         phoneRinging: 'PHONE RINGING',
@@ -294,6 +295,7 @@ export default function App() {
           graphic: 'DESIGN GRAFICO',
           artDirection: 'DIREZIONE ARTISTICA',
           landscapeDetail: 'Paesaggismo',
+          interiorsDetail: 'Design degli interni',
           contact: 'Contatti',
           contactSign: 'CONTATTI',
           phoneRinging: 'TELEFONO IN SQUILLO',
@@ -306,6 +308,7 @@ export default function App() {
         graphic: 'DISEÑO GRÁFICO',
         artDirection: 'DIRECCIÓN DE ARTE',
         landscapeDetail: 'Paisajismo',
+        interiorsDetail: 'Dise\u00f1o de interiores',
         contact: 'Contactar',
         contactSign: 'CONTACTO',
         phoneRinging: 'TELÉFONO SONANDO',
@@ -1684,7 +1687,7 @@ export default function App() {
     }
   }, [activePage, isAssetsReady])
 
-  const bubbleInteriorText = 'Dise\u00f1o de interiores'
+  const bubbleInteriorText = sceneCopy.interiorsDetail
 
   // El arbol va por detras de la capa de la casa (poste, cartel de escenografia
   // y linea de tierra quedan delante) y por delante del fondo.
