@@ -39,8 +39,10 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
       textos ES, datos), en qué carpeta de Drive y con qué nombres.
 - [x] C2. Tienda: mientras no exista, o bien quitarla del menú, o bien cambiar
       "Próximamente" por "Avísame cuando abra" (correo con mailto).
-- [ ] C3. (Ya se puede) Google Search Console (enviar sitemap) y perfil de empresa
-      en Google Maps como estudio en Madrid.
+- [x] C3a. Google Search Console: dominio m047.es verificado y sitemap
+      enviado (16-nov: «Correcto», 108 páginas).
+- [ ] C3b. Perfil de empresa en Google Maps (Estudio M047, zona de servicio
+      Madrid, sin dirección pública).
 - [x] C4. Correo de Hostinger bien configurado (SPF/DKIM) — ya estaba (16-nov) para que las
       respuestas a clientes no acaben en spam.
 - [x] C5. Analytics activado en Vercel (16-nov); mirarlo al mes de difundir la web.
