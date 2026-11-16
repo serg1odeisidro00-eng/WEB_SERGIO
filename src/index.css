@@ -3630,3 +3630,16 @@ main > .projects-page {
   font-size: clamp(1rem, 1.2vw, 1.4rem);
   text-decoration: none;
 }
+
+/* Tarjeta del telefono en el movil: sobre la pantalla, casi a todo el ancho. */
+.scene-business-card-modal.is-screen {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 400;
+}
+
+.scene-business-card-modal.is-screen .scene-business-card-content {
+  width: min(94vw, 40rem);
+}

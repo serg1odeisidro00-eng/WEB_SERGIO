@@ -1,3 +1,4 @@
+import { createPortal } from 'react-dom'
 import SceneCharacter from './SceneCharacter'
 import SceneHotspot from './SceneHotspot'
 import SceneMenu from './SceneMenu'
@@ -28,6 +29,33 @@ export default function SceneArtboard({
   streetLamp,
   van,
 }) {
+  // Tarjeta del telefono. En el movil el dibujo es mas ancho que la pantalla,
+  // asi que la tarjeta se saca a la pantalla para que se vea entera.
+  const isPhoneScreen = typeof window !== 'undefined' && window.matchMedia('(max-width: 700px)').matches
+  const businessCard = (
+        <div
+          className={`scene-business-card-modal${isPhoneScreen ? ' is-screen' : ''}`}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Tarjeta de visita de M047"
+        >
+          <button
+            type="button"
+            className="scene-business-card-backdrop"
+            aria-label="Cerrar tarjeta de visita"
+            onClick={onCloseBusinessCard}
+          />
+          <button
+            type="button"
+            className="scene-business-card-content"
+            aria-label="Ir a la página de contacto"
+            onClick={onOpenContact}
+          >
+            <img src="/tarjeta_contacto.webp" width="2671" height="1027" alt="Tarjeta de contacto de M047: call me +34 633 878 755" />
+          </button>
+        </div>
+  )
+
   return (
     <div
       data-animate="frame"
@@ -166,29 +194,9 @@ export default function SceneArtboard({
         </div>
       </div>
 
-      {businessCardOpen ? (
-        <div
-          className="scene-business-card-modal"
-          role="dialog"
-          aria-modal="true"
-          aria-label="Tarjeta de visita de M047"
-        >
-          <button
-            type="button"
-            className="scene-business-card-backdrop"
-            aria-label="Cerrar tarjeta de visita"
-            onClick={onCloseBusinessCard}
-          />
-          <button
-            type="button"
-            className="scene-business-card-content"
-            aria-label="Ir a la página de contacto"
-            onClick={onOpenContact}
-          >
-            <img src="/tarjeta_contacto.webp" width="2671" height="1027" alt="Tarjeta de contacto de M047: call me +34 633 878 755" />
-          </button>
-        </div>
-      ) : null}
+      {businessCardOpen
+        ? (isPhoneScreen ? createPortal(businessCard, document.body) : businessCard)
+        : null}
     </div>
     </div>
   )
