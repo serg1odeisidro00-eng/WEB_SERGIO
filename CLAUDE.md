@@ -335,3 +335,9 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   fondo de Tienda en WebP sin pérdida (958→611 KB); los .png originales se
   quedan en `public/pages/`. Noticias: versión móvil de cada foto a 900 px
   (`public/noticias/movil/`, 5,4 → 2,4 MB) con `<picture>`; pies de foto a 13 px en móvil.
+- 2026-11-16 (2): Estudio (≥1201 px): la columna de texto mide lo mismo que la
+  foto (`contain: size` + reparto entre "M047" arriba y el último párrafo
+  abajo; pie de foto fuera de la medida; párrafos 1,13vw). Contacto: sopa de
+  letras con fondo blanco y la fila "VEINTE" mezclada con letras de otras filas
+  (`img_contacto.webp`; el .png original intacto). Academia: líneas
+  separadoras continuas (#111), las discontinuas sin cambios.

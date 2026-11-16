@@ -2034,7 +2034,7 @@ a {
   height: 1.5px;
   margin: 0.55em 0 0;
   border: 0;
-  background: linear-gradient(to right, rgba(17, 17, 17, 0) 1.5%, rgba(17, 17, 17, 0.28) 15%, #111111 100%);
+  background: #111111;
 }
 
 .academy-dashes {
@@ -3565,4 +3565,50 @@ main > .projects-page {
 /* Movil: pies de foto de noticias un poco mas legibles */
 @media (max-width: 700px) {
   .news-article-figure figcaption { font-size: 13px; }
+}
+
+/* Estudio: el texto ocupa exactamente el alto de la foto (titulo arriba
+   alineado con la foto, ultimo parrafo abajo alineado con su borde); el pie
+   de foto queda por debajo, fuera de esa medida. */
+@media (min-width: 1201px) {
+  .studio-page-figure {
+    position: relative;
+    align-self: start;
+  }
+
+  .studio-page-content {
+    align-content: start;
+  }
+
+  .studio-page-figure figcaption {
+    position: absolute;
+    top: 100%;
+    left: 0;
+  }
+
+  /* La columna de texto no cuenta para el alto de la fila: mide lo mismo
+     que la foto y reparte los parrafos entre arriba y abajo. */
+  .studio-page-copy {
+    contain: size;
+    align-self: stretch;
+    padding-top: 0;
+  }
+
+  .studio-page-group p {
+    font-size: clamp(0.95rem, 1.13vw, 1.42rem);
+  }
+
+  .studio-page-copy h1 {
+    margin-top: -0.1em;
+  }
+
+  .studio-page-groups {
+    justify-content: space-between;
+    gap: 0.6rem;
+    margin-top: 1.4rem;
+  }
+
+  .studio-page-groups .studio-page-group:last-child p:last-child {
+    margin-bottom: -0.2em;
+  }
 }
