@@ -354,3 +354,12 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   OJO: al cambiar una imagen, CAMBIARLE EL NOMBRE (p. ej. `_v2`) para que nadie
   vea la vieja guardada en su navegador (le pasó a Sergio con Contacto).
   Renombrados: `contacto_sopa.webp`, `cartel_de_teatro_v2.svg`, `UFG_v2.svg`.
+- 2026-11-16 (6): documento de traducciones ES/EN/IT (Claude Doc
+  https://claude.ai/artifact/WPJz3ZoFf8kQq1xEhqFQMw y `docs/Traducciones_M047.docx/.pdf`).
+  Sergio lo devolvió revisado (36 cambios EN/IT) y está aplicado: "View project"
+  en vez de "Launch project", premios en italiano (`italianProjectContent.js`
+  traduce valores), "Prossimamente in vendita" automático en IT si el EN acaba en
+  "Coming soon". Italiano: "Progettazione del paesaggio" en todo salvo el menú,
+  donde no cabe y va "2. PAESAGGISTICA". Interruptor de sonido del menú
+  traducido (SOUND ON/OFF, AUDIO ATTIVO/DISATTIVO). Mensaje enviado al amigo
+  para que quite m047.es de su Vercel ("linked to another Vercel account").

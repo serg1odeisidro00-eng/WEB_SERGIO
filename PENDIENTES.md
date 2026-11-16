@@ -13,7 +13,7 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
       proyecto `web-sergio` → Settings → Domains → añadir `m047.es` y
       `www.m047.es`; en Hostinger → DNS, poner los registros que diga Vercel.
       Hoy m047.es enseña la web antigua del amigo.
-- [ ] **A2. Retirar la web antigua**: pedir al amigo (viniciustaliari) que borre
+- [ ] **A2. Retirar la web antigua** (16-nov: mensaje enviado, falta que lo haga): pedir al amigo (viniciustaliari) que borre
       o desactive su proyecto de Vercel, para que no quede una copia vieja
       publicada en otra dirección (Google la vería como contenido duplicado).
 - [ ] **A3. Comprobación final tras A1** (Claude): sitemap, robots, vistas
@@ -26,7 +26,7 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 
 ## B. Contenido que solo puede dar Sergio
 
-- [ ] B1. Revisar traducciones EN/IT (o pasárselas a alguien nativo). Documento con todos los textos ES/EN/IT: https://claude.ai/artifact/WPJz3ZoFf8kQq1xEhqFQMw
+- [x] B1. Traducciones EN/IT revisadas por Sergio y aplicadas (16-nov). Documento con todos los textos ES/EN/IT: https://claude.ai/artifact/WPJz3ZoFf8kQq1xEhqFQMw
 - [x] B2. MITECO 2: mismos icono y foto que MITECO; no sale en "Todos" (5×5 = 25), solo en Paisajismo.
 - [x] B3. Cartel de teatro / UFV: rótulo manuscrito original (de JUNTO copia) en las dos láminas.
 - [x] B4. De JUNTO copia solo quedaba el cartel (hecho en B3); el resto ya no.
