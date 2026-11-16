@@ -1,118 +1,77 @@
-# Pendientes para terminar la web M047
+# Pendientes para cerrar la web M047
 
-Lista de trabajo acordada con Sergio (12-nov-2026). Ir tachando (`[x]`) lo que
+Lista de cierre acordada con Sergio (16-nov-2026). Ir tachando (`[x]`) lo que
 se haga y anotar la decisión en el historial de `CLAUDE.md`.
+Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 
-## Lista de Sergio (cosas que hace él)
+## A. Imprescindible para cerrar (en este orden)
 
-- [ ] Conectar m047.es a Vercel (Claude le guía paso a paso).
-- [ ] Mandarse un correo de prueba a contacto@m047.es e info@m047.es.
-- [ ] Revisar la web en su iPhone (Safari): personajes, sonido, botón atrás.
-- [ ] Tras conectar el dominio: Google Search Console y perfil de empresa en Google.
-- [ ] Revisar las traducciones EN/IT (o pasárselas a alguien nativo).
-- [ ] Pedir 1-2 frases de opinión a clientes reales.
-- [ ] Copia de seguridad de los .af fuera de Drive.
-- [ ] Activar los avisos por correo de Vercel si falla una publicación.
-- [ ] Diseñar el portfolio en PDF a su gusto (Claude lo enlaza en la web después).
+- [ ] **A1. Conectar m047.es a Vercel** (Sergio + Claude guiando). Vercel →
+      proyecto `web-sergio` → Settings → Domains → añadir `m047.es` y
+      `www.m047.es`; en Hostinger → DNS, poner los registros que diga Vercel.
+      Hoy m047.es enseña la web antigua del amigo.
+- [ ] **A2. Retirar la web antigua**: pedir al amigo (viniciustaliari) que borre
+      o desactive su proyecto de Vercel, para que no quede una copia vieja
+      publicada en otra dirección (Google la vería como contenido duplicado).
+- [ ] **A3. Comprobación final tras A1** (Claude): sitemap, robots, vistas
+      previas al compartir y ficha para Google con m047.es; repaso completo de
+      todas las páginas en ordenador y móvil.
+- [ ] **A4. Correos** (Sergio): mandarse una prueba a `contacto@m047.es` e
+      `info@m047.es` y comprobar que llegan (formularios de Contacto y Academia).
+- [ ] **A5. Prueba en su iPhone** (Sergio): personajes sin "flotar", sonido al
+      entrar, menú, bajar al recorrido por plantas, botón atrás.
 
-## 0. Imprescindible antes de difundir la web
+## B. Contenido que solo puede dar Sergio
 
-- [ ] **Conectar m047.es a Vercel** (proyecto `web-sergio`): Vercel → Settings →
-      Domains → añadir `m047.es` y `www.m047.es`; en Hostinger, DNS con los
-      registros que indique Vercel. Hoy m047.es enseña la web antigua del amigo.
-      Tras conectarlo, comprobar que `sitemap.xml`, `robots.txt` y las vistas
-      previas usan m047.es (`scripts/prerender.mjs` toma el dominio de producción).
-- [ ] **Comprobar los buzones** `contacto@m047.es` (formulario de Contacto) e
-      `info@m047.es` (Academia, CV, prensa): que existan en Hostinger y lleguen.
-- [ ] **Probar en iPhone / Safari**: personajes que "flotaban" (arreglo del
-      11-nov sin confirmar), sonido al pulsar "Pulsa para entrar", botón atrás.
+- [ ] B1. Revisar traducciones EN/IT (o pasárselas a alguien nativo).
+- [ ] B2. MITECO 2: foto e icono propios (ahora usa el de MITECO).
+- [ ] B3. Cartel de teatro / UFV: documento bueno de Affinity para comparar.
+- [ ] B4. De `Sección_228_JUNTO copia.svg`: ¿siguen pendientes el letrero de
+      Diseño gráfico, el logo nuevo, la foto nueva del kart y el cartel de
+      Escenografía?
+- [ ] B5. Tienda online: decidir (ver sugerencias C2).
+- [ ] B6. Academia: ¿precios "desde…" o se queda "a consultar"?
+- [ ] B7. Portfolio en PDF diseñado por Sergio (Claude lo enlaza después).
+- [ ] B8. Opiniones reales de clientes (no inventarlas).
 
-## 1. Versión móvil (prioridad alta)
+## C. Sugerencias de Claude para dejarlo cerrado
 
-Problemas actuales (notas de Sergio):
-- La portada se abre a mitad de la escena: es más ancha que la pantalla.
-- El botón de menú queda fuera de pantalla, a la derecha.
-- No hay ninguna pista de que se puede deslizar o tocar.
-- Las zonas pequeñas son difíciles de pulsar; el menú sencillo debería mandar.
+- [ ] C1. Guía corta "cómo pedir cambios" (`docs/GUIA.md`): qué mandar para
+      añadir un proyecto o una noticia (lámina, foto de tarjeta, diagrama,
+      textos ES, datos), en qué carpeta de Drive y con qué nombres.
+- [ ] C2. Tienda: mientras no exista, o bien quitarla del menú, o bien cambiar
+      "Próximamente" por "Avísame cuando abra" (correo con mailto).
+- [ ] C3. Tras A1: Google Search Console (enviar sitemap) y perfil de empresa
+      en Google Maps como estudio en Madrid.
+- [ ] C4. Correo de Hostinger bien configurado (SPF/DKIM) para que las
+      respuestas a clientes no acaben en spam.
+- [ ] C5. Revisar Vercel → Analytics al mes de difundir la web.
+- [ ] C6. Copia de seguridad de los `.af` fuera de Drive y avisos de Vercel por
+      correo si falla una publicación.
+- [ ] C7. Opcional: versiones de la web en /en y /it para que Google también
+      la enseñe en inglés e italiano (hoy Google solo ve el español).
+- [ ] C8. Opcional (diseño): sorpresas en la portada (personaje de temporada,
+      ambiente de noche), newsletter, noticias nuevas cada cierto tiempo.
 
-Idea de Sergio: en móvil, todos los personajes se mueven a la vez y en bucle
-(sin tener que pasar el dedo), y el menú sencillo es el protagonista.
+## Hecho (resumen)
 
-Maquetas guardadas en `docs/movil/` (`maquetas_A_B_C.jpg`, `maqueta_C_v1_v2.jpg`).
-Lienzo editable en Claude Design (privado de Sergio): https://claude.ai/artifact/82eCiRCW6zDGnjgwBW9rgY
-(artboards «Opción C», «Opción A» y «Piezas sueltas»). Sergio hará allí sus cambios;
-leerlo con Artifact `read` antes de programar la versión móvil.
-
-Decisión de Sergio (12-nov-2026):
-- **Favorita: C (vertical)**. Barra fija arriba (M047, sonido, menú), sol y
-  edificio entero ocupando el ancho, debajo una franja de calle con el cartel
-  "Dirección de arte" y el árbol con raíces (sin furgoneta, no cabe), cartela
-  abajo a la derecha y "Toca un piso para entrar". Versión 2 de la maqueta =
-  punto de partida. Simplificar el edificio solo si hace falta (decidirlo con Sergio).
-- **También le gusta A** si los personajes se mueven (todos a la vez, en bucle).
-- B descartada. 12-nov (tarde): elegida una **mezcla de A + D** (artboard «Mezcla A + D»):
-  primera pantalla solo el edificio (de 503 a 1107 en unidades de la escena, para
-  que salga el señor fumando; centrado), todos los personajes animados a la vez;
-  al bajar, una ficha por departamento en este orden: Interiores, Dirección de
-  arte, Diseño gráfico, Paisajismo, Escenografía, Academia, Contacto.
-  Vídeo de prueba: `docs/movil/mezcla_movimiento.mp4`. Sol y nubes completos
-  tomados de `public/fondo.jpg` (la web recorta el 5 % de arriba).
-- Personajes en móvil: todos animados en bucle, sin tener que tocar.
-- Las zonas de cada departamento deben seguir siendo pulsables.
-
-Hecho 12-nov: portada móvil programada (versión de prueba) y páginas interiores
-revisadas en móvil (cabecera como la portada, filtros en una línea deslizable).
-Además, en todas: revisar páginas interiores en móvil (proyectos, noticias,
-academia, contacto, legales), tamaños de letra, cabecera y menú.
-
-## 2. Proyectos
-
-- [x] Al final de cada proyecto: **proyecto anterior / siguiente** y un enlace
-      **"Cuéntanos tu proyecto"** que lleve al formulario de Contacto.
-- [x] **Proyectos destacados**: Nave 16, Playground, Capilla y Stand efímero salen primero.
-- [ ] MITECO 2: imagen de tarjeta e icono propios (ahora: recorte de los arcos
-      rojos y el icono de MITECO).
-- [ ] Cartel de teatro / UFV: Sergio enviará el documento bueno de Affinity
-      para comprobar que el texto rehecho coincide.
-- [ ] Del diseño `Sección_228_JUNTO copia.svg` (pendientes antiguos): letrero
-      del cartel Diseño gráfico, nuevo logo, foto nueva del kart, cartel
-      Escenografía. Confirmar con Sergio si siguen pendientes.
-- [ ] Opiniones de clientes: solo reales (no inventar); pedirlas a Plantae, Soldrink, UFV…
-
-## 3. Estudio y contenido
-
-- [x] Estudio: pie de foto (José Luis de Isidro con su hijo Sergio).
-- [ ] Revisión de traducciones EN/IT (noticias, academia, proyectos, legales).
-- [ ] Academia: precios orientativos ("desde…") si Sergio quiere.
-- [ ] Portfolio en PDF: a Sergio no le gustó la primera versión; lo rehará él
-      (borrador generable con `node scripts/build-portfolio.cjs [portada.jpg]`,
-      no publicado ni enlazado).
-- [ ] Tienda online: contenido o fecha (ahora "Próximamente").
-- [ ] Noticias nuevas de vez en cuando.
-- [ ] Newsletter sencilla (Brevo/Mailchimp), opcional.
-
-## 4. Google y difusión (después del punto 0)
-
-- [ ] Google Search Console: verificar m047.es y enviar el sitemap.
-- [ ] Perfil de empresa en Google (Google Business Profile) como estudio en Madrid.
-- [ ] Revisar estadísticas en Vercel → Analytics (ya activadas).
-
-## 5. Técnico
-
-- [ ] Portada más ligera: fotogramas de animaciones a WebP sin pérdida
-      (sin tocar `fondo.jpg` ni `Casa.png`, que van siempre a resolución completa).
-- [x] Página de error propia ("Aquí no hay nada… vuelve al edificio").
-- [ ] Avisos de Vercel por correo si falla una publicación.
-- [ ] Copia de seguridad de los `.af` fuera de Drive.
-
-## 6. Ideas de diseño (opcional)
-
-- [ ] Pequeñas sorpresas en la portada: un personaje que reacciona al pasar el
-      ratón, ambiente distinto de noche, personaje de temporada (Navidad, verano…).
+Portada de ordenador y móvil (mezcla A + D, todo animado, recorrido por
+plantas), pantalla de carga, sonido (también en iPhone en silencio), proyectos
+(tipografías, diagramas y fotos del diseño, 2 departamentos, destacados,
+anterior/siguiente, volver), buscador, noticias, academia, contacto con
+formulario y WhatsApp, estudio, legales sin datos personales, página de
+error, direcciones por página, SEO y vista previa al compartir, estadísticas,
+accesibilidad, velocidad (andamio visible 10,5 s → 4,7 s con 4G; láminas y
+fotos ligeras en móvil; sonido solo en la portada).
+Maquetas de móvil en `docs/movil/`; lienzo de diseño:
+https://claude.ai/artifact/82eCiRCW6zDGnjgwBW9rgY
 
 ## Decisiones ya tomadas (no repetir)
 
 - Buscador: se queda como está.
-- Páginas legales sin datos personales; añadir nombre y NIF solo si se vende por la web.
+- Páginas legales sin datos personales; nombre y NIF solo si se vende por la web.
 - Transición del andamio: fundido actual.
-- `fondo.jpg` y `Casa.png`: nunca versiones reducidas.
+- `fondo.jpg`: no tocarlo. `Casa`: siempre a resolución completa (Casa.webp es
+  la misma imagen sin pérdida).
+- Opiniones de clientes: nunca inventadas.
+- Cartel del cuadro (Diseño de interiores): letra negra también en reposo.
