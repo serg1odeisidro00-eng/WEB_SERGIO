@@ -6,7 +6,10 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 
 ## A. Imprescindible para cerrar (en este orden)
 
-- [ ] **A1. Conectar m047.es a Vercel** (Sergio + Claude guiando). Vercel →
+- [ ] **A1. Conectar m047.es a Vercel** — 16-nov: nameservers pasados a Hostinger
+      (cosmos/nova.dns-parking.com), A `@` 76.76.21.21, CNAME `www`
+      cname.vercel-dns.com, 2 TXT `_vercel`; correo intacto. Falta que Vercel verifique.
+      Principal en Vercel: www.m047.es (m047.es redirige 308). (Sergio + Claude guiando). Vercel →
       proyecto `web-sergio` → Settings → Domains → añadir `m047.es` y
       `www.m047.es`; en Hostinger → DNS, poner los registros que diga Vercel.
       Hoy m047.es enseña la web antigua del amigo.
@@ -36,14 +39,14 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 
 ## C. Sugerencias de Claude para dejarlo cerrado
 
-- [ ] C1. Guía corta "cómo pedir cambios" (`docs/GUIA.md`): qué mandar para
+- [x] C1. Guía corta "cómo pedir cambios" (`docs/GUIA.md`): qué mandar para
       añadir un proyecto o una noticia (lámina, foto de tarjeta, diagrama,
       textos ES, datos), en qué carpeta de Drive y con qué nombres.
 - [ ] C2. Tienda: mientras no exista, o bien quitarla del menú, o bien cambiar
       "Próximamente" por "Avísame cuando abra" (correo con mailto).
 - [ ] C3. Tras A1: Google Search Console (enviar sitemap) y perfil de empresa
       en Google Maps como estudio en Madrid.
-- [ ] C4. Correo de Hostinger bien configurado (SPF/DKIM) para que las
+- [x] C4. Correo de Hostinger bien configurado (SPF/DKIM) — ya estaba (16-nov) para que las
       respuestas a clientes no acaben en spam.
 - [ ] C5. Revisar Vercel → Analytics al mes de difundir la web.
 - [ ] C6. Copia de seguridad de los `.af` fuera de Drive y avisos de Vercel por
