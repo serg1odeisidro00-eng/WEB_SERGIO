@@ -331,3 +331,7 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   originales en scratchpad `svg2_backup/` y en git). Versión móvil de cada SVG
   rasterizada a 1100 px (`public/pages/proyectos/movil/<nombre>.webp`, 74-650
   KB); `ProjectImage` la usa en ≤700 px para todas las láminas.
+- 2026-11-16: fotos de Estudio y Contacto en WebP q90 (950→299 KB, 275→178 KB),
+  fondo de Tienda en WebP sin pérdida (958→611 KB); los .png originales se
+  quedan en `public/pages/`. Noticias: versión móvil de cada foto a 900 px
+  (`public/noticias/movil/`, 5,4 → 2,4 MB) con `<picture>`; pies de foto a 13 px en móvil.

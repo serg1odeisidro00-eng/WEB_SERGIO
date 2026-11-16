@@ -28,13 +28,17 @@ export default function NewsArticlePage({ articleId, onBack, onNavigate }) {
         {article.blocks.map((block, index) =>
           block.img ? (
             <figure key={index} className="news-article-figure">
-              <img
-                src={`/noticias/${block.img}`}
-                width={block.w}
-                height={block.h}
-                alt={block.caption ? block.caption[language] : ''}
-                loading={index < 2 ? 'eager' : 'lazy'}
-              />
+              <picture>
+                <source media="(max-width: 700px)" srcSet={`/noticias/movil/${block.img}`} />
+                <img
+                  src={`/noticias/${block.img}`}
+                  width={block.w}
+                  height={block.h}
+                  alt={block.caption ? block.caption[language] : ''}
+                  loading={index < 2 ? 'eager' : 'lazy'}
+                  decoding="async"
+                />
+              </picture>
               {block.caption ? <figcaption>{block.caption[language]}</figcaption> : null}
             </figure>
           ) : (

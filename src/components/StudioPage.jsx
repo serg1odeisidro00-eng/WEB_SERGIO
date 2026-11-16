@@ -55,7 +55,7 @@ export default function StudioPage({ activePage, onBack, onNavigate }) {
         <figure className="studio-page-figure">
           <img
             className="contact-page-image studio-page-image"
-            src="/pages/estudio.png"
+            src="/pages/estudio.webp"
             alt={photoCaption[language] ?? photoCaption.es}
           />
           <figcaption>{photoCaption[language] ?? photoCaption.es}</figcaption>

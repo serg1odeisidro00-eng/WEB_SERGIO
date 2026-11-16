@@ -13,7 +13,7 @@ export default function ShopPage({ activePage, onBack, onNavigate }) {
       <div className="shop-page-backdrop" aria-hidden="true">
         <img
           className="shop-page-background"
-          src="/pages/fondo_tienda.png"
+          src="/pages/fondo_tienda.webp"
           alt=""
           aria-hidden="true"
         />

@@ -3559,3 +3559,10 @@ main > .projects-page {
 @media (prefers-reduced-motion: reduce) {
   main > .projects-page { animation: none; }
 }
+
+.news-article-figure picture { display: block; }
+
+/* Movil: pies de foto de noticias un poco mas legibles */
+@media (max-width: 700px) {
+  .news-article-figure figcaption { font-size: 13px; }
+}
