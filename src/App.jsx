@@ -455,6 +455,30 @@ export default function App() {
     return () => window.cancelAnimationFrame(frameId)
   }, [activePage, isAssetsReady, sceneStyle.width, sceneStyle.height])
 
+  // Altura a la que hay que dejar la pagina despues de cambiar (0 = arriba;
+  // con "atras" se vuelve a donde estaba). Las paginas se cargan aparte y sus
+  // imagenes tardan, asi que se reintenta unas cuantas veces.
+  const pendingScrollRef = useRef(null)
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual'
+  }, [])
+  useEffect(() => {
+    const target = pendingScrollRef.current
+    if (target === null) return undefined
+    pendingScrollRef.current = null
+    const timers = [0, 60, 200, 450, 900, 1500, 2500].map((delay) => window.setTimeout(() => {
+      if (Math.abs(window.scrollY - target) > 2) window.scrollTo(0, target)
+    }, delay))
+    const cancel = () => timers.forEach((id) => window.clearTimeout(id))
+    window.addEventListener('wheel', cancel, { once: true, passive: true })
+    window.addEventListener('touchstart', cancel, { once: true, passive: true })
+    return () => {
+      cancel()
+      window.removeEventListener('wheel', cancel)
+      window.removeEventListener('touchstart', cancel)
+    }
+  }, [activePage, projectsFilter])
+
   const applyNavigationState = ({ filterId = 'all', pageId = 'home', searchQuery = '' }) => {
     setActivePage(pageId)
 
@@ -477,9 +501,17 @@ export default function App() {
           searchQuery: '',
         }
 
+    // Guardamos la altura a la que estaba la pagina actual (para volver ahi con
+    // "atras") y la nueva pagina se abre siempre desde arriba.
+    const currentState = window.history.state
+    if (currentState?.app === 'm047') {
+      window.history.replaceState({ ...currentState, scrollY: window.scrollY }, '')
+    }
     window.history.pushState({ app: 'm047', ...nextState }, '', pathForState(nextState))
     window.__m047CameFromSite = true
+    pendingScrollRef.current = 0
     applyNavigationState(nextState)
+    window.scrollTo(0, 0)
   }
 
   useEffect(() => {
@@ -493,6 +525,7 @@ export default function App() {
 
     const handlePopState = (event) => {
       if (event.state?.app === 'm047') {
+        pendingScrollRef.current = event.state.scrollY ?? 0
         applyNavigationState(event.state)
       }
     }
