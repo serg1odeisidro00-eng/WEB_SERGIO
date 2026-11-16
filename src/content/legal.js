@@ -1,4 +1,5 @@
-// Textos legales (aviso legal, privacidad y cookies). Solo en espanol.
+// Textos legales (aviso legal, privacidad y cookies) en es / en / it.
+// Si hay diferencias, vale la version en espanol (se avisa en en/it).
 // Sergio no quiere publicar sus datos personales (la web es un portfolio con
 // contacto y no guarda datos): solo aparecen el estudio y su email.
 // Si algun dia vende por la web (tienda, academia de pago), anadir nombre y NIF.
@@ -8,12 +9,12 @@ export const legalData = {
   address: 'Madrid (España)',
   email: 'info@m047.es',
   phone: '(+34) 633 878 755',
-  updated: 'noviembre de 2026',
+  updated: { es: 'noviembre de 2026', en: 'November 2026', it: 'novembre 2026' },
 }
 
 const d = legalData
 
-export const legalPages = {
+const legalPagesEs = {
   legal: {
     title: 'Aviso legal',
     sections: [
@@ -75,4 +76,140 @@ export const legalPages = {
       ]],
     ],
   },
+}
+
+const legalPagesEn = {
+  legal: {
+    title: 'Legal notice',
+    sections: [
+      ['About this website', [
+        `This website is the portfolio of ${d.brand}, a design studio based in Madrid (Spain).`,
+        `Contact: ${d.email} · ${d.phone}.`,
+      ]],
+      ['Purpose', [
+        'This website presents the studio’s work, its projects, news, the academy and the online shop, and offers ways to get in touch with the studio.',
+      ]],
+      ['Intellectual property', [
+        'All the content on this website (drawings, animations, photographs, texts, logos, project boards and the design of the website itself) is the work of the studio or is used with its authors’ permission. Reproducing, distributing or transforming it without express permission is prohibited, except for personal and private use.',
+      ]],
+      ['Liability', [
+        'The studio makes every effort to keep the information on the website accurate and up to date, but is not liable for occasional errors or service interruptions. Links to other websites (Instagram, LinkedIn, Behance, WhatsApp) lead to third-party sites over which the studio has no control.',
+      ]],
+      ['Applicable law', [
+        'This legal notice is governed by Spanish law.',
+      ]],
+    ],
+  },
+  privacy: {
+    title: 'Privacy policy',
+    sections: [
+      ['Data controller', [
+        `${d.brand}, Madrid (Spain). Contact: ${d.email}.`,
+      ]],
+      ['What data we process and why', [
+        'This website has no user accounts and does not store the data entered in its forms. The Contact and Academy forms only prepare an email in your own email app; if you decide to send it, we will receive your name, email address, phone number (if you include it) and your message.',
+        'We also receive any data you give us when you email us, message us on WhatsApp or call us.',
+        'We use this data only to reply to you and, if we end up working together, to manage the project or the training.',
+      ]],
+      ['Legal basis', [
+        'Your consent when you contact us and, where applicable, the performance of a commission or of the training you request.',
+      ]],
+      ['Retention', [
+        'We keep your messages for as long as needed to deal with your request and, if there is a commission, for the periods required by law.',
+      ]],
+      ['Recipients', [
+        'We do not share your data with third parties. The website is hosted by Vercel Inc. (USA), which processes technical data about your visit (such as your IP address) to serve the page, under the safeguards of the EU-US Data Privacy Framework. To display some typefaces, your browser connects to Google Fonts.',
+        'To know how many visits the website receives we use anonymous, cookie-free statistics (Vercel Web Analytics), which cannot identify you.',
+      ]],
+      ['Your rights', [
+        `You can request access to, rectification or erasure of your data, object to its use or restrict it, by writing to ${d.email}. If you believe we have not handled your request properly, you can lodge a complaint with the Spanish Data Protection Agency (www.aepd.es).`,
+      ]],
+    ],
+  },
+  cookies: {
+    title: 'Cookie policy',
+    sections: [
+      ['Does this website use cookies?', [
+        'No. This website does not install advertising or tracking cookies, either its own or third-party ones. That is why we do not ask you to accept them.',
+      ]],
+      ['What is stored in your browser', [
+        'Only the language you choose (Spanish, English or Italian), so that the website is shown in that language next time. It is a technical setting that cannot identify you and that you can delete from your browser settings.',
+      ]],
+      ['Statistics', [
+        'To know how many people visit the website and which pages they view, we use Vercel Web Analytics, which works without cookies and with anonymous, aggregated data.',
+      ]],
+    ],
+  },
+}
+
+const legalPagesIt = {
+  legal: {
+    title: 'Note legali',
+    sections: [
+      ['Informazioni su questo sito', [
+        `Questo sito web è il portfolio di ${d.brand}, studio di design con sede a Madrid (Spagna).`,
+        `Contatti: ${d.email} · ${d.phone}.`,
+      ]],
+      ['Finalità', [
+        'Questo sito presenta l’attività dello studio, i suoi progetti, le notizie, l’accademia e il negozio online, e offre i mezzi per contattare lo studio.',
+      ]],
+      ['Proprietà intellettuale', [
+        'Tutti i contenuti del sito (disegni, animazioni, fotografie, testi, loghi, tavole dei progetti e il design del sito stesso) sono opera dello studio o sono utilizzati con il permesso dei loro autori. Ne è vietata la riproduzione, distribuzione o trasformazione senza autorizzazione espressa, salvo per uso personale e privato.',
+      ]],
+      ['Responsabilità', [
+        'Lo studio si impegna affinché le informazioni del sito siano corrette e aggiornate, ma non è responsabile di eventuali errori o interruzioni del servizio. I link ad altri siti (Instagram, LinkedIn, Behance, WhatsApp) portano a siti di terzi sui quali lo studio non ha alcun controllo.',
+      ]],
+      ['Legge applicabile', [
+        'Le presenti note legali sono regolate dalla legge spagnola.',
+      ]],
+    ],
+  },
+  privacy: {
+    title: 'Informativa sulla privacy',
+    sections: [
+      ['Titolare del trattamento', [
+        `${d.brand}, Madrid (Spagna). Contatti: ${d.email}.`,
+      ]],
+      ['Quali dati trattiamo e perché', [
+        'Questo sito non prevede la registrazione degli utenti e non conserva i dati dei moduli. I moduli di Contatti e Accademia preparano solo un’email nel tuo programma di posta; se decidi di inviarla, riceveremo il tuo nome, la tua email, il tuo telefono (se lo indichi) e il messaggio.',
+        'Riceviamo anche i dati che ci fornisci se ci scrivi via email, su WhatsApp o se ci telefoni.',
+        'Usiamo questi dati solo per risponderti e, se lavoreremo insieme, per gestire il progetto o la formazione.',
+      ]],
+      ['Base giuridica', [
+        'Il tuo consenso quando ci scrivi e, se del caso, l’esecuzione di un incarico o della formazione che richiedi.',
+      ]],
+      ['Conservazione', [
+        'Conserviamo i tuoi messaggi per il tempo necessario a gestire la tua richiesta e, in caso di incarico, per i periodi previsti dalla legge.',
+      ]],
+      ['Destinatari', [
+        'Non cediamo i tuoi dati a terzi. Il sito è ospitato da Vercel Inc. (USA), che tratta dati tecnici della visita (come l’indirizzo IP) per mostrare la pagina, con le garanzie del Quadro UE-USA sulla protezione dei dati personali. Per mostrare alcuni caratteri tipografici, il browser si collega a Google Fonts.',
+        'Per sapere quante visite riceve il sito usiamo statistiche anonime senza cookie (Vercel Web Analytics), che non permettono di identificarti.',
+      ]],
+      ['I tuoi diritti', [
+        `Puoi chiedere l’accesso, la rettifica o la cancellazione dei tuoi dati, opporti al loro uso o limitarlo, scrivendo a ${d.email}. Se ritieni che non abbiamo gestito correttamente la tua richiesta, puoi presentare un reclamo all’Agenzia spagnola per la protezione dei dati (www.aepd.es).`,
+      ]],
+    ],
+  },
+  cookies: {
+    title: 'Informativa sui cookie',
+    sections: [
+      ['Questo sito usa cookie?', [
+        'No. Questo sito non installa cookie pubblicitari né di tracciamento, propri o di terzi. Per questo non ti chiediamo di accettarli.',
+      ]],
+      ['Cosa viene salvato nel tuo browser', [
+        'Solo la lingua che scegli (spagnolo, inglese o italiano), per mostrarti il sito in quella lingua la volta successiva. È un dato tecnico che non permette di identificarti e che puoi cancellare dalle impostazioni del browser.',
+      ]],
+      ['Statistiche', [
+        'Per sapere quante persone visitano il sito e quali pagine vedono usiamo Vercel Web Analytics, che funziona senza cookie e con dati anonimi e aggregati.',
+      ]],
+    ],
+  },
+}
+
+export const legalPages = { es: legalPagesEs, en: legalPagesEn, it: legalPagesIt }
+
+export const legalCopy = {
+  es: { updated: 'Última actualización', prevails: null },
+  en: { updated: 'Last updated', prevails: 'Translation provided for convenience; in case of discrepancy, the Spanish version prevails.' },
+  it: { updated: 'Ultimo aggiornamento', prevails: 'Traduzione fornita per comodità; in caso di discrepanza prevale la versione in spagnolo.' },
 }

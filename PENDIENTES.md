@@ -17,9 +17,9 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
       www.m047.es responden 200 y en su idioma, sin errores; canonical, vista
       previa y ficha para Google con www.m047.es.
 - [x] A4. Correos probados por Sergio (16-nov): llegan y salen bien.
-- [ ] **A5. Prueba en su iPhone** (Sergio): personajes sin "flotar", sonido al
+- [x] **A5. Prueba en su iPhone** (hecha 16-nov) (Sergio): personajes sin "flotar", sonido al
       entrar, menú, bajar al recorrido por plantas, botón atrás, ticket del teléfono.
-- [ ] A6. Firma de correo nueva puesta en Hostinger (https://www.m047.es/firma.html).
+- [x] A6. Firma de correo nueva puesta en Hostinger (https://www.m047.es/firma.html).
 
 ## B. Contenido que solo puede dar Sergio
 
@@ -43,12 +43,12 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
       en Google Maps como estudio en Madrid.
 - [x] C4. Correo de Hostinger bien configurado (SPF/DKIM) — ya estaba (16-nov) para que las
       respuestas a clientes no acaben en spam.
-- [ ] C5. Revisar Vercel → Analytics al mes de difundir la web.
+- [x] C5. Analytics activado en Vercel (16-nov); mirarlo al mes de difundir la web.
 - [ ] C6. Copia de seguridad de los `.af` fuera de Drive y avisos de Vercel por
       correo si falla una publicación.
 - [x] C7. Versiones de la web en /en y /it (16-nov, pendiente de publicar) para que Google también
       la enseñe en inglés e italiano (hoy Google solo ve el español).
-- [ ] C9. Opcional: páginas legales en inglés e italiano (hoy solo en español).
+- [x] C9. Páginas legales en inglés e italiano (16-nov; prevalece el español).
 - [ ] C8. Opcional (diseño): sorpresas en la portada (personaje de temporada,
       ambiente de noche), newsletter, noticias nuevas cada cierto tiempo.
 
