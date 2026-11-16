@@ -1711,6 +1711,9 @@ a {
 
   .project-detail-sidebar {
     position: static;
+    /* En una sola columna (tablet y movil) el titulo y el texto van antes que
+       la lamina: si no, en laminas largas habia que bajar varias pantallas. */
+    order: -1;
   }
 }
 
