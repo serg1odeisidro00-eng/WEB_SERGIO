@@ -1,5 +1,7 @@
 // Lista de proyectos (tarjetas de Proyectos y buscador).
 // category puede ser un texto o una lista (proyectos en 2 departamentos).
+// hiddenInAll: no sale en "Todos" ni en el buscador sin texto (cuadricula de
+// 5 x 5 = 25 proyectos); solo dentro de su departamento (MITECO 2, deseo de Sergio).
 
 export const projectItems = [
   // Destacados (los de Instagram) primero.
@@ -23,7 +25,7 @@ export const projectItems = [
   { id: 'boat', title: 'Escultura Boat', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/boat.webp', imageSrc: '/proyectos/fotos/boat.webp' },
   { id: 'telefonica', title: 'Proyecto de Oficinas en Edificio Telef\u00f3nica', location: 'Madrid, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/diagramas/telefonica.webp', imageSrc: '/proyectos/fotos/telefonica.webp' },
   { id: 'miteco', title: 'Proyecto Paisajismo MITECO', location: 'Madrid, Espa\u00f1a', category: 'landscape', iconSrc: '/proyectos/diagramas/miteco.webp', imageSrc: '/proyectos/fotos/miteco.webp' },
-  { id: 'miteco-2', title: 'Proyecto Paisajismo MITECO 2', location: 'Madrid, Espa\u00f1a', category: 'landscape', iconSrc: '/proyectos/diagramas/miteco.webp', imageSrc: '/proyectos/fotos/miteco-2.webp' },
+  { id: 'miteco-2', title: 'Proyecto Paisajismo MITECO 2', location: 'Madrid, Espa\u00f1a', category: 'landscape', iconSrc: '/proyectos/diagramas/miteco.webp', imageSrc: '/proyectos/fotos/miteco.webp', hiddenInAll: true },
   { id: 'el-bosque', title: 'Centro cultural El Bosque', location: 'Madrid, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/diagramas/el-bosque.webp', imageSrc: '/proyectos/fotos/el-bosque.webp' },
   { id: 'album-musical', title: 'Direcci\u00f3n de arte \u00e1lbum musical', location: 'Madrid, Espa\u00f1a', category: ['art-direction', 'graphic'], iconSrc: '/proyectos/diagramas/album-musical.webp', imageSrc: '/proyectos/fotos/album-musical.webp' },
   { id: 'espacio-expositivo', title: 'Espacio expositivo temporal 2021', location: 'Madrid, España', category: ['scenography', 'interiors'], iconSrc: '/proyectos/diagramas/espacio-expositivo.webp', imageSrc: '/proyectos/fotos/espacio-expositivo.webp' },

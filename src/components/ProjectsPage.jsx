@@ -81,7 +81,7 @@ export default function ProjectsPage({
 
   const filteredProjects = useMemo(() => {
     const query = initialSearch.trim().toLocaleLowerCase()
-    return projectItems.filter((project) => (activeFilter === 'all' || [].concat(project.category).includes(activeFilter)) && (!query || `${project.title} ${project.location} ${englishProjectTitles[project.id] ?? ''} ${italianProjectTitles[project.id] ?? ''}`.toLocaleLowerCase().includes(query)))
+    return projectItems.filter((project) => (activeFilter === 'all' ? !project.hiddenInAll : [].concat(project.category).includes(activeFilter)) && (!query || `${project.title} ${project.location} ${englishProjectTitles[project.id] ?? ''} ${italianProjectTitles[project.id] ?? ''}`.toLocaleLowerCase().includes(query)))
   }, [activeFilter, initialSearch])
 
   return (

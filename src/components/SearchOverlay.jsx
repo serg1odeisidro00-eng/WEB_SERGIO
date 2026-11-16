@@ -31,7 +31,7 @@ export default function SearchOverlay({ onClose }) {
   const results = useMemo(() => {
     const normalize = (text) => text.toLocaleLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '')
     const q = normalize(query.trim())
-    if (!q) return projectItems
+    if (!q) return projectItems.filter((project) => !project.hiddenInAll)
     return projectItems.filter((project) => normalize(`${project.title} ${project.location} ${englishProjectTitles[project.id] ?? ''} ${italianProjectTitles[project.id] ?? ''}`).includes(q))
   }, [query])
 

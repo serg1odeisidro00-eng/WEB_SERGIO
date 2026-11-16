@@ -344,3 +344,9 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
 - 2026-11-16 (3): el sonido de la portada (~950 KB) ya no se descarga en las
   páginas interiores (solo al ir a la portada). Grises pequeños #838281 →
   #6f6e6d en toda la web (fechas y pies de noticias, notas, tarifas, legales).
+- 2026-11-16 (4): MITECO 2 con icono y foto de MITECO y `hiddenInAll` (no sale
+  en "Todos" ni en el buscador vacío: cuadrícula 5×5 = 25; sí en Paisajismo).
+  Tienda: botón "Avísame cuando abra" (mailto info@). Cartel de teatro y UFV:
+  el rótulo "Los intereses creados / Jacinto Benavente / fecha" es ahora el
+  manuscrito original sacado de Drive `Sección_228_JUNTO copia.svg` (imagen
+  encima, colocada por coincidencia de puntos con el dibujo), sin los textos Arial.

@@ -27,13 +27,11 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 ## B. Contenido que solo puede dar Sergio
 
 - [ ] B1. Revisar traducciones EN/IT (o pasárselas a alguien nativo).
-- [ ] B2. MITECO 2: foto e icono propios (ahora usa el de MITECO).
-- [ ] B3. Cartel de teatro / UFV: documento bueno de Affinity para comparar.
-- [ ] B4. De `Sección_228_JUNTO copia.svg`: ¿siguen pendientes el letrero de
-      Diseño gráfico, el logo nuevo, la foto nueva del kart y el cartel de
-      Escenografía?
-- [ ] B5. Tienda online: decidir (ver sugerencias C2).
-- [ ] B6. Academia: ¿precios "desde…" o se queda "a consultar"?
+- [x] B2. MITECO 2: mismos icono y foto que MITECO; no sale en "Todos" (5×5 = 25), solo en Paisajismo.
+- [x] B3. Cartel de teatro / UFV: rótulo manuscrito original (de JUNTO copia) en las dos láminas.
+- [x] B4. De JUNTO copia solo quedaba el cartel (hecho en B3); el resto ya no.
+- [x] B5. Tienda: "Próximamente" + botón "Avísame cuando abra" (mailto info@).
+- [x] B6. Academia: se queda "Tarifas a consultar".
 - [ ] B7. Portfolio en PDF diseñado por Sergio (Claude lo enlaza después).
 - [ ] B8. Opiniones reales de clientes (no inventarlas).
 
@@ -42,7 +40,7 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 - [x] C1. Guía corta "cómo pedir cambios" (`docs/GUIA.md`): qué mandar para
       añadir un proyecto o una noticia (lámina, foto de tarjeta, diagrama,
       textos ES, datos), en qué carpeta de Drive y con qué nombres.
-- [ ] C2. Tienda: mientras no exista, o bien quitarla del menú, o bien cambiar
+- [x] C2. Tienda: mientras no exista, o bien quitarla del menú, o bien cambiar
       "Próximamente" por "Avísame cuando abra" (correo con mailto).
 - [ ] C3. Tras A1: Google Search Console (enviar sitemap) y perfil de empresa
       en Google Maps como estudio en Madrid.

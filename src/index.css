@@ -3612,3 +3612,18 @@ main > .projects-page {
     margin-bottom: -0.2em;
   }
 }
+
+/* Tienda: boton para apuntarse (abre el correo) */
+.shop-page-stage {
+  align-content: center;
+  gap: 1.6rem;
+}
+
+.shop-page-notify {
+  position: relative;
+  z-index: 1;
+  background: #ffffff;
+  font-family: var(--font-condensed);
+  font-size: clamp(1rem, 1.2vw, 1.4rem);
+  text-decoration: none;
+}
