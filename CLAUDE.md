@@ -21,10 +21,11 @@ cambie algo importante.
 - Vercel publica automáticamente la rama **`master`** de
   `serg1odeisidro00-eng/WEB_SERGIO` en https://web-sergio-orcin.vercel.app
   (tarda 1-2 min tras cada push).
-- Sergio tiene un **dominio propio en Hostinger** que todavía no apunta a
-  Vercel (pendiente de conectar: añadir el dominio en Vercel → Settings →
-  Domains y poner en el DNS de Hostinger los registros que indique Vercel).
-- El entorno cloud `WEB_SERGIO` permite abrir `web-sergio-orcin.vercel.app`
+- Dominio propio **https://www.m047.es** (Hostinger, conectado el 16-nov-2026;
+  m047.es redirige a www). DNS en Hostinger: ver `docs/GUIA.md`. Vercel también
+  sigue publicando en web-sergio-orcin.vercel.app.
+- El entorno cloud `WEB_SERGIO` permite abrir `web-sergio-orcin.vercel.app`,
+  `m047.es` y `www.m047.es`
   para comprobar cada publicación con curl/Playwright.
 
 ## Forma de trabajar con Sergio

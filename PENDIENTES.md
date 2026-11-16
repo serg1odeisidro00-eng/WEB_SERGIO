@@ -6,24 +6,20 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 
 ## A. Imprescindible para cerrar (en este orden)
 
-- [ ] **A1. Conectar m047.es a Vercel** — 16-nov: nameservers pasados a Hostinger
-      (cosmos/nova.dns-parking.com), A `@` 76.76.21.21, CNAME `www`
-      cname.vercel-dns.com, 2 TXT `_vercel`; correo intacto. Vercel ya lo verificó (16-nov); recomendó A 216.198.79.1 y
-      CNAME www d1256a63a3f464dd.vercel-dns-017.com (Sergio lo cambia en Hostinger).
-      Principal en Vercel: www.m047.es (m047.es redirige 308). (Sergio + Claude guiando). Vercel →
-      proyecto `web-sergio` → Settings → Domains → añadir `m047.es` y
-      `www.m047.es`; en Hostinger → DNS, poner los registros que diga Vercel.
-      Hoy m047.es enseña la web antigua del amigo.
-- [ ] **A2. Retirar la web antigua** (16-nov: mensaje enviado, falta que lo haga): pedir al amigo (viniciustaliari) que borre
-      o desactive su proyecto de Vercel, para que no quede una copia vieja
-      publicada en otra dirección (Google la vería como contenido duplicado).
-- [ ] **A3. Comprobación final tras A1** (Claude): sitemap, robots, vistas
-      previas al compartir y ficha para Google con m047.es; repaso completo de
-      todas las páginas en ordenador y móvil.
-- [ ] **A4. Correos** (Sergio): mandarse una prueba a `contacto@m047.es` e
-      `info@m047.es` y comprobar que llegan (formularios de Contacto y Academia).
+- [x] **A1. m047.es conectado a Vercel** (16-nov). Nameservers de Hostinger
+      (cosmos/nova.dns-parking.com), A `@` 216.198.79.1, CNAME `www`
+      d1256a63a3f464dd.vercel-dns-017.com, 2 TXT `_vercel`; correo intacto.
+      Principal: https://www.m047.es (m047.es redirige 308). `www` puede salir
+      unas horas como "DNS Change Recommended" mientras se extiende el cambio.
+- [ ] **A2. Retirar la web antigua**: mensaje enviado al amigo (16-nov) para que
+      quite m047.es de su Vercel y borre su proyecto (contenido duplicado).
+- [x] A3. Comprobación final (16-nov): 108 direcciones del sitemap en
+      www.m047.es responden 200 y en su idioma, sin errores; canonical, vista
+      previa y ficha para Google con www.m047.es.
+- [x] A4. Correos probados por Sergio (16-nov): llegan y salen bien.
 - [ ] **A5. Prueba en su iPhone** (Sergio): personajes sin "flotar", sonido al
-      entrar, menú, bajar al recorrido por plantas, botón atrás.
+      entrar, menú, bajar al recorrido por plantas, botón atrás, ticket del teléfono.
+- [ ] A6. Firma de correo nueva puesta en Hostinger (https://www.m047.es/firma.html).
 
 ## B. Contenido que solo puede dar Sergio
 
@@ -43,7 +39,7 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
       textos ES, datos), en qué carpeta de Drive y con qué nombres.
 - [x] C2. Tienda: mientras no exista, o bien quitarla del menú, o bien cambiar
       "Próximamente" por "Avísame cuando abra" (correo con mailto).
-- [ ] C3. Tras A1: Google Search Console (enviar sitemap) y perfil de empresa
+- [ ] C3. (Ya se puede) Google Search Console (enviar sitemap) y perfil de empresa
       en Google Maps como estudio en Madrid.
 - [x] C4. Correo de Hostinger bien configurado (SPF/DKIM) — ya estaba (16-nov) para que las
       respuestas a clientes no acaben en spam.
@@ -52,6 +48,7 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
       correo si falla una publicación.
 - [x] C7. Versiones de la web en /en y /it (16-nov, pendiente de publicar) para que Google también
       la enseñe en inglés e italiano (hoy Google solo ve el español).
+- [ ] C9. Opcional: páginas legales en inglés e italiano (hoy solo en español).
 - [ ] C8. Opcional (diseño): sorpresas en la portada (personaje de temporada,
       ambiente de noche), newsletter, noticias nuevas cada cierto tiempo.
 
