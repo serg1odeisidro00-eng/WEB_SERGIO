@@ -192,17 +192,17 @@ export const newsArticles = [
     cover: { src: '/noticias/noticia2-portada.webp', w: 868, h: 556 },
     cardTitle: {
       es: 'Dime cuál es tu oficio y te diré cuál es tu calle de Madrid.',
-      en: 'Tell me your trade and I will tell you your street in Madrid.',
+      en: 'Tell me your profession and I will tell you your street in Madrid.',
       it: 'Dimmi qual è il tuo mestiere e ti dirò qual è la tua via di Madrid.',
     },
     title: {
       es: 'Dime cuál es tu oficio y te diré cuál es tu calle de Madrid.',
-      en: 'Tell me your trade and I will tell you your street in Madrid.',
+      en: 'Tell me your profession and I will tell you your street in Madrid.',
       it: 'Dimmi qual è il tuo mestiere e ti dirò qual è la tua via di Madrid.',
     },
     subtitle: {
       es: 'Una ruta por el callejero gremial, las tripas de la ciudad y el hilo invisible que une a los antiguos artesanos con los creadores de hoy.',
-      en: 'A walk through the guild street map, the guts of the city and the invisible thread that links the old craftsmen with today’s creators.',
+      en: 'A walk through the streets named after guilds and trades, the guts of the city and the invisible thread that links the old craftsmen with today’s creators.',
       it: 'Un percorso tra le vie delle corporazioni, le viscere della città e il filo invisibile che unisce gli antichi artigiani ai creativi di oggi.',
     },
     blocks: [
@@ -325,7 +325,7 @@ export const newsArticles = [
       {
         p: {
           es: 'El taller gremial del siglo XVII era un espacio compartido donde maestros, oficiales y aprendices se nutrían unos de otros en un mismo rincón de la calle.',
-          en: 'The 17th-century guild workshop was a shared space where masters, journeymen and apprentices fed off one another in the same corner of the street.',
+          en: 'The workshops of the seventeenth-century guilds were shared spaces where masters, journeymen and apprentices learned from one another on the same street corner.',
           it: 'La bottega delle corporazioni del Seicento era uno spazio condiviso dove maestri, lavoranti e apprendisti si nutrivano a vicenda nello stesso angolo di strada.',
         },
       },
@@ -398,7 +398,7 @@ export const newsArticles = [
       {
         p: {
           es: 'Aluche no se concibió para salir en revistas de tendencias. Se levantó a contrarreloj entre los años sesenta y setenta, cuando el éxodo rural desbordaba la capital. Hoy, lo que a ojos perezosos parece una masa uniforme de pisos obreros es, en realidad, un tratado vivo de arquitectura popular.',
-          en: 'Aluche was not designed to appear in trend magazines. It was built against the clock between the sixties and seventies, when rural exodus was overflowing the capital. Today, what lazy eyes see as a uniform mass of workers’ flats is, in reality, a living treatise on popular architecture.',
+          en: 'Aluche was not designed to appear in trend magazines. It was built at speed between the 1960s and 1970s, when rural migration was swelling the capital. Today, what a casual glance might mistake for a uniform mass of working-class apartment blocks is, in reality, a living treatise on popular architecture.',
           it: 'Aluche non è stato concepito per finire sulle riviste di tendenza. È stato costruito in fretta e furia tra gli anni Sessanta e Settanta, quando l’esodo rurale travolgeva la capitale. Oggi, quella che a occhi pigri sembra una massa uniforme di case operaie è, in realtà, un trattato vivente di architettura popolare.',
         },
       },
@@ -465,7 +465,7 @@ export const newsArticles = [
         caption: {
           es: 'Fachadas del barrio de Aluche con el icónico Toldo Verde (ig: conradog.ph)',
           en: 'Façades in Aluche with the iconic Green Awning (ig: conradog.ph)',
-          it: 'Facciate del quartiere di Aluche con l’iconica Tenda Verde (ig: conradog.ph)',
+          it: 'Facciate del quartiere di Aluche con l’iconica tenda verde (ig: conradog.ph)',
         },
       },
       {
@@ -500,7 +500,7 @@ export const newsArticles = [
         p: {
           es: '-Textura en movimiento: Tendederos repletos de sábanas y toldos subidos a distintas alturas que rompen la rigidez del edificio y le devuelven pulso humano.',
           en: '-Texture in motion: Washing lines full of sheets and awnings raised to different heights that break the rigidity of the building and give it back a human pulse.',
-          it: '-Texture in movimento: Stendini pieni di lenzuola e tende alzate ad altezze diverse che rompono la rigidità dell’edificio e gli restituiscono un battito umano.',
+          it: '-Texture in movimento: Stendini pieni di lenzuola e tende a diverse altezze rompono la rigidità dell’edificio e gli restituiscono un battito umano.',
         },
       },
       {

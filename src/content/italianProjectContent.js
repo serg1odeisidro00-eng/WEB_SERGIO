@@ -13,7 +13,7 @@ const projectTranslations = {
   'CROSS chair': ['Sedia CROSS', 'CROSS è una sedia bassa in legno di pioppo, costruita con giunti maschio-femmina che ne rafforzano il carattere strutturale e la semplicità formale. La geometria a X definisce telaio e schienale.', 'La struttura genera un gioco di luci e ombre che cambia con il punto di vista. Costruzione e forma lavorano insieme per creare un oggetto leggero, elegante e contemporaneo.'],
   'UFV scenography': ['Scenografia UFV', 'La proposta scenografica suggerisce gli spazi senza bisogno di costruirli completamente. Oggetti quotidiani e riconoscibili permettono allo spettatore di identificare ogni ambiente in modo immediato.', 'Porte, finestre e arredi diventano le chiavi visive di una scenografia leggera, flessibile e centrata sulla percezione.'],
   'Experimental housing and playground': ['Abitazione sperimentale e Playground', 'Padiglione temporaneo progettato per rendere visibile ciò che normalmente resta nascosto sottoterra: la complessa rete di tunnel e connessioni di un formicaio. Il progetto trasforma questa struttura in un’esperienza spaziale aperta.', 'Tubi trasparenti intrecciati generano un percorso continuo di curve, vuoti e ombre. Il padiglione propone una riflessione su natura, struttura e movimento.'],
-  'Chapel design and lighting': ['Progetto illuminotecnico per cappella', 'Intervento per la cappella ETSAM-UPM, concepito come uno spazio di raccoglimento e silenzio nel contesto universitario. La proposta crea un’atmosfera accogliente e protetta per la preghiera e la riflessione.', 'Con un gesto minimo e attraverso la luce indiretta filtrata da listelli di legno, lo spazio assume il carattere di una grotta serena, calda e contemplativa.'],
+  'Chapel design and lighting': ['Progetto di design e illuminazione della cappella', 'Intervento per la cappella ETSAM-UPM, concepito come uno spazio di raccoglimento e silenzio nel contesto universitario. La proposta crea un’atmosfera accogliente e protetta per la preghiera e la riflessione.', 'Con un gesto minimo e attraverso la luce indiretta filtrata da listelli di legno, lo spazio assume il carattere di una grotta serena, calda e contemplativa.'],
   'PG corporate identity': ['Identità visiva PG', 'Permanent Growth è un’identità per una comunità orientata alla crescita personale, professionale e creativa. Il progetto interpreta l’evoluzione come un processo costruito attraverso connessione, apprendimento condiviso e sostegno reciproco.', 'Il logotipo parte dalle iniziali PG, trasformate in una farfalla astratta che rappresenta cambiamento, trasformazione ed espansione.'],
   'Boat sculpture': ['Scultura Boat', 'Boat è una scultura che riduce la forma di un catamarano alla sua essenza più riconoscibile. Evoca viaggio, esplorazione e curiosità, recuperando la capacità infantile di immaginare e giocare.', 'Ispirata al pensiero di Bruno Munari, usa una geometria semplice per suggerire molto più di ciò che mostra. La piccola barchetta di carta collega l’oggetto ai ricordi e all’immaginazione.'],
   'Offices in the Telefonica Building': ['Progetto di uffici nell’edificio Telefónica', 'Il progetto si basa sul Metabolismo giapponese di Kisho Kurokawa (l’architettura come organismo vivo, formato da capsule indipendenti che si possono montare, sostituire o combinare senza dipendere da una struttura fissa) e sulle utopie di Archigram, come la Plug-in City, in cui l’edificio smette di essere un blocco chiuso e diventa un sistema di pezzi intercambiabili dove i lavoratori possono interagire in modo più libero.', 'Da qui nasce l’idea dei cubi fluttuanti: invece di un ufficio pesante e compatto, si propone un insieme di moduli leggeri che sembrano staccarsi dall’edificio e fluttuare su una piattaforma sopraelevata, lasciando che aria, vegetazione e luce entrino tra di essi.', 'Si vuole così rompere con l’ufficio tradizionale, chiuso e monolitico, e proporre uno spazio di lavoro più flessibile, leggero e permeabile verso l’ambiente circostante.'],
@@ -29,10 +29,16 @@ const projectTranslations = {
 }
 
 const labels = {
-  Area: 'Superficie', Superficie: 'Superficie', Date: 'Data', Fecha: 'Data', Status: 'Stato', Estado: 'Stato', Client: 'Cliente', Cliente: 'Cliente', Team: 'Team', Equipo: 'Team', Awards: 'Premi', Premios: 'Premi', 'Launch project': 'Visita il progetto', 'Launch Project': 'Visita il progetto', 'Ver proyecto': 'Visita il progetto',
+  Area: 'Superficie', Superficie: 'Superficie', Date: 'Data', Fecha: 'Data', Status: 'Stato', Estado: 'Stato', Client: 'Cliente', Cliente: 'Cliente', Team: 'Team', Equipo: 'Team', Awards: 'Premi', Premios: 'Premi', 'Launch project': 'Visita il progetto', 'Launch Project': 'Visita il progetto', 'Ver proyecto': 'Visita il progetto', 'View project': 'Visita il progetto',
 }
 
-const values = { Completed: 'Realizzato', Project: 'Progetto', 'Built / Prototype': 'Costruito / Prototipo', Realizado: 'Realizzato', Proyecto: 'Progetto', 'Construido / Prototipo': 'Costruito / Prototipo', 'Coming soon.': 'Prossimamente.' }
+const values = { Completed: 'Realizzato', Project: 'Progetto', 'Built / Prototype': 'Costruito / Prototipo', Realizado: 'Realizzato', Proyecto: 'Progetto', 'Construido / Prototipo': 'Costruito / Prototipo', 'Coming soon.': 'Prossimamente.',
+  'Finalist proposal in the university\'s internal competition': 'Proposta finalista nel concorso interno dell’università',
+  'Winning proposal in the university\'s internal competition': 'Proposta vincitrice del concorso interno dell’università',
+  'Poster selected as the winning proposal in the UFV poster competition to represent its theatre production.': 'Manifesto selezionato come proposta vincitrice del concorso di grafica della UFV per rappresentare la produzione teatrale.',
+  'Poster selected as a finalist': 'Manifesto selezionato tra i finalisti',
+  'Finalist proposal in the UFV scenography competition': 'Proposta finalista nel concorso di scenografia organizzato dalla UFV',
+}
 
 function translateFacts(facts) {
   return facts.map((fact) => {
@@ -49,7 +55,10 @@ export function getItalianProjectContent(copy) {
 
   if (!translation) return { ...source, location: italianLocation(source.location), details: 'DATI DEL PROGETTO', facts: translateFacts(source.facts) }
 
-  const [title, ...paragraphs] = translation
+  const [title, ...italianParagraphs] = translation
+  // Piezas a la venta proximamente: el aviso final tambien en italiano.
+  const forSale = /^Coming soon/.test(source.paragraphs?.at(-1) ?? '')
+  const paragraphs = forSale ? [...italianParagraphs, 'Prossimamente in vendita.'] : italianParagraphs
   return {
     ...source,
     location: italianLocation(source.location),

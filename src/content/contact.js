@@ -6,10 +6,10 @@ export const CONTACT_EMAIL = 'contacto@m047.es'
 export const WHATSAPP_NUMBER = '34633878755'
 
 export const contactProjectTypes = [
-  { id: 'interiors', es: 'Interiorismo', en: 'Interior design', it: 'Interior design' },
-  { id: 'landscape', es: 'Paisajismo', en: 'Landscape design', it: 'Paesaggismo' },
+  { id: 'interiors', es: 'Interiorismo', en: 'Interior design', it: 'Progettazione d’interni' },
+  { id: 'landscape', es: 'Paisajismo', en: 'Landscape design', it: 'Progettazione del paesaggio' },
   { id: 'scenography', es: 'Escenografía', en: 'Scenography', it: 'Scenografia' },
-  { id: 'graphic', es: 'Diseño gráfico', en: 'Graphic design', it: 'Design grafico' },
+  { id: 'graphic', es: 'Diseño gráfico', en: 'Graphic design', it: 'Progettazione grafica' },
   { id: 'art', es: 'Dirección de arte', en: 'Art direction', it: 'Direzione artistica' },
   { id: 'other', es: 'Otro', en: 'Other', it: 'Altro' },
 ]

@@ -15,7 +15,7 @@ const floors = [
   { id: 'interiores', target: { pageId: 'projects', filterId: 'interiors' }, title: { es: 'DISEÑO DE INTERIORES', en: 'INTERIOR DESIGN', it: 'DESIGN DEGLI INTERNI' } },
   { id: 'arte', target: { pageId: 'projects', filterId: 'art-direction' }, title: { es: 'DIRECCIÓN DE ARTE', en: 'ART DIRECTION', it: 'DIREZIONE ARTISTICA' } },
   { id: 'grafico', target: { pageId: 'projects', filterId: 'graphic' }, title: { es: 'DISEÑO GRÁFICO', en: 'GRAPHIC DESIGN', it: 'DESIGN GRAFICO' } },
-  { id: 'paisajismo', target: { pageId: 'projects', filterId: 'landscape' }, title: { es: 'PAISAJISMO', en: 'LANDSCAPE DESIGN', it: 'PAESAGGISMO' } },
+  { id: 'paisajismo', target: { pageId: 'projects', filterId: 'landscape' }, title: { es: 'PAISAJISMO', en: 'LANDSCAPE DESIGN', it: 'PROGETTAZIONE DEL PAESAGGIO' } },
   { id: 'escenografia', target: { pageId: 'projects', filterId: 'scenography' }, title: { es: 'ESCENOGRAFÍA', en: 'SCENOGRAPHY', it: 'SCENOGRAFIA' } },
   { id: 'academia', target: 'academy', link: 'academy', title: { es: 'ACADEMIA', en: 'ACADEMY', it: 'ACCADEMIA' } },
   { id: 'contacto', target: 'contact', link: 'contact', title: { es: 'CONTACTO', en: 'CONTACT', it: 'CONTATTI' } },

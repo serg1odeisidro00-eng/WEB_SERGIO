@@ -288,17 +288,17 @@ export default function App() {
       }
     : language === 'it'
       ? {
-          landscape: 'PAESAGGISMO',
+          landscape: 'PROGETTAZIONE DEL PAESAGGIO',
           academy: 'ACCADEMIA',
           interiors: 'DESIGN DEGLI INTERNI',
           scenography: 'SCENOGRAFIA',
           graphic: 'DESIGN GRAFICO',
           artDirection: 'DIREZIONE ARTISTICA',
-          landscapeDetail: 'Paesaggismo',
+          landscapeDetail: 'Progettazione del paesaggio',
           interiorsDetail: 'Design degli interni',
           contact: 'Contatti',
           contactSign: 'CONTATTI',
-          phoneRinging: 'TELEFONO IN SQUILLO',
+          phoneRinging: 'TELEFONO CHE SQUILLA',
         }
     : {
         landscape: 'PAISAJISMO',

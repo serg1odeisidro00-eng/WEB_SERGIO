@@ -9,7 +9,7 @@ export default function ShopPage({ activePage, onBack, onNavigate }) {
   const notify = {
     es: { label: 'AVÍSAME CUANDO ABRA', subject: 'Avísame cuando abra la tienda', body: 'Hola, M047: quiero que me aviséis cuando abra la tienda online.' },
     en: { label: 'LET ME KNOW WHEN IT OPENS', subject: 'Let me know when the shop opens', body: 'Hello, M047: please let me know when the online shop opens.' },
-    it: { label: 'AVVISAMI QUANDO APRE', subject: 'Avvisatemi quando apre il negozio', body: 'Ciao, M047: avvisatemi quando apre il negozio online.' },
+    it: { label: 'AVVISAMI QUANDO APRE IL NEGOZIO ONLINE', subject: 'Avvisatemi quando apre il negozio', body: 'Ciao, M047: avvisatemi quando apre il negozio online.' },
   }[language]
   const comingSoon = { es: 'Próximamente...', en: 'Coming soon...', it: 'Prossimamente...' }[language]
 

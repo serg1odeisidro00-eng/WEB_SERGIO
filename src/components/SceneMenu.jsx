@@ -20,7 +20,7 @@ const secondaryItems = [
 const menuTranslations = {
   es: ['1. DISE\u00d1O DE INTERIORES', '2. PAISAJISMO', '3. ESCENOGRAF\u00cdA', '4. DISE\u00d1O GR\u00c1FICO', '5. DIRECCI\u00d3N DE ARTE', '6. ACADEMIA', 'CONTACTO', 'ESTUDIO', 'NOTICIAS', 'TIENDA ONLINE'],
   en: ['1. INTERIOR DESIGN', '2. LANDSCAPE DESIGN', '3. SCENOGRAPHY', '4. GRAPHIC DESIGN', '5. ART DIRECTION', '6. ACADEMY', 'CONTACT', 'STUDIO', 'NEWS', 'ONLINE SHOP'],
-  it: ['1. DESIGN DEGLI INTERNI', '2. PAESAGGISMO', '3. SCENOGRAFIA', '4. DESIGN GRAFICO', '5. DIREZIONE ARTISTICA', '6. ACCADEMIA', 'CONTATTI', 'STUDIO', 'NOTIZIE', 'NEGOZIO ONLINE'],
+  it: ['1. DESIGN DEGLI INTERNI', '2. PAESAGGISTICA', '3. SCENOGRAFIA', '4. DESIGN GRAFICO', '5. DIREZIONE ARTISTICA', '6. ACCADEMIA', 'CONTATTI', 'STUDIO', 'NOTIZIE', 'NEGOZIO ONLINE'],
 }
 
 const MENU_REFERENCE_WIDTH = 1387
@@ -55,6 +55,11 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
     }
   }, [isOpen, mobile])
   const labels = menuTranslations[language]
+  const soundCopy = {
+    es: { label: 'SONIDO', on: 'SI', off: 'NO' },
+    en: { label: 'SOUND', on: 'ON', off: 'OFF' },
+    it: { label: 'AUDIO', on: 'ATTIVO', off: 'DISATTIVO' },
+  }[language] ?? { label: 'SONIDO', on: 'SI', off: 'NO' }
 
   const handleNavigate = (item) => {
     if (!item.pageId) return
@@ -119,15 +124,15 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
             ))}
 
             {onSetSoundEnabled ? <div className="scene-menu-switch-row">
-              <span className="scene-menu-switch-label">SONIDO</span>
-              <div className="scene-menu-switch" role="group" aria-label="Sonido">
+              <span className="scene-menu-switch-label">{soundCopy.label}</span>
+              <div className="scene-menu-switch" role="group" aria-label={soundCopy.label}>
                 <button
                   type="button"
                   className={`scene-menu-switch-option${soundEnabled ? ' is-active' : ''}`}
                   aria-pressed={soundEnabled}
                   onClick={() => onSetSoundEnabled?.(true)}
                 >
-                  SI
+                  {soundCopy.on}
                 </button>
                 <span className="scene-menu-switch-separator">/</span>
                 <button
@@ -136,7 +141,7 @@ export default function SceneMenu({ onNavigate, onSetSoundEnabled, soundEnabled 
                   aria-pressed={!soundEnabled}
                   onClick={() => onSetSoundEnabled?.(false)}
                 >
-                  NO
+                  {soundCopy.off}
                 </button>
               </div>
             </div> : null}
