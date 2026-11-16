@@ -57,7 +57,9 @@ la lámina corregida; si no, Claude lo rehace sobre la imagen.
 
 - En Hostinger → DNS: los registros del correo (MX, SPF "v=spf1…",
   `_dmarc`, `hostingermail-…`, autodiscover, autoconfig) y los de la web
-  (A `@` → 76.76.21.21, CNAME `www` → cname.vercel-dns.com, TXT `_vercel`).
+  (A `@` → 216.198.79.1, CNAME `www` → d1256a63a3f464dd.vercel-dns-017.com,
+  TXT `_vercel`; valores recomendados por Vercel el 16-nov-2026, antes eran
+  76.76.21.21 y cname.vercel-dns.com).
 - Nameservers de vuelta atrás (solo si algo fallara): ns1.vercel-dns.com y
   ns2.vercel-dns.com (eran los del Vercel del amigo; hoy son los de Hostinger:
   cosmos.dns-parking.com y nova.dns-parking.com).

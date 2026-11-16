@@ -8,7 +8,8 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 
 - [ ] **A1. Conectar m047.es a Vercel** — 16-nov: nameservers pasados a Hostinger
       (cosmos/nova.dns-parking.com), A `@` 76.76.21.21, CNAME `www`
-      cname.vercel-dns.com, 2 TXT `_vercel`; correo intacto. Falta que Vercel verifique.
+      cname.vercel-dns.com, 2 TXT `_vercel`; correo intacto. Vercel ya lo verificó (16-nov); recomendó A 216.198.79.1 y
+      CNAME www d1256a63a3f464dd.vercel-dns-017.com (Sergio lo cambia en Hostinger).
       Principal en Vercel: www.m047.es (m047.es redirige 308). (Sergio + Claude guiando). Vercel →
       proyecto `web-sergio` → Settings → Domains → añadir `m047.es` y
       `www.m047.es`; en Hostinger → DNS, poner los registros que diga Vercel.
