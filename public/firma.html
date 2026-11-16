@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Firma de correo · M047</title>
+<style>
+  @font-face { font-family: 'DDIN'; src: url('/fonts/condensed/D-DINCondensed.woff2') format('woff2'); }
+  @font-face { font-family: 'DDIN'; font-weight: 700; src: url('/fonts/condensed/D-DINCondensed-Bold.woff2') format('woff2'); }
+  :root { --ink: #111; --muted: #6f6e6d; --line: #d9d8d6; --bg: #fff; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: 'DDIN', 'Arial Narrow', Arial, sans-serif; }
+  main { max-width: 760px; margin: 0 auto; padding: 48px max(16px, env(safe-area-inset-left)) 64px; }
+  h1 { font-size: 44px; font-weight: 700; margin: 0 0 6px; letter-spacing: .01em; }
+  p.lead { color: var(--muted); font-size: 19px; margin: 0 0 36px; }
+  .card { border: 1px solid var(--line); padding: 28px 28px 24px; margin-bottom: 18px; overflow-x: auto; }
+  .label { font-size: 13px; letter-spacing: .12em; color: var(--muted); margin-bottom: 18px; }
+  button { font-family: inherit; font-size: 17px; letter-spacing: .06em; background: var(--ink); color: #fff; border: 0; padding: 12px 22px; cursor: pointer; }
+  button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+  #estado { margin-left: 14px; color: var(--muted); font-size: 16px; }
+  ol { font-size: 18px; line-height: 1.5; padding-left: 22px; margin: 28px 0 0; }
+  ol li { margin-bottom: 8px; }
+  .nota { color: var(--muted); font-size: 15px; margin-top: 26px; line-height: 1.5; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Firma de correo M047</h1>
+  <p class="lead">Página privada (no sale en Google). Copia la firma y pégala en el correo de Hostinger.</p>
+
+  <div class="card">
+    <div class="label">VISTA PREVIA</div>
+    <!-- FIRMA: lo que hay dentro de #firma es lo que se copia -->
+    <div id="firma"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;font-family:Arial,sans-serif;">
+      <tr><td style="padding:0 0 4px 0;"><img src="https://web-sergio-orcin.vercel.app/firma/firma-name.png" width="116" height="27" alt="Sergio de Isidro" style="display:block;border:0;width:116px;height:27px;"></td></tr>
+      <tr><td style="padding:0 0 10px 0;"><img src="https://web-sergio-orcin.vercel.app/firma/firma-tag.png" width="223" height="19" alt="M047 | Interiorismo &amp; Dirección Creativa" style="display:block;border:0;width:223px;height:19px;"></td></tr>
+      <tr><td style="padding:0 0 6px 0;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;"><tr>
+        <td style="padding:0;"><a href="https://www.m047.es/" target="_blank" style="text-decoration:none;"><img src="https://web-sergio-orcin.vercel.app/firma/firma-web.png" width="44" height="20" alt="m047.es" style="display:block;border:0;width:44px;height:20px;"></a></td>
+        <td style="padding:0 10px;color:#777;font-size:14px;line-height:20px;">·</td>
+        <td style="padding:0;"><a href="https://www.instagram.com/m047.studio/" target="_blank" style="text-decoration:none;"><img src="https://web-sergio-orcin.vercel.app/firma/firma-ig.png" width="76" height="20" alt="@m047.studio" style="display:block;border:0;width:76px;height:20px;"></a></td>
+      </tr></table></td></tr>
+      <tr><td style="padding:0;"><img src="https://web-sergio-orcin.vercel.app/firma/firma-loc.png" width="75" height="18" alt="Madrid, España" style="display:block;border:0;width:75px;height:18px;"></td></tr>
+    </table></div>
+  </div>
+
+  <button type="button" id="copiar">COPIAR FIRMA</button><span id="estado" role="status"></span>
+
+  <ol>
+    <li>Pulsa <b>COPIAR FIRMA</b>.</li>
+    <li>Entra en el correo de Hostinger (webmail) → <b>Ajustes</b> (rueda dentada) → <b>Firma</b>.</li>
+    <li>Borra la firma antigua, pega (Cmd + V) y guarda.</li>
+    <li>Mándate un correo de prueba a tu Gmail y pulsa en «m047.es» y en «@m047.studio».</li>
+  </ol>
+  <p class="nota">Si el botón no copia: selecciona la firma de la vista previa con el ratón (de «Sergio» a «España»), Cmd + C y pega igual.<br>
+  La letra D-DIN va en imágenes para que se vea igual en Gmail, Outlook y el iPhone. «m047.es» lleva a la web y «@m047.studio» al Instagram del estudio.</p>
+</main>
+<script>
+  const boton = document.getElementById('copiar')
+  const estado = document.getElementById('estado')
+  const firma = document.getElementById('firma')
+  boton.addEventListener('click', async () => {
+    const html = firma.innerHTML
+    try {
+      await navigator.clipboard.write([new ClipboardItem({
+        'text/html': new Blob([html], { type: 'text/html' }),
+        'text/plain': new Blob(['Sergio de Isidro\nM047 | Interiorismo & Dirección Creativa\nm047.es · @m047.studio\nMadrid, España'], { type: 'text/plain' }),
+      })])
+      estado.textContent = 'Copiada. Ahora pégala en Hostinger.'
+    } catch (error) {
+      const rango = document.createRange()
+      rango.selectNodeContents(firma)
+      const seleccion = window.getSelection()
+      seleccion.removeAllRanges()
+      seleccion.addRange(rango)
+      estado.textContent = 'Seleccionada: pulsa Cmd + C para copiarla.'
+    }
+  })
+</script>
+</body>
+</html>
