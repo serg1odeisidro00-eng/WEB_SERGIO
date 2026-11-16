@@ -41,8 +41,9 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
       "Próximamente" por "Avísame cuando abra" (correo con mailto).
 - [x] C3a. Google Search Console: dominio m047.es verificado y sitemap
       enviado (16-nov: «Correcto», 108 páginas).
-- [ ] C3b. Perfil de empresa en Google Maps (Estudio M047, zona de servicio
-      Madrid, sin dirección pública).
+- [x] C3b. Perfil de Empresa en Google creado (16-nov): «Estudio M047», zona
+      Madrid, 9-19 h, sin dirección pública. Verificación en curso (hasta 5 días).
+      Material: `docs/perfil-google/` (ficha, portada, fotos; logo: el de Sergio).
 - [x] C4. Correo de Hostinger bien configurado (SPF/DKIM) — ya estaba (16-nov) para que las
       respuestas a clientes no acaben en spam.
 - [x] C5. Analytics activado en Vercel (16-nov); mirarlo al mes de difundir la web.
