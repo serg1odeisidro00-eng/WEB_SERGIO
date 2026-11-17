@@ -47,8 +47,8 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 - [x] C4. Correo de Hostinger bien configurado (SPF/DKIM) — ya estaba (16-nov) para que las
       respuestas a clientes no acaben en spam.
 - [x] C5. Analytics activado en Vercel (16-nov); mirarlo al mes de difundir la web.
-- [ ] C6. Copia de seguridad de los `.af` fuera de Drive y avisos de Vercel por
-      correo si falla una publicación.
+- [x] C6. Copia de los `.af` fuera de Drive, avisos de Vercel, renovación
+      automática del dominio, 2FA y enlace en redes (Sergio, 17-nov).
 - [x] C7. Versiones de la web en /en y /it (16-nov, pendiente de publicar) para que Google también
       la enseñe en inglés e italiano (hoy Google solo ve el español).
 - [x] C9. Páginas legales en inglés e italiano (16-nov; prevalece el español).
