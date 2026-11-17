@@ -30,6 +30,7 @@ export function withLanguage(path, language = currentLanguage) {
 const staticRoutes = {
   home: '/',
   projects: '/proyectos',
+  services: '/servicios',
   studio: '/estudio',
   contact: '/contacto',
   news: '/noticias',
@@ -52,13 +53,18 @@ const filterSlugs = {
 }
 const slugToFilter = Object.fromEntries(Object.entries(filterSlugs).map(([id, slug]) => [slug, id]))
 
+// Proyectos se abre en Diseno de interiores (tarea 19); "Todos" = ?categoria=todos
+export const DEFAULT_PROJECTS_FILTER = 'interiors'
+slugToFilter.todos = 'all'
+
 export function pathForState(state = {}, language = currentLanguage) {
   return withLanguage(basePathForState(state), language)
 }
 
-function basePathForState({ pageId = 'home', filterId = 'all' } = {}) {
+function basePathForState({ pageId = 'home', filterId } = {}) {
   if (staticRoutes[pageId]) {
-    if (pageId === 'projects' && filterId && filterId !== 'all' && filterSlugs[filterId]) {
+    if (pageId === 'projects' && filterId === 'all') return '/proyectos?categoria=todos'
+    if (pageId === 'projects' && filterId && filterId !== DEFAULT_PROJECTS_FILTER && filterSlugs[filterId]) {
       return `/proyectos?categoria=${filterSlugs[filterId]}`
     }
     return staticRoutes[pageId]
@@ -73,7 +79,7 @@ export function stateFromLocation(location = window.location) {
   const params = new URLSearchParams(location.search)
   if (pathToPage[path]) {
     const pageId = pathToPage[path]
-    const filterId = pageId === 'projects' ? slugToFilter[params.get('categoria')] ?? 'all' : 'all'
+    const filterId = pageId === 'projects' ? slugToFilter[params.get('categoria')] ?? DEFAULT_PROJECTS_FILTER : 'all'
     return { pageId, filterId, searchQuery: '' }
   }
   const project = path.match(/^\/proyectos\/([a-z0-9-]+)$/)

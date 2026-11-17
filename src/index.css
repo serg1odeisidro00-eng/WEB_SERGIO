@@ -3643,3 +3643,249 @@ main > .projects-page {
 .scene-business-card-modal.is-screen .scene-business-card-content {
   width: min(94vw, 40rem);
 }
+
+/* ---------- Servicios (tarea 19): misma letra y reglas que Academia; bloques
+   negros con numero en blanco como en el portfolio de Sergio ---------- */
+.services-intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 2vw;
+  margin: 1.4em 0 2.4em;
+  align-items: end;
+}
+
+.services-claim {
+  font-weight: 700 !important;
+  font-size: clamp(1.4rem, 2.5vw, 3rem) !important;
+  line-height: 1.02;
+}
+
+.services-intro-text {
+  max-width: 34em;
+  text-align: justify;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+}
+
+.services-block {
+  margin-bottom: 3em;
+}
+
+.services-block-head {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6em;
+  padding-bottom: 0.45em;
+  border-bottom: 1.5px solid #111111;
+}
+
+.services-code {
+  background: #111111;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: clamp(2.6rem, 5vw, 6rem);
+  line-height: 0.82;
+  padding: 0.12em 0.14em 0;
+}
+
+.services .services-title {
+  font-weight: 700;
+  font-size: clamp(1.6rem, 3vw, 3.6rem);
+  line-height: 0.9;
+}
+
+.services-block-body {
+  display: grid;
+  grid-template-columns: minmax(0, 32fr) minmax(0, 68fr);
+  gap: 2.5vw;
+  margin-top: 1.2em;
+}
+
+.services-block-copy {
+  display: grid;
+  align-content: start;
+  gap: 0.9em;
+}
+
+.services-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.services-list li {
+  padding: 0.28em 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.25);
+}
+
+.services-list li::before {
+  content: '* ';
+}
+
+.services-more,
+.services-also-item {
+  color: #111111;
+  text-decoration: none;
+}
+
+.services-more {
+  justify-self: start;
+  font-size: 0.82em;
+  letter-spacing: 0.04em;
+  border-bottom: 1.5px solid #111111;
+}
+
+.services-projects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.2vw;
+  align-content: start;
+}
+
+.services-project {
+  display: grid;
+  gap: 0.35em;
+  color: #111111;
+  text-decoration: none;
+  font-size: 0.8em;
+  line-height: 1.1;
+}
+
+.services-project img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1011 / 645;
+  object-fit: cover;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+
+.services-project:hover img,
+.services-project:focus-visible img {
+  opacity: 0.8;
+}
+
+.services-also {
+  border-top: 1.5px solid #111111;
+  border-bottom: 1.5px solid #111111;
+  padding: 0.9em 0;
+  display: grid;
+  grid-template-columns: minmax(0, 32fr) minmax(0, 68fr);
+  gap: 2.5vw;
+  align-items: baseline;
+}
+
+.services .services-also-title {
+  font-weight: 700;
+}
+
+.services-also-items {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2vw;
+}
+
+.services-also-item {
+  display: grid;
+  gap: 0.2em;
+}
+
+.services-also-name {
+  font-weight: 700;
+}
+
+.services-also-text {
+  color: #6f6e6d;
+  font-size: 0.85em;
+}
+
+.services-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  margin: 2em 0 1em;
+}
+
+.services-prices {
+  color: #6f6e6d;
+  font-size: 0.8em !important;
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 920px) {
+  .services-intro,
+  .services-block-body,
+  .services-also {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .services-projects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 3vw;
+  }
+}
+
+@media (max-width: 640px) {
+  .services-also-items {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* ---------- Estudio: quien es quien y reconocimientos ---------- */
+.studio-team {
+  padding-top: clamp(2.5rem, 5vw, 5rem);
+  font-size: clamp(1rem, 1.13vw, 1.42rem);
+}
+
+.studio-team .academy-heading {
+  font-weight: 700;
+}
+
+.studio-team-people {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.5vw;
+  margin: 1.1em 0 2.6em;
+}
+
+.studio-team-person {
+  display: grid;
+  gap: 0.25em;
+  align-content: start;
+}
+
+.studio-team .studio-team-name {
+  font-weight: 700;
+  font-size: 1.35em;
+  line-height: 1;
+}
+
+.studio-team-role {
+  color: #6f6e6d;
+}
+
+.studio-awards {
+  list-style: none;
+  margin: 0.4em 0 1em;
+  padding: 0;
+}
+
+.studio-awards li {
+  display: grid;
+  grid-template-columns: 4.2em minmax(0, 1fr);
+  gap: 1em;
+  padding: 0.45em 0;
+  border-bottom: 1px solid rgba(17, 17, 17, 0.25);
+}
+
+.studio-awards-year {
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .studio-team-people {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.4em;
+  }
+}

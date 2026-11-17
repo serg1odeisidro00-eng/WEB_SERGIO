@@ -16,6 +16,11 @@ export const pageMeta = {
     "description": "Proyectos del estudio M047 en Madrid: diseño de interiores, paisajismo, escenografía, diseño gráfico y dirección de arte.",
     "image": "/og/m047.jpg"
   },
+  "services": {
+    "title": "Servicios · M047",
+    "description": "Interiorismo con dirección de arte: espacios e identidad pensados a la vez. También diseño gráfico y paisajismo. Estudio M047, Madrid.",
+    "image": "/og/m047.jpg"
+  },
   "studio": {
     "title": "Estudio · M047",
     "description": "M047 es un estudio de diseño de Aluche (Madrid) fundado por un padre y un hijo, arquitectos de interiores por la ETSAM: soluciones creativas, rebeldes y útiles.",

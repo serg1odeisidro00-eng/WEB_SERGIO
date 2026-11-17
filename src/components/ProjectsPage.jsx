@@ -4,8 +4,8 @@ import { useProjectNavigation } from '../context/ProjectNavigationContext'
 import PageFooter from './PageFooter'
 import PageHeader from './PageHeader'
 import ProjectsFilterBar from './ProjectsFilterBar'
-import { englishProjectTitles, italianProjectTitles, projectItems } from '../content/projects'
-import { pathForState } from '../lib/routes'
+import { englishProjectTitles, italianProjectTitles, projectItems, sortProjects } from '../content/projects'
+import { pathForState, DEFAULT_PROJECTS_FILTER } from '../lib/routes'
 
 
 
@@ -65,7 +65,7 @@ function ProjectCard({
 
 export default function ProjectsPage({
   activePage,
-  initialFilter = 'all',
+  initialFilter = DEFAULT_PROJECTS_FILTER,
   initialSearch = '',
   onBack,
   onNavigate,
@@ -82,7 +82,7 @@ export default function ProjectsPage({
 
   const filteredProjects = useMemo(() => {
     const query = initialSearch.trim().toLocaleLowerCase()
-    return projectItems.filter((project) => (activeFilter === 'all' ? !project.hiddenInAll : [].concat(project.category).includes(activeFilter)) && (!query || `${project.title} ${project.location} ${englishProjectTitles[project.id] ?? ''} ${italianProjectTitles[project.id] ?? ''}`.toLocaleLowerCase().includes(query)))
+    return sortProjects(projectItems.filter((project) => (activeFilter === 'all' ? !project.hiddenInAll : [].concat(project.category).includes(activeFilter)) && (!query || `${project.title} ${project.location} ${englishProjectTitles[project.id] ?? ''} ${italianProjectTitles[project.id] ?? ''}`.toLocaleLowerCase().includes(query))))
   }, [activeFilter, initialSearch])
 
   return (

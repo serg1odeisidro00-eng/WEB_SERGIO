@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 import PageFooter from './PageFooter'
 import PageHeader from './PageHeader'
+import { studioTeam } from '../content/studioTeam'
 
 const studioGroups = [
   [
@@ -29,6 +30,7 @@ const photoCaption = {
 
 export default function StudioPage({ activePage, onBack, onNavigate }) {
   const { language } = useLanguage()
+  const team = studioTeam[language] ?? studioTeam.es
   const studioCopy = language === 'es' ? studioGroups : language === 'it' ? [
     ['Tutto è cominciato qui, in un appartamento di via Camarena 228, dove un padre insegnò a suo figlio tutto ciò che sapeva. Fin da piccolo imparò che per ogni cosa c’era una soluzione e che, se non esisteva, era semplicemente perché nessuno era stato abbastanza coraggioso o creativo da inventarla.'],
     ['Gli insegnarono a pensare in modo diverso, a cercare soluzioni radicali dove altri vedevano solo l’impossibile e a godersi il processo. Quel bambino passava ore ad aiutare il padre e il nonno a costruire qualsiasi cosa, imparando con le mani e sfruttando la sua statura per infilarsi dove loro non entravano. Fu così che decise che da grande sarebbe diventato “architettologo”, come diceva lui.'],
@@ -74,6 +76,28 @@ export default function StudioPage({ activePage, onBack, onNavigate }) {
             ))}
           </div>
         </div>
+      </div>
+
+      <div className="academy studio-team">
+        <h2 className="academy-heading">{team.teamTitle}</h2>
+        <hr className="academy-rule" />
+        <div className="studio-team-people">
+          {team.people.map((person) => (
+            <div key={person.name} className="studio-team-person">
+              <p className="studio-team-name">{person.name}</p>
+              <p className="studio-team-role">{person.role}</p>
+              <p>{person.bio}</p>
+            </div>
+          ))}
+        </div>
+
+        <h2 className="academy-heading">{team.awardsTitle}</h2>
+        <hr className="academy-rule" />
+        <ul className="studio-awards">
+          {team.awards.map(([year, text]) => (
+            <li key={text}><span className="studio-awards-year">{year}</span><span>{text}</span></li>
+          ))}
+        </ul>
       </div>
 
       <PageFooter />

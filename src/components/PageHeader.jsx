@@ -7,6 +7,7 @@ import { useIsMobile } from '../hooks/useIsMobile'
 const navItems = {
   es: [
     { id: 'projects', label: 'PROYECTOS' },
+    { id: 'services', label: 'SERVICIOS' },
     { id: 'studio', label: 'ESTUDIO' },
     { id: 'contact', label: 'CONTACTO' },
     { id: 'news', label: 'NOTICIAS' },
@@ -15,6 +16,7 @@ const navItems = {
   ],
   en: [
     { id: 'projects', label: 'PROJECTS' },
+    { id: 'services', label: 'SERVICES' },
     { id: 'studio', label: 'STUDIO' },
     { id: 'contact', label: 'CONTACT' },
     { id: 'news', label: 'NEWS' },
@@ -23,6 +25,7 @@ const navItems = {
   ],
   it: [
     { id: 'projects', label: 'PROGETTI' },
+    { id: 'services', label: 'SERVIZI' },
     { id: 'studio', label: 'STUDIO' },
     { id: 'contact', label: 'CONTATTI' },
     { id: 'news', label: 'NOTIZIE' },

@@ -3,7 +3,7 @@ import gsap from 'gsap'
 import SceneArtboard from './components/SceneArtboard'
 import { MobileHeader, MobileHomeBelow } from './components/MobileHome'
 import { useIsMobile } from './hooks/useIsMobile'
-import { pathForState, stateFromLocation } from './lib/routes'
+import { DEFAULT_PROJECTS_FILTER, pathForState, stateFromLocation } from './lib/routes'
 
 // Las paginas interiores se descargan aparte: la portada no carga su codigo.
 const AppPageRouter = lazy(() => import('./components/AppPageRouter'))
@@ -492,12 +492,12 @@ export default function App() {
     const nextState = typeof nextSection === 'object' && nextSection !== null
       ? {
           pageId: nextSection.pageId ?? 'home',
-          filterId: nextSection.filterId ?? 'all',
+          filterId: nextSection.filterId ?? ((nextSection.pageId ?? 'home') === 'projects' ? DEFAULT_PROJECTS_FILTER : 'all'),
           searchQuery: nextSection.searchQuery ?? '',
         }
       : {
           pageId: nextSection ?? 'home',
-          filterId: 'all',
+          filterId: nextSection === 'projects' ? DEFAULT_PROJECTS_FILTER : 'all',
           searchQuery: '',
         }
 

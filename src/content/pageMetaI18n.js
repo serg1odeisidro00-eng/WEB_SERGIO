@@ -4,6 +4,10 @@
 // proyecto o una noticia, anadir aqui tambien su entrada en los dos idiomas.
 export const pageMetaI18n = {
   "en": {
+    "services": {
+      "title": "Services · M047",
+      "description": "Interior design with art direction: space and identity designed together. Also graphic and landscape design. Studio M047, Madrid."
+    },
     "home": {
       "title": "M047 · Design studio in Madrid",
       "description": "Studio M047 in Aluche (Madrid): interior design, landscape design, scenography, graphic design and art direction. Projects, academy and online shop."
@@ -162,6 +166,10 @@ export const pageMetaI18n = {
     }
   },
   "it": {
+    "services": {
+      "title": "Servizi · M047",
+      "description": "Interior design con direzione artistica: spazi e identità pensati insieme. Anche design grafico e progettazione del paesaggio. Studio M047, Madrid."
+    },
     "home": {
       "title": "M047 · Studio di design a Madrid",
       "description": "Studio M047 ad Aluche (Madrid): design degli interni, progettazione del paesaggio, scenografia, design grafico e direzione artistica. Progetti, accademia e negozio online."

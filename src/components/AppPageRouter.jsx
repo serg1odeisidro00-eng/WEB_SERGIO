@@ -30,6 +30,7 @@ import PgProjectPage from './PgProjectPage'
 import PlaygroundProjectPage from './PlaygroundProjectPage'
 import PodcastProjectPage from './PodcastProjectPage'
 import ProjectsPage from './ProjectsPage'
+import ServicesPage from './ServicesPage'
 import ShopPage from './ShopPage'
 import SoldrinkProjectPage from './SoldrinkProjectPage'
 import StudioPage from './StudioPage'
@@ -72,6 +73,7 @@ const standardPages = {
   cookies: LegalPage,
   legal: LegalPage,
   privacy: LegalPage,
+  services: ServicesPage,
   news: NewsPage,
   shop: ShopPage,
   studio: StudioPage,
