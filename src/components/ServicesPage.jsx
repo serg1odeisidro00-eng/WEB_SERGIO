@@ -41,7 +41,7 @@ export default function ServicesPage({ activePage, onBack, onNavigate }) {
               <div className="services-block-copy">
                 <p>{block.text}</p>
                 <ul className="services-list">
-                  {block.items.map((item) => <li key={item}>{item}</li>)}
+                  {block.items.map(([who, what]) => <li key={who}><strong>{who}</strong> · {what}</li>)}
                 </ul>
                 <a
                   className="services-more"

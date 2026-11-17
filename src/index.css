@@ -3907,3 +3907,6 @@ main > .projects-page {
 .academy-link-button.contact-copy-email {
   font-size: 1em;
 }
+.services-list li strong {
+  font-weight: 700;
+}

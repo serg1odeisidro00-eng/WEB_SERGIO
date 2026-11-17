@@ -1,8 +1,8 @@
 // Pagina Servicios (es / en / it). Posicionamiento acordado con Sergio
 // (tarea 19): Interiorismo y Direccion de arte como principales; Diseno
 // grafico y Paisajismo como secundarios ("Tambien hacemos").
-// BORRADOR: las listas de servicios salen de los proyectos de la web y estan
-// pendientes de revision de Sergio.
+// Listas: opcion B elegida por Sergio (por para quien es). Sin repetir proyectos
+// entre bloques (El Rastro es la identidad de Nave 16: en su lugar, Soldrink).
 
 export const servicesCopy = {
   es: {
@@ -14,7 +14,7 @@ export const servicesCopy = {
         code: '01',
         title: 'INTERIORISMO',
         text: 'Proyectos de interior pensados desde el uso y la atmósfera: distribución, materiales, luz y mobiliario resueltos con un mismo concepto.',
-        items: ['Viviendas y reformas', 'Espacios de trabajo y locales', 'Stands y espacios efímeros', 'Proyecto de iluminación', 'Mobiliario y piezas a medida'],
+        items: [['Tu casa', 'vivienda, reforma y mobiliario a medida'], ['Tu negocio', 'local, oficina o stand'], ['Tu evento', 'espacios efímeros y exposiciones']],
         projects: ['capilla', 'nave-16', 'efimero'],
         filterId: 'interiors',
         more: 'VER PROYECTOS DE INTERIORISMO',
@@ -23,8 +23,8 @@ export const servicesCopy = {
         code: '02',
         title: 'DIRECCIÓN DE ARTE',
         text: 'La identidad de un proyecto más allá del logotipo: el universo visual que une espacio, gráfica, objeto y relato.',
-        items: ['Identidad y espacio para marcas', 'Dirección de arte de lanzamientos', 'Escenografía', 'Packaging y piezas editoriales'],
-        projects: ['album-musical', 'ufv', 'el-rastro'],
+        items: [['Tu marca', 'identidad y su espacio'], ['Tu lanzamiento', 'disco, producto o campaña'], ['Tu escena', 'teatro, escaparate o rodaje']],
+        projects: ['album-musical', 'ufv', 'soldrink'],
         filterId: 'art-direction',
         more: 'VER PROYECTOS DE DIRECCIÓN DE ARTE',
       },
@@ -46,7 +46,7 @@ export const servicesCopy = {
         code: '01',
         title: 'INTERIOR DESIGN',
         text: 'Interior projects driven by use and atmosphere: layout, materials, light and furniture resolved through a single concept.',
-        items: ['Homes and renovations', 'Workspaces and retail', 'Stands and temporary spaces', 'Lighting design', 'Bespoke furniture and pieces'],
+        items: [['Your home', 'home design, renovation and bespoke furniture'], ['Your business', 'shop, office or stand'], ['Your event', 'temporary spaces and exhibitions']],
         projects: ['capilla', 'nave-16', 'efimero'],
         filterId: 'interiors',
         more: 'SEE INTERIOR DESIGN PROJECTS',
@@ -55,8 +55,8 @@ export const servicesCopy = {
         code: '02',
         title: 'ART DIRECTION',
         text: 'A project’s identity beyond the logo: the visual world that brings space, graphics, objects and story together.',
-        items: ['Identity and space for brands', 'Art direction for launches', 'Scenography', 'Packaging and editorial pieces'],
-        projects: ['album-musical', 'ufv', 'el-rastro'],
+        items: [['Your brand', 'identity and its space'], ['Your launch', 'album, product or campaign'], ['Your stage', 'theatre, shop window or shoot']],
+        projects: ['album-musical', 'ufv', 'soldrink'],
         filterId: 'art-direction',
         more: 'SEE ART DIRECTION PROJECTS',
       },
@@ -78,7 +78,7 @@ export const servicesCopy = {
         code: '01',
         title: 'DESIGN DEGLI INTERNI',
         text: 'Progetti d’interni pensati a partire dall’uso e dall’atmosfera: distribuzione, materiali, luce e arredi risolti con un unico concept.',
-        items: ['Abitazioni e ristrutturazioni', 'Spazi di lavoro e negozi', 'Stand e spazi temporanei', 'Progetto illuminotecnico', 'Arredi e pezzi su misura'],
+        items: [['La tua casa', 'abitazione, ristrutturazione e arredi su misura'], ['La tua attività', 'negozio, ufficio o stand'], ['Il tuo evento', 'spazi temporanei e mostre']],
         projects: ['capilla', 'nave-16', 'efimero'],
         filterId: 'interiors',
         more: 'VEDI I PROGETTI DI INTERIOR DESIGN',
@@ -87,8 +87,8 @@ export const servicesCopy = {
         code: '02',
         title: 'DIREZIONE ARTISTICA',
         text: 'L’identità di un progetto oltre il logo: l’universo visivo che unisce spazio, grafica, oggetto e racconto.',
-        items: ['Identità e spazio per i brand', 'Direzione artistica di lanci', 'Scenografia', 'Packaging e progetti editoriali'],
-        projects: ['album-musical', 'ufv', 'el-rastro'],
+        items: [['Il tuo brand', 'identità e il suo spazio'], ['Il tuo lancio', 'disco, prodotto o campagna'], ['La tua scena', 'teatro, vetrina o set']],
+        projects: ['album-musical', 'ufv', 'soldrink'],
         filterId: 'art-direction',
         more: 'VEDI I PROGETTI DI DIREZIONE ARTISTICA',
       },
