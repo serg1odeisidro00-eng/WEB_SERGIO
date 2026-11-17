@@ -33,7 +33,7 @@ import {
   telefonoFrames,
   vanFrames,
 } from './data/sceneFrames'
-import { CASA_SRC, FONDO_SRC, FONDO_STRETCH, SCENE_IMAGE_RATIO } from './data/sceneImages'
+import { CASA_DESKTOP_SRC, CASA_MOBILE_SRC, CASA_SRC, FONDO_DESKTOP_SRC, FONDO_MOBILE_SRC, FONDO_SRC, FONDO_STRETCH, SCENE_IMAGE_RATIO } from './data/sceneImages'
 import { SCENE_CROP_BOTTOM, useSceneSize } from './hooks/useSceneSize'
 import { useLanguage } from './context/LanguageContext'
 import { useProjectNavigation } from './context/ProjectNavigationContext'
@@ -2215,7 +2215,7 @@ export default function App() {
   ]
 
   const houseLayer = {
-    src: CASA_SRC,
+    src: isMobile ? CASA_MOBILE_SRC : CASA_DESKTOP_SRC,
     alt: 'Capa central de la casa',
     className: 'absolute left-1/2 top-1/2 w-full object-contain',
     style: {
@@ -2297,7 +2297,7 @@ export default function App() {
         <section ref={sceneShellRef} className={`scene-shell${isMobile ? ' is-mobile' : ''}`}>
           <div className="scene-shell-content">
             <SceneArtboard
-              backgroundSrc={FONDO_SRC}
+              backgroundSrc={isMobile ? FONDO_MOBILE_SRC : FONDO_DESKTOP_SRC}
               backgroundStretch={FONDO_STRETCH}
               bird={birdCharacter}
               building={leftBuildingLayer}
