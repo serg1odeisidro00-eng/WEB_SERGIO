@@ -12,7 +12,7 @@ const navItems = {
     { id: 'contact', label: 'CONTACTO' },
     { id: 'news', label: 'NOTICIAS' },
     { id: 'academy', label: 'ACADEMIA' },
-    { id: 'shop', label: 'TIENDA ONLINE' },
+    // { id: 'shop', label: 'TIENDA ONLINE' }, // fuera del menu hasta que abra la tienda
   ],
   en: [
     { id: 'projects', label: 'PROJECTS' },
@@ -21,7 +21,7 @@ const navItems = {
     { id: 'contact', label: 'CONTACT' },
     { id: 'news', label: 'NEWS' },
     { id: 'academy', label: 'ACADEMY' },
-    { id: 'shop', label: 'ONLINE SHOP' },
+    // { id: 'shop', label: 'ONLINE SHOP' },
   ],
   it: [
     { id: 'projects', label: 'PROGETTI' },
@@ -30,7 +30,7 @@ const navItems = {
     { id: 'contact', label: 'CONTATTI' },
     { id: 'news', label: 'NOTIZIE' },
     { id: 'academy', label: 'ACCADEMIA' },
-    { id: 'shop', label: 'NEGOZIO ONLINE' },
+    // { id: 'shop', label: 'NEGOZIO ONLINE' },
   ],
 }
 
