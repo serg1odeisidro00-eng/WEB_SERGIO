@@ -35,10 +35,8 @@ export default function ServicesPage({ activePage, onBack, onNavigate }) {
 
         {copy.main.map((block) => (
           <article key={block.code} className="services-block">
-            <div className="services-block-head">
-              <span className="services-code">{block.code}</span>
-              <h2 className="services-title">{block.title}</h2>
-            </div>
+            <h2 className="academy-section-title services-block-title">{block.code}  /  {block.title}</h2>
+            <hr className="academy-rule" />
             <div className="services-block-body">
               <div className="services-block-copy">
                 <p>{block.text}</p>

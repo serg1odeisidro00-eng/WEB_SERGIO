@@ -55,10 +55,11 @@ export const projectKind = {
   'album-musical': 'real', 'v-karting': 'real', soldrink: 'real',
   capilla: 'concurso', playground: 'concurso', 'el-bosque': 'concurso', telefonica: 'concurso',
   ufv: 'concurso', 'cartel-teatro': 'concurso', 'fiestas-locales': 'concurso', miteco: 'concurso', 'miteco-2': 'concurso',
-  'nave-16': 'academico', 'el-rastro': 'academico', efimero: 'academico', 'espacio-expositivo': 'academico',
+  'nave-16': 'destacado', 'el-rastro': 'academico', efimero: 'academico', 'espacio-expositivo': 'academico',
   hargok: 'academico', haz: 'propio', cross: 'propio', boat: 'propio', 'el-circulo': 'propio',
 }
-const kindRank = { real: 0, concurso: 1, academico: 2, propio: 2 }
+// Nave 16 (TFG de Sergio) va siempre primero (decision de Sergio).
+const kindRank = { destacado: -1, real: 0, concurso: 1, academico: 2, propio: 2 }
 export const sortProjects = (list) => list
   .map((project, index) => ({ project, index }))
   .sort((a, b) => (kindRank[projectKind[a.project.id]] ?? 2) - (kindRank[projectKind[b.project.id]] ?? 2) || a.index - b.index)

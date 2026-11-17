@@ -82,7 +82,9 @@ export default function ProjectsPage({
 
   const filteredProjects = useMemo(() => {
     const query = initialSearch.trim().toLocaleLowerCase()
-    return sortProjects(projectItems.filter((project) => (activeFilter === 'all' ? !project.hiddenInAll : [].concat(project.category).includes(activeFilter)) && (!query || `${project.title} ${project.location} ${englishProjectTitles[project.id] ?? ''} ${italianProjectTitles[project.id] ?? ''}`.toLocaleLowerCase().includes(query))))
+    const list = projectItems.filter((project) => (activeFilter === 'all' ? !project.hiddenInAll : [].concat(project.category).includes(activeFilter)) && (!query || `${project.title} ${project.location} ${englishProjectTitles[project.id] ?? ''} ${italianProjectTitles[project.id] ?? ''}`.toLocaleLowerCase().includes(query)))
+    // "Todos": el orden de siempre; en cada departamento, Nave 16 y despues reales, concursos y academicos.
+    return activeFilter === 'all' ? list : sortProjects(list)
   }, [activeFilter, initialSearch])
 
   return (
