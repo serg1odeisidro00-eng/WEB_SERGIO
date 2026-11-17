@@ -640,8 +640,9 @@ export default function App() {
   }, [activePage])
 
   useEffect(() => {
-    if (activePage !== 'home' || !isAssetsReady) return
-    loadSceneAudio()
+    if (activePage !== 'home' || !isAssetsReady) return undefined
+    const id = window.setTimeout(() => loadSceneAudio(), 300)
+    return () => window.clearTimeout(id)
   }, [activePage, isAssetsReady])
 
   useEffect(() => {
@@ -958,6 +959,10 @@ export default function App() {
       setSceneRatio(SCENE_IMAGE_RATIO)
       setIsAssetsReady(true)
 
+      // El resto (personajes) empieza cuando la pantalla de carga ya esta
+      // pintada, para no quitarle conexion (unas milesimas; no se nota).
+      await new Promise((resolve) => window.requestAnimationFrame(() => window.requestAnimationFrame(() => window.setTimeout(resolve, 50))))
+      if (isCancelled) return
       await Promise.all(restAssets.map((src) => track(loadImage(src))))
       if (isCancelled) return
       setAssetsLoaded(true)
