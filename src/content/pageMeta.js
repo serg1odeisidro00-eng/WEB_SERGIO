@@ -8,7 +8,7 @@ export const SITE_NAME = 'M047'
 export const pageMeta = {
   "home": {
     "title": "M047 · Estudio de diseño en Madrid",
-    "description": "Estudio M047 en Aluche (Madrid): diseño de interiores, paisajismo, escenografía, diseño gráfico y dirección de arte. Proyectos, academia y tienda online.",
+    "description": "Estudio M047 en Aluche (Madrid): diseño de interiores, paisajismo, escenografía, diseño gráfico y dirección de arte. Proyectos, servicios y academia.",
     "image": "/og/m047.jpg"
   },
   "projects": {
@@ -100,17 +100,17 @@ export const pageMeta = {
     "image": "/og/el-bosque.jpg"
   },
   "project-el-circulo": {
-    "title": "Juguete de construcción El Círculo · M047",
+    "title": "The Circle · M047",
     "description": "The Circle es un juego de construcción en madera que transforma la geometría en un lenguaje creativo. Inspirado en el espíritu experimental de la Bauhaus, explora la modularidad, el volumen y la…",
     "image": "/og/el-circulo.jpg"
   },
   "project-el-rastro": {
-    "title": "Identidad Corporativa El Rastro · M047",
+    "title": "Identidad corporativa El Rastro · M047",
     "description": "El Rastro es una identidad visual diseñada para una residencia artística vinculada a la memoria urbana de Madrid. El nombre nace del propio origen del término matadero y de su conexión histórica…",
     "image": "/og/el-rastro.jpg"
   },
   "project-eneo": {
-    "title": "Identidad Corporativa Eneo · M047",
+    "title": "Identidad corporativa Eneo · M047",
     "description": "La marca nace con el objetivo de ofrecer una alimentación de alta calidad para conejos y pequeños roedores, poniendo el cuidado y el bienestar animal en el centro del proyecto. La identidad busca…",
     "image": "/og/eneo.jpg"
   },
@@ -120,7 +120,7 @@ export const pageMeta = {
     "image": "/og/espacio-expositivo.jpg"
   },
   "project-fiestas-locales": {
-    "title": "Cartel de Fiestas Locales · M047",
+    "title": "Cartel de fiestas locales · M047",
     "description": "Cartel diseñado para las fiestas locales de San Rafael 2024, concebido como una representación visual de la vida del pueblo durante esos días. El nombre de la localidad se convierte en el eje…",
     "image": "/og/fiestas-locales.jpg"
   },
@@ -140,7 +140,7 @@ export const pageMeta = {
     "image": "/og/ilustraciones.jpg"
   },
   "project-miteco-2": {
-    "title": "Proyecto Paisajismo MITECO 2 · M047",
+    "title": "Proyecto de paisajismo MITECO 2 · M047",
     "description": "Segunda propuesta para el MITECO: una malla de setos recortados y superficies de tierra que organiza el vacío y crea una experiencia contemplativa y sensorial.",
     "image": "/og/miteco-2.jpg"
   },
@@ -170,7 +170,7 @@ export const pageMeta = {
     "image": "/og/playground.jpg"
   },
   "project-podcast": {
-    "title": "Identidad Corporativa Podcast · M047",
+    "title": "Identidad corporativa Podcast · M047",
     "description": "X-RAIL es una identidad creada para un pódcast que habla de liderazgo, superación y dirección personal. El proyecto nace de una idea sencilla: todos nos hemos sentido perdidos alguna vez, y a…",
     "image": "/og/podcast.jpg"
   },

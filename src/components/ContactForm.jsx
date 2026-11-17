@@ -44,7 +44,29 @@ export default function ContactForm({ language }) {
     window.location.href = `mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`
   }
 
-  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(copy.whatsappText)}`
+  // WhatsApp lleva lo que el visitante ha escrito (si no ha escrito nada, el saludo de siempre).
+  const whatsappMessage = (() => {
+    const w = copy.whatsappParts
+    const type = contactProjectTypes.find((item) => item.id === form.type)
+    const parts = [
+      form.name.trim() ? `${w.hello} ${form.name.trim()}.` : null,
+      type ? `${w.type}: ${type[language] ?? type.es}.` : null,
+      form.message.trim() || null,
+      form.email.trim() ? `${w.email}: ${form.email.trim()}` : null,
+    ].filter(Boolean)
+    return parts.length ? parts.join('\n') : copy.whatsappText
+  })()
+  const whatsappHref = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(whatsappMessage)}`
+  const [isCopied, setIsCopied] = useState(false)
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText(CONTACT_EMAIL)
+      setIsCopied(true)
+      window.setTimeout(() => setIsCopied(false), 2000)
+    } catch {
+      window.location.href = `mailto:${CONTACT_EMAIL}`
+    }
+  }
 
   const field = (name, label, props = {}) => (
     <label className={`academy-field${errors[name] ? ' has-error' : ''}`}>
@@ -109,6 +131,10 @@ export default function ContactForm({ language }) {
               <button type="submit" className="academy-button">{copy.submit}</button>
               <a className="academy-button" href={whatsappHref} target="_blank" rel="noreferrer">{copy.whatsapp}</a>
             </div>
+            <p className="academy-note contact-no-mail">
+              {copy.noMail} {CONTACT_EMAIL}
+              <button type="button" className="academy-link-button contact-copy-email" onClick={copyEmail}>{isCopied ? copy.copied : copy.copyEmail}</button>
+            </p>
             <p className="academy-note">{copy.note}</p>
           </div>
         </form>

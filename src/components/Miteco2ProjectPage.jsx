@@ -2,7 +2,7 @@ import ProjectDetailPage from './ProjectDetailPage'
 
 export const miteco2Copy = {
   es: {
-    title: 'Proyecto Paisajismo MITECO 2',
+    title: 'Proyecto de paisajismo MITECO 2',
     location: 'Madrid, España',
     alt: 'Panel del proyecto Paisajismo MITECO 2',
     details: 'DATOS PROYECTO',

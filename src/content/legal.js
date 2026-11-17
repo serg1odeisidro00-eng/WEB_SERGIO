@@ -7,7 +7,7 @@
 export const legalData = {
   brand: 'Estudio M047',
   address: 'Madrid (España)',
-  email: 'info@m047.es',
+  email: 'contacto@m047.es',
   phone: '(+34) 633 878 755',
   updated: { es: 'noviembre de 2026', en: 'November 2026', it: 'novembre 2026' },
 }

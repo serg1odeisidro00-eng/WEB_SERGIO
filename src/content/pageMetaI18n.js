@@ -10,7 +10,7 @@ export const pageMetaI18n = {
     },
     "home": {
       "title": "M047 · Design studio in Madrid",
-      "description": "Studio M047 in Aluche (Madrid): interior design, landscape design, scenography, graphic design and art direction. Projects, academy and online shop."
+      "description": "Studio M047 in Aluche (Madrid): interior design, landscape design, scenography, graphic design and art direction. Projects, services and academy."
     },
     "projects": {
       "title": "Projects · M047",
@@ -172,7 +172,7 @@ export const pageMetaI18n = {
     },
     "home": {
       "title": "M047 · Studio di design a Madrid",
-      "description": "Studio M047 ad Aluche (Madrid): design degli interni, progettazione del paesaggio, scenografia, design grafico e direzione artistica. Progetti, accademia e negozio online."
+      "description": "Studio M047 ad Aluche (Madrid): design degli interni, progettazione del paesaggio, scenografia, design grafico e direzione artistica. Progetti, servizi e accademia."
     },
     "projects": {
       "title": "Progetti · M047",

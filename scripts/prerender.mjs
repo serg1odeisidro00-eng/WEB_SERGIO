@@ -94,6 +94,12 @@ for (const { pageId, language, meta, path } of pages) {
   writeFileSync(file, html)
 }
 
+// Direcciones que no existen: Vercel sirve 404.html con codigo 404 y la web
+// muestra la pagina "Aqui no hay nada..." (NotFoundPage).
+writeFileSync(join(dist, '404.html'), template
+  .replace(/\s*<meta name="description"[^>]*>/, '')
+  .replace(/<title>[\s\S]*?<\/title>/, '<title>Aquí no hay nada… · M047</title>\n    <meta name="robots" content="noindex" />'))
+
 const today = new Date().toISOString().slice(0, 10)
 const sitemap = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">

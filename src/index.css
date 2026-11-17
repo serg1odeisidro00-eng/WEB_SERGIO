@@ -3889,3 +3889,21 @@ main > .projects-page {
     gap: 1.4em;
   }
 }
+
+/* Contacto y Tienda: alternativa si no se abre el programa de correo */
+.contact-no-mail {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: 0.4em 1.2em;
+  margin-bottom: 0.4em;
+}
+
+.contact-copy-email {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.academy-link-button.contact-copy-email {
+  font-size: 1em;
+}

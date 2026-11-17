@@ -11,6 +11,17 @@ export default function ShopPage({ activePage, onBack, onNavigate }) {
     en: { label: 'LET ME KNOW WHEN IT OPENS', subject: 'Let me know when the shop opens', body: 'Hello, M047: please let me know when the online shop opens.' },
     it: { label: 'AVVISAMI QUANDO APRE IL NEGOZIO ONLINE', subject: 'Avvisatemi quando apre il negozio', body: 'Ciao, M047: avvisatemi quando apre il negozio online.' },
   }[language]
+  const [isCopied, setIsCopied] = useState(false)
+  const mailCopy = { es: ['¿No se abre tu correo? Escríbenos a', 'COPIAR EMAIL', 'COPIADO'], en: ['Email app didn’t open? Write to us at', 'COPY EMAIL', 'COPIED'], it: ['Non si apre la tua email? Scrivici a', 'COPIA EMAIL', 'COPIATA'] }[language]
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('info@m047.es')
+      setIsCopied(true)
+      window.setTimeout(() => setIsCopied(false), 2000)
+    } catch {
+      window.location.href = 'mailto:info@m047.es'
+    }
+  }
   const comingSoon = { es: 'Próximamente...', en: 'Coming soon...', it: 'Prossimamente...' }[language]
 
   return (
@@ -37,6 +48,10 @@ export default function ShopPage({ activePage, onBack, onNavigate }) {
         <a className="academy-button shop-page-notify" href={`mailto:info@m047.es?subject=${encodeURIComponent(notify.subject)}&body=${encodeURIComponent(notify.body)}`}>
           {notify.label}
         </a>
+        <p className="academy-note contact-no-mail shop-no-mail">
+          {mailCopy[0]} info@m047.es
+          <button type="button" className="academy-link-button contact-copy-email" onClick={copyEmail}>{isCopied ? mailCopy[2] : mailCopy[1]}</button>
+        </p>
       </div>
 
       <PageFooter />

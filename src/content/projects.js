@@ -9,28 +9,28 @@ export const projectItems = [
   { id: 'playground', title: 'Vivienda experimental y Playground', location: 'Pontevedra, España', category: ['scenography', 'interiors', 'landscape'], iconSrc: '/proyectos/diagramas/playground.webp', imageSrc: '/proyectos/fotos/playground.webp' },
   { id: 'capilla', title: 'Diseño e iluminación Capilla', location: 'Madrid, España', category: 'interiors', iconSrc: '/proyectos/diagramas/capilla.webp', imageSrc: '/proyectos/fotos/capilla.webp' },
   { id: 'efimero', title: 'Stand efímero de venta', location: 'Madrid, España', category: ['scenography', 'interiors'], iconSrc: '/proyectos/diagramas/efimero.webp', imageSrc: '/proyectos/fotos/efimero.webp' },
-  { id: 'el-circulo', title: 'Juguete de construcción El Círculo', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/el-circulo.webp', imageSrc: '/proyectos/fotos/el-circulo.webp' },
+  { id: 'el-circulo', title: 'Juguete de construcción The Circle', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/el-circulo.webp', imageSrc: '/proyectos/fotos/el-circulo.webp' },
   { id: 'cartel-teatro', title: 'Cartel de teatro', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/cartel-teatro.webp', imageSrc: '/proyectos/fotos/cartel-teatro.webp' },
-  { id: 'el-rastro', title: 'Identidad Corporativa El Rastro', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/el-rastro.webp', imageSrc: '/proyectos/fotos/el-rastro.webp' },
+  { id: 'el-rastro', title: 'Identidad corporativa El Rastro', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/el-rastro.webp', imageSrc: '/proyectos/fotos/el-rastro.webp' },
   { id: 'hargok', title: 'Tipografía Hargok', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/hargok.webp', imageSrc: '/proyectos/fotos/hargok.webp' },
   { id: 'haz', title: 'Lámpara HAZ', location: 'Segovia, España', category: 'graphic', iconSrc: '/proyectos/diagramas/haz.webp', imageSrc: '/proyectos/fotos/haz.webp' },
-  { id: 'podcast', title: 'Identidad Corporativa Podcast', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/podcast.webp', imageSrc: '/proyectos/fotos/podcast.webp' },
-  { id: 'eneo', title: 'Identidad Corporativa Eneo', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/eneo.webp', imageSrc: '/proyectos/fotos/eneo.webp' },
-  { id: 'fiestas-locales', title: 'Cartel de Fiestas Locales', location: 'San Rafael (Segovia), España', category: 'graphic', iconSrc: '/proyectos/diagramas/fiestas-locales.webp', imageSrc: '/proyectos/fotos/fiestas-locales.webp' },
-  { id: 'packaging', title: 'Diseño Editorial y Packaging', location: 'Santander, España', category: 'graphic', iconSrc: '/proyectos/diagramas/packaging.webp', imageSrc: '/proyectos/fotos/packaging.webp' },
-  { id: 'ilustraciones', title: 'Colección de Ilustraciones', location: 'Villaviciosa (Madrid), España', category: 'graphic', iconSrc: '/proyectos/diagramas/ilustraciones.webp', imageSrc: '/proyectos/fotos/ilustraciones.webp' },
+  { id: 'podcast', title: 'Identidad corporativa Podcast', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/podcast.webp', imageSrc: '/proyectos/fotos/podcast.webp' },
+  { id: 'eneo', title: 'Identidad corporativa Eneo', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/eneo.webp', imageSrc: '/proyectos/fotos/eneo.webp' },
+  { id: 'fiestas-locales', title: 'Cartel de fiestas locales', location: 'San Rafael (Segovia), España', category: 'graphic', iconSrc: '/proyectos/diagramas/fiestas-locales.webp', imageSrc: '/proyectos/fotos/fiestas-locales.webp' },
+  { id: 'packaging', title: 'Diseño editorial y packaging', location: 'Santander, España', category: 'graphic', iconSrc: '/proyectos/diagramas/packaging.webp', imageSrc: '/proyectos/fotos/packaging.webp' },
+  { id: 'ilustraciones', title: 'Colección de ilustraciones', location: 'Villaviciosa (Madrid), España', category: 'graphic', iconSrc: '/proyectos/diagramas/ilustraciones.webp', imageSrc: '/proyectos/fotos/ilustraciones.webp' },
   { id: 'cross', title: 'Silla CROSS', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/cross.webp', imageSrc: '/proyectos/fotos/cross.webp' },
   { id: 'ufv', title: 'Escenografía UFV', location: 'Madrid, España', category: 'scenography', iconSrc: '/proyectos/diagramas/ufv.webp', imageSrc: '/proyectos/fotos/ufv.webp' },
-  { id: 'pg', title: 'Identidad Corporativa PG', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/pg.webp', imageSrc: '/proyectos/fotos/pg.webp' },
+  { id: 'pg', title: 'Identidad corporativa PG', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/pg.webp', imageSrc: '/proyectos/fotos/pg.webp' },
   { id: 'boat', title: 'Escultura Boat', location: 'Madrid, España', category: 'graphic', iconSrc: '/proyectos/diagramas/boat.webp', imageSrc: '/proyectos/fotos/boat.webp' },
-  { id: 'telefonica', title: 'Proyecto de Oficinas en Edificio Telef\u00f3nica', location: 'Madrid, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/diagramas/telefonica.webp', imageSrc: '/proyectos/fotos/telefonica.webp' },
-  { id: 'miteco', title: 'Proyecto Paisajismo MITECO', location: 'Madrid, Espa\u00f1a', category: 'landscape', iconSrc: '/proyectos/diagramas/miteco.webp', imageSrc: '/proyectos/fotos/miteco.webp' },
-  { id: 'miteco-2', title: 'Proyecto Paisajismo MITECO 2', location: 'Madrid, Espa\u00f1a', category: 'landscape', iconSrc: '/proyectos/diagramas/miteco.webp', imageSrc: '/proyectos/fotos/miteco.webp', hiddenInAll: true },
+  { id: 'telefonica', title: 'Oficinas en Edificio Telef\u00f3nica', location: 'Madrid, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/diagramas/telefonica.webp', imageSrc: '/proyectos/fotos/telefonica.webp' },
+  { id: 'miteco', title: 'Proyecto de paisajismo MITECO', location: 'Madrid, Espa\u00f1a', category: 'landscape', iconSrc: '/proyectos/diagramas/miteco.webp', imageSrc: '/proyectos/fotos/miteco.webp' },
+  { id: 'miteco-2', title: 'Proyecto de paisajismo MITECO 2', location: 'Madrid, Espa\u00f1a', category: 'landscape', iconSrc: '/proyectos/diagramas/miteco.webp', imageSrc: '/proyectos/fotos/miteco.webp', hiddenInAll: true },
   { id: 'el-bosque', title: 'Centro cultural El Bosque', location: 'Madrid, Espa\u00f1a', category: 'interiors', iconSrc: '/proyectos/diagramas/el-bosque.webp', imageSrc: '/proyectos/fotos/el-bosque.webp' },
-  { id: 'album-musical', title: 'Direcci\u00f3n de arte \u00e1lbum musical', location: 'Madrid, Espa\u00f1a', category: ['art-direction', 'graphic'], iconSrc: '/proyectos/diagramas/album-musical.webp', imageSrc: '/proyectos/fotos/album-musical.webp' },
+  { id: 'album-musical', title: 'Direcci\u00f3n de arte para \u00e1lbum musical', location: 'Madrid, Espa\u00f1a', category: ['art-direction', 'graphic'], iconSrc: '/proyectos/diagramas/album-musical.webp', imageSrc: '/proyectos/fotos/album-musical.webp' },
   { id: 'espacio-expositivo', title: 'Espacio expositivo temporal 2021', location: 'Madrid, España', category: ['scenography', 'interiors'], iconSrc: '/proyectos/diagramas/espacio-expositivo.webp', imageSrc: '/proyectos/fotos/espacio-expositivo.webp' },
-  { id: 'v-karting', title: 'Dise\u00f1o Logotipo y Livery V.Karting', location: 'Villaviciosa (Madrid), Espa\u00f1a', category: 'graphic', iconSrc: '/proyectos/diagramas/v-karting.webp', imageSrc: '/proyectos/fotos/v-karting.webp' },
-  { id: 'soldrink', title: 'Branding y etiquetas bodega', location: 'Toledo, Espa\u00f1a', category: 'graphic', iconSrc: '/proyectos/diagramas/soldrink.webp', imageSrc: '/proyectos/fotos/soldrink.webp' },
+  { id: 'v-karting', title: 'Dise\u00f1o de logotipo y livery V.Karting', location: 'Villaviciosa (Madrid), Espa\u00f1a', category: 'graphic', iconSrc: '/proyectos/diagramas/v-karting.webp', imageSrc: '/proyectos/fotos/v-karting.webp' },
+  { id: 'soldrink', title: 'Branding y etiquetas para bodega', location: 'Toledo, Espa\u00f1a', category: 'graphic', iconSrc: '/proyectos/diagramas/soldrink.webp', imageSrc: '/proyectos/fotos/soldrink.webp' },
 ]
 
 export const englishProjectTitles = {
@@ -41,15 +41,16 @@ export const italianProjectTitles = {
   'el-circulo': 'Gioco di costruzioni The Circle', 'cartel-teatro': 'Manifesto teatrale', 'el-rastro': 'Identità visiva El Rastro', hargok: 'Carattere Hargok', haz: 'Lampada HAZ', podcast: 'Identità visiva Podcast', eneo: 'Identità visiva Eneo', 'fiestas-locales': 'Manifesto delle feste locali', packaging: 'Design editoriale e packaging', ilustraciones: 'Collezione di illustrazioni', cross: 'Sedia CROSS', ufv: 'Scenografia UFV', playground: 'Abitazione sperimentale e Playground', capilla: 'Progetto di design e illuminazione della cappella', pg: 'Identità visiva PG', boat: 'Scultura Boat', telefonica: "Progetto di uffici nell'edificio Telefónica", miteco: 'Progetto paesaggistico MITECO', 'miteco-2': 'Progetto paesaggistico MITECO 2', 'el-bosque': 'Centro culturale El Bosque', 'album-musical': 'Direzione artistica per album musicale', 'espacio-expositivo': 'Spazio espositivo temporaneo 2021', 'v-karting': 'Design del logo e livrea V.Karting', soldrink: 'Branding ed etichette per cantina', efimero: 'Stand di vendita temporaneo', 'nave-16': 'Residenza artistica presso Nave 16',
 }
 
-// El Circulo se muestra como "The Circle" en las tarjetas.
-projectItems.find((project) => project.id === 'el-circulo').title = 'The Circle'
-englishProjectTitles['el-circulo'] = 'The Circle'
-italianProjectTitles['el-circulo'] = 'The Circle'
 
 // Tarea 19: primero los encargos reales, despues concursos y despues
 // academicos o piezas propias (dentro de cada grupo, el orden de arriba).
 // La pagina Proyectos se abre en Diseno de interiores (DEFAULT_PROJECTS_FILTER
 // en lib/routes.js); "Todos" sigue disponible.
+// El Circulo se llama "The Circle" en la tarjeta, la ficha y Google (decision de Sergio).
+projectItems.find((project) => project.id === 'el-circulo').title = 'The Circle'
+englishProjectTitles['el-circulo'] = 'The Circle'
+italianProjectTitles['el-circulo'] = 'The Circle'
+
 export const projectKind = {
   podcast: 'real', eneo: 'real', packaging: 'real', ilustraciones: 'real', pg: 'real',
   'album-musical': 'real', 'v-karting': 'real', soldrink: 'real',
