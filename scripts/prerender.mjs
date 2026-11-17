@@ -76,7 +76,7 @@ for (const { pageId, language, meta, path } of pages) {
     `<meta name="twitter:title" content="${escape(meta.title)}" />`,
     `<meta name="twitter:description" content="${escape(meta.description)}" />`,
     `<meta name="twitter:image" content="${image}" />`,
-    pageId === 'home' ? '<link rel="preload" as="image" href="/fondo.jpg" fetchpriority="high" />\n    <link rel="preload" as="image" href="/andamio.webp" />' : '',
+    pageId === 'home' ? '<link rel="preload" as="image" href="/fondo_v2.jpg" media="(min-width: 701px)" fetchpriority="high" />\n    <link rel="preload" as="image" href="/fondo_movil.jpg" media="(max-width: 700px)" fetchpriority="high" />\n    <link rel="preload" as="image" href="/andamio.webp" />' : '',
     pageId === 'home' ? `<script type="application/ld+json">${JSON.stringify({ ...studioSchema, description: meta.description, url })}</script>` : '',
   ].filter(Boolean).join('\n    ')
 
