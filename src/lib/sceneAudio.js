@@ -181,7 +181,8 @@ function unlock() {
   const ctx = getContext()
   if (!ctx) return
   keepIosAudioSession()
-  loadSceneAudio()
+  // La descarga del sonido la lanza la portada (App.jsx) cuando la pantalla de
+  // carga ya esta pintada; si ya esta descargado, suena en cuanto se desbloquea.
   const resumed = ctx.state === 'running' ? Promise.resolve() : ctx.resume()
   resumed
     .then(() => {

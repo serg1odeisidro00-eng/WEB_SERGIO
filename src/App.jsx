@@ -631,12 +631,18 @@ export default function App() {
     return () => window.clearInterval(id)
   }, [activePage, hasEntered, isAssetsReady])
 
-  // El sonido (casi 1 MB) solo se descarga cuando se va a la portada.
+  // El sonido (casi 1 MB) solo se descarga en la portada, y cuando la pantalla
+  // de carga ya esta pintada: asi no le quita conexion al fondo y al andamio.
+  // Da tiempo de sobra: hasta "Pulsa para entrar" faltan aun los personajes.
   useEffect(() => {
     if (activePage !== 'home') return
     installAudioUnlock()
-    loadSceneAudio()
   }, [activePage])
+
+  useEffect(() => {
+    if (activePage !== 'home' || !isAssetsReady) return
+    loadSceneAudio()
+  }, [activePage, isAssetsReady])
 
   useEffect(() => {
     soundEnabledRef.current = soundEnabled
