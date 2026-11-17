@@ -21,6 +21,16 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
       entrar, menú, bajar al recorrido por plantas, botón atrás, ticket del teléfono.
 - [x] A6. Firma de correo nueva puesta en Hostinger (https://www.m047.es/firma.html).
 
+## A+. Siguiente (acordado el 17-nov)
+
+- [ ] **Animaciones**: revisar departamento a departamento la velocidad y la
+      sucesión de fotogramas de algunos personajes (Sergio dice qué ve raro).
+- [ ] **Menú**: lateral opción A (Proyectos, Servicios, Estudio, Contacto / Noticias,
+      Academia, Tienda, mismo tamaño). Barra de arriba pendiente de decidir.
+- [ ] Si se quita "Tienda online" del menú hasta que abra: volver a ponerla cuando abra.
+- [ ] Textos legales completos sin datos personales; datos del titular al darse de alta.
+- [ ] Portfolio: guion de cambios sobre el .ai de Sergio (Drive "porfolio uno/dos").
+
 ## B. Contenido que solo puede dar Sergio
 
 - [x] B1. Traducciones EN/IT revisadas por Sergio y aplicadas (16-nov). Documento con todos los textos ES/EN/IT: https://claude.ai/artifact/WPJz3ZoFf8kQq1xEhqFQMw

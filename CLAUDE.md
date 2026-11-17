@@ -378,3 +378,13 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   noticia, añadir su entrada). `prerender.mjs` crea 117 páginas (39 × 3) con
   `hreflang` y `lang` propios y un sitemap con las 3 versiones. Ojo: no leer
   el id de proyecto de `location.pathname` a mano; usar `stateFromLocation()`.
+- 2026-11-17: Servicios (/servicios, opcion B "Tu casa / Tu negocio / Tu evento…",
+  numeracion como Academia "01 / …"), Academia = "06 /", Estudio con quien es quien y
+  reconocimientos (sin matricula; 2025 profesor adjunto GDI ETSAM), Proyectos se abre
+  en Interiorismo (Nave 16 siempre primero; "Todos" con el orden de siempre). WhatsApp
+  con el mensaje del formulario, "Copiar email", 404 real (sin rewrites; dist/404.html),
+  titulos unificados (The Circle). Rendimiento con permiso de Sergio: fondo_v2.jpg
+  (= fondo.jpg sin perdida, progresivo) en ordenador, fondo_movil.jpg (3800 px) y
+  Casa_movil.webp (3800 px) en movil (<=700 px; el movil dibuja ~3200-3500 px reales);
+  sonido, personajes y pajaros se descargan despues de pintar la pantalla de carga.
+  PageSpeed: ordenador 77 -> 89. Los originales fondo.jpg y Casa.png/Casa.webp se quedan.
