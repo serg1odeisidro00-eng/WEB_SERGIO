@@ -237,14 +237,14 @@ const loadingScreenAssets = [
   '/edificio_izquierda.svg',
   '/cartela.svg',
   '/farola.png',
-  ...birdFrames,
   arbolFrames[0],
 ]
 
 const criticalSceneAssets = [
   ...staticSceneAssets,
   ...arbolFrames,
-  birdFrames[0], vanFrames[0], grafitiFrames[0], jardineroFrames[0], jardineraFrames[0],
+  // Los pajaros solo vuelan despues de entrar: se cargan con los personajes.
+  ...birdFrames, vanFrames[0], grafitiFrames[0], jardineroFrames[0], jardineraFrames[0],
   arbolFrames[0], ordenadorFrames[0], banquitoFrames[0], sofaFrames[0], bibliotecarioFrames[0],
   cuadroFrames[0], telefonoFrames[0], parejaFrames[0], personasSillasFrames[0], lectorFrames[0],
   columpioFrames[0],

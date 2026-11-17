@@ -18,4 +18,8 @@ export const FONDO_SRC = typeof window !== 'undefined' && window.matchMedia?.('(
   ? FONDO_MOBILE_SRC
   : FONDO_DESKTOP_SRC
 // Casa.webp = Casa.png en WebP sin perdida (mismos pixeles, misma resolucion, 1,1 MB en vez de 2,8 MB).
-export const CASA_SRC = '/Casa.webp'
+// Casa: en el movil se dibuja a ~3200-3500 px reales; Casa_movil.webp (3800 px,
+// sin perdida de compresion) tiene mas pixeles de los que se ven. Ordenador: igual que antes.
+export const CASA_SRC = typeof window !== 'undefined' && window.matchMedia?.('(max-width: 700px)').matches
+  ? '/Casa_movil.webp'
+  : '/Casa.webp'
