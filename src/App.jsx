@@ -114,7 +114,7 @@ function createRandomPausedFrameTween({
 }
 
 // Pajaros: velocidad y segundos de la pista ambiente en los que se oyen.
-const BIRD_FLAP_SEQUENCE = [0, 1, 2, 3, 1]
+const BIRD_FLAP_SEQUENCE = [0, 1, 2, 3, 2, 1] // revision 17-nov: ida y vuelta, mas suave
 
 // Bandada: cada pajaro cruza todo el dibujo de izquierda a derecha con un
 // recorrido continuo (sube un poco y ondula) aleteando a ~12 fps. Van en la
@@ -1097,7 +1097,7 @@ export default function App() {
           },
           state: grafitiState,
           totalFrames,
-          pauseDuration: 1,
+          pauseDuration: 0.2,
         })
         grafitiTweenRef.current.pause()
       }
@@ -1129,6 +1129,7 @@ export default function App() {
           },
           state: jardineroState,
           totalFrames,
+          pauseDuration: () => gsap.utils.random(0.5, 1.2, 0.1),
         })
         jardineroTweenRef.current.pause()
       }
@@ -1140,7 +1141,7 @@ export default function App() {
         const regaderaState = { step: 0 }
         regaderaTweenRef.current = gsap.to(regaderaState, {
           step: sequence.length - 1,
-          duration: (sequence.length - 1) / 5,
+          duration: (sequence.length - 1) / 4.6, // revision 17-nov: un poquisimo mas lenta
           ease: `steps(${sequence.length - 1})`,
           repeat: -1,
           repeatDelay: 0.15,
@@ -1201,7 +1202,7 @@ export default function App() {
         // Animacion continua: 6 fps en bucle con una pausa corta (0,5 s) entre vueltas.
         arbolTweenRef.current = gsap.to(arbolState, {
           frame: totalFrames - 1,
-          duration: (totalFrames - 1) / 6,
+          duration: (totalFrames - 1) / 8, // revision 17-nov: mas suave (antes 6 fps)
           ease: `steps(${totalFrames - 1})`,
           repeat: -1,
           repeatDelay: 0.5,
@@ -1342,7 +1343,7 @@ export default function App() {
       if (bibliotecarioRef.current && bibliotecarioImageRef.current) {
         const bibliotecarioState = { frame: 0 }
         const totalFrames = bibliotecarioFrames.length
-        const frameDuration = totalFrames / 3
+        const frameDuration = totalFrames / 4.5
 
         gsap.set(bibliotecarioRef.current, {
           xPercent: -50,
@@ -1368,6 +1369,7 @@ export default function App() {
           },
           state: bibliotecarioState,
           totalFrames,
+          pauseDuration: () => gsap.utils.random(1, 2.5, 0.1),
         })
         bibliotecarioTweenRef.current.pause()
       }
@@ -1375,7 +1377,7 @@ export default function App() {
       if (cuadroRef.current && cuadroImageRef.current) {
         const cuadroState = { frame: 0 }
         const totalFrames = cuadroFrames.length
-        const frameDuration = totalFrames / 4
+        const frameDuration = totalFrames / 4.4
 
         gsap.set(cuadroRef.current, {
           xPercent: -50,
@@ -1397,6 +1399,7 @@ export default function App() {
           },
           state: cuadroState,
           totalFrames,
+          pauseDuration: () => gsap.utils.random(1, 2.5, 0.1),
         })
         cuadroTweenRef.current.pause()
       }
@@ -1447,7 +1450,7 @@ export default function App() {
       if (parejaRef.current && parejaImageRef.current) {
         const parejaState = { frame: 0 }
         const totalFrames = parejaFrames.length
-        const frameDuration = totalFrames / 3
+        const frameDuration = totalFrames / 4
 
         gsap.set(parejaRef.current, {
           xPercent: -50,
@@ -1469,6 +1472,7 @@ export default function App() {
           },
           state: parejaState,
           totalFrames,
+          pauseDuration: () => gsap.utils.random(1, 2, 0.1),
         })
         parejaTweenRef.current.pause()
       }
@@ -1511,7 +1515,7 @@ export default function App() {
       if (lectorRef.current && lectorImageRef.current) {
         const lectorState = { frame: 0 }
         const totalFrames = lectorFrames.length
-        const frameDuration = totalFrames / 1
+        const frameDuration = totalFrames / 1.4
 
         gsap.set(lectorRef.current, {
           xPercent: -50,
@@ -1533,6 +1537,7 @@ export default function App() {
           },
           state: lectorState,
           totalFrames,
+          pauseDuration: () => gsap.utils.random(1, 2, 0.1),
         })
         lectorTweenRef.current.pause()
       }
@@ -1571,7 +1576,7 @@ export default function App() {
       if (hombreSentadoRef.current && hombreSentadoImageRef.current) {
         const hombreSentadoState = { frame: 0 }
         const totalFrames = hombreSentadoFrames.length
-        const frameDuration = totalFrames / 3
+        const frameDuration = totalFrames / 3.6
 
         gsap.set(hombreSentadoRef.current, {
           xPercent: -50,
@@ -1599,6 +1604,7 @@ export default function App() {
           },
           state: hombreSentadoState,
           totalFrames,
+          pauseDuration: () => gsap.utils.random(1, 2, 0.1),
         })
         hombreSentadoTweenRef.current.pause()
       }
@@ -1606,7 +1612,7 @@ export default function App() {
       if (mujerSentadaRef.current && mujerSentadaImageRef.current) {
         const mujerSentadaState = { frame: 0 }
         const totalFrames = mujerSentadaFrames.length
-        const frameDuration = totalFrames / 3
+        const frameDuration = totalFrames / 4.5
 
         gsap.set(mujerSentadaRef.current, {
           xPercent: -50,
@@ -1634,6 +1640,7 @@ export default function App() {
           },
           state: mujerSentadaState,
           totalFrames,
+          pauseDuration: () => gsap.utils.random(1, 2, 0.1),
         })
         mujerSentadaTweenRef.current.pause()
       }
@@ -1641,7 +1648,7 @@ export default function App() {
       if (profeRef.current && profeImageRef.current) {
         const profeState = { frame: 0 }
         const totalFrames = profeFrames.length
-        const frameDuration = totalFrames / 3
+        const frameDuration = totalFrames / 5
 
         gsap.set(profeRef.current, {
           xPercent: -50,
@@ -1665,6 +1672,7 @@ export default function App() {
           },
           state: profeState,
           totalFrames,
+          pauseDuration: () => gsap.utils.random(0.8, 1.6, 0.1),
         })
         profeTweenRef.current.pause()
       }
@@ -1672,7 +1680,7 @@ export default function App() {
       if (columpioRef.current && columpioImageRef.current) {
         const columpioState = { frame: 0 }
         const totalFrames = columpioFrames.length
-        const frameDuration = totalFrames / 4
+        const frameDuration = totalFrames / 4.3
 
         gsap.set(columpioRef.current, {
           xPercent: -50,
@@ -1696,6 +1704,7 @@ export default function App() {
           },
           state: columpioState,
           totalFrames,
+          pauseDuration: () => gsap.utils.random(1.2, 2.4, 0.1),
         })
         columpioTweenRef.current.pause()
       }

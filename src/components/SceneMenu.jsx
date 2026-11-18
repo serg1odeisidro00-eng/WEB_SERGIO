@@ -1,27 +1,28 @@
 import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { useLanguage } from '../context/LanguageContext'
 
+// Orden acordado con Sergio (17-nov-2026).
 const primaryItems = [
   { label: '1. DISEÑO DE INTERIORES', pageId: 'projects', filterId: 'interiors' },
-  { label: '2. PAISAJISMO', pageId: 'projects', filterId: 'landscape' },
-  { label: '3. ESCENOGRAFÍA', pageId: 'projects', filterId: 'scenography' },
-  { label: '4. DISEÑO GRÁFICO', pageId: 'projects', filterId: 'graphic' },
-  { label: '5. DIRECCIÓN DE ARTE', pageId: 'projects', filterId: 'art-direction' },
-  { label: '6. ACADEMIA', pageId: 'academy' },
+  { label: '2. DIRECCIÓN DE ARTE', pageId: 'projects', filterId: 'art-direction' },
+  { label: '3. DISEÑO GRÁFICO', pageId: 'projects', filterId: 'graphic' },
+  { label: '4. PAISAJISMO', pageId: 'projects', filterId: 'landscape' },
+  { label: '5. ACADEMIA', pageId: 'academy' },
+  { label: '6. ESCENOGRAFÍA', pageId: 'projects', filterId: 'scenography' },
 ]
 
 const secondaryItems = [
   { label: 'SERVICIOS', pageId: 'services' },
-  { label: 'CONTACTO', pageId: 'contact' },
   { label: 'ESTUDIO', pageId: 'studio' },
   { label: 'NOTICIAS', pageId: 'news' },
-  // { label: 'TIENDA ONLINE', pageId: 'shop' }, // fuera del menu hasta que abra la tienda (y su texto abajo)
+  { label: 'CONTACTO', pageId: 'contact' },
+  // { label: 'TIENDA ONLINE', pageId: 'shop' }, // fuera del menu hasta que abra la tienda
 ]
 
 const menuTranslations = {
-  es: ['1. DISE\u00d1O DE INTERIORES', '2. PAISAJISMO', '3. ESCENOGRAF\u00cdA', '4. DISE\u00d1O GR\u00c1FICO', '5. DIRECCI\u00d3N DE ARTE', '6. ACADEMIA', 'SERVICIOS', 'CONTACTO', 'ESTUDIO', 'NOTICIAS'],
-  en: ['1. INTERIOR DESIGN', '2. LANDSCAPE DESIGN', '3. SCENOGRAPHY', '4. GRAPHIC DESIGN', '5. ART DIRECTION', '6. ACADEMY', 'SERVICES', 'CONTACT', 'STUDIO', 'NEWS'],
-  it: ['1. DESIGN DEGLI INTERNI', '2. PAESAGGISTICA', '3. SCENOGRAFIA', '4. DESIGN GRAFICO', '5. DIREZIONE ARTISTICA', '6. ACCADEMIA', 'SERVIZI', 'CONTATTI', 'STUDIO', 'NOTIZIE'],
+  es: ['1. DISEÑO DE INTERIORES', '2. DIRECCIÓN DE ARTE', '3. DISEÑO GRÁFICO', '4. PAISAJISMO', '5. ACADEMIA', '6. ESCENOGRAFÍA', 'SERVICIOS', 'ESTUDIO', 'NOTICIAS', 'CONTACTO'],
+  en: ['1. INTERIOR DESIGN', '2. ART DIRECTION', '3. GRAPHIC DESIGN', '4. LANDSCAPE DESIGN', '5. ACADEMY', '6. SCENOGRAPHY', 'SERVICES', 'STUDIO', 'NEWS', 'CONTACT'],
+  it: ['1. DESIGN DEGLI INTERNI', '2. DIREZIONE ARTISTICA', '3. DESIGN GRAFICO', '4. PAESAGGISTICA', '5. ACCADEMIA', '6. SCENOGRAFIA', 'SERVIZI', 'STUDIO', 'NOTIZIE', 'CONTATTI'],
 }
 
 const MENU_REFERENCE_WIDTH = 1387

@@ -54,7 +54,7 @@ export const academyFormats = [
 
 export const academyCopy = {
   es: {
-    section: '06  /  ACOMPAÑAMIENTO TÉCNICO Y PROYECTUAL',
+    section: '05  /  ACOMPAÑAMIENTO TÉCNICO Y PROYECTUAL',
     claim: ['PROYECTAR CON CRITERIO.', 'DEFENDER CON RESULTADOS.'],
     claim2: ['UN ESPACIO DE CONTRASTE PROFESIONAL', 'PARA JÓVENES DISEÑADORES.'],
     intro: [
@@ -113,7 +113,7 @@ export const academyCopy = {
     },
   },
   en: {
-    section: '06  /  TECHNICAL AND PROJECT MENTORING',
+    section: '05  /  TECHNICAL AND PROJECT MENTORING',
     claim: ['DESIGN WITH JUDGEMENT.', 'DEFEND WITH RESULTS.'],
     claim2: ['A SPACE FOR PROFESSIONAL FEEDBACK', 'FOR YOUNG DESIGNERS.'],
     intro: [
@@ -172,7 +172,7 @@ export const academyCopy = {
     },
   },
   it: {
-    section: '06  /  ACCOMPAGNAMENTO TECNICO E PROGETTUALE',
+    section: '05  /  ACCOMPAGNAMENTO TECNICO E PROGETTUALE',
     claim: ['PROGETTARE CON CRITERIO.', 'DIFENDERE CON RISULTATI.'],
     claim2: ['UNO SPAZIO DI CONFRONTO PROFESSIONALE', 'PER GIOVANI DESIGNER.'],
     intro: [

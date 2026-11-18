@@ -9,28 +9,28 @@ const navItems = {
     { id: 'projects', label: 'PROYECTOS' },
     { id: 'services', label: 'SERVICIOS' },
     { id: 'studio', label: 'ESTUDIO' },
-    { id: 'contact', label: 'CONTACTO' },
     { id: 'news', label: 'NOTICIAS' },
     { id: 'academy', label: 'ACADEMIA' },
-    // { id: 'shop', label: 'TIENDA ONLINE' }, // fuera del menu hasta que abra la tienda
+    { id: 'contact', label: 'CONTACTO' },
+    // tienda: fuera del menu hasta que abra
   ],
   en: [
     { id: 'projects', label: 'PROJECTS' },
     { id: 'services', label: 'SERVICES' },
     { id: 'studio', label: 'STUDIO' },
-    { id: 'contact', label: 'CONTACT' },
     { id: 'news', label: 'NEWS' },
     { id: 'academy', label: 'ACADEMY' },
-    // { id: 'shop', label: 'ONLINE SHOP' },
+    { id: 'contact', label: 'CONTACT' },
+    // tienda: fuera del menu hasta que abra
   ],
   it: [
     { id: 'projects', label: 'PROGETTI' },
     { id: 'services', label: 'SERVIZI' },
     { id: 'studio', label: 'STUDIO' },
-    { id: 'contact', label: 'CONTATTI' },
     { id: 'news', label: 'NOTIZIE' },
     { id: 'academy', label: 'ACCADEMIA' },
-    // { id: 'shop', label: 'NEGOZIO ONLINE' },
+    { id: 'contact', label: 'CONTATTI' },
+    // tienda: fuera del menu hasta que abra
   ],
 }
 
