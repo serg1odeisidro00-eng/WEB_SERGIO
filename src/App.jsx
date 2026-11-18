@@ -1537,7 +1537,7 @@ export default function App() {
           },
           state: lectorState,
           totalFrames,
-          pauseDuration: () => gsap.utils.random(1, 2, 0.1),
+          pauseDuration: () => gsap.utils.random(0.4, 0.9, 0.1),
         })
         lectorTweenRef.current.pause()
       }
@@ -1704,7 +1704,7 @@ export default function App() {
           },
           state: columpioState,
           totalFrames,
-          pauseDuration: () => gsap.utils.random(1.2, 2.4, 0.1),
+          pauseDuration: () => gsap.utils.random(0.4, 0.9, 0.1),
         })
         columpioTweenRef.current.pause()
       }
