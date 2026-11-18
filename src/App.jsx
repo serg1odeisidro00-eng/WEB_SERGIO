@@ -1704,7 +1704,7 @@ export default function App() {
           },
           state: columpioState,
           totalFrames,
-          pauseDuration: () => gsap.utils.random(0.4, 0.9, 0.1),
+          pauseDuration: () => gsap.utils.random(0.8, 1.6, 0.1),
         })
         columpioTweenRef.current.pause()
       }
