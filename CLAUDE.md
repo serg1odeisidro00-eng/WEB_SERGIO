@@ -388,3 +388,10 @@ Ver `PENDIENTES.md` (lista acordada con Sergio, incluida la versión móvil).
   Casa_movil.webp (3800 px) en movil (<=700 px; el movil dibuja ~3200-3500 px reales);
   sonido, personajes y pajaros se descargan despues de pintar la pantalla de carga.
   PageSpeed: ordenador 77 -> 89. Los originales fondo.jpg y Casa.png/Casa.webp se quedan.
+- 2026-11-18: publicado el nuevo orden del menú y la revisión de animaciones
+  (polea pausa 0,8-1,6 s; profesora = `public/Frames/profe_v2/0-15.png` de Drive
+  "Fotogramas Academia/P1", ciclo hacia delante de ~6 s y 0,3-0,7 s de pausa).
+  Catálogo de servicios v2 (estética del portfolio, `scripts/build-catalogo.cjs`
+  en scratchpad) rechazado: no publicar, se retoma más adelante. Textos legales
+  ampliados (LSSI, RGPD, LOPDGDD: condiciones de uso, plazos, transferencias,
+  menores, art. 22.2) sin datos personales; falta titular y NIF al darse de alta.

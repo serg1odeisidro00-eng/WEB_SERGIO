@@ -23,13 +23,16 @@ Sergio usa macOS Tahoe 26.1 (Safari actual: WebP sin problema).
 
 ## A+. Siguiente (acordado el 17-nov)
 
-- [ ] **Animaciones**: revisar departamento a departamento la velocidad y la
-      sucesión de fotogramas de algunos personajes (Sergio dice qué ve raro).
-- [ ] **Menú**: lateral opción A (Proyectos, Servicios, Estudio, Contacto / Noticias,
-      Academia, Tienda, mismo tamaño). Barra de arriba pendiente de decidir.
+- [x] **Animaciones** (publicado 18-nov): velocidades y pausas revisadas; polea
+      con pausa 0,8-1,6 s; profesora de Academia con fotogramas nuevos (P1, ~6 s).
+- [x] **Menú** (publicado 18-nov): departamentos en el orden 1 Interiores,
+      2 Dirección de arte, 3 Gráfico, 4 Paisajismo, 5 Academia, 6 Escenografía;
+      sin Tienda online.
 - [ ] Si se quita "Tienda online" del menú hasta que abra: volver a ponerla cuando abra.
-- [ ] Textos legales completos sin datos personales; datos del titular al darse de alta.
-- [ ] Portfolio: guion de cambios sobre el .ai de Sergio (Drive "porfolio uno/dos").
+- [x] Textos legales ampliados sin datos personales (18-nov, en prueba).
+- [ ] Datos del titular (nombre/razón social y NIF) en `legal.js` al darse de alta.
+- [ ] Catálogo de servicios en PDF: dos borradores rechazados (no es estético);
+      se retoma más adelante. No publicar.
 
 ## B. Contenido que solo puede dar Sergio
 
