@@ -81,8 +81,8 @@ export const columpioFrames = Array.from(
 )
 
 export const profeFrames = Array.from(
-  { length: 17 },
-  (_, index) => `/Frames/profe/${index}.png`,
+  { length: 16 },
+  (_, index) => `/Frames/profe_v2/${index}.png`,
 )
 
 export const hombreSentadoFrames = Array.from(

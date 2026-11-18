@@ -1648,7 +1648,7 @@ export default function App() {
       if (profeRef.current && profeImageRef.current) {
         const profeState = { frame: 0 }
         const totalFrames = profeFrames.length
-        const frameDuration = totalFrames / 5
+        const frameDuration = 5.6
 
         gsap.set(profeRef.current, {
           xPercent: -50,
@@ -1665,15 +1665,20 @@ export default function App() {
 
         setBubbleInitialState(profeBubbleRef)
 
-        profeTweenRef.current = createRandomPausedFrameTween({
-          frameDuration,
-          onUpdate: () => {
-            setAnimatedFrame(profeImageRef, profeFrames, profeState.frame)
-          },
-          state: profeState,
-          totalFrames,
-          pauseDuration: () => gsap.utils.random(0.8, 1.6, 0.1),
-        })
+        // Fotogramas P1 (18-nov): ciclo completo de ida (el ultimo vuelve a
+        // la postura inicial), ~6 s como el video de Sergio, y pausa corta.
+        profeTweenRef.current = gsap
+          .timeline({ repeat: -1, repeatRefresh: true })
+          .set(profeState, { frame: 0, onComplete: () => setAnimatedFrame(profeImageRef, profeFrames, 0) })
+          .to(profeState, {
+            frame: totalFrames - 1,
+            duration: frameDuration,
+            ease: `steps(${totalFrames - 1})`,
+            onUpdate: () => {
+              setAnimatedFrame(profeImageRef, profeFrames, profeState.frame)
+            },
+          })
+          .to({}, { duration: () => gsap.utils.random(0.3, 0.7, 0.1) })
         profeTweenRef.current.pause()
       }
 
